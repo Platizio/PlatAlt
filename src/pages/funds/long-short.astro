@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Long Short Funds | The Sovereign Ledger" currentPage="products/funds/long-short">
+
+<div class="max-w-3xl mx-auto px-6 md:px-10 py-8 lg:max-w-5xl">
+
+  <!-- Breadcrumb -->
+  <div class="flex items-center gap-2 text-secondary mb-8 pt-4">
+    <a href="/knowledge/aif" class="text-xs uppercase tracking-[0.2em] font-label hover:text-primary-container transition-colors">AIF Knowledge</a>
+    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span class="text-xs uppercase tracking-[0.2em] font-label text-secondary">Cat III AIF</span>
+    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span class="text-xs uppercase tracking-[0.2em] font-label text-on-surface">Long Short Funds</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="mb-16">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-widest px-3 py-1">Category III AIF</span>
+    </div>
+    <h1 class="font-headline text-5xl md:text-6xl font-light leading-tight text-primary-container mb-4">
+      Long Short <span class="italic">Funds</span>
+    </h1>
+    <p class="text-on-surface-variant leading-relaxed text-lg max-w-2xl">
+      Bidirectional equity exposure harnessing both rising quality and deteriorating fundamentals—profiting from market direction while managing net market exposure dynamically.
+    </p>
+  </section>
+
+  <!-- Definition & Purpose -->
+  <section class="mb-16">
+    <div class="bg-surface-container-low p-8 md:p-10 relative overflow-hidden">
+      <h2 class="font-headline text-2xl mb-6 text-primary-container">Definition & Purpose</h2>
+      <p class="text-on-surface-variant leading-relaxed mb-8">
+        Long Short Funds under Category III AIF simultaneously hold long positions in companies expected to appreciate and short positions in companies expected to decline. Unlike market-neutral strategies, these funds maintain a net long or net short bias, expressing a directional view on market conditions while using the short book to fund additional long exposure and reduce overall portfolio volatility. The dual-sided portfolio generates return from both legs of the book, enabling skilled managers to compound capital in diverse market environments unavailable to long-only mandates.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">swap_vert</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Focus</h4>
+          <p class="text-sm font-semibold">Market Direction + Hedge</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h4>
+          <p class="text-sm font-semibold">High</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">payments</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h4>
+          <p class="text-sm font-semibold">&#8377;1 Crore</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">schedule</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Tenure</h4>
+          <p class="text-sm font-semibold">Open-Ended</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Characteristics -->
+  <section class="mb-16">
+    <h2 class="font-headline text-3xl mb-10 text-primary-container pl-4 border-l-2 border-tertiary-fixed">
+      Key <span class="italic">Characteristics</span>
+    </h2>
+    <div class="space-y-8">
+      <div class="flex gap-6 items-start">
+        <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-primary-container text-tertiary-fixed">
+          <span class="material-symbols-outlined">north_east</span>
+        </div>
+        <div>
+          <h3 class="font-headline text-xl mb-2 text-on-surface">Directional Bets with Managed Net Exposure</h3>
+          <p class="text-on-surface-variant leading-relaxed">The fund maintains a deliberate net long or net short bias (typically 40–80% net long) that reflects the portfolio manager's macro view and stock-level conviction. Net exposure is dynamically adjusted in response to valuation dispersion across the market, earnings cycle positioning, and macroeconomic regime shifts—giving the manager more tools than a long-only mandate permits.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-primary-container text-tertiary-fixed">
+          <span class="material-symbols-outlined">south_east</span>
+        </div>
+        <div>
+          <h3 class="font-headline text-xl mb-2 text-on-surface">Short Position Discipline</h3>
+          <p class="text-on-surface-variant leading-relaxed">The short book targets companies with deteriorating fundamentals, governance concerns, structural disruption threats, or unsustainable accounting practices. Short positions in Indian markets are executed through F&O derivatives given regulatory constraints on stock borrowing. Effective short management requires strict stop-loss protocols as losses on short positions are theoretically unlimited.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-primary-container text-tertiary-fixed">
+          <span class="material-symbols-outlined">timer</span>
+        </div>
+        <div>
+          <h3 class="font-headline text-xl mb-2 text-on-surface">Market Timing as Active Tool</h3>
+          <p class="text-on-surface-variant leading-relaxed">Long Short managers employ macro overlays—interest rate cycle analysis, foreign institutional flow monitoring, and earnings revision breadth tracking—to adjust gross and net exposure at the portfolio level. This tactical flexibility allows the fund to reduce market exposure during periods of elevated systemic risk, protecting investor capital in ways unavailable to benchmark-constrained mandates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lifecycle -->
+  <section class="mb-16 bg-primary-container p-8 md:p-12 overflow-hidden relative">
+    <h2 class="font-headline text-3xl mb-12 text-tertiary-fixed">The Long Short Fund <span class="italic">Lifecycle</span></h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="text-tertiary-fixed-dim text-xs font-label uppercase tracking-[0.2em] mb-3">Phase 01</div>
+        <h3 class="font-headline text-xl text-tertiary-fixed mb-3">Book Construction</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">The long and short books are constructed simultaneously, with position sizing in each leg calibrated to the manager's conviction level and risk budget. Sector exposures are balanced across the gross book to prevent unintended factor tilts. Leverage levels are set in accordance with SEBI's AIF leverage guidelines and the fund's stated risk parameters.</p>
+      </div>
+      <div>
+        <div class="text-tertiary-fixed-dim text-xs font-label uppercase tracking-[0.2em] mb-3">Phase 02</div>
+        <h3 class="font-headline text-xl text-tertiary-fixed mb-3">Active Management</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Daily P&L attribution separates alpha generated by the long book, the short book, and the net exposure positioning decision. Risk management systems monitor position-level VaR, sector concentration, and beta to ensure the portfolio behaves within defined parameters. Quarterly LP reports disclose net exposure ranges and attribution by strategy bucket.</p>
+      </div>
+      <div>
+        <div class="text-tertiary-fixed-dim text-xs font-label uppercase tracking-[0.2em] mb-3">Phase 03</div>
+        <h3 class="font-headline text-xl text-tertiary-fixed mb-3">Redemption & Capital Return</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Open-ended Long Short funds accommodate redemptions through defined notice periods and redemption gates that protect continuing investors from forced liquidation of illiquid or advantageous positions. The fund manager balances redemption liquidity against portfolio integrity, maintaining a cash buffer and liquid position sleeve to service expected outflows without compromising the core investment book.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notable Benchmarks -->
+  <section class="mb-16">
+    <h2 class="font-headline text-3xl mb-8 text-primary-container">Institutional <span class="italic">Benchmarks</span></h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-surface-container-low p-6 border-l-2 border-tertiary-fixed">
+        <h3 class="font-headline text-xl mb-2 text-on-surface">White Oak Capital Management</h3>
+        <p class="text-xs font-label uppercase tracking-wider text-secondary mb-3">Multi-Cap Long Short Platform</p>
+        <p class="text-on-surface-variant text-sm leading-relaxed">White Oak Capital manages long short strategies that combine deep fundamental research on India's listed equity universe with tactical derivative overlays. Their investment philosophy emphasizes earnings quality and capital allocation discipline, with the short book identifying companies exhibiting earnings manipulation risk, unsustainable leverage, or competitive displacement from structural technology shifts.</p>
+      </div>
+      <div class="bg-surface-container-low p-6 border-l-2 border-tertiary-fixed">
+        <h3 class="font-headline text-xl mb-2 text-on-surface">Helios Capital Management</h3>
+        <p class="text-xs font-label uppercase tracking-wider text-secondary mb-3">Asia-Focused Long Short Vehicle</p>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Helios Capital is one of India's pioneering hedge fund managers, operating long short strategies across Indian and broader emerging market equities. Founded by industry veterans, Helios combines macro-driven net exposure management with bottom-up fundamental stock selection, deploying the short book opportunistically during periods of earnings cycle deterioration and market valuation excess.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="bg-surface-container p-8 text-center border border-outline-variant/10">
+    <h3 class="font-headline text-2xl mb-4 text-on-surface">Explore This Strategy</h3>
+    <p class="text-on-surface-variant text-sm mb-8">Access detailed regulatory filings and performance metrics through our private concierge.</p>
+    <a href="/partner" class="inline-block w-full md:w-auto py-4 px-10 bg-primary-container text-on-primary font-label text-xs uppercase tracking-[0.2em] hover:bg-slate-800 transition-colors">
+      Request Fund Prospectus
+    </a>
+  </div>
+
+</div>
+
+</BaseLayout>

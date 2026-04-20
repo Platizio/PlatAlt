@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="SME Funds | The Sovereign Ledger" currentPage="products/funds/sme">
+
+<div class="max-w-5xl mx-auto px-6 md:px-10 py-8">
+  <!-- Breadcrumb -->
+  <div class="flex items-center gap-2 text-secondary mb-8 pt-4 flex-wrap">
+    <a href="/knowledge/aif" class="text-xs uppercase tracking-[0.2em] font-label hover:text-primary-container transition-colors">AIF Knowledge</a>
+    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span class="text-xs uppercase tracking-[0.2em] font-label text-secondary">Cat I AIF</span>
+    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span class="text-xs uppercase tracking-[0.2em] font-label text-on-surface">SME Funds</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="mb-16">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-tertiary-fixed/20 text-on-tertiary-container text-[10px] font-bold uppercase tracking-widest px-3 py-1">Category I AIF</span>
+    </div>
+    <h1 class="font-headline text-5xl md:text-6xl font-light leading-tight text-primary-container mb-4">
+      SME <span class="italic">Funds</span>
+    </h1>
+    <p class="text-on-surface-variant leading-relaxed text-lg max-w-2xl">
+      Channeling growth capital into India's small and medium enterprises — the backbone of the nation's economy and engine of employment generation.
+    </p>
+  </section>
+
+  <!-- Definition -->
+  <section class="mb-16">
+    <div class="bg-surface-container-low p-8 md:p-10">
+      <h2 class="font-headline text-2xl mb-6 text-primary-container">Definition & Purpose</h2>
+      <p class="text-on-surface-variant leading-relaxed mb-8">
+        SME Funds are Category I AIFs specifically mandated to invest in Small and Medium Enterprises (SMEs) as defined by the Ministry of MSME. These funds bridge the critical financing gap faced by viable SMEs that lack access to formal capital markets, providing equity and quasi-equity to businesses with ₹10–250 Crore in annual turnover.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">store</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Target</h4>
+          <p class="text-sm font-semibold">SME & MSME</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h4>
+          <p class="text-sm font-semibold">High</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">payments</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h4>
+          <p class="text-sm font-semibold">&#8377;1 Crore</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">schedule</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Tenure</h4>
+          <p class="text-sm font-semibold">5&ndash;7 Years</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why SMEs -->
+  <section class="mb-16">
+    <h2 class="font-headline text-3xl mb-10 text-primary-container pl-4 border-l-2 border-tertiary-fixed">
+      The SME <span class="italic">Opportunity</span>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {[
+        { icon: 'factory', title: '63M+ SMEs in India', desc: 'India has over 63 million registered MSMEs contributing 30% of GDP and employing 110+ million people.' },
+        { icon: 'trending_up', title: 'Valuation Arbitrage', desc: 'SMEs trade at significant discounts to listed mid/large-caps, offering substantial re-rating potential upon scale and formalization.' },
+        { icon: 'account_balance', title: 'Credit Gap', desc: 'A ₹37 trillion credit gap exists in MSME financing — AIFs can fill a portion with patient, structured capital.' },
+        { icon: 'emoji_events', title: 'Government Tailwinds', desc: 'PLI schemes, "Make in India" initiatives, and MSME formalization drive structural growth for investible SMEs.' },
+      ].map(w => (
+        <div class="flex gap-5 items-start">
+          <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-surface-container-low">
+            <span class="material-symbols-outlined text-secondary">{w.icon}</span>
+          </div>
+          <div>
+            <h3 class="font-headline text-lg mb-2">{w.title}</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">{w.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Dark section -->
+  <section class="mb-16 bg-primary-container text-surface p-8 md:p-12">
+    <h2 class="font-headline text-3xl mb-8 text-tertiary-fixed">Investment <span class="italic">Criteria</span></h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {[
+        { label: 'Revenue', value: '₹10–250 Cr', sub: 'Annual turnover threshold' },
+        { label: 'EBITDA', value: '10%+', sub: 'Minimum operating margin' },
+        { label: 'Stake', value: '20–49%', sub: 'Minority equity positions' },
+      ].map(c => (
+        <div class="border border-secondary/30 p-6">
+          <p class="text-xs text-secondary uppercase font-label tracking-wider mb-2">{c.label}</p>
+          <p class="font-headline text-3xl text-tertiary-fixed mb-1">{c.value}</p>
+          <p class="text-xs opacity-60">{c.sub}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="bg-surface-container p-8 text-center border border-outline-variant/10">
+    <h3 class="font-headline text-2xl mb-4">Invest in India's Growth Engine</h3>
+    <p class="text-on-surface-variant text-sm mb-8">Our SME investment team identifies high-quality businesses with strong fundamentals and management teams capable of delivering institutional returns.</p>
+    <a href="/partner" class="inline-block py-4 px-10 bg-primary-container text-on-primary font-label text-xs uppercase tracking-[0.2em] hover:bg-slate-800 transition-colors">
+      Request SME Fund Details
+    </a>
+  </div>
+</div>
+
+</BaseLayout>

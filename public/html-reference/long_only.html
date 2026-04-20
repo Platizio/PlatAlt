@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Long Only Strategies | Sovereign Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Manrope:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f9faf5;
+            color: #1a1c1a;
+            -webkit-font-smoothing: antialiased;
+        }
+        .serif-display {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .premium-shadow {
+            box-shadow: 0 32px 64px -12px rgba(26, 28, 26, 0.04);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#e2e3df",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#f9faf5",
+                      "on-secondary-fixed": "#001d36",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#48617e",
+                      "on-primary-fixed": "#0f1c2c",
+                      "primary-container": "#0f1c2c",
+                      "on-background": "#1a1c1a",
+                      "inverse-on-surface": "#f0f1ed",
+                      "secondary-fixed": "#d1e4ff",
+                      "primary-fixed": "#d6e4f9",
+                      "surface-container-highest": "#e2e3df",
+                      "on-surface": "#1a1c1a",
+                      "tertiary-fixed": "#ffdea5",
+                      "on-tertiary-fixed": "#261900",
+                      "inverse-surface": "#2f312e",
+                      "on-tertiary-container": "#a17f3b",
+                      "error-container": "#ffdad6",
+                      "outline": "#74777d",
+                      "on-secondary-fixed-variant": "#2f4865",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#261900",
+                      "secondary-fixed-dim": "#afc9ea",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed-dim": "#e9c176",
+                      "surface-tint": "#525f71",
+                      "on-tertiary": "#ffffff",
+                      "secondary-container": "#c2dcff",
+                      "surface-dim": "#d9dad6",
+                      "surface": "#f9faf5",
+                      "on-tertiary-fixed-variant": "#5d4201",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#44474c",
+                      "error": "#ba1a1a",
+                      "primary": "#000000",
+                      "on-primary-fixed-variant": "#3a4859",
+                      "primary-fixed-dim": "#bac8dc",
+                      "surface-container-high": "#e8e8e4",
+                      "outline-variant": "#c4c6cc",
+                      "surface-container": "#edeeea",
+                      "tertiary": "#000000",
+                      "secondary": "#47607e",
+                      "on-primary-container": "#778598",
+                      "background": "#f9faf5",
+                      "surface-container-low": "#f3f4f0",
+                      "inverse-primary": "#bac8dc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Newsreader"],
+                      "body": ["Manrope"],
+                      "label": ["Manrope"]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface mb-24">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0D1B2A] dark:bg-[#0D1B2A]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#ffdea5]" data-icon="menu">menu</span>
+<span class="text-2xl font-serif text-[#ffdea5] tracking-widest font-['Newsreader'] italic">Sovereign Ledger</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Executive Portfolio Manager" data-alt="close-up portrait of a professional executive in a sharp navy suit with clean minimal background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW0WGgZmbBzWwW9HfuB625wwobW5eTHjZW7UsJcmhu02_liEZmFlrGHRy1G28LvahTgbP5uBy9voFNUQphFMrahoXMcm2zhFO1n_6s0nO252Y2axER2zuSFBHG4d-fviK9hWU1w9S1nmawR1lv-YEYtgbvufpA4O8d6LYt5hAodCDzxjhKLTv-9PhHAXyZL4KyvIFq0uhRaRFM6pViz-J0TxPtkMYgHT8Wvqh2Kt-uGiCQZY6RFy4jkb510etRRvGNVZwINz_ApNk"/>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="mt-16 px-6 pt-12">
+<!-- Hero Section -->
+<section class="mb-16">
+<div class="inline-block py-1 px-3 mb-6 bg-secondary-container/30 text-secondary font-label text-[10px] uppercase tracking-widest rounded-sm">
+                Equity Strategies
+            </div>
+<h1 class="serif-display text-5xl font-normal leading-tight mb-6 text-primary-container">
+                Long Only
+            </h1>
+<p class="text-on-surface-variant font-body text-lg leading-relaxed max-w-sm">
+                Driving compounding capital appreciation through concentrated, high-conviction exposure to India’s most resilient listed equities.
+            </p>
+</section>
+<!-- Image Break -->
+<div class="w-full h-64 mb-16 rounded-sm overflow-hidden premium-shadow">
+<img class="w-full h-full object-cover" data-alt="low angle architectural shot of a modern glass skyscraper reflecting a deep blue sky during dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLeIzyuTn2jkaYuVygr6s5eKKR-Q0IdjV4rIVYUKDAgavncbcd3lT8NSuijqTgos-qcjZpQloz_SovPq1-Pc9WBFqib7eK8HlVSqxaYlSQP3EbJ_HFTryZ_cARdc7UZrlyr4qgOqfV06oC_sIammkUoBUGfjKwMyDDTCf4gdvwIRpu-WLnzNKMZh2-8M8hmBD2G-hUYFlsqYtl9junXb_rzDaTfSEZC_xBlspt8AgJtdDcFUbo3FJkoUKWYy2FiHHLKztRJYqpYag"/>
+</div>
+<!-- Core Philosophy -->
+<section class="mb-16">
+<h2 class="serif-display text-3xl mb-8 text-primary-container">Core Philosophy</h2>
+<div class="grid grid-cols-1 gap-10">
+<div class="flex flex-col gap-3">
+<span class="text-tertiary-fixed-dim font-serif text-2xl italic">01.</span>
+<h3 class="font-bold text-lg tracking-tight">Concentrated Portfolios</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">We bypass index-hugging to build high-alpha positions in a curated selection of industry leaders.</p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-tertiary-fixed-dim font-serif text-2xl italic">02.</span>
+<h3 class="font-bold text-lg tracking-tight">Professional Research Access</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Direct access to institutional-grade research and management channels typically reserved for global family offices.</p>
+</div>
+</div>
+</section>
+<!-- Key Characteristics (Bento Style) -->
+<section class="mb-16">
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2 bg-surface-container-lowest p-6 rounded-sm premium-shadow">
+<span class="material-symbols-outlined text-secondary mb-4" data-icon="payments">payments</span>
+<p class="text-[10px] uppercase tracking-widest text-outline mb-1">Minimum Commitment</p>
+<p class="text-2xl font-semibold text-primary-container">₹1 Crore</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-sm">
+<span class="material-symbols-outlined text-secondary mb-4" data-icon="monitoring">monitoring</span>
+<p class="text-[10px] uppercase tracking-widest text-outline mb-1">Exposure</p>
+<p class="text-lg font-semibold text-primary-container">Listed Equities</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-sm">
+<span class="material-symbols-outlined text-secondary mb-4" data-icon="account_balance">account_balance</span>
+<p class="text-[10px] uppercase tracking-widest text-outline mb-1">Structure</p>
+<p class="text-lg font-semibold text-primary-container">Fund-level Tax</p>
+</div>
+</div>
+</section>
+<!-- Investment Process -->
+<section class="mb-16 bg-primary-container text-surface-bright -mx-6 px-6 py-16">
+<h2 class="serif-display text-3xl mb-12 text-[#ffdea5]">The Lifecycle</h2>
+<div class="space-y-12 relative">
+<!-- Decorative Line -->
+<div class="absolute left-3 top-0 bottom-0 w-[1px] bg-[#47607e]/30"></div>
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-[#ffdea5] border-4 border-[#0D1B2A]"></div>
+<h4 class="font-bold text-sm tracking-widest uppercase text-[#ffdea5] mb-2">Research Deep-Dive</h4>
+<p class="text-on-primary-container text-sm leading-relaxed">Proprietary forensic accounting and multi-cycle moat analysis for every potential asset.</p>
+</div>
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-[#47607e] border-4 border-[#0D1B2A]"></div>
+<h4 class="font-bold text-sm tracking-widest uppercase text-[#ffdea5] mb-2">Portfolio Construction</h4>
+<p class="text-on-primary-container text-sm leading-relaxed">Execution through algorithmic layering to minimize market impact and slippage costs.</p>
+</div>
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-[#47607e] border-4 border-[#0D1B2A]"></div>
+<h4 class="font-bold text-sm tracking-widest uppercase text-[#ffdea5] mb-2">Exit Strategy</h4>
+<p class="text-on-primary-container text-sm leading-relaxed">Dynamic rebalancing triggered by fundamental shifts or valuation ceiling breach.</p>
+</div>
+</div>
+</section>
+<!-- Taxation Detail -->
+<section class="mb-16">
+<h2 class="serif-display text-3xl mb-6 text-primary-container">Taxation Overview</h2>
+<p class="text-sm text-on-surface-variant mb-6">Current tax liabilities managed at the fund level for investor convenience.</p>
+<div class="overflow-hidden rounded-sm bg-surface-container-low">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high">
+<th class="py-4 px-4 font-bold text-[10px] uppercase tracking-widest">Gain Type</th>
+<th class="py-4 px-4 font-bold text-[10px] uppercase tracking-widest text-right">Fund Level Tax</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr>
+<td class="py-4 px-4 text-sm font-medium">STCG (Short-Term)</td>
+<td class="py-4 px-4 text-sm text-right font-semibold text-secondary">~39%</td>
+</tr>
+<tr>
+<td class="py-4 px-4 text-sm font-medium">LTCG (Long-Term)</td>
+<td class="py-4 px-4 text-sm text-right font-semibold text-secondary">~21.8%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="mt-4 text-[10px] text-outline italic italic leading-relaxed">Note: Surcharge and Cess applied as per current prevailing regulatory frameworks.</p>
+</section>
+<!-- CTA Section -->
+<section class="mb-16 flex flex-col items-center text-center">
+<div class="w-12 h-px bg-tertiary-fixed-dim mb-8"></div>
+<h2 class="serif-display text-2xl mb-8 max-w-[280px]">Begin your private portfolio journey.</h2>
+<button class="w-full py-5 bg-primary-container text-on-primary text-sm font-bold tracking-widest uppercase rounded-sm">
+                Explore Portfolio Mandates
+            </button>
+<button class="mt-6 text-secondary font-semibold text-sm underline decoration-tertiary-fixed underline-offset-8">
+                Request Strategy Prospectus
+            </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-8 pb-6 pt-2 bg-[#0D1B2A]/80 backdrop-blur-xl">
+<div class="flex flex-col items-center justify-center text-[#47607e] pt-2">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Portfolio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#ffdea5] border-t-2 border-[#ffdea5] pt-2">
+<span class="material-symbols-outlined" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Funds</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#47607e] pt-2">
+<span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Insights</span>
+</div>
+</nav>
+</body></html>

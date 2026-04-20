@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Real Estate Funds | The Sovereign Ledger" currentPage="products/funds/real-estate">
+
+<div class="max-w-5xl mx-auto px-6 md:px-10 py-8">
+  <!-- Breadcrumb -->
+  <div class="flex items-center gap-2 text-secondary mb-8 pt-4 flex-wrap">
+    <a href="/knowledge/aif" class="text-xs uppercase tracking-[0.2em] font-label hover:text-primary-container transition-colors">AIF Knowledge</a>
+    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span class="text-xs uppercase tracking-[0.2em] font-label text-secondary">Cat II AIF</span>
+    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span class="text-xs uppercase tracking-[0.2em] font-label text-on-surface">Real Estate</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="mb-16">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-widest px-3 py-1">Category II AIF</span>
+    </div>
+    <h1 class="font-headline text-5xl md:text-6xl font-light leading-tight text-primary-container mb-4">
+      Real Estate <span class="italic">Funds</span>
+    </h1>
+    <p class="text-on-surface-variant leading-relaxed text-lg max-w-2xl">
+      Accessing premium commercial, residential, and logistics real estate through professionally managed pooled investment vehicles with institutional-grade governance.
+    </p>
+  </section>
+
+  <!-- Definition -->
+  <section class="mb-16">
+    <div class="bg-surface-container-low p-8 md:p-10">
+      <h2 class="font-headline text-2xl mb-6 text-primary-container">Definition & Purpose</h2>
+      <p class="text-on-surface-variant leading-relaxed mb-8">
+        Real Estate AIFs pool capital from sophisticated investors to acquire, develop, and manage income-generating real estate assets. These funds provide access to large-ticket institutional real estate deals — premium office parks, warehousing hubs, and residential townships — that are typically inaccessible to individual investors due to capital requirements and complexity.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">apartment</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Focus</h4>
+          <p class="text-sm font-semibold">Income + Growth</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h4>
+          <p class="text-sm font-semibold">Medium–High</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">payments</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h4>
+          <p class="text-sm font-semibold">&#8377;1 Crore</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">schedule</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Tenure</h4>
+          <p class="text-sm font-semibold">5&ndash;8 Years</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sectors -->
+  <section class="mb-16">
+    <h2 class="font-headline text-3xl mb-10 text-primary-container pl-4 border-l-2 border-tertiary-fixed">
+      Investment <span class="italic">Sectors</span>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {[
+        { icon: 'business', title: 'Commercial Office', desc: 'Grade-A office parks and tech campuses in Tier-1 cities with long-term leases to multinational corporations.' },
+        { icon: 'warehouse', title: 'Logistics & Warehousing', desc: 'E-commerce-driven demand for modern logistics parks near major urban consumption centers.' },
+        { icon: 'home_work', title: 'Residential Development', desc: 'Mid to premium residential projects in high-demand micro-markets with strong absorption rates.' },
+      ].map(s => (
+        <div class="bg-surface-container-lowest p-6 border-b-2 border-transparent hover:border-tertiary-fixed transition-all">
+          <span class="material-symbols-outlined text-secondary text-3xl mb-4 block">{s.icon}</span>
+          <h3 class="font-headline text-xl mb-3">{s.title}</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Dark section -->
+  <section class="mb-16 bg-primary-container text-surface p-8 md:p-12 overflow-hidden relative">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+    <h2 class="font-headline text-3xl mb-8 text-tertiary-fixed relative z-10">Why <span class="italic">Real Estate AIFs?</span></h2>
+    <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+      {[
+        { title: 'Inflation Hedge', desc: 'Real estate values and rents tend to rise with inflation, providing natural protection for long-term capital.' },
+        { title: 'Rental Income', desc: 'Regular distribution from rental yields, providing predictable cash flow alongside capital appreciation.' },
+        { title: 'Low Correlation', desc: 'Real estate returns have low correlation with equity markets, improving overall portfolio risk-adjusted returns.' },
+        { title: 'Leverage Benefits', desc: 'Prudent use of debt financing (LTV 50–60%) amplifies equity returns while asset collateral provides downside protection.' },
+      ].map(b => (
+        <div class="border-l-2 border-secondary pl-6">
+          <h4 class="font-headline text-lg mb-2">{b.title}</h4>
+          <p class="text-sm opacity-80 leading-relaxed">{b.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="bg-surface-container p-8 text-center border border-outline-variant/10">
+    <h3 class="font-headline text-2xl mb-4">Access Premium Real Estate Funds</h3>
+    <p class="text-on-surface-variant text-sm mb-8">Our real estate advisory team can help you identify the right fund strategy aligned with your income and growth objectives.</p>
+    <a href="/partner" class="inline-block py-4 px-10 bg-primary-container text-on-primary font-label text-xs uppercase tracking-[0.2em] hover:bg-slate-800 transition-colors">
+      Schedule a Consultation
+    </a>
+  </div>
+</div>
+
+</BaseLayout>

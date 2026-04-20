@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Venture Capital Funds | The Sovereign Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#525f71",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1a1c1a",
+                        "secondary-fixed": "#d1e4ff",
+                        "surface": "#f9faf5",
+                        "on-tertiary-container": "#a17f3b",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#afc9ea",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#e9c176",
+                        "on-secondary-fixed": "#001d36",
+                        "surface-bright": "#f9faf5",
+                        "inverse-on-surface": "#f0f1ed",
+                        "on-secondary-fixed-variant": "#2f4865",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#edeeea",
+                        "background": "#f9faf5",
+                        "on-surface": "#1a1c1a",
+                        "inverse-primary": "#bac8dc",
+                        "secondary": "#47607e",
+                        "on-tertiary-fixed-variant": "#5d4201",
+                        "surface-container-low": "#f3f4f0",
+                        "surface-variant": "#e2e3df",
+                        "surface-dim": "#d9dad6",
+                        "outline": "#74777d",
+                        "on-primary-container": "#778598",
+                        "primary-container": "#0f1c2c",
+                        "primary-fixed-dim": "#bac8dc",
+                        "tertiary": "#000000",
+                        "outline-variant": "#c4c6cc",
+                        "surface-container-high": "#e8e8e4",
+                        "primary": "#000000",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e2e3df",
+                        "on-secondary-container": "#48617e",
+                        "on-primary-fixed": "#0f1c2c",
+                        "on-primary-fixed-variant": "#3a4859",
+                        "primary-fixed": "#d6e4f9",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f312e",
+                        "tertiary-fixed": "#ffdea5",
+                        "secondary-container": "#c2dcff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#261900",
+                        "on-tertiary-fixed": "#261900",
+                        "on-surface-variant": "#44474c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+        }
+        .serif-italic { font-family: 'Newsreader'; font-style: italic; }
+        .glass-panel {
+            background: rgba(15, 28, 44, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-gradient-to-b from-[#0f1c2c] to-[#0D1B2A] shadow-[0_4px_32px_rgba(26,28,26,0.04)] flex justify-between items-center px-6 h-20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#ffdea5]" data-icon="account_balance">account_balance</span>
+<span class="text-xl font-serif text-[#ffdea5] tracking-widest uppercase">The Sovereign Ledger</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#ffdea5]" data-icon="account_circle">account_circle</span>
+</div>
+</nav>
+<main class="pt-24 pb-32 px-6 max-w-md mx-auto">
+<!-- Sub-page Breadcrumb / Header -->
+<div class="mb-12">
+<div class="flex items-center gap-2 text-secondary mb-4">
+<span class="text-xs uppercase tracking-[0.2em] font-label">CAT I AIF</span>
+<span class="material-symbols-outlined text-[12px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-xs uppercase tracking-[0.2em] font-label text-on-surface">Venture Capital</span>
+</div>
+<h1 class="font-headline text-5xl font-light leading-tight text-primary-container mb-4">Venture Capital <span class="serif-italic">Funds</span></h1>
+<p class="font-body text-on-surface-variant leading-relaxed text-lg">Fueling innovation through institutional risk-taking and strategic equity deployment in early-stage enterprises.</p>
+</div>
+<!-- Section: What is a VC Fund? (Bento Style) -->
+<section class="mb-16">
+<div class="bg-surface-container-low p-8 relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-headline text-2xl mb-6 text-primary-container">Definition &amp; Purpose</h2>
+<p class="font-body text-on-surface-variant leading-relaxed mb-6">
+                        Venture Capital (VC) Funds are pooled investment vehicles that manage the money of investors who seek private equity stakes in startups and small-to-medium-sized enterprises with strong growth potential.
+                    </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-4">
+<span class="material-symbols-outlined text-secondary mb-2" data-icon="rocket_launch">rocket_launch</span>
+<h4 class="text-xs font-label uppercase tracking-wider text-secondary">Focus</h4>
+<p class="text-sm font-semibold">Early Stage</p>
+</div>
+<div class="bg-surface-container-lowest p-4">
+<span class="material-symbols-outlined text-secondary mb-2" data-icon="monitoring">monitoring</span>
+<h4 class="text-xs font-label uppercase tracking-wider text-secondary">Risk Profile</h4>
+<p class="text-sm font-semibold">Aggressive</p>
+</div>
+</div>
+</div>
+<div class="absolute -right-16 -bottom-16 w-48 h-48 rounded-full border border-outline-variant opacity-20"></div>
+</div>
+</section>
+<!-- Section: Key Characteristics (Asymmetric Layout) -->
+<section class="mb-16">
+<h2 class="font-headline text-3xl mb-10 text-primary-container pl-4 border-l-2 border-tertiary-fixed">Key <span class="serif-italic">Characteristics</span></h2>
+<div class="space-y-8">
+<div class="flex gap-6 items-start">
+<div class="shrink-0 w-12 h-12 flex items-center justify-center bg-primary-container text-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="timer">timer</span>
+</div>
+<div>
+<h3 class="font-headline text-xl mb-2">Long-term Horizon</h3>
+<p class="text-on-surface-variant font-body leading-relaxed">Typical fund life cycles range from 7 to 10 years, accommodating the time needed for companies to scale and exit.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start ml-4">
+<div class="shrink-0 w-12 h-12 flex items-center justify-center bg-secondary text-surface">
+<span class="material-symbols-outlined" data-icon="partnership">partner_exchange</span>
+</div>
+<div>
+<h3 class="font-headline text-xl mb-2">Active Governance</h3>
+<p class="text-on-surface-variant font-body leading-relaxed">VCs provide more than capital; they offer board oversight, strategic guidance, and extensive networking.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="shrink-0 w-12 h-12 flex items-center justify-center bg-primary-container text-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="contract">contract</span>
+</div>
+<div>
+<h3 class="font-headline text-xl mb-2">Equity Exchange</h3>
+<p class="text-on-surface-variant font-body leading-relaxed">Capital is deployed in exchange for preferred equity, aligning the fund's success with the startup's growth.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Lifecycle (Timeline/Visual) -->
+<section class="mb-16 bg-primary-container text-surface p-8 overflow-hidden relative">
+<h2 class="font-headline text-3xl mb-12 text-[#ffdea5]">The VC <span class="serif-italic">Lifecycle</span></h2>
+<div class="relative">
+<div class="absolute left-3 top-0 bottom-0 w-[1px] bg-[#47607e]"></div>
+<div class="mb-10 pl-10 relative">
+<div class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-[#ffdea5] border-4 border-[#0f1c2c]"></div>
+<h4 class="font-label text-xs uppercase tracking-[0.2em] text-[#47607e] mb-1">Phase 01</h4>
+<h3 class="font-headline text-xl mb-2">Fundraising &amp; Sourcing</h3>
+<p class="text-sm text-surface-variant opacity-80 leading-relaxed">Identifying high-potential founders and securing LP commitments.</p>
+</div>
+<div class="mb-10 pl-10 relative">
+<div class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-[#47607e] border-4 border-[#0f1c2c]"></div>
+<h4 class="font-label text-xs uppercase tracking-[0.2em] text-[#47607e] mb-1">Phase 02</h4>
+<h3 class="font-headline text-xl mb-2">Deployment</h3>
+<p class="text-sm text-surface-variant opacity-80 leading-relaxed">Active investment across Seed to Series C rounds.</p>
+</div>
+<div class="pl-10 relative">
+<div class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-[#47607e] border-4 border-[#0f1c2c]"></div>
+<h4 class="font-label text-xs uppercase tracking-[0.2em] text-[#47607e] mb-1">Phase 03</h4>
+<h3 class="font-headline text-xl mb-2">Harvesting / Exit</h3>
+<p class="text-sm text-surface-variant opacity-80 leading-relaxed">Realizing gains through IPOs, M&amp;As, or secondary buyouts.</p>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-[#47607e]/30">
+<img class="w-full h-32 object-cover opacity-60" data-alt="Abstract architectural lines forming an upward trending curve in deep blue and gold tones representing growth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsOvcxPqeEnolvg17KnB8Kyh66bLy025uiDTSBcmGPaIMZRxxZT1S1GYDwkkTGJzeiHPe0bR-m31UyYfjYUOv0sc5QFVlN_8CtPPvdWpv9H70bRxqEE4gjCUiyKxY461V38WGqzmL8fCzQ2gaixzlI4icEedlm1K5S3HdUS3328JLeZEx7-Z-HLKoZrTbgj0ft7rwgSMgdDPm1AIr-thYEqozFlEZvO6vO2Kej9vbHzQhqqhv7RBx0N36-JEuCV-f_622rTcDvwWQ"/>
+</div>
+</section>
+<!-- Section: Notable Examples -->
+<section class="mb-16">
+<h2 class="font-headline text-3xl mb-8 text-primary-container">Institutional <span class="serif-italic">Benchmarks</span></h2>
+<div class="grid grid-cols-1 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-6 border border-outline-variant/20 shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<div class="bg-primary-container p-3">
+<span class="text-tertiary-fixed font-headline text-2xl font-bold uppercase tracking-tighter">B</span>
+</div>
+<span class="font-label text-[10px] bg-surface-container-high px-2 py-1 uppercase">Top-Tier Category</span>
+</div>
+<h3 class="font-headline text-2xl mb-2">Blume Ventures</h3>
+<p class="text-on-surface-variant text-sm mb-4 leading-relaxed">A pioneer in early-stage institutional venture capital in India, focusing on tech-enabled transformation.</p>
+<div class="flex gap-4 items-center pt-4 border-t border-surface-container-low">
+<div>
+<p class="text-[10px] text-secondary uppercase font-label">Key Sectors</p>
+<p class="text-xs font-semibold">SaaS, Fintech, EV</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-6 border border-outline-variant/20 shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<div class="bg-secondary p-3">
+<span class="text-surface font-headline text-2xl font-bold uppercase tracking-tighter">E</span>
+</div>
+<span class="font-label text-[10px] bg-surface-container-high px-2 py-1 uppercase">Top-Tier Category</span>
+</div>
+<h3 class="font-headline text-2xl mb-2">Elevation Capital</h3>
+<p class="text-on-surface-variant text-sm mb-4 leading-relaxed">Renowned for its "Stage Agnostic" approach but with deep roots in consumer tech and market leaders.</p>
+<div class="flex gap-4 items-center pt-4 border-t border-surface-container-low">
+<div>
+<p class="text-[10px] text-secondary uppercase font-label">Key Sectors</p>
+<p class="text-xs font-semibold">Consumer, SaaS, Crypto</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA / Next Steps -->
+<div class="bg-surface-container p-8 border border-outline-variant/10 text-center">
+<h3 class="font-headline text-2xl mb-4">Refine Your Strategy</h3>
+<p class="text-on-surface-variant text-sm mb-8">Access detailed CAT I regulatory filings and performance metrics through our private concierge.</p>
+<button class="w-full py-4 bg-primary-container text-on-primary font-label text-xs uppercase tracking-[0.2em] transition-all hover:bg-secondary">
+                Request Fund Prospectus
+            </button>
+</div>
+</main>
+<!-- NavigationDrawer (Hidden on mobile usually, but logic dictates inclusion) -->
+<div class="hidden">
+<div class="h-full w-80 border-r border-[#47607e]/20 bg-[#0D1B2A]/95 backdrop-blur-md flex flex-col h-screen fixed left-0 top-0 z-40">
+<div class="p-8">
+<span class="text-xl font-serif text-[#ffdea5]">Private Office</span>
+</div>
+<nav class="flex-1">
+<div class="text-[#47607e] py-4 px-6 flex items-center gap-4 hover:bg-[#47607e]/10">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Portfolio Management
+                </div>
+<div class="bg-[#47607e]/20 text-[#ffdea5] font-semibold py-4 px-6 flex items-center gap-4">
+<span class="material-symbols-outlined" data-icon="token">token</span> CAT I AIF
+                </div>
+</nav>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full border-t border-[#47607e]/10 pt-12 pb-20 bg-[#0D1B2A]">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<span class="text-[#ffdea5] font-serif italic text-xl">The Sovereign Ledger</span>
+<p class="text-[#47607e] font-['Manrope'] text-xs uppercase tracking-widest leading-relaxed">
+                    © 2024 The Sovereign Ledger. Institutional Grade Asset Management.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<a class="text-[#47607e] font-['Manrope'] text-xs uppercase tracking-widest hover:text-[#ffdea5] transition-colors" href="#">Legal Disclosure</a>
+<a class="text-[#47607e] font-['Manrope'] text-xs uppercase tracking-widest hover:text-[#ffdea5] transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#47607e] font-['Manrope'] text-xs uppercase tracking-widest hover:text-[#ffdea5] transition-colors" href="#">Regulatory Filings</a>
+<a class="text-[#47607e] font-['Manrope'] text-xs uppercase tracking-widest hover:text-[#ffdea5] transition-colors" href="#">Contact Concierge</a>
+</div>
+</div>
+</footer>
+<!-- Bottom Navigation for Mobile -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#0D1B2A] border-t border-secondary/20 flex justify-around items-center z-50">
+<div class="flex flex-col items-center text-[#47607e] transition-colors hover:text-[#ffdea5]">
+<span class="material-symbols-outlined text-sm" data-icon="dashboard">dashboard</span>
+<span class="text-[8px] uppercase tracking-tighter mt-1">Portfolio</span>
+</div>
+<div class="flex flex-col items-center text-[#ffdea5]">
+<span class="material-symbols-outlined text-sm" data-icon="token">token</span>
+<span class="text-[8px] uppercase tracking-tighter mt-1">CAT I</span>
+</div>
+<div class="flex flex-col items-center text-[#47607e] transition-colors hover:text-[#ffdea5]">
+<span class="material-symbols-outlined text-sm" data-icon="business_center">business_center</span>
+<span class="text-[8px] uppercase tracking-tighter mt-1">CAT II</span>
+</div>
+<div class="flex flex-col items-center text-[#47607e] transition-colors hover:text-[#ffdea5]">
+<span class="material-symbols-outlined text-sm" data-icon="article">article</span>
+<span class="text-[8px] uppercase tracking-tighter mt-1">Insights</span>
+</div>
+</div>
+</body></html>

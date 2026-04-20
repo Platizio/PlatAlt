@@ -1,0 +1,338 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Category II AIF | The Sovereign Ledger" currentPage="knowledge/aif">
+
+<div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
+
+  <!-- Breadcrumb -->
+  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20">
+    <a href="/knowledge/aif" class="hover:text-secondary transition-colors">AIF Knowledge</a>
+    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <a href="/knowledge/aif-comparison" class="hover:text-secondary transition-colors">Category Comparison</a>
+    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span class="text-on-surface-variant">Category II AIF</span>
+  </nav>
+
+  <!-- Hero -->
+  <section class="py-14 md:py-20 border-b border-outline-variant/20 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
+      <div class="md:col-span-8">
+        <span class="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold mb-3 block">SEBI AIF Regulations, 2012 — Reg. 3(4)(b)</span>
+        <div class="flex items-center gap-4 mb-4">
+          <span class="text-[10px] px-3 py-1.5 bg-secondary text-white uppercase font-bold tracking-widest">Category II</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-headline text-primary-container leading-tight mb-6">
+          Category II <span class="italic font-light">AIF</span>
+        </h1>
+        <p class="text-on-surface-variant text-lg leading-relaxed max-w-2xl">
+          The broadest and most prevalent AIF category in India — encompassing private equity, real estate, debt, and distressed asset funds — operating without leverage beyond day-to-day operational needs, with pass-through tax treatment.
+        </p>
+      </div>
+      <div class="md:col-span-4">
+        <div class="bg-secondary p-8">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-white/70 block mb-4">Key Criteria</span>
+          <ul class="space-y-3">
+            {[
+              'Does not fall under Category I or III',
+              'No leverage beyond day-to-day operations',
+              'Pass-through taxation at investor level',
+              'Private equity, debt and real estate',
+              'Close-ended, min. 3-year tenure',
+            ].map(item => (
+              <li class="text-sm text-white font-medium flex items-start gap-2">
+                <span class="material-symbols-outlined text-[14px] mt-0.5 shrink-0">check_circle</span>{item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Definition -->
+  <section class="mb-16 grid grid-cols-1 md:grid-cols-12 gap-10">
+    <div class="md:col-span-5 bg-surface-container-low p-10">
+      <h2 class="font-headline text-3xl text-primary-container mb-6">SEBI Definition</h2>
+      <p class="text-sm text-on-surface-variant leading-loose">
+        Under Regulation 3(4)(b) of the SEBI (Alternative Investment Funds) Regulations, 2012, Category II AIF means an alternative investment fund that does not fall in Category I and III and which does not undertake leverage or borrowing other than to meet day-to-day operational requirements and as permitted under these regulations.
+      </p>
+      <div class="mt-8 pt-8 border-t border-outline-variant/30">
+        <span class="text-[10px] font-bold tracking-widest uppercase text-outline">Governing Regulation</span>
+        <p class="font-headline text-lg text-primary-container mt-1">SEBI AIF Regs, 2012 — Reg. 3(4)(b)</p>
+      </div>
+      <div class="mt-6 pt-6 border-t border-outline-variant/30">
+        <span class="text-[10px] font-bold tracking-widest uppercase text-outline">Industry Size (APMI)</span>
+        <p class="font-headline text-lg text-primary-container mt-1">₹5.67 Lakh Crore+ AUM (FY 2024)</p>
+        <p class="text-xs text-on-surface-variant mt-1">Largest AUM category among all three AIF classes</p>
+      </div>
+    </div>
+    <div class="md:col-span-7">
+      <h2 class="font-headline text-3xl text-primary-container mb-6">Why Category II AIFs Exist</h2>
+      <p class="text-base text-on-surface-variant leading-relaxed mb-5">
+        Category II is a residual category — a deliberate design by SEBI to provide a regulated framework for all private market investment strategies that do not qualify as socially desirable (Category I) or employ complex leveraged trading (Category III). It is the institutional home of private equity, private credit, real estate, and distressed investing in India.
+      </p>
+      <p class="text-base text-on-surface-variant leading-relaxed mb-5">
+        These funds serve a critical role in India's capital formation ecosystem, channelling long-duration institutional capital into businesses, assets, and credit markets that are inaccessible through listed markets. The close-ended, illiquid nature of Category II AIFs aligns investor horizons with the underlying asset's value creation cycle.
+      </p>
+      <div class="bg-surface-container-low p-6 border-l-2 border-secondary">
+        <p class="text-[10px] uppercase tracking-widest font-bold text-secondary mb-2">SEBI Circular Reference</p>
+        <p class="text-sm text-on-surface-variant leading-relaxed">
+          SEBI has issued master circulars for AIFs consolidating all operational guidelines — most recently SEBI/HO/AFD/AFD-PoD-1/P/CIR/2023/130 dated July 31, 2023, covering registration, reporting, and investor protection norms applicable to Category II funds.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fund Types -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-2">Fund Types</h2>
+    <div class="w-12 h-1 bg-secondary mb-10"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {[
+        {
+          icon: 'business_center',
+          title: 'Private Equity Funds',
+          desc: 'Acquire controlling or significant minority stakes in established unlisted companies to drive operational improvement, management restructuring, and long-term enterprise value creation. Target IRR: 18–25%. Tenure: 5–8 years.',
+          href: '/knowledge/aif/category-ii/private-equity',
+        },
+        {
+          icon: 'payments',
+          title: 'Debt Funds',
+          desc: 'Provide structured credit to private companies through Non-Convertible Debentures (NCDs), mezzanine instruments, and other credit solutions. Offer predictable yield of 12–18% p.a. against collateral packages.',
+          href: '/knowledge/aif/category-ii/debt',
+        },
+        {
+          icon: 'apartment',
+          title: 'Real Estate Funds',
+          desc: 'Deploy capital into income-generating commercial, residential, and logistics real estate through structured equity or preferred debt. Offer rental yield plus capital appreciation with hard asset collateral.',
+          href: '/knowledge/aif/category-ii/real-estate',
+        },
+        {
+          icon: 'warning_amber',
+          title: 'Distressed Asset Funds',
+          desc: 'Acquire NPA portfolios, stressed companies under IBC resolution, and sub-performing assets at significant discounts to intrinsic value. Returns driven by operational turnaround or insolvency resolution.',
+          href: '/knowledge/aif/category-ii/distressed-assets',
+        },
+      ].map(type => (
+        <a href={type.href} class="group bg-surface-container-lowest p-8 border border-outline-variant/10 hover:border-secondary/50 transition-all flex flex-col">
+          <span class="material-symbols-outlined text-secondary text-3xl mb-4">{type.icon}</span>
+          <h3 class="font-headline text-xl text-primary-container mb-3 group-hover:translate-x-1 transition-transform">{type.title}</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed flex-grow">{type.desc}</p>
+          <span class="mt-4 text-[10px] uppercase font-bold tracking-widest text-secondary flex items-center gap-1">
+            View Funds <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Regulatory Requirements -->
+  <section class="mb-16 bg-surface-container-low px-8 md:px-12 py-12 border border-outline-variant/20">
+    <h2 class="font-headline text-3xl text-primary-container mb-8">Regulatory Requirements</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {[
+        {
+          title: 'SEBI Registration',
+          points: [
+            'Mandatory registration with SEBI before any fundraising or investment activity',
+            'Application via Form A with track record, due diligence documents, and draft PPM',
+            'Registration fee: ₹5 Lakh (application) + ₹15 Lakh (registration) + ₹1 Lakh p.a. (annual fees)',
+            'Separate SEBI registration required for each AIF entity; schemes under same entity permitted',
+          ]
+        },
+        {
+          title: 'Fund Structure',
+          points: [
+            'Minimum corpus: ₹20 Crore per scheme (₹10 Crore for angel funds)',
+            'Maximum 1,000 investors per scheme (excluding employees and directors)',
+            'Minimum investment by each investor: ₹1 Crore (₹25 Lakh for employees/directors)',
+            'Mandatorily close-ended with minimum tenure of 3 years from final close',
+          ]
+        },
+        {
+          title: 'Investment Manager Obligations',
+          points: [
+            'Manager/Sponsor must contribute ≥2.5% of corpus or ₹5 Crore, whichever is lower (skin-in-the-game)',
+            'Investment Manager must be a body corporate registered in India',
+            'Key Investment Team (KIT) members must be disclosed and are subject to lock-in',
+            'Minimum net worth requirement for Investment Manager: ₹5 Crore',
+          ]
+        },
+        {
+          title: 'Disclosure & Reporting',
+          points: [
+            'Private Placement Memorandum (PPM) mandatory — must be filed with SEBI 30 days prior to launch',
+            'Quarterly investor reports with portfolio details, NAV, and performance',
+            'Annual SEBI reporting via SEBI Intermediary Portal (SIP)',
+            'Material change in PPM requires 15 days prior SEBI intimation and investor consent',
+          ]
+        },
+        {
+          title: 'Operational Compliance',
+          points: [
+            'Custodian mandatory for securities (SEBI-registered Custodian)',
+            'Separate bank account and demat account for each scheme',
+            'No co-mingling of assets across schemes or with proprietary assets',
+            'Appointment of SEBI-registered auditor for annual financial statements',
+          ]
+        },
+        {
+          title: 'Leverage Restrictions',
+          points: [
+            'Leverage strictly prohibited except for day-to-day operational requirements',
+            'No borrowing to fund portfolio investments under any circumstance',
+            'Portfolio companies may themselves use leverage; this is permissible',
+            'Debt funds may invest in leveraged companies — issuer-level vs. fund-level distinction',
+          ]
+        },
+      ].map(section => (
+        <div>
+          <h3 class="font-semibold text-primary-container text-base mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-sm">gavel</span>{section.title}
+          </h3>
+          <ul class="space-y-2">
+            {section.points.map(p => (
+              <li class="flex items-start gap-2 text-sm text-on-surface-variant">
+                <span class="material-symbols-outlined text-[12px] text-secondary mt-0.5 shrink-0">check_circle</span>{p}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Tax Treatment -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-6">Tax Treatment</h2>
+    <div class="bg-surface-container-lowest border border-outline-variant/10 p-8 md:p-10">
+      <div class="flex items-start gap-4 mb-6">
+        <span class="material-symbols-outlined text-secondary text-3xl shrink-0">percent</span>
+        <div>
+          <h3 class="font-headline text-2xl text-primary-container mb-2">Pass-Through Status — Section 115UB</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            Category II AIFs are granted pass-through tax treatment under Section 115UB of the Income Tax Act, 1961 (inserted by Finance Act, 2015). Income (other than business income) accruing or arising to the AIF is not taxed at the fund level. It is deemed to be the income of the investor in the same proportion as their capital contribution and is taxed at the investor's applicable rate in the year of accrual — irrespective of actual distribution.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-6 border-t border-outline-variant/20">
+        {[
+          { label: 'LTCG — Listed Equity', text: 'Taxed at 10% (plus applicable surcharge and cess) on gains exceeding ₹1 Lakh, after 12 months of holding. (Sec 112A)' },
+          { label: 'STCG — Listed Equity', text: 'Taxed at 15% (plus surcharge and cess) for equity shares held less than 12 months, per Section 111A.' },
+          { label: 'Unlisted Securities', text: 'LTCG on unlisted shares after 24 months: 20% with indexation benefit. STCG: As per investor\'s applicable income tax slab.' },
+          { label: 'Business Income Exception', text: 'Business income earned by the AIF is taxed at the fund level at Maximum Marginal Rate (~42.744%) before pass-through to investors.' },
+        ].map(item => (
+          <div class="bg-surface-container-low p-5">
+            <span class="text-[10px] uppercase font-bold tracking-widest text-secondary block mb-2">{item.label}</span>
+            <p class="text-sm text-on-surface-variant leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-6 pt-6 border-t border-outline-variant/20 bg-surface-container-low p-5">
+        <p class="text-[10px] uppercase font-bold tracking-widest text-secondary mb-2">TDS on Distributions</p>
+        <p class="text-sm text-on-surface-variant leading-relaxed">
+          As per Finance Act 2023, Category II AIFs are required to deduct TDS at 10% on income distributed to resident investors. TDS at applicable treaty rates or 20% (whichever is lower) applies to non-resident investors. The AIF must file TDS returns (Form 26Q / 27Q) quarterly with the Income Tax Department.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Parameters -->
+  <section class="mb-16 bg-primary-container text-surface px-8 md:px-12 py-12 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+    <h2 class="font-headline text-3xl text-tertiary-fixed mb-10 relative z-10">Key <span class="italic">Characteristics at a Glance</span></h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 relative z-10">
+      {[
+        { label: 'Minimum Corpus',       value: '₹20 Crore',             sub: 'per scheme' },
+        { label: 'Min. Investor Ticket', value: '₹1 Crore',              sub: '₹25L for employees' },
+        { label: 'Max. Investors',       value: '1,000',                  sub: 'per scheme' },
+        { label: 'Fund Structure',       value: 'Close-Ended',            sub: 'mandatory' },
+        { label: 'Minimum Tenure',       value: '3 Years',                sub: 'from final close' },
+        { label: 'Leverage',             value: 'Not Permitted',          sub: 'fund level' },
+        { label: 'Taxation',             value: 'Pass-Through',           sub: 'Sec. 115UB IT Act' },
+        { label: 'Skin-in-the-Game',     value: '2.5% / ₹5 Cr',         sub: 'whichever is lower' },
+      ].map(p => (
+        <div class="border border-secondary/30 p-5">
+          <p class="text-[10px] uppercase font-label tracking-wider text-slate-400 mb-1">{p.label}</p>
+          <p class="font-headline text-xl text-tertiary-fixed leading-tight">{p.value}</p>
+          <p class="text-[10px] text-slate-500 mt-1">{p.sub}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Investor Eligibility -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-6">Investor Eligibility</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
+        <h3 class="font-headline text-2xl text-primary-container mb-4">Who Can Invest?</h3>
+        <ul class="space-y-3">
+          {[
+            'Resident individuals with ₹1 Crore minimum investment',
+            'Hindu Undivided Families (HUFs)',
+            'Bodies corporate, LLPs, and partnership firms',
+            'Trusts, societies, and endowments',
+            'Foreign Portfolio Investors (FPIs) subject to FEMA limits',
+            'Non-Resident Indians (NRIs) on repatriation/non-repatriation basis',
+            'Eligible employees and directors of AIF/Manager at ₹25 Lakh minimum',
+          ].map(p => (
+            <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0">person_check</span>{p}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
+        <h3 class="font-headline text-2xl text-primary-container mb-4">Key Investor Rights</h3>
+        <ul class="space-y-3">
+          {[
+            'Right to receive audited accounts and quarterly reports',
+            'Right to inspect books of accounts on demand',
+            'Consent required for material changes to PPM',
+            'SEBI SCORES portal available for grievance redressal',
+            'Right to removal of Investment Manager through 75% majority vote',
+            'Priority in distribution of proceeds over co-investment by Manager',
+            'Representation on Advisory Board/Investor Committee per PPM terms',
+          ].map(p => (
+            <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0">shield</span>{p}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary-container text-white px-10 md:px-16 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-lg relative z-10">
+      <h2 class="font-headline text-3xl text-amber-100 mb-2">Explore Category II Funds</h2>
+      <p class="text-slate-400 text-sm leading-relaxed">Browse registered Category II AIFs — private equity, debt, real estate, and distressed — available through AlternaVest Capital's platform.</p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-4 relative z-10">
+      <a href="/explore" class="inline-flex items-center gap-2 bg-tertiary-fixed text-on-tertiary-fixed px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:opacity-90 transition-opacity">
+        Browse Funds <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+      <button type="button" class="js-open-consult inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:bg-white/10 transition-colors">
+        Speak to Advisor
+      </button>
+    </div>
+  </section>
+
+  <!-- Prev / Next -->
+  <div class="flex flex-col sm:flex-row gap-4 mt-12">
+    <a href="/knowledge/aif/category-i" class="flex-1 border border-outline p-5 hover:border-secondary transition-colors group text-center">
+      <span class="text-[10px] uppercase tracking-widest text-outline block mb-1">Previous</span>
+      <span class="font-headline text-lg text-primary-container group-hover:text-secondary transition-colors">Category I AIF</span>
+    </a>
+    <a href="/knowledge/aif/category-iii" class="flex-1 border border-outline p-5 hover:border-secondary transition-colors group text-center">
+      <span class="text-[10px] uppercase tracking-widest text-outline block mb-1">Next</span>
+      <span class="font-headline text-lg text-primary-container group-hover:text-secondary transition-colors">Category III AIF</span>
+    </a>
+  </div>
+
+</div>
+</BaseLayout>

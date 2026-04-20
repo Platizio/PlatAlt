@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page Not Found | The Sovereign Ledger" currentPage="">
+
+<div class="min-h-[70vh] flex flex-col items-center justify-center px-6 text-center">
+  <div class="max-w-lg">
+    <p class="text-tertiary-fixed-dim text-[10px] font-bold uppercase tracking-[0.3em] mb-6">Error 404</p>
+    <h1 class="font-headline text-7xl md:text-9xl text-primary-container mb-8 leading-none">Not<br/><span class="italic font-light">Found</span></h1>
+    <p class="text-on-surface-variant text-lg mb-12 leading-relaxed">
+      The page you are looking for has been moved, archived, or never existed in our ledger.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/" class="bg-primary-container text-on-primary px-10 py-4 font-label text-xs uppercase tracking-widest hover:bg-slate-800 transition-colors">
+        Return Home
+      </a>
+      <a href="/explore" class="border border-outline text-primary-container px-10 py-4 font-label text-xs uppercase tracking-widest hover:bg-surface-container-low transition-colors">
+        Fund Explorer
+      </a>
+    </div>
+  </div>
+</div>
+
+</BaseLayout>

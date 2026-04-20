@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Regulatory Disclosure | The Sovereign Ledger" currentPage="">
+
+<div class="max-w-3xl mx-auto px-6 md:px-10 py-16">
+  <div class="mb-12">
+    <p class="text-tertiary-fixed-dim text-[10px] font-bold uppercase tracking-[0.3em] mb-4">Legal</p>
+    <h1 class="font-headline text-5xl md:text-6xl font-light text-primary-container mb-6">Regulatory <span class="italic">Disclosure</span></h1>
+    <p class="text-on-surface-variant">Effective: January 1, 2025</p>
+  </div>
+
+  <!-- Regulator Badge -->
+  <div class="bg-surface-container-low p-8 mb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary mb-3">Regulatory Authority</p>
+      <h3 class="font-headline text-2xl text-primary-container mb-1">SEBI</h3>
+      <p class="text-sm text-on-surface-variant">Securities and Exchange Board of India</p>
+    </div>
+    <div>
+      <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary mb-3">Platform Operator</p>
+      <h3 class="font-headline text-2xl text-primary-container mb-1">AlternaVest Capital</h3>
+      <p class="text-sm text-on-surface-variant">AlternaVest Capital Management LLP</p>
+    </div>
+  </div>
+
+  <div class="space-y-10 text-on-surface-variant leading-relaxed">
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">1. Platform Nature</h2>
+      <p>The Sovereign Ledger is an information and discovery platform for Alternative Investment Funds (AIFs) registered with the Securities and Exchange Board of India (SEBI). AlternaVest Capital Management LLP is a technology and financial information intermediary. We are not a SEBI-registered Investment Adviser, Portfolio Manager, or Stock Broker.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">2. SEBI Registration Status of Listed Funds</h2>
+      <p>All Alternative Investment Funds featured on this platform are, to the best of our knowledge, registered with SEBI under the SEBI (Alternative Investment Funds) Regulations, 2012. Registration with SEBI does not guarantee performance or protect against losses. Investors must independently verify the registration status of any fund by checking the SEBI SCORES portal or contacting SEBI directly.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">3. No Offer of Securities</h2>
+      <p>Information presented on this platform does not constitute an offer or invitation to subscribe to any securities. Any investment in an AIF is subject to the terms of the applicable Private Placement Memorandum (PPM) and Contribution Agreement, which supersede any information on this platform.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">4. Applicable Regulations</h2>
+      <div class="space-y-3">
+        {[
+          'SEBI (Alternative Investment Funds) Regulations, 2012 — primary regulatory framework',
+          'SEBI (Prevention of Insider Trading) Regulations, 2015',
+          'Prevention of Money Laundering Act, 2002 (PMLA) — KYC and AML obligations',
+          'Income Tax Act, 1961 — Tax treatment of AIF investments and distributions',
+          'Foreign Exchange Management Act, 1999 (FEMA) — For NRI and foreign investor participation',
+        ].map(r => (
+          <div class="flex items-start gap-3 p-4 bg-surface-container-lowest">
+            <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0">gavel</span>
+            <p class="text-sm">{r}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">5. Investor Grievance Redressal</h2>
+      <p class="mb-4">For complaints against any fund manager or AIF registered with SEBI, investors may use:</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { label: 'SEBI SCORES Portal', value: 'scores.gov.in', desc: 'Online complaint filing system' },
+          { label: 'SEBI Helpline', value: '1800 22 7575', desc: 'Toll-free investor helpline' },
+          { label: 'SEBI Head Office', value: 'Mumbai, Maharashtra', desc: 'SEBI Bhavan, BKC' },
+          { label: 'Email', value: 'sebi@sebi.gov.in', desc: 'Official SEBI email' },
+        ].map(c => (
+          <div class="bg-surface-container-lowest p-4">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">{c.label}</p>
+            <p class="font-headline text-lg text-primary-container">{c.value}</p>
+            <p class="text-xs text-on-surface-variant">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">6. Data Sources & Accuracy</h2>
+      <p>Performance data and fund information are sourced from fund managers, regulatory filings, and publicly available disclosures. While we strive for accuracy, AlternaVest does not warrant the completeness or timeliness of any information. Always refer to official fund documents for investment decisions.</p>
+    </section>
+  </div>
+
+  <div class="mt-16 pt-8 border-t border-outline-variant/20 flex flex-col sm:flex-row gap-4">
+    <a href="/privacy" class="text-xs font-label uppercase tracking-widest text-secondary hover:text-primary-container transition-colors">Privacy Policy</a>
+    <a href="/terms" class="text-xs font-label uppercase tracking-widest text-secondary hover:text-primary-container transition-colors">Terms of Service</a>
+    <a href="/risk-disclaimer" class="text-xs font-label uppercase tracking-widest text-secondary hover:text-primary-container transition-colors">Risk Disclaimer</a>
+  </div>
+</div>
+
+</BaseLayout>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sovereign Ledger | Distressed Asset Funds</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e2e3df",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f9faf5",
+                        "on-secondary-fixed": "#001d36",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#48617e",
+                        "on-primary-fixed": "#0f1c2c",
+                        "primary-container": "#0f1c2c",
+                        "on-background": "#1a1c1a",
+                        "inverse-on-surface": "#f0f1ed",
+                        "secondary-fixed": "#d1e4ff",
+                        "primary-fixed": "#d6e4f9",
+                        "surface-container-highest": "#e2e3df",
+                        "on-surface": "#1a1c1a",
+                        "tertiary-fixed": "#ffdea5",
+                        "on-tertiary-fixed": "#261900",
+                        "inverse-surface": "#2f312e",
+                        "on-tertiary-container": "#a17f3b",
+                        "error-container": "#ffdad6",
+                        "outline": "#74777d",
+                        "on-secondary-fixed-variant": "#2f4865",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#261900",
+                        "secondary-fixed-dim": "#afc9ea",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#e9c176",
+                        "surface-tint": "#525f71",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#c2dcff",
+                        "surface-dim": "#d9dad6",
+                        "surface": "#f9faf5",
+                        "on-tertiary-fixed-variant": "#5d4201",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#44474c",
+                        "error": "#ba1a1a",
+                        "primary": "#000000",
+                        "on-primary-fixed-variant": "#3a4859",
+                        "primary-fixed-dim": "#bac8dc",
+                        "surface-container-high": "#e8e8e4",
+                        "outline-variant": "#c4c6cc",
+                        "surface-container": "#edeeea",
+                        "tertiary": "#000000",
+                        "secondary": "#47607e",
+                        "on-primary-container": "#778598",
+                        "background": "#f9faf5",
+                        "surface-container-low": "#f3f4f0",
+                        "inverse-primary": "#bac8dc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .serif-italic { font-family: 'Newsreader', serif; font-style: italic; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
+<!-- TopAppBar Execution -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0D1B2A] dark:bg-[#0D1B2A]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#ffdea5] text-2xl cursor-pointer">menu</span>
+<h1 class="font-['Newsreader'] italic tracking-tight text-2xl font-serif text-[#ffdea5] tracking-widest">Sovereign Ledger</h1>
+</div>
+<div class="flex items-center">
+<img alt="Portfolio Manager" class="w-8 h-8 rounded-full border border-[#47607e]/30 object-cover" data-alt="professional portrait of an executive portfolio manager in a sharp suit with a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKbpSI1RYlLRYy-G54jm06gXdrIADCB20OR5uV0xXrteqTusK0JWnCtvoChQ892akUi7LKVLEErJpeJNUAORuRsTDClLSHx1JHnnoqkj0d_OS8bs7hTnrDE1YTGi0bCVF8-ACqBm1az_lCszUjPYko4NZjW3z6RO0xE32LAH2w7-ainw75z74ppOsq1CW6_qNMTn51z-K8-Em1hMfbrhaDQBpLtFKl2Zj5SbV6SB4B0Q9VAZVgpOzlUDf73YKt7zP_sn5chlHALI0"/>
+</div>
+</header>
+<main class="pt-16 pb-24">
+<!-- Section 1: Hero -->
+<section class="relative h-[530px] flex flex-col justify-end px-6 pb-12 overflow-hidden bg-primary-container">
+<div class="absolute inset-0 z-0">
+<img alt="Corporate Architecture" class="w-full h-full object-cover opacity-40 grayscale" data-alt="monochrome architectural shot of a modern skyscraper with sharp lines and deep shadows representing corporate structure" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr0YMN3p7GZOwd2RX5xcwjkjGQz6_pLWing-1y9zmUsFa93oP2lI0s1NuGsyuf5md1vu1BdFvGg4rSBOl0ywmksaOusokSZnnQ2bt5TXiscPhMOtnt406MUV5fUurxQ21_uKPXDPV39_l1mrmlA_dU7PZMLryLOi3E8XApH4i2ieCyg4Qw1uzoLcxJUz0oJdNO-gR6FjOJXPoU8PHdkPaBuECvDf8oVMPNpGunIxqfnyoSB9UCl7MO2UfNS1H-L2F5YgCN-CxGG8k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 space-y-4">
+<span class="font-label text-tertiary-fixed uppercase tracking-[0.2em] text-[10px]">Alternative Investment Series</span>
+<h2 class="font-headline text-5xl md:text-6xl text-surface-bright leading-[1.1] font-light">Distressed Asset Funds</h2>
+<p class="font-body text-on-primary-container text-lg max-w-sm font-light">Navigating complex value recovery through precision turnaround and strategic capital injection.</p>
+</div>
+</section>
+<!-- Section 2: Definition -->
+<section class="py-20 px-6 bg-surface">
+<div class="max-w-md mx-auto">
+<div class="flex items-center gap-2 mb-6">
+<div class="h-[1px] w-8 bg-outline"></div>
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">The Mechanism</span>
+</div>
+<h3 class="font-headline text-3xl mb-8 leading-tight">Capitalizing on the <span class="serif-italic">Insolvency &amp; Bankruptcy Code</span> (IBC) frameworks to acquire undervalued entities.</h3>
+<p class="font-body text-on-surface-variant leading-relaxed mb-6">
+                    Distressed Asset Funds focus on acquiring debt or equity in companies undergoing financial duress. By leveraging legal frameworks and restructuring expertise, these funds aim to unlock latent value that standard market participants overlook.
+                </p>
+<div class="p-8 bg-surface-container-low border-l-2 border-tertiary-fixed">
+<p class="font-headline text-xl italic text-on-surface">"True value is often obscured by temporary structural distress. Our role is the surgical restoration of fiscal health."</p>
+</div>
+</div>
+</section>
+<!-- Section 3: Key Characteristics (Bento Style) -->
+<section class="py-16 px-6 bg-surface-container-low">
+<div class="grid grid-cols-1 gap-4">
+<div class="bg-surface-container-lowest p-8 rounded-lg space-y-4 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-3xl">gavel</span>
+<h4 class="font-headline text-2xl">SEBI Regulation</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Operates strictly under Category II Alternative Investment Funds (AIF), ensuring institutional-grade compliance and transparency.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-primary-container p-6 rounded-lg text-surface-bright flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-tertiary-fixed text-2xl">schedule</span>
+<div>
+<h4 class="font-headline text-xl">5-8 Years</h4>
+<p class="font-body text-[10px] uppercase tracking-wider text-on-primary-container">Fund Lifecycle</p>
+</div>
+</div>
+<div class="bg-surface-container-high p-6 rounded-lg flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-secondary text-2xl">insights</span>
+<div>
+<h4 class="font-headline text-xl">Resolution Focus</h4>
+<p class="font-body text-[10px] uppercase tracking-wider text-outline">Exit Strategy</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: How It Works -->
+<section class="py-20 px-6 bg-surface-bright">
+<h3 class="font-headline text-4xl mb-12 text-center">The Path to <span class="serif-italic">Resolution</span></h3>
+<div class="space-y-12 relative">
+<div class="absolute left-4 top-0 bottom-0 w-[1px] bg-outline-variant/30"></div>
+<div class="relative pl-12">
+<div class="absolute left-2.5 top-1 w-3 h-3 rounded-full bg-tertiary-fixed border-4 border-surface-bright"></div>
+<h5 class="font-label text-[11px] uppercase tracking-[0.2em] text-secondary mb-2">Stage 01</h5>
+<h4 class="font-headline text-xl mb-2">Sourcing &amp; Due Diligence</h4>
+<p class="font-body text-sm text-on-surface-variant">Identification of assets under stress with high underlying terminal value and viable business models.</p>
+</div>
+<div class="relative pl-12">
+<div class="absolute left-2.5 top-1 w-3 h-3 rounded-full bg-secondary border-4 border-surface-bright"></div>
+<h5 class="font-label text-[11px] uppercase tracking-[0.2em] text-secondary mb-2">Stage 02</h5>
+<h4 class="font-headline text-xl mb-2">Acquisition Strategy</h4>
+<p class="font-body text-sm text-on-surface-variant">Negotiating with creditors and financial institutions to acquire debt at significant discounts.</p>
+</div>
+<div class="relative pl-12">
+<div class="absolute left-2.5 top-1 w-3 h-3 rounded-full bg-secondary border-4 border-surface-bright"></div>
+<h5 class="font-label text-[11px] uppercase tracking-[0.2em] text-secondary mb-2">Stage 03</h5>
+<h4 class="font-headline text-xl mb-2">Resolution Execution</h4>
+<p class="font-body text-sm text-on-surface-variant">Operational restructuring, management overhaul, or asset liquidation to realize capital gains.</p>
+</div>
+</div>
+</section>
+<!-- Section 5: Taxation & Risk -->
+<section class="py-20 px-6 bg-primary-container text-surface-bright">
+<h3 class="font-headline text-3xl mb-8">Structural Complexity</h3>
+<div class="space-y-8">
+<div class="border-b border-outline-variant/20 pb-8">
+<h4 class="font-label text-tertiary-fixed text-xs uppercase tracking-widest mb-4">Taxation Framework</h4>
+<p class="font-body text-on-primary-container leading-relaxed">
+                        As Category II AIFs, these funds enjoy tax pass-through status. Investors are taxed on income streams (Capital Gains or Business Income) as if they held the assets directly, depending on the nature of the recovery.
+                    </p>
+</div>
+<div>
+<h4 class="font-label text-tertiary-fixed text-xs uppercase tracking-widest mb-4">Risk Profile</h4>
+<p class="font-body text-on-primary-container leading-relaxed">
+                        These are high-risk instruments. Risks include legal delays in IBC proceedings, failure of turnaround strategies, and illiquidity over the 8-year lock-in period. High-reward potential is balanced by complete capital risk.
+                    </p>
+</div>
+</div>
+<div class="mt-12">
+<img alt="Financial Documentation" class="w-full h-48 object-cover rounded-sm grayscale brightness-75" data-alt="close-up of fountain pen resting on a complex financial balance sheet with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD7C8oILOB89CceQE95KSCnJxGFZx6LsMUcGEX7dWedyqZ1LQg_gyeTxVaNLUDbJkOHdIBya-cXA7Nt3gxh614ok1TUYpN8WltPv5nte0rlyrO4I8-N1Aspxz87qZ8cyeTncAB2g2vf4G_lJymxDgRiT6GbgRTSVEW2CHM0yRu3awmLf8tlazgPvkWY-6hh-XfV-625pq0Od9dBkj3R9FsnR3Gr1fAHWrgpscw2U1ilkN3mfjR76VGY9dGfgudUTvxLbBdCwKza7o"/>
+</div>
+</section>
+<!-- Section 6: CTA -->
+<section class="py-24 px-6 text-center">
+<h3 class="font-headline text-4xl mb-6">Explore the <span class="serif-italic">Frontier</span></h3>
+<p class="font-body text-on-surface-variant mb-10 max-w-xs mx-auto">Access bespoke opportunities in the distressed asset class through our private placement network.</p>
+<button class="bg-primary-container text-surface-bright px-10 py-4 font-label text-xs uppercase tracking-[0.3em] hover:bg-secondary transition-colors duration-300">
+                Consult with an Expert
+            </button>
+</section>
+</main>
+<!-- BottomNavBar Execution -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-8 pb-6 pt-2 bg-[#0D1B2A]/80 backdrop-blur-xl">
+<div class="flex flex-col items-center justify-center text-[#47607e] pt-2">
+<span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Portfolio</span>
+</div>
+<!-- ACTIVE TAB: Funds (Distressed Asset Funds page) -->
+<div class="flex flex-col items-center justify-center text-[#ffdea5] border-t-2 border-[#ffdea5] pt-2">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Funds</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#47607e] pt-2">
+<span class="material-symbols-outlined text-2xl">lightbulb</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Insights</span>
+</div>
+</nav>
+</body></html>

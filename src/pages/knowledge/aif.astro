@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="AIF Knowledge Center | The Sovereign Ledger" currentPage="knowledge/aif">
+
+<div class="max-w-7xl mx-auto px-6 md:px-10 pb-24">
+
+  <!-- Hero Section & Sub-Nav -->
+  <section class="pt-12 mb-16">
+    <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
+      <div class="max-w-2xl">
+        <span class="text-tertiary-fixed-dim uppercase tracking-[0.3em] text-[10px] font-bold mb-4 block">Institutional Intelligence</span>
+        <h1 class="text-5xl md:text-7xl font-headline font-light leading-[1.1] mb-6">Alternative Investment Funds</h1>
+        <p class="text-on-surface-variant text-lg leading-relaxed font-light">Navigating the complexities of sophisticated capital structures for private equity, hedge funds, and infrastructure vehicles.</p>
+      </div>
+      <nav class="flex gap-1 bg-surface-container-low p-1">
+        <a class="px-4 md:px-6 py-3 text-xs font-semibold tracking-widest uppercase bg-surface-container-lowest shadow-sm text-primary transition-all" href="#what-is-aif">Definition</a>
+        <a class="px-4 md:px-6 py-3 text-xs font-semibold tracking-widest uppercase text-on-surface-variant hover:bg-surface-container-highest transition-all" href="#categories">Categories</a>
+        <a class="px-4 md:px-6 py-3 text-xs font-semibold tracking-widest uppercase text-on-surface-variant hover:bg-surface-container-highest transition-all" href="#comparison">Comparison</a>
+      </nav>
+    </div>
+
+    <!-- Intro Visual -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6" id="what-is-aif">
+      <div class="md:col-span-8 overflow-hidden relative aspect-[16/9]">
+        <img class="w-full h-full object-cover" alt="Modern brutalist architecture"
+             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDatL7dmB8MHGbdOd5Sxu2MvHQN-2dUxOyOXsIQ3nO4JZlDjsHuPUsqV1W-JpK9Ctjt8LBPRF9X9DgAsHkpCtQAE4CTR4cJZzfv-m0-QoN-Xz28OowsMITV1tHd5m1ndBUqa1--aLbw1as3LRcSz4-ETlcrcL1Hq4BQSuj8hzEfFKfeiG6o1DdrgVUbdXtwv7tpoxjT2y5Z6fcnKYWGZFC_3mkMqxy1Yw23howERxDDGMyStX8KdfzCMTY1Ym1nisT5P2nhtfz2ntM" />
+        <div class="absolute inset-0 bg-primary-container/20"></div>
+      </div>
+      <div class="md:col-span-4 flex flex-col justify-between bg-surface-container-low p-10">
+        <div>
+          <h2 class="font-headline text-3xl mb-4">What is an AIF?</h2>
+          <p class="text-sm text-on-surface-variant leading-loose">An Alternative Investment Fund (AIF) is any fund established or incorporated in India which is a privately pooled investment vehicle which collects funds from sophisticated investors, whether Indian or foreign, for investing it in accordance with a defined investment policy.</p>
+        </div>
+        <div class="mt-8 pt-8 border-t border-outline-variant/30">
+          <span class="text-[10px] font-bold tracking-[.2em] uppercase text-tertiary-fixed-dim">Regulatory Authority</span>
+          <p class="text-xl font-headline mt-2">Securities and Exchange Board of India (SEBI)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Cards -->
+  <section class="mb-24" id="categories">
+    <div class="mb-12">
+      <h2 class="font-headline text-4xl mb-2">Fund Categories</h2>
+      <div class="w-16 h-1 bg-tertiary-fixed-dim"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        {
+          num: '01', title: 'Category I AIF',
+          desc: 'Funds which invest in start-ups, early stage ventures, social ventures, SMEs and sectors which the government or regulators consider as socially or economically desirable.',
+          items: ['Venture Capital Funds', 'Infrastructure Funds', 'Social Venture Funds', 'Angel Funds', 'SME Funds'],
+          href: '/knowledge/aif/category-i'
+        },
+        {
+          num: '02', title: 'Category II AIF',
+          desc: 'AIFs which do not fall in Category I and III and which do not undertake leverage or borrowing other than to meet day-to-day operational requirements.',
+          items: ['Private Equity Funds', 'Debt Funds', 'Funds for Distressed Assets', 'Real Estate Funds'],
+          href: '/knowledge/aif/category-ii'
+        },
+        {
+          num: '03', title: 'Category III AIF',
+          desc: 'Funds which employ diverse or complex trading strategies and may employ leverage including through investment in listed or unlisted derivatives.',
+          items: ['Hedge Funds (Long Short)', 'Long Only Funds', 'Market Neutral Funds', 'Multi-Strategy Funds'],
+          href: '/knowledge/aif/category-iii'
+        }
+      ].map(cat => (
+        <div class="group bg-surface-container-lowest p-8 flex flex-col h-full border-b-2 border-transparent hover:border-tertiary-fixed-dim transition-all duration-500">
+          <span class="text-4xl font-headline text-outline-variant/30 mb-6">{cat.num}</span>
+          <h3 class="text-2xl font-headline mb-4">{cat.title}</h3>
+          <p class="text-on-surface-variant text-sm mb-8 flex-grow leading-relaxed">{cat.desc}</p>
+          <ul class="space-y-3 mb-10 text-xs font-medium tracking-wide">
+            {cat.items.map(item => (
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">check_circle</span> {item}
+              </li>
+            ))}
+          </ul>
+          <a class="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-primary border-b border-primary/20 pb-1 w-fit group-hover:border-tertiary-fixed-dim transition-all" href={cat.href}>Learn More</a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- AIF Lifecycle -->
+  <section class="mb-24 py-20 bg-primary-container text-white px-8 md:px-12 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="relative z-10">
+      <div class="max-w-xl mb-16">
+        <h2 class="font-headline text-4xl mb-4 text-amber-100">The AIF Lifecycle</h2>
+        <p class="text-slate-400 text-sm">Understanding the sequential journey of an alternative investment vehicle from inception to terminal distribution.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-0">
+        {[
+          { n: '01', title: 'Formation', text: 'Trust deed execution and SEBI registration process.' },
+          { n: '02', title: 'Fundraising', text: 'Marketing to sophisticated investors and capital commitment.' },
+          { n: '03', title: 'Deployment', text: 'Capital calls and execution of investment strategies.' },
+          { n: '04', title: 'Management', text: 'Portfolio monitoring and active value creation.' },
+          { n: '05', title: 'Exit', text: 'Realization of gains and final capital distribution.' },
+        ].map((step, i) => (
+          <div class="p-6 border-l border-slate-700 relative">
+            <div class={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold mb-6 ${i === 0 ? 'bg-amber-200 text-slate-900' : 'bg-slate-800 text-amber-200 border border-amber-200/30'}`}>{step.n}</div>
+            <h4 class="text-sm font-bold uppercase tracking-wider mb-3">{step.title}</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="mb-24" id="comparison">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+      <div class="max-w-xl">
+        <h2 class="font-headline text-4xl mb-4">Investment Vehicle Comparison</h2>
+        <p class="text-on-surface-variant text-sm">Contrast AIF features against traditional investment avenues to determine the optimal structure for your objective.</p>
+      </div>
+      <a href="/knowledge/aif-comparison" class="text-[11px] font-bold uppercase tracking-widest text-secondary hover:text-primary flex items-center gap-1 transition-colors mt-4 md:mt-0">
+        Full Comparison <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-surface text-on-surface border-b border-outline-variant">
+            <th class="py-6 px-4 text-xs font-bold uppercase tracking-widest">Feature</th>
+            <th class="py-6 px-4 text-xs font-bold uppercase tracking-widest text-primary font-headline italic text-lg">AIF (Alternative)</th>
+            <th class="py-6 px-4 text-xs font-bold uppercase tracking-widest">Mutual Funds</th>
+            <th class="py-6 px-4 text-xs font-bold uppercase tracking-widest">PMS</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm font-light">
+          {[
+            { f: 'Min Investment', a: '₹1 Crore', m: '₹500', p: '₹50 Lakhs' },
+            { f: 'Max Investors', a: '1000 per scheme', m: 'Unlimited', p: 'Unlimited' },
+            { f: 'Portfolio', a: 'Concentrated / Unlisted', m: 'Diversified / Listed', p: 'Concentrated / Listed' },
+            { f: 'Leverage', a: 'Allowed (Cat III)', m: 'Not Allowed', p: 'Not Allowed' },
+            { f: 'Regulation', a: 'SEBI AIF Regs', m: 'SEBI MF Regs', p: 'SEBI PMS Regs' },
+          ].map((row, i) => (
+            <tr class={`border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors ${i % 2 !== 0 ? 'bg-surface-container-low' : ''}`}>
+              <td class="py-5 px-4 font-semibold text-on-surface">{row.f}</td>
+              <td class="py-5 px-4 text-primary font-medium">{row.a}</td>
+              <td class="py-5 px-4 text-on-surface-variant">{row.m}</td>
+              <td class="py-5 px-4 text-on-surface-variant">{row.p}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-24">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+      <div class="md:col-span-4">
+        <h2 class="font-headline text-4xl mb-6">Frequently Asked Questions</h2>
+        <p class="text-on-surface-variant text-sm mb-8 leading-relaxed">Critical inquiries regarding regulatory compliance, taxation, and operational parameters of AIFs.</p>
+        <div class="aspect-square bg-surface-container-low p-8 flex items-center justify-center">
+          <img class="w-full h-full object-cover opacity-80 mix-blend-multiply" alt="Fountain pen on legal document"
+               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDNUAKvhyrkR2iB1mYfJUhh5vJYbvRA_XNGdZgEg4YdO0TVAS4oEjuriiYI-dg9ddOibZmoFZxQct26L4UVt-4ry5uFzf9RZrD0fokv4MURmmqx9qhv5DXv9qmcqVkmA3o0PUsBJhI0XeidDFQrbAHvpbIWCLIs622HUWurOff5kJo5cu1FHaj7W2fVSS9-U1PJh12jdGpjUQOudQYg4i-v9Qeecx05jWJGm5JiAsJpV1135KGZFcRMMbjIPVWS2iIXwqVwKsNfD0" />
+        </div>
+      </div>
+      <div class="md:col-span-8 space-y-2">
+        {[
+          { q: 'Who can invest in an AIF?', a: 'AIFs are intended for sophisticated investors, including Resident Indians, NRIs, and foreign nationals. Institutional investors like banks, pension funds, and insurance companies also participate. The primary requirement is a minimum investment of ₹1 Crore (₹25 Lakhs for employees/directors of the Manager).' },
+          { q: 'What is the taxation structure for AIFs?', a: 'Category I and II AIFs enjoy "Pass-Through" status, where income (other than business income) is taxed at the investor level. Category III AIFs are taxed at the fund level as a Determinate Trust at the Maximum Marginal Rate (MMR).' },
+          { q: 'What is the tenure of an AIF?', a: 'Category I and II AIFs are close-ended with a minimum tenure of 3 years. Category III AIFs can be either open-ended or close-ended. Extensions are possible with 2/3rd majority approval of investors.' },
+          { q: 'What is SEBI\'s role in regulating AIFs?', a: 'SEBI (Securities and Exchange Board of India) is the primary regulatory authority for AIFs in India. All AIFs must be registered with SEBI before commencing operations. SEBI prescribes eligibility criteria, investment conditions, and ongoing compliance requirements.' },
+        ].map((faq, i) => (
+          <details class="group bg-surface-container-lowest transition-all" open={i === 0}>
+            <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+              <h4 class="font-headline text-xl">{faq.q}</h4>
+              <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4">expand_more</span>
+            </summary>
+            <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">{faq.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</div>
+
+</BaseLayout>

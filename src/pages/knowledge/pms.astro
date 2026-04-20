@@ -1,0 +1,373 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="PMS Knowledge Centre | The Sovereign Ledger" currentPage="knowledge/pms">
+
+<!-- Sticky Sub-Nav -->
+<nav class="sticky top-[72px] z-40 bg-surface-container-lowest border-b border-outline-variant/20 shadow-sm">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center gap-1 overflow-x-auto">
+    {[
+      { label: 'What is PMS',  href: '#what-is-pms'  },
+      { label: 'Types of PMS', href: '#types-of-pms' },
+      { label: 'Why PMS',      href: '#why-pms'      },
+      { label: 'How it Works', href: '#how-it-works' },
+      { label: 'Taxation',     href: '#taxation'     },
+      { label: 'Comparison',   href: '#comparison'   },
+    ].map((item, i) => (
+      <a href={item.href} class={`px-5 py-4 text-[11px] uppercase font-bold tracking-widest whitespace-nowrap transition-all border-b-2 ${i === 0 ? 'border-primary-container text-primary-container' : 'border-transparent text-on-surface-variant hover:text-primary-container hover:border-primary-container/50'}`}>
+        {item.label}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
+
+  <!-- Hero -->
+  <section class="py-16 md:py-24 border-b border-outline-variant/20 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-7">
+        <span class="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-4 block">Knowledge Centre</span>
+        <h1 class="text-5xl md:text-7xl font-headline text-primary-container leading-tight">
+          Portfolio Management <span class="italic font-light">Intelligence</span>
+        </h1>
+        <p class="mt-6 text-on-surface-variant text-lg leading-relaxed max-w-xl">
+          A comprehensive guide to Portfolio Management Services — the institutional-grade investment vehicle for sophisticated individual capital allocators.
+        </p>
+      </div>
+      <div class="md:col-span-5 hidden md:block">
+        <div class="aspect-square bg-surface-container overflow-hidden relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-container/10 to-secondary/5"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="material-symbols-outlined text-8xl text-primary-container/20" style="font-variation-settings:'FILL' 1">analytics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is PMS -->
+  <section id="what-is-pms" class="mb-20 scroll-mt-32">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+      <div class="md:col-span-5">
+        <span class="text-[10px] uppercase tracking-widest text-secondary font-bold mb-3 block">Definition</span>
+        <h2 class="font-headline text-4xl text-primary-container mb-6 leading-tight">What is Portfolio Management Services?</h2>
+        <p class="text-on-surface-variant text-base leading-relaxed mb-5">
+          Portfolio Management Services (PMS) is a professional service offered by SEBI-registered Portfolio Managers to manage the investment portfolio of high-net-worth individuals and institutional investors on a discretionary, non-discretionary, or advisory basis.
+        </p>
+        <p class="text-on-surface-variant text-base leading-relaxed">
+          Unlike mutual funds where investors own units of a pooled vehicle, PMS investors own the underlying securities directly in their own demat account, enabling a personalised, concentrated investment approach tailored to individual risk-return objectives.
+        </p>
+      </div>
+      <div class="md:col-span-7">
+        <h3 class="font-headline text-2xl text-primary-container mb-6">Core Characteristics</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[
+            { icon: 'person', title: 'Direct Ownership', desc: 'Securities held in investor\'s own demat account, not a pooled vehicle.' },
+            { icon: 'tune', title: 'Personalised Strategy', desc: 'Investment policy customised to individual risk profile and objectives.' },
+            { icon: 'paid', title: 'Min ₹50 Lakhs', desc: 'Minimum investment threshold mandated by SEBI regulations.' },
+            { icon: 'policy', title: 'SEBI Regulated', desc: 'Portfolio Managers must be registered with SEBI under PMS Regulations, 2020.' },
+            { icon: 'visibility', title: 'Full Transparency', desc: 'Detailed reporting on each holding, transaction, and rationale.' },
+            { icon: 'manage_accounts', title: 'Dedicated Manager', desc: 'A named portfolio manager is responsible for your account.' },
+          ].map(item => (
+            <div class="flex items-start gap-4 bg-surface-container-low p-5">
+              <span class="material-symbols-outlined text-secondary text-xl mt-0.5 shrink-0">{item.icon}</span>
+              <div>
+                <h4 class="font-semibold text-sm text-primary-container mb-1">{item.title}</h4>
+                <p class="text-xs text-on-surface-variant leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Types of PMS -->
+  <section id="types-of-pms" class="mb-20 scroll-mt-32">
+
+    <div class="mb-10">
+      <span class="text-[10px] uppercase tracking-widest text-secondary font-bold mb-3 block">Classification</span>
+      <h2 class="font-headline text-4xl text-primary-container mb-3 leading-tight">Types of PMS</h2>
+      <div class="w-12 h-1 bg-tertiary-fixed-dim"></div>
+    </div>
+
+    <!-- 3-column type cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-outline-variant/20 mb-12">
+
+      <!-- Discretionary -->
+      <div class="border-r border-outline-variant/20 p-8 md:p-10 flex flex-col group hover:bg-surface-container-low transition-colors">
+        <div class="flex items-center justify-between mb-6">
+          <div class="w-10 h-10 bg-primary-container flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-tertiary-fixed text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">shield_person</span>
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary border border-outline-variant/30 px-2 py-1">Type 01</span>
+        </div>
+        <h3 class="font-headline text-2xl md:text-3xl text-primary-container mb-4 leading-tight">Discretionary <span class="italic">PMS</span></h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-6 flex-grow">
+          The Portfolio Manager exercises <strong class="text-primary-container">full investment discretion</strong> on behalf of the client. Buy, sell, and rebalancing decisions are made and executed without requiring prior client approval for each transaction — enabling timely, strategy-driven portfolio management.
+        </p>
+        <ul class="space-y-3 mb-8">
+          {[
+            'Manager has complete authority over trade execution',
+            'No client sign-off required per transaction',
+            'Fastest and most efficient strategy implementation',
+            'Manager is accountable for all investment decisions',
+            'Most common form of PMS in India',
+          ].map(pt => (
+            <li class="flex items-start gap-3 text-xs text-on-surface-variant leading-relaxed">
+              <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
+              {pt}
+            </li>
+          ))}
+        </ul>
+        <div class="mt-auto bg-surface-container-low p-4 border-l-2 border-secondary">
+          <p class="text-[10px] uppercase tracking-widest font-bold text-secondary mb-1">Best For</p>
+          <p class="text-xs text-on-surface-variant">Investors who prefer to delegate fully and want a hands-off approach with professional mandate execution.</p>
+        </div>
+      </div>
+
+      <!-- Non-Discretionary -->
+      <div class="border-r border-outline-variant/20 p-8 md:p-10 flex flex-col group hover:bg-surface-container-low transition-colors">
+        <div class="flex items-center justify-between mb-6">
+          <div class="w-10 h-10 bg-secondary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-white text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">sync_alt</span>
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary border border-outline-variant/30 px-2 py-1">Type 02</span>
+        </div>
+        <h3 class="font-headline text-2xl md:text-3xl text-primary-container mb-4 leading-tight">Non-Discretionary <span class="italic">PMS</span></h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-6 flex-grow">
+          The Portfolio Manager provides investment recommendations and a proposed course of action, but <strong class="text-primary-container">each trade requires explicit client approval</strong> before execution. The client remains actively involved in all portfolio decisions, while the manager acts as a research and advisory engine.
+        </p>
+        <ul class="space-y-3 mb-8">
+          {[
+            'Client approves every buy/sell instruction',
+            'Manager provides detailed rationale for each trade',
+            'Client retains full decision-making authority',
+            'Ideal for involved investors who want oversight',
+            'Slower execution — suitable for low-turnover strategies',
+          ].map(pt => (
+            <li class="flex items-start gap-3 text-xs text-on-surface-variant leading-relaxed">
+              <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
+              {pt}
+            </li>
+          ))}
+        </ul>
+        <div class="mt-auto bg-surface-container-low p-4 border-l-2 border-secondary">
+          <p class="text-[10px] uppercase tracking-widest font-bold text-secondary mb-1">Best For</p>
+          <p class="text-xs text-on-surface-variant">Investors who want professional research and recommendations but wish to retain final control over all transactions.</p>
+        </div>
+      </div>
+
+      <!-- Advisory -->
+      <div class="p-8 md:p-10 flex flex-col group hover:bg-surface-container-low transition-colors">
+        <div class="flex items-center justify-between mb-6">
+          <div class="w-10 h-10 bg-surface-container border border-outline-variant flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">lightbulb</span>
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary border border-outline-variant/30 px-2 py-1">Type 03</span>
+        </div>
+        <h3 class="font-headline text-2xl md:text-3xl text-primary-container mb-4 leading-tight">Advisory <span class="italic">PMS</span></h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-6 flex-grow">
+          The Portfolio Manager solely provides <strong class="text-primary-container">investment advice and research recommendations</strong>. The client evaluates the advice independently and is responsible for executing all trades in their own account. The manager has no transactional authority whatsoever.
+        </p>
+        <ul class="space-y-3 mb-8">
+          {[
+            'Manager offers research, ideas, and recommendations only',
+            'Client independently evaluates and executes all trades',
+            'Manager has zero transactional authority',
+            'Lowest cost structure — advice fee only',
+            'Maximum client control and self-directed execution',
+          ].map(pt => (
+            <li class="flex items-start gap-3 text-xs text-on-surface-variant leading-relaxed">
+              <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
+              {pt}
+            </li>
+          ))}
+        </ul>
+        <div class="mt-auto bg-surface-container-low p-4 border-l-2 border-secondary">
+          <p class="text-[10px] uppercase tracking-widest font-bold text-secondary mb-1">Best For</p>
+          <p class="text-xs text-on-surface-variant">Sophisticated, self-directed investors who want institutional research but prefer to make and execute all decisions themselves.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- At-a-glance comparison table -->
+    <div class="bg-primary-container px-8 md:px-10 py-8">
+      <h3 class="font-headline text-xl text-tertiary-fixed mb-6">At a Glance — Key Differences</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left min-w-[560px]">
+          <thead>
+            <tr class="border-b border-white/10">
+              <th class="py-3 pr-6 text-[10px] uppercase tracking-widest text-slate-400 font-bold w-1/4">Dimension</th>
+              <th class="py-3 pr-6 text-[10px] uppercase tracking-widest text-amber-200 font-bold w-1/4">Discretionary</th>
+              <th class="py-3 pr-6 text-[10px] uppercase tracking-widest text-slate-300 font-bold w-1/4">Non-Discretionary</th>
+              <th class="py-3 text-[10px] uppercase tracking-widest text-slate-300 font-bold w-1/4">Advisory</th>
+            </tr>
+          </thead>
+          <tbody class="text-xs">
+            {[
+              { dim: 'Trade Execution', d: 'Manager', nd: 'Client (on approval)', a: 'Client (self-initiated)' },
+              { dim: 'Client Involvement', d: 'Minimal', nd: 'High', a: 'Full' },
+              { dim: 'Manager Authority', d: 'Full discretion', nd: 'Recommend only', a: 'Advise only' },
+              { dim: 'Speed of Execution', d: 'Fastest', nd: 'Moderate', a: 'Slowest' },
+              { dim: 'Fee Structure', d: 'Fixed + Performance', nd: 'Fixed + Performance', a: 'Advisory fee only' },
+              { dim: 'SEBI Oversight', d: 'PMS Regs 2020', nd: 'PMS Regs 2020', a: 'PMS Regs 2020' },
+            ].map((row, i) => (
+              <tr class={`border-b ${i < 5 ? 'border-white/5' : 'border-transparent'}`}>
+                <td class="py-3.5 pr-6 text-slate-400 font-medium">{row.dim}</td>
+                <td class="py-3.5 pr-6 text-amber-200 font-semibold">{row.d}</td>
+                <td class="py-3.5 pr-6 text-slate-300">{row.nd}</td>
+                <td class="py-3.5 text-slate-300">{row.a}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Why PMS -->
+  <section id="why-pms" class="mb-20 scroll-mt-32 bg-surface-container-low border border-outline-variant/20 px-8 md:px-12 py-12">
+    <h2 class="font-headline text-4xl text-primary-container mb-10">Why Choose PMS?</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        { icon: 'star', num: '01', title: 'Concentrated Alpha', desc: 'High-conviction, concentrated portfolios designed to outperform through selective stock picking rather than broad market exposure.' },
+        { icon: 'shield', num: '02', title: 'Risk-Adjusted Returns', desc: 'Mandates built around your specific risk tolerance, time horizon, and liquidity requirements — not a generic benchmark.' },
+        { icon: 'receipt', num: '03', title: 'Tax Efficiency', desc: 'Direct ownership enables strategic tax-loss harvesting and optimisation of long-term vs. short-term capital gains.' },
+        { icon: 'support_agent', num: '04', title: 'Dedicated Access', desc: 'Relationship with a named portfolio manager who provides regular performance reviews and strategic updates.' },
+      ].map(item => (
+        <div class="bg-surface-container-lowest p-8 border-t-2 border-secondary/50">
+          <span class="text-3xl font-headline text-outline-variant/40 mb-4 block">{item.num}</span>
+          <span class="material-symbols-outlined text-secondary text-2xl mb-3 block">{item.icon}</span>
+          <h3 class="font-semibold text-primary-container text-base mb-2">{item.title}</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- How it Works – Process Flow -->
+  <section id="how-it-works" class="mb-20 scroll-mt-32 bg-primary-container text-white px-8 md:px-12 py-14 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-80 h-80 bg-secondary/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="relative z-10">
+      <div class="max-w-xl mb-12">
+        <span class="text-[10px] uppercase tracking-[0.3em] text-tertiary-fixed font-bold block mb-3">Process</span>
+        <h2 class="font-headline text-4xl text-amber-100 leading-tight">How PMS Works</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
+        {[
+          { n: '01', title: 'Onboarding', text: 'KYC verification, risk profiling, and documentation. Demat and trading accounts are linked to the PMS mandate.' },
+          { n: '02', title: 'Investment Policy', text: 'The Portfolio Manager and client jointly agree on an Investment Policy Statement (IPS) defining objectives, constraints, and benchmarks.' },
+          { n: '03', title: 'Execution', text: 'The Portfolio Manager constructs and manages the portfolio, executing buy/sell decisions within the agreed mandate parameters.' },
+          { n: '04', title: 'Reporting', text: 'Monthly performance reports, transaction statements, and periodic reviews with the assigned portfolio manager.' },
+        ].map((step, i) => (
+          <div class="p-8 border-l border-slate-700 relative">
+            <div class={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold mb-6 ${i === 0 ? 'bg-tertiary-fixed text-on-tertiary-fixed' : 'bg-slate-800 text-amber-200 border border-amber-200/30'}`}>{step.n}</div>
+            <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-3">{step.title}</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section id="comparison" class="mb-20 scroll-mt-32">
+    <h2 class="font-headline text-4xl text-primary-container mb-2">PMS vs Alternatives</h2>
+    <div class="w-12 h-1 bg-tertiary-fixed-dim mb-10"></div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse min-w-[700px]">
+        <thead>
+          <tr class="bg-surface-container-low border-b border-outline-variant">
+            <th class="py-5 px-6 text-[11px] font-bold uppercase tracking-widest">Feature</th>
+            <th class="py-5 px-6 text-[11px] font-bold uppercase tracking-widest text-primary-container font-headline italic text-base">PMS</th>
+            <th class="py-5 px-6 text-[11px] font-bold uppercase tracking-widest">Mutual Funds</th>
+            <th class="py-5 px-6 text-[11px] font-bold uppercase tracking-widest">AIF (Cat III)</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm">
+          {[
+            { f: 'Min Investment', pms: '₹50 Lakhs', mf: '₹500', aif: '₹1 Crore' },
+            { f: 'Ownership', pms: 'Direct (demat)', mf: 'Units of pool', aif: 'Units of pool' },
+            { f: 'Customisation', pms: 'High – bespoke', mf: 'None', aif: 'Limited' },
+            { f: 'Transparency', pms: 'Full holding-level', mf: 'Monthly disclosure', aif: 'Periodic' },
+            { f: 'Leverage', pms: 'Not allowed', mf: 'Not allowed', aif: 'Allowed' },
+            { f: 'Regulation', pms: 'SEBI PMS Regs 2020', mf: 'SEBI MF Regs', aif: 'SEBI AIF Regs' },
+            { f: 'Taxation', pms: 'Investor level', mf: 'Investor level', aif: 'Fund level (MMR)' },
+          ].map((row, i) => (
+            <tr class={`border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors ${i % 2 !== 0 ? 'bg-surface-container-low/50' : ''}`}>
+              <td class="py-5 px-6 font-semibold text-on-surface">{row.f}</td>
+              <td class="py-5 px-6 text-primary-container font-semibold">{row.pms}</td>
+              <td class="py-5 px-6 text-on-surface-variant">{row.mf}</td>
+              <td class="py-5 px-6 text-on-surface-variant">{row.aif}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Taxation – Bento Grid -->
+  <section id="taxation" class="mb-20 scroll-mt-32">
+    <h2 class="font-headline text-4xl text-primary-container mb-2">Taxation Framework</h2>
+    <div class="w-12 h-1 bg-tertiary-fixed-dim mb-10"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {[
+        { icon: 'show_chart', title: 'Capital Gains', content: 'Long-term capital gains (LTCG) on listed equities held for more than 12 months: 10% above ₹1 Lakh exemption. Short-term capital gains (STCG) on listed equities: 15%. Debt instruments: As per income tax slab after 3-year holding.' },
+        { icon: 'payments', title: 'Dividend Income', content: 'Dividends received from underlying holdings are credited directly to the investor\'s bank account and taxed at the investor\'s applicable income tax slab rate. No TDS if held in a demat account with PAN.' },
+        { icon: 'receipt_long', title: 'TDS Provisions', content: 'Portfolio Managers may deduct TDS on dividend distributions at 10% for resident investors (when applicable). No TDS on capital gains. Form 16A issued for TDS deducted. Annual statement provided by Custodian.' },
+        { icon: 'folder_open', title: 'Audit & Reporting', content: 'PMS investors with portfolio value above ₹50 Lakhs may be required to disclose in Schedule AL of ITR. Tax audit under Section 44AB applies if business income from trading exceeds thresholds. Portfolio Managers provide detailed capital gains statement for ITR filing.' },
+      ].map(item => (
+        <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-secondary text-2xl">{item.icon}</span>
+            <h3 class="font-headline text-2xl text-primary-container">{item.title}</h3>
+          </div>
+          <p class="text-sm text-on-surface-variant leading-relaxed">{item.content}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section class="mb-8">
+    <h2 class="font-headline text-4xl text-primary-container mb-10">Frequently Asked Questions</h2>
+    <div class="space-y-2">
+      <details class="group bg-surface-container-lowest" open>
+        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+          <h4 class="font-headline text-xl text-primary-container">Can I withdraw from a PMS at any time?</h4>
+          <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
+        </summary>
+        <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">
+          Most PMS mandates are open-ended in nature, allowing clients to initiate withdrawals at any time. However, the Portfolio Manager typically requires 30–90 days' notice to liquidate positions in an orderly manner without materially impacting portfolio value. Some strategies with illiquid assets may have lock-in provisions — these are disclosed in the Investment Policy Statement at onboarding.
+        </div>
+      </details>
+
+      <details class="group bg-surface-container-lowest">
+        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+          <h4 class="font-headline text-xl text-primary-container">What is the difference between Discretionary and Non-Discretionary PMS?</h4>
+          <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
+        </summary>
+        <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">
+          In Discretionary PMS, the Portfolio Manager has full authority to make investment decisions without requiring the client's approval for each transaction. This enables timely execution of strategy. In Non-Discretionary PMS, the Portfolio Manager provides investment advice and recommendations, but the client must approve each trade before it is executed. Advisory PMS goes a step further — the manager only provides recommendations, and the client executes independently.
+        </div>
+      </details>
+
+      <details class="group bg-surface-container-lowest">
+        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+          <h4 class="font-headline text-xl text-primary-container">Are there hidden costs in PMS beyond the stated fees?</h4>
+          <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
+        </summary>
+        <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">
+          SEBI mandates full disclosure of all fees and charges in the PMS Disclosure Document. Apart from management fees (fixed or performance-linked), clients may incur brokerage, custodian charges, audit fees, and Goods & Services Tax on management fees. There are no hidden costs — all charges must be explicitly disclosed, and Portfolio Managers are required to provide a detailed fee statement. Always review the Disclosure Document and Client Agreement before signing.
+        </div>
+      </details>
+    </div>
+  </section>
+
+</div>
+
+</BaseLayout>

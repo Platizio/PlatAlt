@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAT I AIF | The Sovereign Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#525f71",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1a1c1a",
+                    "secondary-fixed": "#d1e4ff",
+                    "surface": "#f9faf5",
+                    "on-tertiary-container": "#a17f3b",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#afc9ea",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#e9c176",
+                    "on-secondary-fixed": "#001d36",
+                    "surface-bright": "#f9faf5",
+                    "inverse-on-surface": "#f0f1ed",
+                    "on-secondary-fixed-variant": "#2f4865",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#edeeea",
+                    "background": "#f9faf5",
+                    "on-surface": "#1a1c1a",
+                    "inverse-primary": "#bac8dc",
+                    "secondary": "#47607e",
+                    "on-tertiary-fixed-variant": "#5d4201",
+                    "surface-container-low": "#f3f4f0",
+                    "surface-variant": "#e2e3df",
+                    "surface-dim": "#d9dad6",
+                    "outline": "#74777d",
+                    "on-primary-container": "#778598",
+                    "primary-container": "#0f1c2c",
+                    "primary-fixed-dim": "#bac8dc",
+                    "tertiary": "#000000",
+                    "outline-variant": "#c4c6cc",
+                    "surface-container-high": "#e8e8e4",
+                    "primary": "#000000",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e2e3df",
+                    "on-secondary-container": "#48617e",
+                    "on-primary-fixed": "#0f1c2c",
+                    "on-primary-fixed-variant": "#3a4859",
+                    "primary-fixed": "#d6e4f9",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2f312e",
+                    "tertiary-fixed": "#ffdea5",
+                    "secondary-container": "#c2dcff",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#261900",
+                    "on-tertiary-fixed": "#261900",
+                    "on-surface-variant": "#44474c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Cormorant Garamond", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 4px 32px rgba(26, 28, 26, 0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-tertiary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0D1B2A] text-[#ffdea5] shadow-[0_4px_32px_rgba(26,28,26,0.04)] h-20 transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center px-8 h-full max-w-full mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance">account_balance</span>
+<h1 class="text-2xl font-headline tracking-widest uppercase font-serif">The Sovereign Ledger</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8 items-center text-sm uppercase tracking-widest font-label">
+<a class="text-[#47607e] hover:text-[#ffdea5] transition-colors" href="#">Portfolio</a>
+<a class="text-[#ffdea5] border-b border-[#ffdea5] pb-1" href="#">CAT I AIF</a>
+<a class="text-[#47607e] hover:text-[#ffdea5] transition-colors" href="#">Insights</a>
+</nav>
+<span class="material-symbols-outlined text-2xl cursor-pointer hover:bg-[#47607e]/10 p-2 rounded-full transition-all" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-screen-xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-2xl">
+<p class="text-secondary font-label text-xs uppercase tracking-[0.2em] mb-4">Investment Vertical</p>
+<h2 class="text-6xl md:text-8xl font-headline italic leading-[0.9] text-primary-container mb-6">Category I AIF</h2>
+<p class="text-lg text-on-surface-variant font-light leading-relaxed">Early-stage ecosystems and developmental infrastructure. We focus on sectors that form the bedrock of the future economy, providing capital where innovation meets scale.</p>
+</div>
+<div class="hidden md:block">
+<button class="bg-primary-container text-on-primary px-8 py-4 text-xs uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity">Request Prospectus</button>
+</div>
+</div>
+</section>
+<!-- Bento Grid for Sectors -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-20">
+<!-- Startups Focus -->
+<div class="md:col-span-8 group relative overflow-hidden bg-surface-container-low p-8 h-[400px] flex flex-col justify-between border-l-4 border-tertiary-fixed">
+<div class="relative z-10">
+<h3 class="text-4xl font-headline text-primary-container mb-2">Startup Ecosystems</h3>
+<p class="text-secondary font-label text-sm uppercase tracking-widest">Venture Capital &amp; Early Stage</p>
+</div>
+<div class="absolute inset-0 opacity-20 grayscale group-hover:grayscale-0 transition-all duration-700">
+<img alt="Modern collaborative workspace" class="w-full h-full object-cover" data-alt="minimalist architectural photo of a bright high-ceiling startup office with glass walls and clean modern furniture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGhImBrGVizpbEpoxd2Z2bwCOhVqJqTsZwG1_GpGHRGqd4s_TSUz3XeyaJVDSrl5wbcnxo-phjpdrAlgtVT4QlO9QQsrKewC2wn4J4StkOZ7dNnTqmIippNZBUEva_O2og3CWDmdfDEgKoOWjWwoMrhajFjCYk75YA5j-2Ci5si7akzHiX6gZD4_gX8h_nfkLeaBBBn1mq1uEFju7w8B28gTSHA_MTqLa4C9o67jO--xkY2lpy7iLeJQornhY1uxXOJF2W4i7ljRk"/>
+</div>
+<div class="relative z-10 flex justify-between items-end">
+<div class="max-w-xs">
+<p class="text-sm text-on-surface-variant italic mb-4">Fueling disruptive technologies in Fintech, SaaS, and Deep-tech frontiers.</p>
+<a class="text-primary font-label text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all" href="#">Explore Portfolio <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<div class="text-right">
+<span class="block text-4xl font-headline text-primary-container">14.2%</span>
+<span class="text-[10px] uppercase tracking-tighter text-secondary">Target IRR</span>
+</div>
+</div>
+</div>
+<!-- SME Development -->
+<div class="md:col-span-4 bg-primary-container text-[#ffdea5] p-8 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl mb-6" data-icon="business_center">business_center</span>
+<h3 class="text-3xl font-headline mb-4">SME Development</h3>
+<p class="text-sm font-light text-[#ffdea5]/70 leading-relaxed">Structured growth capital for established small and medium enterprises scaling for public markets.</p>
+</div>
+<div class="pt-8 border-t border-[#ffdea5]/20">
+<div class="flex justify-between items-center text-xs uppercase tracking-[0.2em]">
+<span>Risk Profile</span>
+<span>Moderate</span>
+</div>
+</div>
+</div>
+<!-- Infrastructure -->
+<div class="md:col-span-4 bg-surface-container-highest p-8 flex flex-col justify-center items-center text-center">
+<div class="w-20 h-20 rounded-full border border-outline-variant flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl text-primary-container" data-icon="token">token</span>
+</div>
+<h3 class="text-2xl font-headline text-primary-container mb-3">Social Infrastructure</h3>
+<p class="text-xs text-on-surface-variant font-label uppercase tracking-widest mb-6">Healthcare &amp; Education</p>
+<div class="w-full h-px bg-outline-variant/30 mb-6"></div>
+<p class="text-sm text-on-surface italic">Impact-driven assets with sovereign-backed yields.</p>
+</div>
+<!-- Physical Assets -->
+<div class="md:col-span-8 relative overflow-hidden bg-surface-container p-8 min-h-[300px] flex items-end">
+<div class="absolute inset-0">
+<img alt="Contemporary building architecture" class="w-full h-full object-cover opacity-10" data-alt="geometric facade of a modern skyscraper with sharp lines and blue glass under a clear sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABF5tON1ueuRj6C-ISLblpkEpr9_LuEGfYM9KhiDEJCu4QXcT_dsksqjHlP7k3Bff9nxskm9dmmmrJLiVnzlOQ6ojpd9Tahu3xjF4qTSmB7AMJ2uETM3jPFn19XWVozkNdVcXf8uMg5suPiRwclHD4YjhQOQPCqJueyZrqrgbU5pPAbK613-_GBn2tLBbxyIzY-U4VH3aozJ2cZDmYIrphvfLyD78dbm2fIofVICcgf1dCU1tznfW6ymoc1rE1NSz8CL-psgz5348"/>
+</div>
+<div class="relative z-10 w-full flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="max-w-md">
+<h3 class="text-4xl font-headline text-primary-container mb-4">Critical Infrastructure</h3>
+<p class="text-sm text-on-surface-variant">Logistics hubs, energy grids, and digital backbone connectivity. Real assets with inflation-protected returns.</p>
+</div>
+<div class="flex gap-4">
+<div class="px-6 py-3 border border-primary-container/20 bg-surface-container-lowest">
+<span class="block text-2xl font-headline">22+</span>
+<span class="text-[10px] uppercase tracking-widest text-secondary">Projects</span>
+</div>
+<div class="px-6 py-3 border border-primary-container/20 bg-surface-container-lowest">
+<span class="block text-2xl font-headline">9.8B</span>
+<span class="text-[10px] uppercase tracking-widest text-secondary">AUM ($)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Performance Summary Table -->
+<section class="mb-20">
+<div class="mb-8 flex justify-between items-baseline">
+<h2 class="text-4xl font-headline text-primary-container">Active Fund Performance</h2>
+<span class="text-xs font-label uppercase tracking-widest text-secondary">Updated Q4 2023</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface text-left border-b border-outline-variant/20">
+<th class="py-6 px-4 text-xs uppercase tracking-widest font-label text-secondary">Fund Name</th>
+<th class="py-6 px-4 text-xs uppercase tracking-widest font-label text-secondary">Vintage</th>
+<th class="py-6 px-4 text-xs uppercase tracking-widest font-label text-secondary">Stage</th>
+<th class="py-6 px-4 text-xs uppercase tracking-widest font-label text-secondary text-right">Net TVPI</th>
+<th class="py-6 px-4 text-xs uppercase tracking-widest font-label text-secondary text-right">Status</th>
+</tr>
+</thead>
+<tbody class="text-sm font-label">
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+<td class="py-6 px-4 font-semibold text-primary-container">Sovereign Alpha Tech I</td>
+<td class="py-6 px-4 text-on-surface-variant">2021</td>
+<td class="py-6 px-4">Series A/B</td>
+<td class="py-6 px-4 text-right">2.41x</td>
+<td class="py-6 px-4 text-right">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary-fixed-dim mr-2"></span>
+<span class="text-[10px] uppercase tracking-widest text-secondary">Deploying</span>
+</td>
+</tr>
+<tr class="bg-surface-container-low/30 border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+<td class="py-6 px-4 font-semibold text-primary-container">Green Grid Infra II</td>
+<td class="py-6 px-4 text-on-surface-variant">2019</td>
+<td class="py-6 px-4">Development</td>
+<td class="py-6 px-4 text-right">1.88x</td>
+<td class="py-6 px-4 text-right">
+<span class="inline-block w-2 h-2 rounded-full bg-primary-container mr-2"></span>
+<span class="text-[10px] uppercase tracking-widest text-secondary">Fully Invested</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+<td class="py-6 px-4 font-semibold text-primary-container">Emerging SME Opportunity</td>
+<td class="py-6 px-4 text-on-surface-variant">2022</td>
+<td class="py-6 px-4">Late Stage</td>
+<td class="py-6 px-4 text-right">1.15x</td>
+<td class="py-6 px-4 text-right">
+<span class="inline-block w-2 h-2 rounded-full bg-tertiary-fixed mr-2"></span>
+<span class="text-[10px] uppercase tracking-widest text-secondary">Open</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="bg-surface-container-low p-12 flex flex-col md:flex-row gap-12 items-center border border-outline-variant/10">
+<div class="flex-1">
+<h3 class="text-4xl font-headline text-primary-container mb-4">Elevate your allocation strategy.</h3>
+<p class="text-on-surface-variant italic mb-8">Access institutional-grade opportunities previously reserved for the world's largest sovereign wealth funds.</p>
+<button class="bg-tertiary-fixed text-on-tertiary-fixed px-10 py-5 rounded-sm uppercase tracking-[0.2em] text-xs font-bold shadow-lg shadow-tertiary-fixed/10 hover:brightness-95 transition-all">Speak with an Advisor</button>
+</div>
+<div class="w-full md:w-1/3 aspect-square bg-[#0D1B2A] p-1 flex items-center justify-center">
+<div class="w-full h-full border border-[#ffdea5]/30 flex flex-col items-center justify-center text-center p-8">
+<span class="text-[#ffdea5] font-headline text-5xl mb-2">Concierge</span>
+<p class="text-[#47607e] text-[10px] uppercase tracking-[0.3em]">Exclusive Private Access</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0D1B2A] w-full border-t border-[#47607e]/10 pt-12 pb-8">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#ffdea5]" data-icon="account_balance">account_balance</span>
+<p class="text-[#ffdea5] font-headline text-xl italic font-serif">The Sovereign Ledger</p>
+</div>
+<p class="text-[#47607e] font-label text-xs uppercase tracking-widest">© 2024 The Sovereign Ledger. Institutional Grade Asset Management.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<ul class="space-y-3">
+<li><a class="text-[#47607e] hover:text-[#ffdea5] transition-colors text-xs uppercase tracking-widest font-label" href="#">Legal Disclosure</a></li>
+<li><a class="text-[#47607e] hover:text-[#ffdea5] transition-colors text-xs uppercase tracking-widest font-label" href="#">Privacy Policy</a></li>
+</ul>
+<ul class="space-y-3">
+<li><a class="text-[#47607e] hover:text-[#ffdea5] transition-colors text-xs uppercase tracking-widest font-label" href="#">Regulatory Filings</a></li>
+<li><a class="text-[#47607e] hover:text-[#ffdea5] transition-colors text-xs uppercase tracking-widest font-label" href="#">Contact Concierge</a></li>
+</ul>
+</div>
+</div>
+</footer>
+<!-- Mobile Nav Anchor -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#0D1B2A]/95 backdrop-blur-md border-t border-[#47607e]/20 px-6 py-4 z-50">
+<div class="flex justify-between items-center text-[#47607e]">
+<a class="flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[8px] uppercase tracking-tighter">Portfolio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#ffdea5]" href="#">
+<span class="material-symbols-outlined" data-icon="token" style="font-variation-settings: 'FILL' 1;">token</span>
+<span class="text-[8px] uppercase tracking-tighter">CAT I AIF</span>
+</a>
+<a class="flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+<span class="text-[8px] uppercase tracking-tighter">AMC</span>
+</a>
+<a class="flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+<span class="text-[8px] uppercase tracking-tighter">Insights</span>
+</a>
+</div>
+</nav>
+</body></html>

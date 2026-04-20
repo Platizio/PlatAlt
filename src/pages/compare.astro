@@ -1,0 +1,438 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Compare Funds | The Sovereign Ledger" currentPage="compare">
+
+<div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
+
+  <!-- Hero Header ──────────────────────────────────────────────── -->
+  <section class="py-16 md:py-20 border-b border-outline-variant/20 mb-12">
+    <span class="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-4 block">Side-by-Side Analysis</span>
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div>
+        <h1 class="text-5xl md:text-7xl font-headline text-primary-container leading-tight">
+          Compare <span class="italic font-light">Funds</span>
+        </h1>
+        <p class="mt-4 text-on-surface-variant max-w-xl text-base leading-relaxed">
+          Evaluate and contrast fund characteristics, fee structures, and key attributes across our institutional offering.
+        </p>
+      </div>
+      <div class="flex items-center gap-3 shrink-0">
+        <button id="clear-compare-btn" class="hidden items-center gap-2 border border-outline-variant px-5 py-3 text-[11px] uppercase font-bold tracking-widest text-on-surface-variant hover:border-secondary hover:text-secondary transition-all">
+          <span class="material-symbols-outlined text-base">delete_sweep</span>
+          Clear Selection
+        </button>
+        <a href="/explore" class="inline-flex items-center gap-2 border border-outline px-6 py-3 text-[11px] uppercase font-bold tracking-widest text-primary-container hover:bg-primary-container hover:text-white transition-all">
+          <span class="material-symbols-outlined text-base">add</span>
+          Add Funds from Explorer
+        </a>
+      </div>
+    </div>
+    <p class="mt-6 text-xs text-outline bg-surface-container-low border border-outline-variant/30 px-4 py-3 inline-flex items-center gap-2">
+      <span class="material-symbols-outlined text-sm">info</span>
+      Visit <a href="/explore" class="underline underline-offset-2 hover:text-secondary transition-colors">/explore</a>, click Compare on up to 3 funds, then click "Compare Now".
+    </p>
+  </section>
+
+  <!-- Compare Section ─────────────────────────────────────────── -->
+  <section class="mb-16">
+
+    <!-- Empty State -->
+    <div id="compare-empty" class="hidden text-center py-28 border border-outline-variant/20">
+      <span class="material-symbols-outlined text-6xl text-outline block mb-5">compare_arrows</span>
+      <h2 class="font-headline text-3xl text-primary-container mb-3">No funds selected yet</h2>
+      <p class="text-sm text-on-surface-variant mb-8 max-w-md mx-auto leading-relaxed">Browse the Fund Explorer, click <strong class="text-primary-container">Compare</strong> on up to 3 funds, then hit <strong class="text-primary-container">Compare Now</strong> to see them here side-by-side.</p>
+      <a href="/explore" class="inline-flex items-center gap-2 bg-primary-container text-white px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:bg-secondary transition-colors">
+        <span class="material-symbols-outlined text-base">search</span>
+        Browse All Funds
+      </a>
+    </div>
+
+    <!-- Dynamic Table (hidden until JS builds it) -->
+    <div id="compare-table-wrap" class="hidden overflow-x-auto">
+      <table id="compare-table" class="w-full border-collapse min-w-[680px]"></table>
+    </div>
+
+  </section>
+
+  <!-- CTA Footer ──────────────────────────────────────────────── -->
+  <div class="flex flex-col md:flex-row items-center justify-between gap-6 py-8 border-t border-outline-variant/20">
+    <p class="text-sm text-on-surface-variant">Looking for more funds? Explore the full product universe.</p>
+    <div class="flex gap-4">
+      <a href="/explore" class="inline-flex items-center gap-2 border border-outline px-6 py-3 text-[11px] uppercase font-bold tracking-widest hover:bg-surface-container transition-colors">
+        <span class="material-symbols-outlined text-sm">explore</span> Browse All Funds
+      </a>
+      <a href="/partner" class="inline-flex items-center gap-2 bg-primary-container text-white px-6 py-3 text-[11px] uppercase font-bold tracking-widest hover:bg-secondary transition-colors">
+        Speak to an Advisor
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ─── Client-side compare renderer ──────────────────────────── -->
+<script is:inline>
+(function () {
+
+  var CURRENT_YEAR = 2026;
+
+  /* ── Color tokens per fund type ─────────────────────────────── */
+  var COLORS = {
+    PMS:       { border: 'border-amber-500',   accent: 'text-amber-400',   badge: 'bg-amber-900/30 text-amber-200 border border-amber-700/40' },
+    AIF_CAT1:  { border: 'border-emerald-500', accent: 'text-emerald-400', badge: 'bg-emerald-900/30 text-emerald-300 border border-emerald-700/40' },
+    AIF_CAT2:  { border: 'border-blue-500',    accent: 'text-blue-400',    badge: 'bg-blue-900/30 text-blue-300 border border-blue-700/40' },
+    AIF_CAT3:  { border: 'border-violet-500',  accent: 'text-violet-400',  badge: 'bg-violet-900/30 text-violet-300 border border-violet-700/40' },
+    GIFT_CITY: { border: 'border-indigo-500',  accent: 'text-indigo-400',  badge: 'bg-indigo-900/30 text-indigo-300 border border-indigo-700/40' },
+  };
+
+  /* ── Complete fund lookup ────────────────────────────────────── */
+  var FUND_DATA = {
+    "motilal-value-pms": {
+      name: "Motilal Oswal Value Strategy",
+      amc: "Motilal Oswal AMC",
+      aum: "₹12,000 Cr",
+      inception: "January 2003",
+      inceptionYear: 2003,
+      strategy: "Long-term wealth creation through a concentrated 15–20 stock portfolio of quality businesses with strong competitive moats and superior capital allocation.",
+      category: "PMS · Discretionary",
+      minInvestment: "₹50 Lakhs",
+      manager: "Siddharth Bothra",
+      href: "/funds/motilal-value-pms",
+      type: "PMS"
+    },
+    "iifl-nondiscretionary-pms": {
+      name: "IIFL Emerging Companies PMS",
+      amc: "IIFL Asset Management",
+      aum: "₹5,200 Cr",
+      inception: "June 2011",
+      inceptionYear: 2011,
+      strategy: "Client-approved stock selection in high-growth mid and small-cap companies. Investor retains sign-off authority over each trade before execution.",
+      category: "PMS · Non-Discretionary",
+      minInvestment: "₹50 Lakhs",
+      manager: "Anup Maheshwari",
+      href: "/funds/iifl-nondiscretionary-pms",
+      type: "PMS"
+    },
+    "kotak-advisory-pms": {
+      name: "Kotak Advisory Growth Strategy",
+      amc: "Kotak Mahindra AMC",
+      aum: "₹3,800 Cr",
+      inception: "March 2012",
+      inceptionYear: 2012,
+      strategy: "Institutional-grade research and stock recommendations delivered to the investor, who retains full decision-making authority over every transaction.",
+      category: "PMS · Advisory",
+      minInvestment: "₹50 Lakhs",
+      manager: "Harsha Upadhyaya",
+      href: "/funds/kotak-advisory-pms",
+      type: "PMS"
+    },
+    "blume-vc-fund": {
+      name: "Blume Ventures Fund IV",
+      amc: "Blume Ventures",
+      aum: "₹1,200 Cr",
+      inception: "June 2022",
+      inceptionYear: 2022,
+      strategy: "Early-stage technology investments across SaaS, Fintech, Climate Tech, and Deep Tech. Portfolio includes 40+ startups, managed by India's leading seed-stage VC firm.",
+      category: "AIF Cat I · Venture Capital",
+      minInvestment: "₹1 Crore",
+      manager: "Sanjay Nath & Karthik Reddy",
+      href: "/funds/blume-vc-fund",
+      type: "AIF_CAT1"
+    },
+    "ian-angel-fund": {
+      name: "IAN Fund III",
+      amc: "Indian Angel Network",
+      aum: "₹350 Cr",
+      inception: "March 2019",
+      inceptionYear: 2019,
+      strategy: "Co-investment vehicle for accredited angels in pre-Series A Indian startups. Network of 550+ angels provides mentorship, introductions, and follow-on syndication.",
+      category: "AIF Cat I · Angel Fund",
+      minInvestment: "₹25 Lakhs",
+      manager: "Padmaja Ruparel",
+      href: "/funds/ian-angel-fund",
+      type: "AIF_CAT1"
+    },
+    "nhai-infra-fund": {
+      name: "NHAI Infrastructure Fund I",
+      amc: "NHAI Infrastructure Trust",
+      aum: "₹8,500 Cr",
+      inception: "September 2018",
+      inceptionYear: 2018,
+      strategy: "Invests in HAM road projects and BOT highway concessions under the National Infrastructure Pipeline. Government annuity payments provide predictable, inflation-linked cash flows.",
+      category: "AIF Cat I · Infrastructure",
+      minInvestment: "₹1 Crore",
+      manager: "NHAI Investment Management Division",
+      href: "/funds/nhai-infra-fund",
+      type: "AIF_CAT1"
+    },
+    "aavishkaar-social": {
+      name: "Aavishkaar Fund VIII",
+      amc: "Aavishkaar Capital",
+      aum: "₹650 Cr",
+      inception: "January 2020",
+      inceptionYear: 2020,
+      strategy: "Impact investment in financial inclusion, agri-value chains, and affordable healthcare enterprises serving rural India. IRIS+ impact metrics reported alongside financials.",
+      category: "AIF Cat I · Social Venture",
+      minInvestment: "₹1 Crore",
+      manager: "Vineet Rai",
+      href: "/funds/aavishkaar-social",
+      type: "AIF_CAT1"
+    },
+    "edelweiss-sme-fund": {
+      name: "Edelweiss SME Growth Fund II",
+      amc: "Edelweiss Asset Management",
+      aum: "₹1,800 Cr",
+      inception: "April 2017",
+      inceptionYear: 2017,
+      strategy: "Growth equity in profitable Indian SMEs with ₹50–300 Cr revenue. Focus on specialty chemicals, auto ancillaries, pharma API, and technical textiles with BSE SME exit pathway.",
+      category: "AIF Cat I · SME",
+      minInvestment: "₹1 Crore",
+      manager: "Nitin Jain",
+      href: "/funds/edelweiss-sme-fund",
+      type: "AIF_CAT1"
+    },
+    "chryscapital-pe": {
+      name: "ChrysCapital Growth Fund IX",
+      amc: "ChrysCapital",
+      aum: "₹18,000 Cr",
+      inception: "March 2022",
+      inceptionYear: 2022,
+      strategy: "Growth equity in India's leading mid-market companies across healthcare, financial services, consumer brands, and B2B technology. Over $5 billion deployed across 8 prior funds.",
+      category: "AIF Cat II · Private Equity",
+      minInvestment: "₹5 Crores",
+      manager: "Kunal Shroff",
+      href: "/funds/chryscapital-pe",
+      type: "AIF_CAT2"
+    },
+    "edelweiss-debt-fund": {
+      name: "Edelweiss Crossover Opportunities III",
+      amc: "Edelweiss Asset Management",
+      aum: "₹4,500 Cr",
+      inception: "July 2020",
+      inceptionYear: 2020,
+      strategy: "Senior secured NCDs and structured credit to mid-market companies. Portfolio diversified across 20+ borrowers with first-charge collateral and covenant-rich documentation.",
+      category: "AIF Cat II · Debt",
+      minInvestment: "₹1 Crore",
+      manager: "Ajay Agnihotri",
+      href: "/funds/edelweiss-debt-fund",
+      type: "AIF_CAT2"
+    },
+    "kotak-re-fund": {
+      name: "Kotak Real Estate Fund XII",
+      amc: "Kotak Mahindra AMC",
+      aum: "₹3,200 Cr",
+      inception: "February 2021",
+      inceptionYear: 2021,
+      strategy: "Development equity and construction finance in RERA-registered residential and Grade-A commercial projects across Mumbai, Bengaluru, and NCR with escrow-backed cash flows.",
+      category: "AIF Cat II · Real Estate",
+      minInvestment: "₹1 Crore",
+      manager: "Vikas Chimakurthy",
+      href: "/funds/kotak-re-fund",
+      type: "AIF_CAT2"
+    },
+    "altico-distressed": {
+      name: "Altico Special Situations Fund I",
+      amc: "Altico Capital",
+      aum: "₹2,800 Cr",
+      inception: "October 2019",
+      inceptionYear: 2019,
+      strategy: "Acquires stressed real estate and corporate loans via IBC CIRP and SARFAESI at 30–50% discounts. Returns driven by resolution, turnaround, and asset monetisation.",
+      category: "AIF Cat II · Distressed",
+      minInvestment: "₹1 Crore",
+      manager: "Rajiv Sabharwal",
+      href: "/funds/altico-distressed",
+      type: "AIF_CAT2"
+    },
+    "marcellus-long-only": {
+      name: "Marcellus Consistent Compounders AIF",
+      amc: "Marcellus Investment Managers",
+      aum: "₹6,200 Cr",
+      inception: "August 2019",
+      inceptionYear: 2019,
+      strategy: "Concentrated 10–15 stock portfolio of Indian companies with deep competitive moats, clean accounts, and superior capital allocation. 7-year average holding period.",
+      category: "AIF Cat III · Long Only",
+      minInvestment: "₹1 Crore",
+      manager: "Saurabh Mukherjea",
+      href: "/funds/marcellus-long-only",
+      type: "AIF_CAT3"
+    },
+    "avendus-long-short": {
+      name: "Avendus Absolute Return Fund II",
+      amc: "Avendus Capital",
+      aum: "₹3,800 Cr",
+      inception: "April 2021",
+      inceptionYear: 2021,
+      strategy: "Benchmark-agnostic long/short equity with 40–60% net long exposure. Alpha generated from both long book (quality compounders) and short book via NSE F&O.",
+      category: "AIF Cat III · Long Short",
+      minInvestment: "₹1 Crore",
+      manager: "Andrew Holland",
+      href: "/funds/avendus-long-short",
+      type: "AIF_CAT3"
+    },
+    "iifl-multi-strategy": {
+      name: "IIFL Multi-Strategy Alpha Fund",
+      amc: "IIFL Asset Management",
+      aum: "₹2,400 Cr",
+      inception: "November 2020",
+      inceptionYear: 2020,
+      strategy: "Dynamic allocation across 4 sub-strategies: equity long/short, statistical arbitrage, event-driven, and macro. Central risk desk manages real-time drawdown limits per pod.",
+      category: "AIF Cat III · Multi-Strategy",
+      minInvestment: "₹1 Crore",
+      manager: "Anup Maheshwari",
+      href: "/funds/iifl-multi-strategy",
+      type: "AIF_CAT3"
+    },
+    "tata-market-neutral": {
+      name: "Tata Market Neutral Fund I",
+      amc: "Tata Asset Management",
+      aum: "₹1,600 Cr",
+      inception: "January 2022",
+      inceptionYear: 2022,
+      strategy: "Beta-neutral strategy with near-zero net market exposure. Returns from pairs trading and statistical arbitrage across the Nifty 200 F&O universe. Target Sharpe ratio >1.5.",
+      category: "AIF Cat III · Market Neutral",
+      minInvestment: "₹1 Crore",
+      manager: "Rahul Singh",
+      href: "/funds/tata-market-neutral",
+      type: "AIF_CAT3"
+    },
+    "kotak-gift-restricted": {
+      name: "Kotak GIFT City Global Fund I",
+      amc: "Kotak IFSC Asset Management",
+      aum: "₹2,400 Cr",
+      inception: "March 2023",
+      inceptionYear: 2023,
+      strategy: "SEBI-registered Restricted Scheme investing in global listed equities and USD-denominated debt. Accessible to NRIs, FPIs, and resident Indians under LRS.",
+      category: "GIFT City · Restricted Scheme",
+      minInvestment: "USD 150,000",
+      manager: "International Investment Committee",
+      href: "/funds/kotak-gift-restricted",
+      type: "GIFT_CITY"
+    },
+    "mirae-gift-retail": {
+      name: "Mirae Asset GIFT Retail Opportunities",
+      amc: "Mirae Asset IFSC",
+      aum: "₹800 Cr",
+      inception: "January 2024",
+      inceptionYear: 2024,
+      strategy: "SEBI-registered Retail Scheme with multi-asset portfolio of global equities, ETFs, and sovereign bonds. Lower minimum threshold targets individual investors.",
+      category: "GIFT City · Retail Scheme",
+      minInvestment: "USD 5,000",
+      manager: "Global Investment Committee",
+      href: "/funds/mirae-gift-retail",
+      type: "GIFT_CITY"
+    }
+  };
+
+  /* ── Comparison rows definition ──────────────────────────────── */
+  var ROWS = [
+    { label: 'AMC',             key: 'amc' },
+    { label: 'AUM',             key: 'aum' },
+    { label: 'Inception',       key: 'inception' },
+    { label: 'Strategy',        key: 'strategy' },
+    { label: 'Category',        key: 'category' },
+    { label: 'Min. Investment',  key: 'minInvestment' },
+    { label: 'Portfolio Age',   key: '__age' },
+    { label: 'Fund Manager',    key: 'manager' },
+  ];
+
+  /* ── Read selections from localStorage ──────────────────────── */
+  var ids = [];
+  try { ids = JSON.parse(localStorage.getItem('compareIds') || '[]'); } catch (e) {}
+
+  var funds = ids.map(function (id) { return FUND_DATA[id]; }).filter(Boolean);
+
+  var emptyEl     = document.getElementById('compare-empty');
+  var tableWrapEl = document.getElementById('compare-table-wrap');
+  var tableEl     = document.getElementById('compare-table');
+  var clearBtn    = document.getElementById('clear-compare-btn');
+
+  /* ── Empty state ─────────────────────────────────────────────── */
+  if (funds.length === 0) {
+    emptyEl.classList.remove('hidden');
+    return;
+  }
+
+  /* ── Show table + clear button ──────────────────────────────── */
+  tableWrapEl.classList.remove('hidden');
+  clearBtn.classList.remove('hidden');
+  clearBtn.classList.add('inline-flex');
+
+  clearBtn.addEventListener('click', function () {
+    try { localStorage.removeItem('compareIds'); } catch (e) {}
+    tableWrapEl.classList.add('hidden');
+    clearBtn.classList.add('hidden');
+    clearBtn.classList.remove('inline-flex');
+    emptyEl.classList.remove('hidden');
+  });
+
+  /* ── Build thead ─────────────────────────────────────────────── */
+  var thead = document.createElement('thead');
+  var headerRow = '<tr>';
+  headerRow += '<th class="text-left py-6 px-6 text-[10px] uppercase tracking-widest font-bold text-outline bg-surface-container-low w-44 align-bottom">Attribute</th>';
+
+  funds.forEach(function (fund) {
+    var clr = COLORS[fund.type] || COLORS['PMS'];
+    headerRow +=
+      '<th class="py-6 px-6 bg-surface-container-lowest border-t-4 ' + clr.border + ' text-left align-top">' +
+        '<div class="space-y-2">' +
+          '<span class="text-[10px] uppercase tracking-widest ' + clr.accent + ' font-bold block">' + fund.amc + '</span>' +
+          '<h2 class="font-headline text-xl text-primary-container leading-tight">' + fund.name + '</h2>' +
+          '<span class="inline-block text-[10px] px-2 py-1 uppercase tracking-widest font-bold ' + clr.badge + '">' + fund.category + '</span>' +
+        '</div>' +
+      '</th>';
+  });
+
+  headerRow += '</tr>';
+  thead.innerHTML = headerRow;
+  tableEl.appendChild(thead);
+
+  /* ── Build tbody ─────────────────────────────────────────────── */
+  var tbody = document.createElement('tbody');
+  tbody.className = 'text-sm';
+
+  ROWS.forEach(function (row, i) {
+    var tr = document.createElement('tr');
+    tr.className = 'border-b border-outline-variant/10 ' + (i % 2 === 0 ? 'bg-surface-container-lowest' : 'bg-surface');
+
+    var html = '<td class="py-5 px-6 text-[11px] uppercase tracking-widest font-bold text-outline bg-surface-container-low align-top pt-6">' + row.label + '</td>';
+
+    funds.forEach(function (fund, fi) {
+      var val;
+      if (row.key === '__age') {
+        var age = CURRENT_YEAR - fund.inceptionYear;
+        val = age + (age === 1 ? ' year' : ' years');
+      } else {
+        val = fund[row.key] || '—';
+      }
+      var cellClass = fi === 0
+        ? 'py-5 px-6 text-on-surface font-medium leading-relaxed align-top'
+        : 'py-5 px-6 text-on-surface-variant leading-relaxed align-top';
+      html += '<td class="' + cellClass + '">' + val + '</td>';
+    });
+
+    tr.innerHTML = html;
+    tbody.appendChild(tr);
+  });
+
+  /* ── Action row ─────────────────────────────────────────────── */
+  var actionTr = document.createElement('tr');
+  actionTr.className = 'bg-surface-container-low border-t-2 border-outline-variant/30';
+  var actionHtml = '<td class="py-6 px-6"></td>';
+
+  funds.forEach(function (fund) {
+    actionHtml +=
+      '<td class="py-6 px-6">' +
+        '<a href="' + fund.href + '" class="block text-center bg-primary-container text-white text-[11px] uppercase tracking-widest font-bold py-3 px-4 hover:bg-secondary transition-colors">' +
+          'View Details' +
+        '</a>' +
+      '</td>';
+  });
+
+  actionTr.innerHTML = actionHtml;
+  tbody.appendChild(actionTr);
+  tableEl.appendChild(tbody);
+
+})();
+</script>
+
+</BaseLayout>

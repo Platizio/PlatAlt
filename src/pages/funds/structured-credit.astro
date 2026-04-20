@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Structured Credit Funds | The Sovereign Ledger" currentPage="products/funds/structured-credit">
+
+<div class="max-w-5xl mx-auto px-6 md:px-10 py-8">
+  <div class="flex items-center gap-2 text-secondary mb-8 pt-4 flex-wrap">
+    <a href="/knowledge/aif" class="text-xs uppercase tracking-[0.2em] font-label hover:text-primary-container transition-colors">AIF Knowledge</a>
+    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span class="text-xs uppercase tracking-[0.2em] font-label text-secondary">Cat II AIF</span>
+    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span class="text-xs uppercase tracking-[0.2em] font-label text-on-surface">Structured Credit</span>
+  </div>
+
+  <section class="mb-16">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-widest px-3 py-1">Category II AIF</span>
+    </div>
+    <h1 class="font-headline text-5xl md:text-6xl font-light leading-tight text-primary-container mb-4">
+      Structured Credit <span class="italic">Funds</span>
+    </h1>
+    <p class="text-on-surface-variant leading-relaxed text-lg max-w-2xl">
+      Engineering superior risk-adjusted yields through bespoke credit instruments backed by robust collateral structures and covenant protection.
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <div class="bg-surface-container-low p-8 md:p-10">
+      <h2 class="font-headline text-2xl mb-6 text-primary-container">Definition & Purpose</h2>
+      <p class="text-on-surface-variant leading-relaxed mb-8">
+        Structured Credit Funds deploy capital through bespoke debt instruments — NCDs, mezzanine debt, and structured notes — to corporate borrowers who require customized financing solutions beyond what traditional banks offer. These instruments are engineered with tailored repayment profiles, interest structures, and security packages to optimize risk-return outcomes.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">account_balance</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Instruments</h4>
+          <p class="text-sm font-semibold">NCD, Mezz, Notes</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h4>
+          <p class="text-sm font-semibold">Medium</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">payments</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h4>
+          <p class="text-sm font-semibold">&#8377;1 Crore</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">percent</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Target Yield</h4>
+          <p class="text-sm font-semibold">12–18% p.a.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-headline text-3xl mb-10 text-primary-container pl-4 border-l-2 border-tertiary-fixed">
+      Instrument <span class="italic">Toolkit</span>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {[
+        { icon: 'description', title: 'Non-Convertible Debentures', desc: 'Fixed-income instruments with defined coupon and maturity, secured by specific business assets or guarantees.' },
+        { icon: 'layers', title: 'Mezzanine Debt', desc: 'Subordinated debt with equity-kicker features (warrants or options), filling the capital structure gap between senior debt and equity.' },
+        { icon: 'receipt_long', title: 'Structured Notes', desc: 'Bespoke instruments with embedded derivatives providing principal protection or enhanced yield through structured payoff profiles.' },
+      ].map(s => (
+        <div class="bg-surface-container-lowest p-6 border-b-2 border-transparent hover:border-tertiary-fixed transition-all">
+          <span class="material-symbols-outlined text-secondary text-3xl mb-4 block">{s.icon}</span>
+          <h3 class="font-headline text-xl mb-3">{s.title}</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-16 bg-primary-container text-surface p-8 md:p-12 overflow-hidden relative">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+    <h2 class="font-headline text-3xl mb-8 text-tertiary-fixed relative z-10">Credit <span class="italic">Underwriting</span></h2>
+    <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+      {[
+        { title: 'Cash Flow Analysis', desc: 'Stress-tested free cash flow models across multiple scenarios to validate debt serviceability.' },
+        { title: 'Security Package', desc: 'First charge on assets, promoter guarantees, and pledge of shares to secure lender position.' },
+        { title: 'Covenant Structure', desc: 'Financial covenants (DSCR, leverage ratios) with cure periods and step-up rates on breach.' },
+        { title: 'Legal Documentation', desc: 'Robust term sheets and debenture trust deeds drafted to SEBI and RBI regulatory standards.' },
+      ].map(b => (
+        <div class="border-l-2 border-secondary pl-6">
+          <h4 class="font-headline text-lg mb-2">{b.title}</h4>
+          <p class="text-sm opacity-80 leading-relaxed">{b.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <div class="bg-surface-container p-8 text-center border border-outline-variant/10">
+    <h3 class="font-headline text-2xl mb-4">Access Structured Credit Strategies</h3>
+    <p class="text-on-surface-variant text-sm mb-8">Speak with our credit specialists to understand current deployment opportunities and risk-return profiles.</p>
+    <a href="/partner" class="inline-block py-4 px-10 bg-primary-container text-on-primary font-label text-xs uppercase tracking-[0.2em] hover:bg-slate-800 transition-colors">
+      Request Fund Prospectus
+    </a>
+  </div>
+</div>
+
+</BaseLayout>

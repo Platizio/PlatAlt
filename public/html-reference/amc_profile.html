@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-container": "#a17f3b",
+                        "on-surface-variant": "#44474c",
+                        "surface-container-highest": "#e2e3df",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f0f1ed",
+                        "surface": "#f9faf5",
+                        "surface-container-low": "#f3f4f0",
+                        "primary-fixed": "#d6e4f9",
+                        "on-secondary-container": "#48617e",
+                        "outline": "#74777d",
+                        "secondary": "#47607e",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#d1e4ff",
+                        "tertiary-container": "#261900",
+                        "primary": "#000000",
+                        "primary-container": "#0f1c2c",
+                        "surface-dim": "#d9dad6",
+                        "on-surface": "#1a1c1a",
+                        "surface-bright": "#f9faf5",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#2f4865",
+                        "secondary-container": "#c2dcff",
+                        "on-primary-container": "#778598",
+                        "on-primary-fixed-variant": "#3a4859",
+                        "surface-container-high": "#e8e8e4",
+                        "on-tertiary-fixed": "#261900",
+                        "surface-tint": "#525f71",
+                        "outline-variant": "#c4c6cc",
+                        "background": "#f9faf5",
+                        "surface-container": "#edeeea",
+                        "inverse-surface": "#2f312e",
+                        "secondary-fixed-dim": "#afc9ea",
+                        "error": "#ba1a1a",
+                        "on-background": "#1a1c1a",
+                        "tertiary-fixed-dim": "#e9c176",
+                        "surface-variant": "#e2e3df",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#5d4201",
+                        "tertiary": "#000000",
+                        "tertiary-fixed": "#ffdea5",
+                        "inverse-primary": "#bac8dc",
+                        "on-secondary-fixed": "#001d36",
+                        "primary-fixed-dim": "#bac8dc",
+                        "on-primary-fixed": "#0f1c2c",
+                        "on-error": "#ffffff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "serif": ["Cormorant Garamond", "serif"],
+                        "sans": ["Manrope", "sans-serif"],
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f9faf5;
+        }
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(15, 28, 44, 0.8), rgba(15, 28, 44, 0.95));
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface antialiased overflow-x-hidden">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#0D1B2A] dark:bg-[#08111A] flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center overflow-hidden">
+<img alt="User profile portrait" class="w-full h-full object-cover" data-alt="Close up portrait of a professional wealth manager in a dark suit with a neutral confident expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaLcgydUjvdfdvvL3L92gKdt11TRTCw-PjYi_5DNIIVwbOstDd3z6Kwqql3LXz1ZVIlqL5mOwkktsnJbhSav0PzzVyuMsc4gicH12z4_rOT3XATy7TcXb3plcxxwpMzdRmjKN0ten64vPFGr3Xog1VdDJ5Rv2FS-lS0t5UeI5J2UMnZQqbTk5xjgTOjjOmrhugXB0kLt55ACR4mlfSF2hDHqZNUoB37CJzPqEG67kzEpuXZiw4YidePXQ4Os5bgHN5RQH14BxgdFo"/>
+</div>
+<span class="text-xl font-serif tracking-tight text-[#ffdea5]">Sovereign Ledger</span>
+</div>
+<button class="text-[#ffdea5] hover:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="pt-16 pb-24">
+<!-- Hero Section -->
+<section class="relative h-[340px] flex items-end overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="High-end office interior" class="w-full h-full object-cover" data-alt="Ultra-luxurious modern office interior with floor-to-ceiling windows overlooking a city skyline at dusk with warm ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB3YvBYmCe5YqjLaL4ZoNTmrNs3ds24rgdTc93ZmjoQGvXikEGQPD2ru_AP3LFt9_Mc7yRGK2-OqSZOMTUpKvEkJXL8WY2BO1d7j2sDzyzIj10eFFJbdFrqsiQEAxyvT2jBFUxvhpkQs88L15dvxV91A05kEcSHxMpa0fAZXRTsiBq-Irf1dRlnLM--F5Fb3060sAZQzfuGN6z7HbsUWfEDdtiarjqIyq5ElmtUH-4pf6qV6HEafGRVq-K4IT1KEghH3eXHp94PZw"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="relative z-10 p-8 w-full">
+<div class="flex items-center gap-4 mb-4">
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-2xl">
+<span class="text-primary-container font-serif text-2xl font-bold tracking-tighter">MPP</span>
+</div>
+<div>
+<h1 class="text-3xl text-tertiary-fixed font-bold leading-none">Meridian Prime Partners</h1>
+<p class="text-on-primary-container text-sm font-sans tracking-wide uppercase mt-1">Institutional Asset Management</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Row (Asymmetric Bento Lite) -->
+<section class="px-6 -mt-10 relative z-20">
+<div class="grid grid-cols-12 gap-3">
+<div class="col-span-7 bg-surface-container-lowest p-5 shadow-[0_4px_32px_rgba(26,28,26,0.04)]">
+<p class="text-[10px] uppercase tracking-widest text-secondary font-bold mb-1">Assets Under Management</p>
+<p class="text-2xl font-serif font-bold text-primary-container">$42.8B</p>
+</div>
+<div class="col-span-5 bg-surface-container-lowest p-5 shadow-[0_4px_32px_rgba(26,28,26,0.04)]">
+<p class="text-[10px] uppercase tracking-widest text-secondary font-bold mb-1">Managed Funds</p>
+<p class="text-2xl font-serif font-bold text-primary-container">12</p>
+</div>
+<div class="col-span-12 bg-primary-container text-tertiary-fixed p-5 shadow-[0_4px_32px_rgba(26,28,26,0.08)]">
+<div class="flex justify-between items-center">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-primary-container font-bold mb-1">10-Year Track Record</p>
+<p class="text-xl font-serif font-bold">+14.2% <span class="text-xs font-sans font-normal text-on-primary-container ml-1">Avg Annualized</span></p>
+</div>
+<span class="material-symbols-outlined text-tertiary-fixed opacity-50" data-icon="auto_graph">auto_graph</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Institutional Bio -->
+<section class="mt-12 px-6">
+<h2 class="text-2xl font-serif text-primary-container mb-4">Investment Philosophy</h2>
+<div class="bg-surface-container-low p-6">
+<p class="text-on-surface text-sm leading-relaxed font-sans mb-4">
+                    Founded in 1998, Meridian Prime Partners operates on the principle of sovereign stewardship. We specialize in cross-border equity mandates and multi-asset fixed income solutions for sovereign wealth funds and ultra-high-net-worth individuals.
+                </p>
+<button class="text-on-tertiary-fixed-variant font-sans font-bold text-sm flex items-center gap-2">
+                    Read Institutional Profile
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Featured Funds Section -->
+<section class="mt-12 px-6">
+<div class="flex justify-between items-end mb-6">
+<h2 class="text-2xl font-serif text-primary-container leading-none">Featured Funds</h2>
+<p class="text-[11px] uppercase tracking-widest text-secondary font-bold border-b border-tertiary-fixed pb-1">View Prospectus</p>
+</div>
+<div class="space-y-4">
+<!-- Fund Card 1 -->
+<div class="bg-surface-container-lowest p-6 shadow-[0_4px_32px_rgba(26,28,26,0.04)] flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-[10px] uppercase tracking-widest text-on-tertiary-container font-bold bg-tertiary-fixed/20 px-2 py-0.5 rounded-sm">High Alpha</span>
+<h3 class="text-xl font-serif font-bold text-primary-container mt-2">Global Frontier Equities</h3>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="trending_up">trending_up</span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-surface-container-low">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-outline">1Y Return</p>
+<p class="text-lg font-serif font-bold text-on-surface">+22.41%</p>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-outline">Risk Profile</p>
+<p class="text-lg font-serif font-bold text-on-surface">Aggressive</p>
+</div>
+</div>
+</div>
+<!-- Fund Card 2 -->
+<div class="bg-surface-container-lowest p-6 shadow-[0_4px_32px_rgba(26,28,26,0.04)] flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-[10px] uppercase tracking-widest text-secondary font-bold bg-secondary-container/20 px-2 py-0.5 rounded-sm">Wealth Preservation</span>
+<h3 class="text-xl font-serif font-bold text-primary-container mt-2">Sovereign Debt Yield Plus</h3>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="account_balance">account_balance</span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-surface-container-low">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-outline">1Y Return</p>
+<p class="text-lg font-serif font-bold text-on-surface">+6.85%</p>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-outline">Risk Profile</p>
+<p class="text-lg font-serif font-bold text-on-surface">Conservative</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="mt-12 px-6 mb-12">
+<div class="bg-primary-container p-8 text-on-primary">
+<h2 class="text-2xl font-serif text-tertiary-fixed mb-6">Institutional Relations</h2>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="location_on">location_on</span>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-primary-container">Headquarters</p>
+<p class="text-sm font-sans">88 Financial District, Zurich, Switzerland</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="mail">mail</span>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-primary-container">Inquiries</p>
+<p class="text-sm font-sans">partners@meridianprime.ch</p>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full bg-tertiary-fixed text-primary-container py-4 text-sm uppercase tracking-[0.2em] font-bold">
+                            Request Portal Access
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_-4px_32px_rgba(26,28,26,0.04)] h-16">
+<div class="flex flex-col items-center justify-center text-slate-400 pt-2">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="text-[11px] uppercase tracking-widest font-sans font-semibold">Portfolio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#47607e] dark:text-[#ffdea5] border-t-2 border-[#ffdea5] pt-2 scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-[11px] uppercase tracking-widest font-sans font-semibold">Funds</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 pt-2">
+<span class="material-symbols-outlined" data-icon="auto_graph">auto_graph</span>
+<span class="text-[11px] uppercase tracking-widest font-sans font-semibold">Insights</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,359 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Category III AIF | The Sovereign Ledger" currentPage="knowledge/aif">
+
+<div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
+
+  <!-- Breadcrumb -->
+  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20">
+    <a href="/knowledge/aif" class="hover:text-secondary transition-colors">AIF Knowledge</a>
+    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <a href="/knowledge/aif-comparison" class="hover:text-secondary transition-colors">Category Comparison</a>
+    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span class="text-on-surface-variant">Category III AIF</span>
+  </nav>
+
+  <!-- Hero -->
+  <section class="py-14 md:py-20 border-b border-outline-variant/20 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
+      <div class="md:col-span-8">
+        <span class="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold mb-3 block">SEBI AIF Regulations, 2012 — Reg. 3(4)(c)</span>
+        <div class="flex items-center gap-4 mb-4">
+          <span class="text-[10px] px-3 py-1.5 bg-primary-container text-tertiary-fixed uppercase font-bold tracking-widest">Category III</span>
+          <span class="text-[10px] px-3 py-1.5 border border-error/40 text-error uppercase font-bold tracking-widest">Leverage Permitted</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-headline text-primary-container leading-tight mb-6">
+          Category III <span class="italic font-light">AIF</span>
+        </h1>
+        <p class="text-on-surface-variant text-lg leading-relaxed max-w-2xl">
+          The most sophisticated AIF class — employing diverse and complex trading strategies with the ability to use leverage through listed and unlisted derivatives. Taxed at the fund level; suitable for institutional-grade risk capital.
+        </p>
+      </div>
+      <div class="md:col-span-4">
+        <div class="bg-primary-container p-8">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-tertiary-fixed/70 block mb-4">Key Criteria</span>
+          <ul class="space-y-3">
+            {[
+              'Complex / diverse trading strategies',
+              'Leverage via derivatives permitted (max 2× NAV)',
+              'Open-ended or close-ended structure',
+              'Fund-level taxation at MMR (~42.744%)',
+              'No concessional tax pass-through',
+            ].map(item => (
+              <li class="text-sm text-white font-medium flex items-start gap-2">
+                <span class="material-symbols-outlined text-[14px] text-tertiary-fixed mt-0.5 shrink-0">check_circle</span>{item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Definition -->
+  <section class="mb-16 grid grid-cols-1 md:grid-cols-12 gap-10">
+    <div class="md:col-span-5 bg-surface-container-low p-10">
+      <h2 class="font-headline text-3xl text-primary-container mb-6">SEBI Definition</h2>
+      <p class="text-sm text-on-surface-variant leading-loose">
+        Under Regulation 3(4)(c) of the SEBI (Alternative Investment Funds) Regulations, 2012, Category III AIF means an alternative investment fund that employs diverse or complex trading strategies and may employ leverage including through investment in listed or unlisted derivatives.
+      </p>
+      <div class="mt-8 pt-8 border-t border-outline-variant/30">
+        <span class="text-[10px] font-bold tracking-widest uppercase text-outline">Governing Regulation</span>
+        <p class="font-headline text-lg text-primary-container mt-1">SEBI AIF Regs, 2012 — Reg. 3(4)(c)</p>
+      </div>
+      <div class="mt-6 pt-6 border-t border-outline-variant/30">
+        <span class="text-[10px] font-bold tracking-widest uppercase text-outline">Leverage Circular</span>
+        <p class="font-headline text-base text-primary-container mt-1">SEBI/HO/IMD/IMD-I/DOF3/P/CIR/2021/685</p>
+        <p class="text-xs text-on-surface-variant mt-1">Dated Dec 10, 2021 — prescribes max 2× NAV leverage</p>
+      </div>
+    </div>
+    <div class="md:col-span-7">
+      <h2 class="font-headline text-3xl text-primary-container mb-6">What Distinguishes Category III?</h2>
+      <p class="text-base text-on-surface-variant leading-relaxed mb-5">
+        Category III AIFs are India's regulatory equivalent of hedge funds. Unlike Categories I and II which are long-only, private market vehicles, Category III funds can take short positions, use derivatives for leverage and hedging, and deploy across both listed and unlisted instruments simultaneously — enabling strategies that generate returns independent of broad market direction.
+      </p>
+      <p class="text-base text-on-surface-variant leading-relaxed mb-5">
+        The key trade-off is taxation: Category III AIFs do not benefit from the pass-through regime. The fund is treated as a determinate trust and all income is taxed at the fund level at Maximum Marginal Rate before distribution to investors. This makes Category III most efficient for high-turnover trading strategies where the tax deferral advantage of pass-through is less material.
+      </p>
+      <div class="bg-surface-container-low p-6 border-l-2 border-primary-container">
+        <p class="text-[10px] uppercase tracking-widest font-bold text-secondary mb-2">APMI Data — FY 2024</p>
+        <p class="text-sm text-on-surface-variant leading-relaxed">
+          As of March 2024, Category III AIFs manage approximately ₹75,000 Crore+ in AUM across 600+ registered schemes, with commitments growing at ~35% CAGR over the last three years (Source: SEBI/APMI monthly reports).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategy Types -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-2">Strategy Types</h2>
+    <div class="w-12 h-1 bg-primary-container mb-10"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {[
+        {
+          icon: 'trending_up',
+          title: 'Long Only',
+          desc: 'Concentrated, high-conviction equity portfolios that hold listed securities with no short positions. Differentiated from PMS by fund structure, pooled capital, and institutional access to block deals and IPO anchors.',
+          href: '/knowledge/aif/category-iii/long-only',
+        },
+        {
+          icon: 'sync_alt',
+          title: 'Long Short',
+          desc: 'Takes long positions in fundamentally undervalued stocks and simultaneous short positions in overvalued ones via equity derivatives. Aims to generate alpha irrespective of market direction with managed net exposure.',
+          href: '/knowledge/aif/category-iii/long-short',
+        },
+        {
+          icon: 'hub',
+          title: 'Multi-Strategy',
+          desc: 'Dynamically allocates capital across equity long/short, statistical arbitrage, event-driven, and macro strategies within a single fund structure, managed by a central risk team with risk-budgeting discipline.',
+          href: '/knowledge/aif/category-iii/multi-strategy',
+        },
+        {
+          icon: 'balance',
+          title: 'Long Short — Market Neutral',
+          desc: 'Statistical arbitrage, pairs trading, and merger arbitrage strategies engineered to generate positive returns independent of index direction. Net equity exposure maintained near zero for pure alpha generation.',
+          href: '/knowledge/aif/category-iii/long-short-market-neutral',
+        },
+      ].map(type => (
+        <a href={type.href} class="group bg-surface-container-lowest p-8 border border-outline-variant/10 hover:border-primary-container/50 transition-all flex flex-col">
+          <span class="material-symbols-outlined text-primary-container text-3xl mb-4">{type.icon}</span>
+          <h3 class="font-headline text-xl text-primary-container mb-3 group-hover:translate-x-1 transition-transform">{type.title}</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed flex-grow">{type.desc}</p>
+          <span class="mt-4 text-[10px] uppercase font-bold tracking-widest text-secondary flex items-center gap-1">
+            View Strategy <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Leverage Framework -->
+  <section class="mb-16 bg-primary-container text-surface px-8 md:px-12 py-12 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+    <div class="relative z-10">
+      <h2 class="font-headline text-3xl text-tertiary-fixed mb-3">Leverage <span class="italic">Framework</span></h2>
+      <p class="text-slate-400 text-sm mb-10 max-w-2xl">As prescribed by SEBI Circular SEBI/HO/IMD/IMD-I/DOF3/P/CIR/2021/685 dated December 10, 2021</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        {[
+          { n: '01', title: 'Maximum Leverage', value: '2× NAV', desc: 'Cat III AIFs may not exceed gross exposure (long + short) of 2 times the Net Asset Value of the fund at any point.' },
+          { n: '02', title: 'Hedging Exclusion', value: 'Permitted', desc: 'Derivatives used purely for hedging existing portfolio positions are excluded from the leverage computation.' },
+          { n: '03', title: 'Computation Basis', value: 'Notional', desc: 'Leverage is computed on the notional value of derivative positions, not the premium paid — a critical operational distinction.' },
+        ].map(item => (
+          <div class="border border-secondary/30 p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-3xl font-headline text-secondary/40">{item.n}</span>
+              <div>
+                <p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">{item.title}</p>
+                <p class="font-headline text-xl text-tertiary-fixed">{item.value}</p>
+              </div>
+            </div>
+            <p class="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="bg-secondary/10 border border-secondary/20 p-6">
+        <p class="text-[10px] uppercase tracking-widest font-bold text-tertiary-fixed mb-2">Investor Disclosure Requirement</p>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Category III AIFs must disclose in their PPM: (a) the maximum leverage they intend to employ, (b) the methodology for computing leverage, and (c) the risk management framework including stop-loss and drawdown controls. Any change in leverage policy requires PPM amendment with SEBI filing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regulatory Requirements -->
+  <section class="mb-16 bg-surface-container-low px-8 md:px-12 py-12 border border-outline-variant/20">
+    <h2 class="font-headline text-3xl text-primary-container mb-8">Regulatory Requirements</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {[
+        {
+          title: 'SEBI Registration',
+          points: [
+            'Mandatory SEBI registration before commencing operations or fundraising',
+            'Registration fee: ₹5 Lakh (application) + ₹15 Lakh (registration)',
+            'Annual compliance report submission to SEBI via intermediary portal',
+            'Any change in key personnel (KIT) requires prior SEBI intimation',
+          ]
+        },
+        {
+          title: 'Fund Structure',
+          points: [
+            'Minimum corpus: ₹20 Crore per scheme',
+            'Maximum 1,000 investors per scheme (excluding employees/directors)',
+            'Minimum investment per investor: ₹1 Crore (₹25 Lakh for employees)',
+            'May be structured as open-ended or close-ended — disclosed in PPM',
+          ]
+        },
+        {
+          title: 'Manager Obligations',
+          points: [
+            'Skin-in-the-game: 5% of corpus or ₹10 Crore, whichever is lower (higher than Cat I/II)',
+            'Investment Manager must be a SEBI-registered body corporate',
+            'Compliance Officer appointment mandatory',
+            'Annual internal audit by independent auditor recommended by SEBI',
+          ]
+        },
+        {
+          title: 'Operational Controls',
+          points: [
+            'Mandatory Risk Management Framework (RMF) filed with PPM',
+            'Custodian and prime broker arrangements must be disclosed',
+            'Separate NAV computation mechanism with independent valuer for unlisted assets',
+            'Daily/weekly NAV computation required for open-ended funds',
+          ]
+        },
+        {
+          title: 'Disclosure & Reporting',
+          points: [
+            'PPM mandatory — filed with SEBI, updated quarterly if NAV changes materially',
+            'Quarterly investor reports including gross/net exposure, leverage, drawdown',
+            'Annual SEBI reporting via SIP portal on standard templates',
+            'SEBI SCORES portal available for investor grievances',
+          ]
+        },
+        {
+          title: 'Restrictions',
+          points: [
+            'Investment in units of other Cat III AIFs not permitted (no fund of funds)',
+            'Manager cannot charge both fixed management fee and performance fee exceeding SEBI limits',
+            'Short-selling permitted only in securities listed on recognised stock exchanges',
+            'OTC derivatives exposure subject to SEBI and RBI limits on eligible instruments',
+          ]
+        },
+      ].map(section => (
+        <div>
+          <h3 class="font-semibold text-primary-container text-base mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-sm">gavel</span>{section.title}
+          </h3>
+          <ul class="space-y-2">
+            {section.points.map(p => (
+              <li class="flex items-start gap-2 text-sm text-on-surface-variant">
+                <span class="material-symbols-outlined text-[12px] text-primary-container mt-0.5 shrink-0">check_circle</span>{p}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Tax Treatment -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-6">Tax Treatment</h2>
+    <div class="bg-surface-container-lowest border border-outline-variant/10 p-8 md:p-10">
+      <div class="flex items-start gap-4 mb-6">
+        <span class="material-symbols-outlined text-error text-3xl shrink-0">percent</span>
+        <div>
+          <h3 class="font-headline text-2xl text-primary-container mb-2">Fund-Level Taxation — No Pass-Through</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            Category III AIFs do <strong class="text-primary-container">not</strong> benefit from the pass-through regime available to Categories I and II. The fund is treated as a determinate trust under the Income Tax Act, 1961, and all income accruing to the AIF is taxed at the <strong class="text-primary-container">Maximum Marginal Rate (MMR)</strong> at the fund level. Investors receive post-tax distributions, and there is no further tax liability in most cases. The Finance Act 2023 confirmed this treatment while requiring TDS on distributions.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6 pt-6 border-t border-outline-variant/20">
+        {[
+          { label: 'Short-Term Capital Gains', text: 'Taxed at fund level at 15% + surcharge (15% for income > ₹1 Cr to ₹10 Cr; 25% for > ₹10 Cr to ₹50 Cr; max 37% for > ₹1 Crore as applicable to AOPs) + 4% cess.' },
+          { label: 'Long-Term Capital Gains', text: 'Listed equity LTCG taxed at 10% + applicable surcharge + cess at fund level. Unlisted securities: 20% with indexation for 24+ month holding period.' },
+          { label: 'Speculative / Derivatives Income', text: 'Derivatives trading gains are treated as non-speculative business income and taxed at MMR (~42.744% for highest income slab including surcharge and cess).' },
+          { label: 'Dividend Income', text: 'Dividend received from portfolio companies is added to AIF income and taxed at MMR. No further tax at investor level post-distribution.' },
+          { label: 'TDS on Distributions', text: 'Finance Act 2023: TDS at 10% for resident investors, applicable treaty rate / 20% for non-residents. Form 26Q/27Q filings mandatory quarterly.' },
+          { label: 'Tax Efficiency Note', text: 'Cat III AIFs are most efficient for high-frequency, high-turnover strategies. Long-duration equity strategies may be better served by Cat II (PE) or PMS for superior after-tax outcomes.' },
+        ].map(item => (
+          <div class="bg-surface-container-low p-5">
+            <span class="text-[10px] uppercase font-bold tracking-widest text-secondary block mb-2">{item.label}</span>
+            <p class="text-sm text-on-surface-variant leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Parameters -->
+  <section class="mb-16 bg-primary-container text-surface px-8 md:px-12 py-12 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+    <h2 class="font-headline text-3xl text-tertiary-fixed mb-10 relative z-10">Key <span class="italic">Characteristics at a Glance</span></h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 relative z-10">
+      {[
+        { label: 'Minimum Corpus',       value: '₹20 Crore',            sub: 'per scheme' },
+        { label: 'Min. Investor Ticket', value: '₹1 Crore',             sub: '₹25L for employees' },
+        { label: 'Max. Investors',       value: '1,000',                 sub: 'per scheme' },
+        { label: 'Fund Structure',       value: 'Open / Closed',         sub: 'as per PPM' },
+        { label: 'Leverage',             value: 'Up to 2× NAV',         sub: 'via derivatives' },
+        { label: 'Taxation',             value: 'Fund Level',            sub: 'MMR ~42.744%' },
+        { label: 'Skin-in-the-Game',     value: '5% / ₹10 Cr',         sub: 'whichever is lower' },
+        { label: 'No Min. Tenure',       value: 'Flexible',              sub: 'per fund design' },
+      ].map(p => (
+        <div class="border border-secondary/30 p-5">
+          <p class="text-[10px] uppercase font-label tracking-wider text-slate-400 mb-1">{p.label}</p>
+          <p class="font-headline text-xl text-tertiary-fixed leading-tight">{p.value}</p>
+          <p class="text-[10px] text-slate-500 mt-1">{p.sub}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Cat III vs Cat II -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-6">Category III vs Category II</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse min-w-[640px]">
+        <thead>
+          <tr class="bg-surface-container-low border-b border-outline-variant">
+            <th class="py-4 px-6 text-[11px] font-bold uppercase tracking-widest">Parameter</th>
+            <th class="py-4 px-6 text-[11px] font-bold uppercase tracking-widest text-primary-container font-headline italic text-base">Category III</th>
+            <th class="py-4 px-6 text-[11px] font-bold uppercase tracking-widest">Category II</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm">
+          {[
+            { param: 'Strategy Type',      c3: 'Complex / leveraged trading',      c2: 'Private markets (PE, RE, Debt)' },
+            { param: 'Leverage',           c3: 'Up to 2× NAV via derivatives',     c2: 'Not permitted' },
+            { param: 'Structure',          c3: 'Open or close-ended',              c2: 'Mandatorily close-ended' },
+            { param: 'Taxation',           c3: 'Fund level at MMR (~42.744%)',     c2: 'Pass-through (Sec 115UB)' },
+            { param: 'Skin-in-the-Game',   c3: '5% of corpus / ₹10 Cr (lower)',   c2: '2.5% of corpus / ₹5 Cr (lower)' },
+            { param: 'Short Selling',      c3: 'Permitted (listed securities)',    c2: 'Not permitted' },
+            { param: 'Liquidity',          c3: 'Higher (listed instruments)',      c2: 'Illiquid (private assets)' },
+            { param: 'Minimum Tenure',     c3: 'No minimum',                       c2: '3 years minimum' },
+          ].map((row, i) => (
+            <tr class={`border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors ${i % 2 !== 0 ? 'bg-surface-container-low/40' : ''}`}>
+              <td class="py-4 px-6 font-semibold text-on-surface">{row.param}</td>
+              <td class="py-4 px-6 text-primary-container font-semibold">{row.c3}</td>
+              <td class="py-4 px-6 text-on-surface-variant">{row.c2}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary-container text-white px-10 md:px-16 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-lg relative z-10">
+      <h2 class="font-headline text-3xl text-amber-100 mb-2">Explore Category III Funds</h2>
+      <p class="text-slate-400 text-sm leading-relaxed">Browse registered Category III AIFs — long/short, multi-strategy, and market neutral — available through AlternaVest Capital.</p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-4 relative z-10">
+      <a href="/explore" class="inline-flex items-center gap-2 bg-tertiary-fixed text-on-tertiary-fixed px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:opacity-90 transition-opacity">
+        Browse Funds <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+      <button type="button" class="js-open-consult inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:bg-white/10 transition-colors">
+        Speak to Advisor
+      </button>
+    </div>
+  </section>
+
+  <!-- Prev / Next -->
+  <div class="flex flex-col sm:flex-row gap-4 mt-12">
+    <a href="/knowledge/aif/category-ii" class="flex-1 border border-outline p-5 hover:border-secondary transition-colors group text-center">
+      <span class="text-[10px] uppercase tracking-widest text-outline block mb-1">Previous</span>
+      <span class="font-headline text-lg text-primary-container group-hover:text-secondary transition-colors">Category II AIF</span>
+    </a>
+    <a href="/knowledge/aif-comparison" class="flex-1 border border-outline p-5 hover:border-secondary transition-colors group text-center">
+      <span class="text-[10px] uppercase tracking-widest text-outline block mb-1">Next</span>
+      <span class="font-headline text-lg text-primary-container group-hover:text-secondary transition-colors">AIF Comparison Guide</span>
+    </a>
+  </div>
+
+</div>
+</BaseLayout>

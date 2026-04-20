@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#afc9ea",
+                    "secondary-fixed": "#d1e4ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#778598",
+                    "tertiary": "#000000",
+                    "inverse-primary": "#bac8dc",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#44474c",
+                    "on-tertiary-container": "#a17f3b",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e8e8e4",
+                    "inverse-on-surface": "#f0f1ed",
+                    "primary-fixed-dim": "#bac8dc",
+                    "on-primary-fixed-variant": "#3a4859",
+                    "surface-tint": "#525f71",
+                    "primary": "#000000",
+                    "on-background": "#1a1c1a",
+                    "primary-container": "#0f1c2c",
+                    "tertiary-fixed": "#ffdea5",
+                    "on-primary-fixed": "#0f1c2c",
+                    "background": "#f9faf5",
+                    "surface-variant": "#e2e3df",
+                    "on-secondary-fixed": "#001d36",
+                    "on-secondary-container": "#48617e",
+                    "surface-container": "#edeeea",
+                    "surface-bright": "#f9faf5",
+                    "tertiary-container": "#261900",
+                    "on-surface": "#1a1c1a",
+                    "outline": "#74777d",
+                    "on-secondary-fixed-variant": "#2f4865",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f3f4f0",
+                    "inverse-surface": "#2f312e",
+                    "tertiary-fixed-dim": "#e9c176",
+                    "secondary-container": "#c2dcff",
+                    "on-tertiary-fixed": "#261900",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e2e3df",
+                    "secondary": "#47607e",
+                    "on-tertiary-fixed-variant": "#5d4201",
+                    "surface-dim": "#d9dad6",
+                    "outline-variant": "#c4c6cc",
+                    "primary-fixed": "#d6e4f9",
+                    "surface": "#f9faf5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Cormorant Garamond", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .serif-headline { font-family: 'Cormorant Garamond', serif; }
+        .glass-header { backdrop-filter: blur(12px); background: rgba(13, 27, 42, 0.85); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body leading-relaxed selection:bg-tertiary-fixed selection:text-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 glass-header flex justify-between items-center px-6 py-4 w-full shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#ffdea5] text-2xl">account_balance</span>
+<span class="text-xl font-headline font-bold text-[#ffdea5] tracking-widest uppercase">The Sovereign Ledger</span>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="Wealth Consultant" class="w-full h-full object-cover" data-alt="Professional portrait of a middle-aged wealth consultant in a sharp charcoal suit with a subtle library background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXp5ods2T-SjZUegxS4AOTRnQDLU4FdB2AMw-Anqa5deyYcfwLUBeCFn-gItbKhuz578_oMb77hOjiWP4l6WIdjMxe47ieZpp9F1BuQu4bjXYAuKnbBV5LNFNf8ZiiFRJgEPN9V-S0PeYD_Y6Q-1CRASg15gpacQ5pqIwkU3NUJ2qoOzNPcrz5ZuIJQ9GOMI75MylJG_nERC0WdwJmfgpkMjhQAWEm1k3oqgS3XxbtvO1X9XhY6yJ624-Q2AAcy94PH3LXUOE_084"/>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-32">
+<!-- Hero Section -->
+<section class="relative h-[530px] flex flex-col justify-end px-8 pb-12 overflow-hidden bg-primary-container">
+<img alt="Architectural structure" class="absolute inset-0 w-full h-full object-cover opacity-50" data-alt="Dramatic low-angle shot of a complex modern glass skyscraper with multifaceted geometric facades reflecting a deep blue twilight sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq3VkbJro8oXGw0gqvERKDkRkvuVTO0XQ5SJYH1twPQ0fB7uyVNGx9FF4XMSw2wrTQMjsdaAAvENGnjeMhcL1_-IK0Vk9r4425dHgDc-CPh4FOwvVn05bni495udTHrxjpnMz5R2baYZviR0Qdy02B_fy3Gj5cCFzW7DkcboMrTzNe2ChVHW-18wUoj9b2DgPKf_If0IP3CmwMyFPsX7reffstxVZqN4N_txSCZ0QhwXlW7bBQRKsmiNXlOxzDZ9UqLfGK5E3a104"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-transparent to-transparent"></div>
+<div class="relative z-10 space-y-4">
+<p class="text-[#ffdea5] font-label text-sm uppercase tracking-[0.2em]">Investment Strategies</p>
+<h1 class="text-5xl md:text-7xl font-headline text-white leading-[1.1]">Multi-Strategy</h1>
+<p class="text-white/70 max-w-md font-light text-lg">Sophisticated institutional-grade hedge fund structures designed for absolute returns across market cycles.</p>
+</div>
+</section>
+<!-- Definition & Purpose -->
+<section class="px-8 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 bg-surface">
+<div class="space-y-6">
+<h2 class="text-3xl font-headline font-semibold text-primary-container italic">The Definition</h2>
+<div class="h-px bg-tertiary-fixed w-16"></div>
+<p class="text-on-surface-variant leading-relaxed text-lg">
+                    A multi-strategy hedge fund employs multiple distinct investment frameworks within a single legal entity, allowing for dynamic capital allocation where the highest risk-adjusted opportunities reside.
+                </p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg space-y-4">
+<h3 class="text-xl font-headline font-bold uppercase tracking-wider text-primary-container">Core Purposes</h3>
+<ul class="space-y-4">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-on-surface">Diversification of alpha sources</span>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-on-surface">Lower volatility than single-strategy funds</span>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-on-surface">Efficient deployment of leverage</span>
+</li>
+</ul>
+</div>
+</section>
+<!-- Common Strategies - Bento Grid -->
+<section class="px-8 py-16 bg-surface-container-low">
+<h2 class="text-4xl font-headline text-center mb-12">Strategic Pillars</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Equity L/S -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-primary-container">
+<span class="material-symbols-outlined text-4xl mb-4 text-secondary">analytics</span>
+<h4 class="font-headline text-2xl mb-2">Equity Long/Short</h4>
+<p class="text-sm text-on-surface-variant">Simultaneous positions in undervalued stocks while shorting overvalued ones to mitigate market exposure.</p>
+</div>
+<!-- Global Macro -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-secondary">
+<span class="material-symbols-outlined text-4xl mb-4 text-secondary">public</span>
+<h4 class="font-headline text-2xl mb-2">Global Macro</h4>
+<p class="text-sm text-on-surface-variant">Directional bets on global economic trends using currencies, commodities, and sovereign debt.</p>
+</div>
+<!-- Event Driven -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-4xl mb-4 text-secondary">bolt</span>
+<h4 class="font-headline text-2xl mb-2">Event Driven</h4>
+<p class="text-sm text-on-surface-variant">Capitalizing on corporate events such as mergers, acquisitions, bankruptcies, or restructurings.</p>
+</div>
+<!-- Relative Value -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm md:col-span-2 border-l-4 border-primary-container">
+<div class="flex flex-col md:flex-row gap-6 items-start">
+<span class="material-symbols-outlined text-4xl text-secondary">balance</span>
+<div>
+<h4 class="font-headline text-2xl mb-2">Relative Value Arbitrage</h4>
+<p class="text-sm text-on-surface-variant">Exploiting price discrepancies between related financial instruments through mathematically driven models and spreads.</p>
+</div>
+</div>
+</div>
+<!-- Credit -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-secondary">
+<span class="material-symbols-outlined text-4xl mb-4 text-secondary">payments</span>
+<h4 class="font-headline text-2xl mb-2">Credit Strategies</h4>
+<p class="text-sm text-on-surface-variant">Investing across the capital structure from high-yield bonds to distressed debt instruments.</p>
+</div>
+</div>
+</section>
+<!-- How it Works & Structure -->
+<section class="px-8 py-16 bg-primary-container text-white">
+<div class="max-w-4xl mx-auto space-y-12">
+<div class="text-center">
+<h2 class="text-4xl font-headline mb-4">The Architectural Core</h2>
+<p class="text-[#ffdea5] uppercase tracking-widest text-xs">Governance &amp; Structure</p>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="space-y-6">
+<h3 class="text-2xl font-headline border-b border-white/20 pb-4">Legal Framework</h3>
+<p class="font-light text-white/80">Typically structured as a Limited Partnership (LP) or LLC, often utilizing offshore master-feeder structures for tax efficiency across global investors.</p>
+<div class="p-6 bg-white/5 rounded-lg">
+<h4 class="font-headline text-[#ffdea5] mb-2">Fee Structure</h4>
+<p class="text-sm">Standard "2 and 20" model: 2% Management Fee on AUM and 20% Performance Fee on net profits above a high-water mark.</p>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="text-2xl font-headline border-b border-white/20 pb-4">Execution Model</h3>
+<p class="font-light text-white/80">Capital is allocated to "Pods" or independent portfolio managers who specialize in specific niches, overseen by a central risk committee.</p>
+<div class="flex items-center gap-4 py-4">
+<span class="text-4xl font-headline text-[#ffdea5]">85%</span>
+<span class="text-xs uppercase tracking-tighter text-white/60">Risk-Adjusted Target Allocation Efficiency</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Risk & Rewards Asymmetric Layout -->
+<section class="px-8 py-20 bg-surface">
+<div class="flex flex-col md:flex-row gap-16 items-center">
+<div class="w-full md:w-1/2 space-y-8">
+<h2 class="text-5xl font-headline text-primary-container">The Risk Spectrum</h2>
+<p class="text-lg text-on-surface-variant">Understanding the dual nature of Multi-Strategy mandates is essential for institutional allocation.</p>
+<div class="space-y-6">
+<div class="group border-b border-outline-variant pb-6">
+<h4 class="font-bold flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-error">warning</span>
+                                Leverage Risk
+                            </h4>
+<p class="text-sm text-on-surface-variant">Extensive use of borrowed capital to amplify returns can lead to rapid capital erosion during liquidity shocks.</p>
+</div>
+<div class="group border-b border-outline-variant pb-6">
+<h4 class="font-bold flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary">groups</span>
+                                Manager Concentration
+                            </h4>
+<p class="text-sm text-on-surface-variant">Reliance on key portfolio managers; the loss of a specific 'pod' can disrupt the fund's overall equilibrium.</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 bg-surface-container-low p-10 rounded-2xl relative">
+<div class="absolute -top-6 -right-6 w-24 h-24 bg-tertiary-fixed rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-primary-container text-4xl">trending_up</span>
+</div>
+<h3 class="text-3xl font-headline mb-6">The Rewards</h3>
+<ul class="space-y-6">
+<li class="space-y-2">
+<span class="font-bold text-primary-container">Non-Correlated Alpha</span>
+<p class="text-sm text-on-surface-variant">Returns that do not move in tandem with traditional equity or bond markets.</p>
+</li>
+<li class="space-y-2">
+<span class="font-bold text-primary-container">Capital Preservation</span>
+<p class="text-sm text-on-surface-variant">Hedging mechanisms designed to protect capital during severe bear markets.</p>
+</li>
+<li class="space-y-2">
+<span class="font-bold text-primary-container">Access to Top Talent</span>
+<p class="text-sm text-on-surface-variant">Institutional platforms provide access to niche strategies otherwise unavailable to individual investors.</p>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Investor Suitability & Taxation -->
+<section class="px-8 py-16 bg-surface-container-low/50">
+<div class="bg-white p-8 md:p-12 shadow-xl rounded-sm border border-outline-variant/10">
+<div class="grid md:grid-cols-2 gap-12">
+<div>
+<h3 class="text-xl font-bold uppercase tracking-[0.15em] mb-6 border-l-4 border-tertiary-fixed pl-4">Investor Suitability</h3>
+<p class="text-on-surface-variant mb-6 italic">This asset class is reserved for Accredited Investors or Qualified Purchasers.</p>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-2 bg-surface-container-high rounded-full text-xs font-bold text-primary-container">Min Investment: $1M+</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full text-xs font-bold text-primary-container">3-5 Year Horizon</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full text-xs font-bold text-primary-container">High Net Worth</span>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold uppercase tracking-[0.15em] mb-6 border-l-4 border-primary-container pl-4">Taxation Note</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                            Investments are typically reported via Schedule K-1. Tax treatment varies significantly by strategy (Short-term capital gains vs 60/40 rule for futures). Investors should consult with a Tier 1 tax advisor regarding UBTI and treaty implications.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- NavigationDrawer (Simulated for Web/Context) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full w-72 flex-col bg-[#f3f4f0] dark:bg-[#1a1c1a] shadow-[32px_0_32px_rgba(26,28,26,0.04)] z-40 transition-all">
+<div class="p-8 flex flex-col gap-2 border-b border-outline-variant/20">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary-container rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[#ffdea5] text-lg">account_balance</span>
+</div>
+<h2 class="font-headline italic text-xl text-[#0D1B2A]">Sovereign Wealth</h2>
+</div>
+<p class="font-['Manrope'] font-medium text-[10px] text-[#47607e] tracking-widest uppercase">Institutional Grade AIF</p>
+</div>
+<div class="flex-1 py-8 px-4 space-y-2">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-[#47607e] opacity-70 hover:bg-[#ffffff80] transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-['Manrope'] font-medium text-sm tracking-wide">Market Neutral</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg bg-white text-[#0D1B2A] font-bold shadow-sm" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span class="font-['Manrope'] font-medium text-sm tracking-wide">Multi-Strategy</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-[#47607e] opacity-70 hover:bg-[#ffffff80] transition-all" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-['Manrope'] font-medium text-sm tracking-wide">Real Estate</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-[#47607e] opacity-70 hover:bg-[#ffffff80] transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Manrope'] font-medium text-sm tracking-wide">Portfolio Overview</span>
+</a>
+</div>
+<div class="p-8 border-t border-outline-variant/20">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center font-bold">PW</div>
+<div>
+<p class="text-xs font-bold text-primary-container">Tier 1 Access</p>
+<p class="text-[10px] text-secondary">Private Ledger</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 md:hidden bg-[#0D1B2A]/90 backdrop-blur-xl">
+<div class="flex flex-col items-center justify-center text-[#47607e]">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] mt-1">Strategies</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#ffdea5] scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">layers</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] mt-1">Active</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#47607e]">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] mt-1">Insights</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#47607e]">
+<span class="material-symbols-outlined">description</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] mt-1">Documents</span>
+</div>
+</nav>
+</body></html>

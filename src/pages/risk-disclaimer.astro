@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Risk Disclaimer | The Sovereign Ledger" currentPage="">
+
+<div class="max-w-3xl mx-auto px-6 md:px-10 py-16">
+  <div class="mb-12">
+    <p class="text-tertiary-fixed-dim text-[10px] font-bold uppercase tracking-[0.3em] mb-4">Legal</p>
+    <h1 class="font-headline text-5xl md:text-6xl font-light text-primary-container mb-6">Risk <span class="italic">Disclaimer</span></h1>
+    <p class="text-on-surface-variant">Effective: January 1, 2025 | Read carefully before proceeding</p>
+  </div>
+
+  <!-- Warning Banner -->
+  <div class="bg-error/5 border border-error/20 p-6 mb-12 flex gap-4 items-start">
+    <span class="material-symbols-outlined text-error text-2xl shrink-0">warning</span>
+    <div>
+      <h3 class="font-headline text-lg text-error mb-2">Important Risk Warning</h3>
+      <p class="text-sm text-on-surface-variant leading-relaxed">Alternative Investment Funds carry significant risks including potential total loss of capital. They are suitable only for sophisticated investors who can withstand illiquidity and accept high investment risk. Do not invest money you cannot afford to lose entirely.</p>
+    </div>
+  </div>
+
+  <div class="space-y-10 text-on-surface-variant leading-relaxed">
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">1. General Investment Risks</h2>
+      <p>All investments carry risk. The value of investments in Alternative Investment Funds can decrease as well as increase. You may receive less than you invested. Past performance data presented on this platform is historical and is not a reliable indicator of future performance or results.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">2. Liquidity Risk</h2>
+      <p>AIFs are primarily illiquid instruments. Category I and II AIFs are close-ended with tenures of 3–10 years. Early exit is generally not available, or subject to significant penalties. You should only invest capital that you can commit for the full stated tenure of the fund.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">3. Concentration Risk</h2>
+      <p>Unlike mutual funds, AIF portfolios may be concentrated in a small number of companies, sectors, or geographies. A single adverse event affecting a portfolio company can materially impact overall fund returns.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">4. Leverage Risk (Category III)</h2>
+      <p>Category III AIFs may use leverage through derivatives. Leverage amplifies both gains and losses. In adverse market conditions, leveraged funds can lose significantly more than 100% of invested NAV if leverage ratios are not properly managed. SEBI prescribes leverage limits which funds must adhere to.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">5. Regulatory & Tax Risk</h2>
+      <p>Tax treatment of AIF investments may change. Budget amendments, SEBI regulatory changes, or judicial rulings may affect the tax efficiency of your investment. Category III AIF investors are taxed at Maximum Marginal Rate at the fund level. Seek independent tax advice before investing.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">6. Manager & Operational Risk</h2>
+      <p>Returns depend materially on the skill and judgment of the Fund Manager. Key person departure, operational failures, or conflicts of interest may adversely impact fund performance. Conduct independent due diligence on the fund manager's track record, team stability, and operational infrastructure before committing capital.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">7. Not Investment Advice</h2>
+      <p>Nothing on The Sovereign Ledger platform constitutes personalized investment advice. AlternaVest is not a SEBI-registered Investment Adviser under the IA Regulations. Before investing, consult a SEBI-registered Investment Adviser, your tax consultant, and legal advisor to assess suitability for your specific financial situation.</p>
+    </section>
+  </div>
+
+  <div class="mt-16 pt-8 border-t border-outline-variant/20 flex flex-col sm:flex-row gap-4">
+    <a href="/privacy" class="text-xs font-label uppercase tracking-widest text-secondary hover:text-primary-container transition-colors">Privacy Policy</a>
+    <a href="/terms" class="text-xs font-label uppercase tracking-widest text-secondary hover:text-primary-container transition-colors">Terms of Service</a>
+    <a href="/regulatory-disclosure" class="text-xs font-label uppercase tracking-widest text-secondary hover:text-primary-container transition-colors">Regulatory Disclosure</a>
+  </div>
+</div>
+
+</BaseLayout>

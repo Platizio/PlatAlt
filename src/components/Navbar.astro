@@ -1,0 +1,167 @@
+---
+export interface Props {
+  currentPage?: string;
+}
+const { currentPage = '' } = Astro.props;
+
+const isActive = (page: string) => currentPage === page;
+const isSection = (section: string) => currentPage.startsWith(section);
+---
+
+<header class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-xl shadow-sm border-b border-white/5">
+  <div class="flex justify-between items-center px-6 lg:px-10 py-4 max-w-screen-2xl mx-auto w-full">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 shrink-0">
+      <span class="material-symbols-outlined text-amber-200 text-2xl" style="font-variation-settings:'FILL' 1,'wght' 300,'GRAD' 0,'opsz' 24">account_balance</span>
+      <span class="text-lg font-serif italic text-amber-200 tracking-tight">The Sovereign Ledger</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden lg:flex items-center gap-1">
+
+      <!-- Home -->
+      <a href="/"
+         class={`px-4 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isActive('home') ? 'text-amber-200' : 'text-slate-400 hover:text-amber-100'}`}>
+        Home
+      </a>
+
+      <!-- Products Dropdown -->
+      <div class="nav-item relative group px-1">
+        <button class={`flex items-center gap-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isSection('products') || isSection('funds') || isActive('explore') || isActive('compare') || isActive('amc') ? 'text-amber-200' : 'text-slate-400 hover:text-amber-100'}`}>
+          Products
+          <span class="material-symbols-outlined text-sm">expand_more</span>
+        </button>
+        <div class="nav-dropdown hidden group-hover:block pt-2">
+          <div class="bg-slate-900 border border-slate-700 shadow-2xl min-w-[820px] grid grid-cols-4 gap-0">
+            <!-- Tools -->
+            <div class="p-6 border-r border-slate-700">
+              <p class="text-amber-200/60 text-[9px] font-bold uppercase tracking-widest mb-4">Tools</p>
+              <ul class="space-y-2">
+                <li><a href="/explore" class="flex items-center gap-2 text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors"><span class="material-symbols-outlined text-sm">search</span>Fund Explorer</a></li>
+                <li><a href="/compare" class="flex items-center gap-2 text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors"><span class="material-symbols-outlined text-sm">compare_arrows</span>Compare Funds</a></li>
+                <li><a href="/amc" class="flex items-center gap-2 text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors"><span class="material-symbols-outlined text-sm">corporate_fare</span>AMC Directory</a></li>
+              </ul>
+            </div>
+            <!-- Cat I AIF -->
+            <div class="p-6 border-r border-slate-700">
+              <p class="text-amber-200/60 text-[9px] font-bold uppercase tracking-widest mb-1">Category I AIF</p>
+              <a href="/knowledge/aif/category-i" class="text-amber-200/40 text-[9px] tracking-wide hover:text-amber-200/70 transition-colors block mb-3">View all →</a>
+              <ul class="space-y-1.5">
+                <li><a href="/knowledge/aif/category-i/venture-capital" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Venture Capital</a></li>
+                <li><a href="/knowledge/aif/category-i/angel" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Angel Funds</a></li>
+                <li><a href="/knowledge/aif/category-i/infrastructure" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Infrastructure</a></li>
+                <li><a href="/knowledge/aif/category-i/social-venture" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Social Venture</a></li>
+                <li><a href="/knowledge/aif/category-i/sme" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">SME Funds</a></li>
+              </ul>
+            </div>
+            <!-- Cat II AIF -->
+            <div class="p-6 border-r border-slate-700">
+              <p class="text-amber-200/60 text-[9px] font-bold uppercase tracking-widest mb-1">Category II AIF</p>
+              <a href="/knowledge/aif/category-ii" class="text-amber-200/40 text-[9px] tracking-wide hover:text-amber-200/70 transition-colors block mb-3">View all →</a>
+              <ul class="space-y-1.5">
+                <li><a href="/knowledge/aif/category-ii/private-equity" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Private Equity</a></li>
+                <li><a href="/knowledge/aif/category-ii/debt" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Debt Funds</a></li>
+                <li><a href="/knowledge/aif/category-ii/real-estate" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Real Estate</a></li>
+                <li><a href="/knowledge/aif/category-ii/distressed-assets" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Distressed Assets</a></li>
+              </ul>
+            </div>
+            <!-- Cat III AIF -->
+            <div class="p-6">
+              <p class="text-amber-200/60 text-[9px] font-bold uppercase tracking-widest mb-1">Category III AIF</p>
+              <a href="/knowledge/aif/category-iii" class="text-amber-200/40 text-[9px] tracking-wide hover:text-amber-200/70 transition-colors block mb-3">View all →</a>
+              <ul class="space-y-1.5">
+                <li><a href="/knowledge/aif/category-iii/long-only" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Long Only</a></li>
+                <li><a href="/knowledge/aif/category-iii/long-short" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Long Short</a></li>
+                <li><a href="/knowledge/aif/category-iii/multi-strategy" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Multi Strategy</a></li>
+                <li><a href="/knowledge/aif/category-iii/long-short-market-neutral" class="text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors block">Market Neutral</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Knowledge Dropdown -->
+      <div class="nav-item relative group px-1">
+        <button class={`flex items-center gap-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isSection('knowledge') || isActive('media') || isActive('gift-city') ? 'text-amber-200' : 'text-slate-400 hover:text-amber-100'}`}>
+          Knowledge
+          <span class="material-symbols-outlined text-sm">expand_more</span>
+        </button>
+        <div class="nav-dropdown hidden group-hover:block pt-2">
+          <div class="bg-slate-900 border border-slate-700 shadow-2xl min-w-[280px]">
+            <div class="p-6 space-y-2">
+              <a href="/knowledge/aif" class="flex items-center gap-3 text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-700/50">
+                <span class="material-symbols-outlined text-sm">school</span> AIF Knowledge Center
+              </a>
+              <a href="/knowledge/pms" class="flex items-center gap-3 text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-700/50">
+                <span class="material-symbols-outlined text-sm">analytics</span> PMS Knowledge Centre
+              </a>
+              <a href="/knowledge/aif-comparison" class="flex items-center gap-3 text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-700/50">
+                <span class="material-symbols-outlined text-sm">compare</span> AIF Comparison
+              </a>
+              <a href="/media" class="flex items-center gap-3 text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-700/50">
+                <span class="material-symbols-outlined text-sm">article</span> Market Insights
+              </a>
+              <a href="/gift-city" class="flex items-center gap-3 text-slate-300 hover:text-amber-200 text-[11px] tracking-wide transition-colors py-1.5">
+                <span class="material-symbols-outlined text-sm">location_city</span> GIFT City IFSC
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About -->
+      <a href="/about"
+         class={`px-4 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isActive('about') ? 'text-amber-200' : 'text-slate-400 hover:text-amber-100'}`}>
+        About
+      </a>
+
+      <!-- Partner -->
+      <a href="/partner"
+         class={`px-4 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isActive('partner') ? 'text-amber-200' : 'text-slate-400 hover:text-amber-100'}`}>
+        Partner
+      </a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="flex items-center gap-3">
+      <a href="/login"
+         class="hidden md:flex items-center gap-1.5 text-slate-400 hover:text-amber-200 text-[11px] font-semibold uppercase tracking-widest transition-colors">
+        <span class="material-symbols-outlined text-sm">person</span>
+        Login
+      </a>
+      <button type="button"
+              class="js-open-consult bg-amber-200 text-slate-900 px-5 py-2 text-[11px] font-bold uppercase tracking-widest hover:bg-amber-100 transition-all active:scale-95 hidden md:inline-flex items-center cursor-pointer">
+        Consult
+      </button>
+      <!-- Mobile Hamburger -->
+      <button id="mobile-menu-btn" class="lg:hidden text-amber-200 p-1" aria-label="Menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Slide-down Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-slate-900 border-t border-slate-700 px-6 pb-6 pt-4">
+    <nav class="space-y-1">
+      <a href="/" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-300 hover:text-amber-200 border-b border-slate-700/50">Home</a>
+      <a href="/explore" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-300 hover:text-amber-200 border-b border-slate-700/50">Fund Explorer</a>
+      <a href="/compare" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-300 hover:text-amber-200 border-b border-slate-700/50">Compare Funds</a>
+      <a href="/amc" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-300 hover:text-amber-200 border-b border-slate-700/50">AMC Directory</a>
+      <a href="/knowledge/aif" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-300 hover:text-amber-200 border-b border-slate-700/50">AIF Knowledge</a>
+      <a href="/knowledge/pms" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-300 hover:text-amber-200 border-b border-slate-700/50">PMS Knowledge</a>
+      <a href="/media" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-300 hover:text-amber-200 border-b border-slate-700/50">Insights</a>
+      <a href="/about" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-300 hover:text-amber-200 border-b border-slate-700/50">About</a>
+      <a href="/partner" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-300 hover:text-amber-200 border-b border-slate-700/50">Partner With Us</a>
+      <a href="/login" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-amber-200">Login</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

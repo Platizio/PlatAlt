@@ -1,0 +1,379 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const amcs = [
+  {
+    slug: 'motilal-oswal-amc',
+    name: 'Motilal Oswal AMC',
+    tagline: 'Pioneering quality investing through two decades of Buy Right, Sit Tight discipline.',
+    icon: 'account_balance',
+    aum: '₹38,500 Cr',
+    strategies: 12,
+    categoryType: 'PMS',
+    categoryLabel: 'PMS',
+  },
+  {
+    slug: 'iifl-asset-management',
+    name: 'IIFL Asset Management',
+    tagline: 'Rigorous research and disciplined risk management across PMS and multi-strategy AIF.',
+    icon: 'analytics',
+    aum: '₹15,200 Cr',
+    strategies: 18,
+    categoryType: 'PMS',
+    categoryLabel: 'PMS · AIF Cat III',
+  },
+  {
+    slug: 'kotak-mahindra-amc',
+    name: 'Kotak Mahindra AMC',
+    tagline: 'Decades of institutional trust delivering multi-asset investment excellence across India.',
+    icon: 'corporate_fare',
+    aum: '₹4,80,000 Cr',
+    strategies: 22,
+    categoryType: 'PMS',
+    categoryLabel: 'PMS · AIF Cat II',
+  },
+  {
+    slug: 'blume-ventures',
+    name: 'Blume Ventures',
+    tagline: "Backing India's most audacious founders at the earliest institutional stage.",
+    icon: 'rocket_launch',
+    aum: '₹4,800 Cr',
+    strategies: 4,
+    categoryType: 'AIF_CAT1',
+    categoryLabel: 'AIF Category I',
+  },
+  {
+    slug: 'indian-angel-network',
+    name: 'Indian Angel Network',
+    tagline: "Connecting India's most experienced operators with the nation's promising early-stage entrepreneurs.",
+    icon: 'groups',
+    aum: '₹1,200 Cr',
+    strategies: 3,
+    categoryType: 'AIF_CAT1',
+    categoryLabel: 'AIF Category I',
+  },
+  {
+    slug: 'nhai-infrastructure-trust',
+    name: 'NHAI Infrastructure Trust',
+    tagline: "Channelling institutional capital into India's national highway network under sovereign backing.",
+    icon: 'construction',
+    aum: '₹21,000 Cr',
+    strategies: 2,
+    categoryType: 'AIF_CAT1',
+    categoryLabel: 'AIF Category I',
+  },
+  {
+    slug: 'aavishkaar-capital',
+    name: 'Aavishkaar Capital',
+    tagline: "Investing at the intersection of financial returns and transformative social outcomes for India's underserved.",
+    icon: 'volunteer_activism',
+    aum: '₹2,800 Cr',
+    strategies: 5,
+    categoryType: 'AIF_CAT1',
+    categoryLabel: 'AIF Category I',
+  },
+  {
+    slug: 'edelweiss-asset-management',
+    name: 'Edelweiss Asset Management',
+    tagline: 'Structured creativity in credit, equity, and alternatives across the full corporate capital stack.',
+    icon: 'workspace_premium',
+    aum: '₹42,000 Cr',
+    strategies: 15,
+    categoryType: 'AIF_CAT1',
+    categoryLabel: 'AIF Cat I · AIF Cat II',
+  },
+  {
+    slug: 'chryscapital',
+    name: 'ChrysCapital',
+    tagline: "Twenty-five years of compounding institutional capital in India's most durable growth businesses.",
+    icon: 'business_center',
+    aum: '₹1,05,000 Cr',
+    strategies: 9,
+    categoryType: 'AIF_CAT2',
+    categoryLabel: 'AIF Category II',
+  },
+  {
+    slug: 'altico-capital',
+    name: 'Altico Capital',
+    tagline: "Contrarian capital deployed in India's most complex distressed and special situations.",
+    icon: 'warning_amber',
+    aum: '₹6,800 Cr',
+    strategies: 3,
+    categoryType: 'AIF_CAT2',
+    categoryLabel: 'AIF Category II',
+  },
+  {
+    slug: 'marcellus-investment-managers',
+    name: 'Marcellus Investment Managers',
+    tagline: "Owning India's most durable compounding machines — businesses so well-built that time is their greatest advantage.",
+    icon: 'trending_up',
+    aum: '₹14,500 Cr',
+    strategies: 4,
+    categoryType: 'AIF_CAT3',
+    categoryLabel: 'AIF Category III',
+  },
+  {
+    slug: 'avendus-capital',
+    name: 'Avendus Capital',
+    tagline: 'Alpha-first, benchmark-agnostic — generating absolute returns through disciplined long/short equity.',
+    icon: 'sync_alt',
+    aum: '₹85,000 Cr',
+    strategies: 11,
+    categoryType: 'AIF_CAT3',
+    categoryLabel: 'AIF Category III',
+  },
+  {
+    slug: 'tata-asset-management',
+    name: 'Tata Asset Management',
+    tagline: "The trust of the Tata name applied to India's most sophisticated market-neutral investment strategies.",
+    icon: 'balance',
+    aum: '₹1,55,000 Cr',
+    strategies: 32,
+    categoryType: 'AIF_CAT3',
+    categoryLabel: 'AIF Category III',
+  },
+  {
+    slug: 'kotak-ifsc-asset-management',
+    name: 'Kotak IFSC Asset Management',
+    tagline: 'Your gateway to USD-denominated global investment opportunities from GIFT City IFSC.',
+    icon: 'public',
+    aum: '₹8,400 Cr',
+    strategies: 5,
+    categoryType: 'GIFT_CITY',
+    categoryLabel: 'GIFT City IFSC',
+  },
+  {
+    slug: 'mirae-asset-ifsc',
+    name: 'Mirae Asset IFSC',
+    tagline: "Democratising global investment access through GIFT City's innovative IFSC framework.",
+    icon: 'language',
+    aum: '₹2,800 Cr',
+    strategies: 3,
+    categoryType: 'GIFT_CITY',
+    categoryLabel: 'GIFT City IFSC',
+  },
+];
+
+const filterTabs = [
+  { label: 'All', value: 'ALL' },
+  { label: 'PMS', value: 'PMS' },
+  { label: 'AIF Cat I', value: 'AIF_CAT1' },
+  { label: 'AIF Cat II', value: 'AIF_CAT2' },
+  { label: 'AIF Cat III', value: 'AIF_CAT3' },
+  { label: 'GIFT City IFSC', value: 'GIFT_CITY' },
+];
+
+// Maps categoryType → Tailwind badge classes (dark-theme)
+const badgeClass: Record<string, string> = {
+  PMS:       'bg-amber-900/40 text-amber-200 border border-amber-600/40',
+  AIF_CAT1:  'bg-emerald-900/40 text-emerald-300 border border-emerald-600/40',
+  AIF_CAT2:  'bg-blue-900/40 text-blue-300 border border-blue-600/40',
+  AIF_CAT3:  'bg-violet-900/40 text-violet-300 border border-violet-600/40',
+  GIFT_CITY: 'bg-indigo-900/40 text-indigo-300 border border-indigo-600/40',
+};
+
+// Maps categoryType → icon accent colour
+const iconClass: Record<string, string> = {
+  PMS:       'text-amber-300',
+  AIF_CAT1:  'text-emerald-400',
+  AIF_CAT2:  'text-blue-400',
+  AIF_CAT3:  'text-violet-400',
+  GIFT_CITY: 'text-indigo-400',
+};
+---
+
+<BaseLayout title="AMC Directory | The Sovereign Ledger" currentPage="amc">
+
+<div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
+
+  <!-- Hero ──────────────────────────────────────────────────── -->
+  <section class="py-16 md:py-20 border-b border-outline-variant/20 mb-10">
+    <span class="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-4 block">Asset Management Companies</span>
+    <div class="flex flex-col md:flex-row md:items-end gap-10 justify-between">
+      <div>
+        <h1 class="text-5xl md:text-7xl font-headline text-primary-container leading-tight">
+          Institutional <span class="italic font-light">Directory</span>
+        </h1>
+        <p class="mt-4 text-on-surface-variant max-w-xl text-base leading-relaxed">
+          Profiles of premier asset management companies offering institutional-grade PMS, AIF, and GIFT City strategies — curated from funds featured in the Sovereign Ledger.
+        </p>
+      </div>
+      <!-- Search -->
+      <div class="w-full md:w-80 shrink-0">
+        <div class="relative group">
+          <span class="material-symbols-outlined absolute left-0 bottom-2 text-outline group-focus-within:text-tertiary-fixed transition-colors">search</span>
+          <input
+            id="amc-search"
+            class="w-full bg-transparent border-b border-outline py-2 pl-8 text-sm focus:border-tertiary-fixed transition-all placeholder:text-outline-variant outline-none"
+            placeholder="Search asset managers…"
+            type="text"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Tabs ────────────────────────────────────────────── -->
+  <div class="flex flex-wrap gap-2 mb-4" id="filter-tabs">
+    {filterTabs.map((tab, i) => (
+      <button
+        data-filter={tab.value}
+        class={`filter-tab px-5 py-2 text-[11px] uppercase font-bold tracking-widest transition-all border ${
+          i === 0
+            ? 'bg-primary-container text-white border-primary-container'
+            : 'border-outline-variant text-on-surface-variant hover:border-secondary hover:text-secondary'
+        }`}>
+        {tab.label}
+      </button>
+    ))}
+  </div>
+
+  <!-- Count label -->
+  <p class="text-xs text-outline mb-8 tracking-wide" id="amc-count">Showing <span id="count-num">{amcs.length}</span> of {amcs.length} managers</p>
+
+  <!-- AMC Grid ───────────────────────────────────────────────── -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="amc-grid">
+    {amcs.map((amc) => (
+      <a
+        href={`/amc/${amc.slug}`}
+        data-category={amc.categoryType}
+        data-name={amc.name.toLowerCase()}
+        class="amc-card group bg-surface-container-lowest p-8 flex flex-col border border-outline-variant/10 hover:border-secondary/30 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+
+        <!-- Top row: icon + badge -->
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-12 h-12 bg-surface-container flex items-center justify-center shrink-0">
+            <span class={`material-symbols-outlined text-2xl ${iconClass[amc.categoryType]}`}>{amc.icon}</span>
+          </div>
+          <span class={`text-[10px] px-2 py-1 uppercase font-bold tracking-widest ${badgeClass[amc.categoryType]}`}>
+            {amc.categoryLabel}
+          </span>
+        </div>
+
+        <!-- Name + tagline -->
+        <h3 class="font-headline text-xl text-primary-container mb-2 group-hover:translate-x-0.5 transition-transform leading-tight">
+          {amc.name}
+        </h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed flex-grow mb-6">
+          {amc.tagline}
+        </p>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 gap-4 pt-5 border-t border-surface-container">
+          <div>
+            <span class="block text-[10px] uppercase text-outline font-bold tracking-tighter mb-1">AUM</span>
+            <span class="text-base font-bold text-on-surface">{amc.aum}</span>
+          </div>
+          <div>
+            <span class="block text-[10px] uppercase text-outline font-bold tracking-tighter mb-1">Strategies</span>
+            <span class="text-base font-bold text-on-surface">{amc.strategies}</span>
+          </div>
+        </div>
+
+        <!-- View profile arrow -->
+        <div class="mt-4 flex items-center gap-1 text-secondary text-[11px] font-semibold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+          View Profile
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <!-- No results message (hidden by default) -->
+  <div id="no-results" class="hidden text-center py-20">
+    <span class="material-symbols-outlined text-4xl text-outline mb-4 block">manage_search</span>
+    <p class="text-on-surface-variant text-sm">No asset managers found matching your search.</p>
+    <button id="reset-search" class="mt-4 text-secondary text-[11px] font-bold uppercase tracking-widest hover:underline">Clear Filters</button>
+  </div>
+
+  <!-- CTA ────────────────────────────────────────────────────── -->
+  <div class="bg-surface-container-low border border-outline-variant/20 px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div>
+      <h3 class="font-headline text-2xl text-primary-container mb-1">Are you an asset manager?</h3>
+      <p class="text-sm text-on-surface-variant">Apply for institutional listing on The Sovereign Ledger platform.</p>
+    </div>
+    <a href="/partner" class="inline-flex items-center gap-2 bg-primary-container text-white px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:bg-secondary transition-colors shrink-0">
+      Partnership Enquiry <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    </a>
+  </div>
+
+</div>
+
+<!-- ─── Client-side filter + search ──────────────────────────── -->
+<script is:inline>
+(function () {
+  const cards      = Array.from(document.querySelectorAll('.amc-card'));
+  const tabs       = Array.from(document.querySelectorAll('.filter-tab'));
+  const searchEl   = document.getElementById('amc-search');
+  const countEl    = document.getElementById('count-num');
+  const noResults  = document.getElementById('no-results');
+  const gridEl     = document.getElementById('amc-grid');
+  const resetBtn   = document.getElementById('reset-search');
+  const total      = cards.length;
+
+  let activeFilter = 'ALL';
+  let searchQuery  = '';
+
+  function applyFilters() {
+    let visible = 0;
+    cards.forEach(function (card) {
+      const cat  = card.dataset.category;
+      const name = card.dataset.name;
+      const matchesTab    = activeFilter === 'ALL' || cat === activeFilter;
+      const matchesSearch = searchQuery === '' || name.includes(searchQuery);
+      if (matchesTab && matchesSearch) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    countEl.textContent = visible;
+    noResults.classList.toggle('hidden', visible > 0);
+    gridEl.classList.toggle('hidden', visible === 0);
+  }
+
+  // Tab clicks
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      activeFilter = tab.dataset.filter;
+      // Update active styles
+      tabs.forEach(function (t) {
+        const isActive = t.dataset.filter === activeFilter;
+        t.classList.toggle('bg-primary-container', isActive);
+        t.classList.toggle('text-white',           isActive);
+        t.classList.toggle('border-primary-container', isActive);
+        t.classList.toggle('border-outline-variant',   !isActive);
+        t.classList.toggle('text-on-surface-variant',  !isActive);
+      });
+      applyFilters();
+    });
+  });
+
+  // Search input
+  searchEl && searchEl.addEventListener('input', function () {
+    searchQuery = (searchEl.value || '').toLowerCase().trim();
+    applyFilters();
+  });
+
+  // Reset from no-results button
+  resetBtn && resetBtn.addEventListener('click', function () {
+    searchQuery  = '';
+    activeFilter = 'ALL';
+    if (searchEl) searchEl.value = '';
+    tabs.forEach(function (t) {
+      const isActive = t.dataset.filter === 'ALL';
+      t.classList.toggle('bg-primary-container', isActive);
+      t.classList.toggle('text-white',           isActive);
+      t.classList.toggle('border-primary-container', isActive);
+      t.classList.toggle('border-outline-variant',   !isActive);
+      t.classList.toggle('text-on-surface-variant',  !isActive);
+    });
+    applyFilters();
+  });
+})();
+</script>
+
+</BaseLayout>

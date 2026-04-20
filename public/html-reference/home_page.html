@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Sovereign Ledger | AlternaVest Capital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#d6e4f9",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#d1e4ff",
+                    "on-primary-fixed": "#0f1c2c",
+                    "surface-container": "#edeeea",
+                    "surface-container-highest": "#e2e3df",
+                    "outline-variant": "#c4c6cc",
+                    "on-tertiary-container": "#a17f3b",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#48617e",
+                    "on-tertiary-fixed-variant": "#5d4201",
+                    "on-background": "#1a1c1a",
+                    "background": "#f9faf5",
+                    "on-surface-variant": "#44474c",
+                    "on-secondary-fixed": "#001d36",
+                    "outline": "#74777d",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#261900",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#afc9ea",
+                    "surface-variant": "#e2e3df",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#d9dad6",
+                    "surface-bright": "#f9faf5",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#2f312e",
+                    "tertiary-container": "#261900",
+                    "on-secondary-fixed-variant": "#2f4865",
+                    "on-primary-container": "#778598",
+                    "primary-fixed-dim": "#bac8dc",
+                    "inverse-on-surface": "#f0f1ed",
+                    "secondary-container": "#c2dcff",
+                    "tertiary": "#000000",
+                    "surface-container-low": "#f3f4f0",
+                    "secondary": "#47607e",
+                    "surface-container-high": "#e8e8e4",
+                    "surface": "#f9faf5",
+                    "on-surface": "#1a1c1a",
+                    "primary-container": "#0f1c2c",
+                    "on-primary-fixed-variant": "#3a4859",
+                    "tertiary-fixed-dim": "#e9c176",
+                    "primary": "#000000",
+                    "surface-tint": "#525f71",
+                    "tertiary-fixed": "#ffdea5",
+                    "inverse-primary": "#bac8dc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"],
+                    "serif": ["Cormorant Garamond", "serif"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; background-color: #f9faf5; color: #1a1c1a; }
+        h1, h2, h3 { font-family: 'Newsreader', serif; }
+        .hero-serif { font-family: 'Cormorant Garamond', serif; }
+        .ticker-scroll { animation: ticker 40s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md dark:bg-slate-950/80 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="text-amber-200 transition-all scale-95 active:opacity-80">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-xl font-serif tracking-tight text-slate-100 dark:text-slate-50 uppercase tracking-widest">The Sovereign Ledger</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-amber-200 font-bold font-sans text-xs uppercase tracking-widest hover:text-amber-200 transition-colors duration-300" href="#">Home</a>
+<a class="text-slate-400 font-sans text-xs uppercase tracking-widest hover:text-amber-200 transition-colors duration-300" href="#">Products</a>
+<a class="text-slate-400 font-sans text-xs uppercase tracking-widest hover:text-amber-200 transition-colors duration-300" href="#">Knowledge</a>
+<a class="text-slate-400 font-sans text-xs uppercase tracking-widest hover:text-amber-200 transition-colors duration-300" href="#">About</a>
+</nav>
+<button class="bg-amber-200 text-slate-900 px-5 py-2 text-xs font-bold uppercase tracking-widest hover:bg-amber-100 transition-all active:scale-95">
+                Consult
+            </button>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[751px] flex items-center overflow-hidden bg-primary-container">
+<div class="absolute inset-0 opacity-40">
+<img class="w-full h-full object-cover" data-alt="Modern architectural glass building reflecting a clear blue sky, high-angle view, minimalist and corporate aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8uDef_MfPsZRmcftAnNyxUtAhILTxX0PwtHCNDvqYVzdQF2b6JGFaFAgbXLQYszoOnWQnUBXAdCQqmk9Sk2blfjr3kDbxfxOH1MPjQYxwzYenTSMmgalEnqkXMWZlP9W2y2UXbhZjDzahiG6XGxrfgvPKeGO0pfJuGLZv6Kyy-DmH9cU9hSSLFbSmFo0qbY0f6Cjb59sz-MMxS8pL09kHtPrOPIXM0MRjhjslqxqSDj0MxSLDCDPEbUmj-4FGL-dNqxhab_xSri0"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
+<div class="container mx-auto px-6 relative z-10 grid md:grid-cols-12 gap-8">
+<div class="md:col-span-8 lg:col-span-7">
+<h2 class="text-5xl md:text-8xl text-white hero-serif leading-[1.1] mb-8 font-light italic">
+                        Curated PMS and <br/>
+<span class="text-tertiary-fixed not-italic font-semibold">AIF Discovery</span>
+</h2>
+<p class="text-slate-300 text-lg md:text-xl max-w-xl mb-12 font-light leading-relaxed">
+                        Access exclusive alternative investment frameworks designed for the discerning capital allocator. Precision, transparency, and institutional-grade rigor.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-tertiary-fixed text-on-tertiary-fixed px-10 py-4 font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all flex items-center gap-2">
+                            Explore Products
+                            <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="border border-slate-500 text-white px-10 py-4 font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-all">
+                            Book a Consultation
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Ticker Strip -->
+<section class="bg-surface-container-low border-y border-outline-variant/10 py-6 overflow-hidden">
+<div class="flex whitespace-nowrap ticker-scroll items-center">
+<div class="flex items-center gap-12 px-6">
+<span class="flex items-center gap-2 text-primary-container font-bold text-sm tracking-tighter uppercase"><span class="w-2 h-2 rounded-full bg-green-500"></span> Renaissance Alpha Fund +18.4%</span>
+<span class="text-outline mx-4">|</span>
+<span class="flex items-center gap-2 text-primary-container font-bold text-sm tracking-tighter uppercase"><span class="w-2 h-2 rounded-full bg-green-500"></span> Strategic Growth PMS +12.1%</span>
+<span class="text-outline mx-4">|</span>
+<span class="flex items-center gap-2 text-primary-container font-bold text-sm tracking-tighter uppercase"><span class="w-2 h-2 rounded-full bg-amber-500"></span> Global Quant AIF +4.8%</span>
+<span class="text-outline mx-4">|</span>
+<span class="flex items-center gap-2 text-primary-container font-bold text-sm tracking-tighter uppercase"><span class="w-2 h-2 rounded-full bg-green-500"></span> Sovereign Yield Fund +9.2%</span>
+</div>
+<!-- Duplicate for seamless scroll -->
+<div class="flex items-center gap-12 px-6">
+<span class="flex items-center gap-2 text-primary-container font-bold text-sm tracking-tighter uppercase"><span class="w-2 h-2 rounded-full bg-green-500"></span> Renaissance Alpha Fund +18.4%</span>
+<span class="text-outline mx-4">|</span>
+<span class="flex items-center gap-2 text-primary-container font-bold text-sm tracking-tighter uppercase"><span class="w-2 h-2 rounded-full bg-green-500"></span> Strategic Growth PMS +12.1%</span>
+<span class="text-outline mx-4">|</span>
+<span class="flex items-center gap-2 text-primary-container font-bold text-sm tracking-tighter uppercase"><span class="w-2 h-2 rounded-full bg-amber-500"></span> Global Quant AIF +4.8%</span>
+<span class="text-outline mx-4">|</span>
+<span class="flex items-center gap-2 text-primary-container font-bold text-sm tracking-tighter uppercase"><span class="w-2 h-2 rounded-full bg-green-500"></span> Sovereign Yield Fund +9.2%</span>
+</div>
+</div>
+</section>
+<!-- Investment Journey (Asymmetric Layout) -->
+<section class="py-24 px-6 container mx-auto">
+<div class="grid md:grid-cols-12 gap-16 items-start">
+<div class="md:col-span-5 sticky top-32">
+<h3 class="text-4xl md:text-6xl mb-6 leading-tight">Your Investment <br/><span class="italic text-secondary">Journey</span></h3>
+<p class="text-on-surface-variant font-light leading-relaxed max-w-sm mb-8">
+                        We guide you through the complexities of alternative asset classes with a structured, high-touch approach tailored for HNIs.
+                    </p>
+<div class="h-[1px] w-24 bg-tertiary-fixed"></div>
+</div>
+<div class="md:col-span-7 space-y-12">
+<div class="flex gap-8 group">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-high flex items-center justify-center transition-colors group-hover:bg-primary-container group-hover:text-tertiary-fixed">
+<span class="material-symbols-outlined text-3xl" data-icon="phone">phone</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2 uppercase tracking-wide">01. Discovery Session</h4>
+<p class="text-on-surface-variant font-light">A personal consultation to map your risk appetite and long-term liquidity requirements within the Sovereign ecosystem.</p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-high flex items-center justify-center transition-colors group-hover:bg-primary-container group-hover:text-tertiary-fixed">
+<span class="material-symbols-outlined text-3xl" data-icon="search">search</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2 uppercase tracking-wide">02. Curated Selection</h4>
+<p class="text-on-surface-variant font-light">Leverage our proprietary vetting process to filter through thousands of PMS and AIF strategies to find the top 1%.</p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-high flex items-center justify-center transition-colors group-hover:bg-primary-container group-hover:text-tertiary-fixed">
+<span class="material-symbols-outlined text-3xl" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2 uppercase tracking-wide">03. Portfolio Balancing</h4>
+<p class="text-on-surface-variant font-light">Implementation of selected strategies with continuous monitoring and dynamic rebalancing across market cycles.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Research & Insights (Bento Grid) -->
+<section class="py-24 bg-surface-container-low">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<span class="text-xs font-bold uppercase tracking-[0.3em] text-secondary mb-4 block">Institutional Intelligence</span>
+<h3 class="text-4xl md:text-5xl">Research &amp; <span class="italic">Insights</span></h3>
+</div>
+<div class="flex bg-surface-container p-1 gap-2">
+<button class="px-6 py-2 text-xs font-bold uppercase tracking-widest bg-white shadow-sm">Articles</button>
+<button class="px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-white/50 transition-all">Videos</button>
+<button class="px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-white/50 transition-all">Outlook</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Featured Article -->
+<div class="md:col-span-2 relative h-[500px] group overflow-hidden bg-primary-container">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Dramatic high-contrast close-up of a chessboard with a gold king piece standing alone against dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmyOK5CIXMjb6n3T_afGGLfroTJTihU9ficqS4cKdjdDVV3EHARgW8fGsNjW1pSH6V04nwQCzEHYr3g7HMnhOp64LhdfHt_7vXqxts9fd4yrnhpEjwZhtSZmm7uL9BSwO4HTpATsGDu8zJBNT0ExM8mqrrSyRjsF1AltPXwCHilxNXtceAa259u7568NQi9ZRt7n4gkCWE-Uc2UeA9W6SlKXZUg4M02OU9bMJEadV1SdrgjjwRixSqT57em7lSBAtgVu4upLWTAVY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-10">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold uppercase tracking-widest px-3 py-1 mb-4 inline-block">Market Outlook</span>
+<h4 class="text-3xl md:text-4xl text-white hero-serif mb-4">Navigating the 2024 Liquidity Super-Cycle</h4>
+<p class="text-slate-300 max-w-md font-light mb-6">Expert analysis on how private equity and alternative debt are responding to shifting central bank policies.</p>
+<a class="text-white text-xs font-bold uppercase tracking-widest flex items-center gap-2 group/link" href="#">
+                                Read Full Thesis <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform" data-icon="arrow_right_alt">arrow_right_alt</span>
+</a>
+</div>
+</div>
+<!-- Secondary Items -->
+<div class="space-y-6">
+<div class="bg-white p-8 h-[238px] flex flex-col justify-between hover:shadow-xl transition-shadow">
+<div>
+<span class="text-secondary text-[10px] font-bold uppercase tracking-widest">Video Analysis</span>
+<h5 class="text-xl font-bold mt-4 font-headline leading-tight">The Rise of Multi-Strategy AIFs in Volatile Markets</h5>
+</div>
+<button class="flex items-center gap-3 text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined p-2 border border-outline rounded-full text-sm" data-icon="play_arrow">play_arrow</span> Watch Now
+                            </button>
+</div>
+<div class="bg-primary-container text-white p-8 h-[238px] flex flex-col justify-between hover:bg-slate-900 transition-colors">
+<div>
+<span class="text-tertiary-fixed text-[10px] font-bold uppercase tracking-widest">Whitepaper</span>
+<h5 class="text-xl font-bold mt-4 font-headline leading-tight">Tax-Efficient Portfolio Structuring for Ultra HNIs</h5>
+</div>
+<button class="flex items-center gap-3 text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span> Download PDF
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Band -->
+<section class="py-24 relative overflow-hidden bg-slate-950">
+<div class="absolute inset-0 opacity-20">
+<img class="w-full h-full object-cover" data-alt="Top view of luxury office lounge with leather chairs and abstract art, dim moody cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqZfIxW5sCmCknsrDe8ycd30WoLTyruF8FaKqP8-YM5_YwJkswd_P4fktzSZyfzHucO7LUixCzLL1CAZy1f1TYcSaYwhPaLMAkCYTb7biEpdnW1OREFOXtYvV-ykaqJVoTKKvJsAGT8Uug8qKXRFCZtzxWCNUZxFfDIsH98AssNkmCa2W4mQFlkr9S4Vu8P8S4w7FoVSSnglIW9bJnmZfPlCnoGjiaTuQNuTAkJwQ04sFS-zbZkFfPRtGdcYUj_q8j_Z4pIe6TeUw"/>
+</div>
+<div class="container mx-auto px-6 relative z-10 text-center">
+<h3 class="text-4xl md:text-6xl text-white mb-8 hero-serif italic">Elevate your capital's <span class="not-italic text-tertiary-fixed">potential.</span></h3>
+<p class="text-slate-400 max-w-2xl mx-auto mb-12 text-lg font-light leading-relaxed">
+                    Our private advisors are ready to discuss bespoke opportunities that align with your unique legacy and growth objectives.
+                </p>
+<div class="flex flex-col md:flex-row justify-center gap-6">
+<button class="bg-white text-primary-container px-12 py-5 font-bold text-xs uppercase tracking-[0.2em] hover:bg-tertiary-fixed transition-all">
+                        Request Invitation
+                    </button>
+<button class="border border-white/30 text-white px-12 py-5 font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/5 transition-all">
+                        View Fund Performance
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-container text-white py-20 px-6">
+<div class="container mx-auto">
+<div class="grid md:grid-cols-4 gap-12 mb-20">
+<div class="col-span-2">
+<h2 class="text-2xl font-serif tracking-widest uppercase mb-8">The Sovereign Ledger</h2>
+<p class="text-slate-400 font-light max-w-sm mb-8">A specialized division of AlternaVest Capital focused on institutional-grade discovery for private family offices and high-net-worth allocators.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 border border-slate-700 flex items-center justify-center hover:bg-tertiary-fixed hover:text-on-tertiary-fixed transition-all" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="share">share</span>
+</a>
+<a class="w-10 h-10 border border-slate-700 flex items-center justify-center hover:bg-tertiary-fixed hover:text-on-tertiary-fixed transition-all" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="mail">mail</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-bold text-xs uppercase tracking-[0.3em] text-tertiary-fixed mb-8">Ecosystem</h5>
+<ul class="space-y-4 text-slate-400 text-sm font-light">
+<li><a class="hover:text-white transition-colors" href="#">Portfolio Management</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Alternative Assets</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Global Taxation</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Legal Compliance</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-xs uppercase tracking-[0.3em] text-tertiary-fixed mb-8">Office</h5>
+<p class="text-slate-400 text-sm font-light mb-2">Level 42, Sovereign Tower</p>
+<p class="text-slate-400 text-sm font-light mb-8">Financial District, Mumbai 400001</p>
+<p class="text-white font-bold text-sm">concierge@alternavest.cap</p>
+</div>
+</div>
+<div class="pt-12 border-t border-slate-800 flex flex-col md:row justify-between items-center gap-6">
+<p class="text-slate-500 text-[10px] uppercase tracking-widest">© 2024 AlternaVest Capital. All rights reserved. SEBI Registered RIA.</p>
+<div class="flex gap-8 text-slate-500 text-[10px] uppercase tracking-widest">
+<a class="hover:text-white transition-colors" href="#">Terms</a>
+<a class="hover:text-white transition-colors" href="#">Privacy</a>
+<a class="hover:text-white transition-colors" href="#">Disclosures</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-slate-50/90 backdrop-blur-xl dark:bg-slate-900/90 z-50 border-t border-slate-200/20">
+<a class="flex flex-col items-center justify-center text-slate-900 dark:text-amber-200 scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-sans text-[10px] font-semibold tracking-wider uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 opacity-60" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-sans text-[10px] font-semibold tracking-wider uppercase mt-1">Products</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 opacity-60" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-sans text-[10px] font-semibold tracking-wider uppercase mt-1">Knowledge</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 opacity-60" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-sans text-[10px] font-semibold tracking-wider uppercase mt-1">About</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,342 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Venture Capital Funds | The Sovereign Ledger" currentPage="products/funds/venture-capital">
+
+<div class="max-w-5xl mx-auto px-6 md:px-10 py-8">
+
+  <!-- Breadcrumb -->
+  <div class="flex items-center gap-2 text-secondary mb-8 pt-4 flex-wrap">
+    <a href="/knowledge/aif" class="text-xs uppercase tracking-[0.2em] font-label hover:text-primary-container transition-colors">AIF Knowledge</a>
+    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span class="text-xs uppercase tracking-[0.2em] font-label text-secondary">Cat I AIF</span>
+    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span class="text-xs uppercase tracking-[0.2em] font-label text-on-surface">Venture Capital</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="mb-16">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-tertiary-fixed/20 text-on-tertiary-container text-[10px] font-bold uppercase tracking-widest px-3 py-1">Category I AIF</span>
+    </div>
+    <h1 class="font-headline text-5xl md:text-6xl font-light leading-tight text-primary-container mb-4">
+      Venture Capital <span class="italic">Funds</span>
+    </h1>
+    <p class="text-on-surface-variant leading-relaxed text-lg max-w-2xl">
+      Fueling India's innovation economy through early and growth-stage investments in transformative technology and consumer businesses.
+    </p>
+  </section>
+
+  <!-- Definition -->
+  <section class="mb-16">
+    <div class="bg-surface-container-low p-8 md:p-10">
+      <h2 class="font-headline text-2xl mb-6 text-primary-container">Definition & Purpose</h2>
+      <p class="text-on-surface-variant leading-relaxed mb-8">
+        Venture Capital Funds are Category I AIFs that invest in early-stage startups and growth-stage companies with high potential. These funds provide not just capital but also strategic guidance, network access, and operational support to portfolio companies, typically targeting sectors with scalable, technology-driven business models.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">rocket_launch</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Stage</h4>
+          <p class="text-sm font-semibold">Seed to Series B</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h4>
+          <p class="text-sm font-semibold">Very High</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">payments</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h4>
+          <p class="text-sm font-semibold">&#8377;1 Crore</p>
+        </div>
+        <div class="bg-surface-container-lowest p-4">
+          <span class="material-symbols-outlined text-secondary mb-2 block">schedule</span>
+          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Tenure</h4>
+          <p class="text-sm font-semibold">7&ndash;10 Years</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── KEY CHARACTERISTICS ─────────────────────────────────────────────── -->
+  <section class="mb-16">
+    <h2 class="font-headline text-3xl mb-10 text-primary-container pl-4 border-l-2 border-tertiary-fixed">
+      Key <span class="italic">Characteristics</span>
+    </h2>
+
+    <div class="vc-chars space-y-3">
+
+      <!-- Item 1: Portfolio Diversification -->
+      <div class="vc-char-item group flex gap-6 items-start px-6 py-6 border-l-2 border-transparent
+                  hover:border-tertiary-fixed hover:bg-surface-container-low
+                  transition-all duration-300 cursor-default">
+        <div class="vc-char-icon shrink-0 w-12 h-12 flex items-center justify-center
+                    bg-surface-container text-secondary
+                    group-hover:bg-primary-container group-hover:text-tertiary-fixed
+                    transition-all duration-300">
+          <span class="material-symbols-outlined">diversity_3</span>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-headline text-xl mb-2 text-on-surface group-hover:text-primary-container transition-colors duration-300">
+            Portfolio Diversification
+          </h3>
+          <p class="text-on-surface-variant leading-relaxed text-sm group-hover:text-on-surface transition-colors duration-300">
+            VC funds invest in 15–30 companies accepting that many will fail. Returns are driven by a small number of "outlier" investments that deliver 10x+ returns.
+          </p>
+        </div>
+        <span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1 shrink-0">
+          arrow_forward
+        </span>
+      </div>
+
+      <!-- Item 2: Active Portfolio Support (default "active" highlight) -->
+      <div class="vc-char-item group flex gap-6 items-start px-6 py-6 border-l-2 border-tertiary-fixed bg-surface-container-low
+                  hover:bg-surface-container
+                  transition-all duration-300 cursor-default">
+        <div class="vc-char-icon shrink-0 w-12 h-12 flex items-center justify-center
+                    bg-surface-container text-secondary
+                    group-hover:bg-primary-container group-hover:text-tertiary-fixed
+                    transition-all duration-300">
+          <span class="material-symbols-outlined">support_agent</span>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-headline text-xl mb-2 text-primary-container transition-colors duration-300">
+            Active Portfolio Support
+          </h3>
+          <p class="text-on-surface-variant leading-relaxed text-sm group-hover:text-on-surface transition-colors duration-300">
+            Beyond capital, VC managers provide recruiting support, board expertise, customer introductions, and follow-on fundraising guidance to portfolio companies.
+          </p>
+        </div>
+        <span class="material-symbols-outlined text-secondary group-hover:text-tertiary-fixed mt-1 shrink-0 transition-colors duration-300">
+          arrow_forward
+        </span>
+      </div>
+
+      <!-- Item 3: Preferential Tax Treatment -->
+      <div class="vc-char-item group flex gap-6 items-start px-6 py-6 border-l-2 border-transparent
+                  hover:border-tertiary-fixed hover:bg-surface-container-low
+                  transition-all duration-300 cursor-default">
+        <div class="vc-char-icon shrink-0 w-12 h-12 flex items-center justify-center
+                    bg-surface-container text-secondary
+                    group-hover:bg-primary-container group-hover:text-tertiary-fixed
+                    transition-all duration-300">
+          <span class="material-symbols-outlined">trending_up</span>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-headline text-xl mb-2 text-on-surface group-hover:text-primary-container transition-colors duration-300">
+            Preferential Tax Treatment
+          </h3>
+          <p class="text-on-surface-variant leading-relaxed text-sm group-hover:text-on-surface transition-colors duration-300">
+            Category I AIFs enjoy pass-through taxation benefits under SEBI regulations, making them tax-efficient vehicles for sophisticated investors.
+          </p>
+        </div>
+        <span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1 shrink-0">
+          arrow_forward
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── VC JOURNEY (scroll-driven timeline) ────────────────────────────── -->
+  <section id="vc-journey" class="mb-16 bg-primary-container text-surface p-8 md:p-12 overflow-hidden relative">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <h2 class="font-headline text-3xl mb-12 text-tertiary-fixed relative z-10">
+      The VC <span class="italic">Journey</span>
+    </h2>
+
+    <!-- Timeline wrapper -->
+    <div id="vc-timeline" class="relative z-10 pl-10">
+
+      <!-- Track line (grey background) -->
+      <div class="absolute left-3 top-0 bottom-0 w-[1px] bg-secondary/30"></div>
+
+      <!-- Progress line (gold fill, grows on scroll) -->
+      <div id="vc-progress-line"
+           class="absolute left-3 top-0 w-[1px] bg-tertiary-fixed origin-top"
+           style="height: 0%; transition: height 0.4s ease;"></div>
+
+      <!-- Phase 01 -->
+      <div class="vc-phase mb-10 relative" style="opacity:0; transform:translateX(-20px); transition: opacity 0.5s ease, transform 0.5s ease;">
+        <!-- dot -->
+        <div class="vc-dot absolute -left-10 top-1.5 w-6 h-6 rounded-full border-4 border-primary-container
+                    bg-secondary/40 transition-all duration-500"
+             style="transition: background 0.4s ease, box-shadow 0.4s ease;"></div>
+        <h4 class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-1">Phase 01</h4>
+        <h3 class="font-headline text-xl mb-2">Deal Sourcing &amp; Selection</h3>
+        <p class="text-sm opacity-80 leading-relaxed max-w-lg">
+          Proprietary deal flow from accelerators, networks, and direct founder outreach. Rigorous evaluation of team, market, and technology.
+        </p>
+      </div>
+
+      <!-- Phase 02 -->
+      <div class="vc-phase mb-10 relative" style="opacity:0; transform:translateX(-20px); transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;">
+        <div class="vc-dot absolute -left-10 top-1.5 w-6 h-6 rounded-full border-4 border-primary-container
+                    bg-secondary/40 transition-all duration-500"></div>
+        <h4 class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-1">Phase 02</h4>
+        <h3 class="font-headline text-xl mb-2">Active Portfolio Management</h3>
+        <p class="text-sm opacity-80 leading-relaxed max-w-lg">
+          Board participation, follow-on investments in winners, and active support for key milestones: product-market fit, scale, and profitability.
+        </p>
+      </div>
+
+      <!-- Phase 03 -->
+      <div class="vc-phase relative" style="opacity:0; transform:translateX(-20px); transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;">
+        <div class="vc-dot absolute -left-10 top-1.5 w-6 h-6 rounded-full border-4 border-primary-container
+                    bg-secondary/40 transition-all duration-500"></div>
+        <h4 class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-1">Phase 03</h4>
+        <h3 class="font-headline text-xl mb-2">Exit &amp; Returns</h3>
+        <p class="text-sm opacity-80 leading-relaxed max-w-lg">
+          Liquidity via IPO, M&amp;A, or secondary sales. Top-quartile VC funds target gross IRRs of 25%+ over the fund lifecycle.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── NOTABLE VC MANAGERS ────────────────────────────────────────────── -->
+  <section class="mb-16">
+    <h2 class="font-headline text-3xl mb-8 text-primary-container">Notable <span class="italic">VC Managers</span></h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Blume Ventures -->
+      <div class="vc-manager-card group bg-surface-container-lowest p-6
+                  border border-outline-variant/20
+                  hover:border-tertiary-fixed
+                  transition-all duration-300
+                  hover:shadow-[0_0_0_2px_#ffdea5]">
+        <div class="flex justify-between items-start mb-6">
+          <!-- Logo: neutral default → gold on hover -->
+          <div class="vc-logo w-12 h-12 flex items-center justify-center
+                      bg-surface-container border border-outline-variant/30
+                      group-hover:bg-primary-container group-hover:border-tertiary-fixed
+                      transition-all duration-300">
+            <span class="font-headline text-2xl font-bold
+                         text-outline
+                         group-hover:text-tertiary-fixed
+                         transition-colors duration-300">B</span>
+          </div>
+          <span class="font-label text-[10px] bg-surface-container-high px-2 py-1 uppercase tracking-wider">Cat I AIF</span>
+        </div>
+        <h3 class="font-headline text-2xl mb-2 group-hover:text-primary-container transition-colors duration-300">Blume Ventures</h3>
+        <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">
+          India's leading early-stage VC with 80+ portfolio companies across SaaS, fintech, and consumer technology. Known for founder-friendly terms and deep operational support.
+        </p>
+        <div class="flex gap-4 items-center pt-4 border-t border-surface-container-low">
+          <div>
+            <p class="text-[10px] text-secondary uppercase font-label tracking-wider">Key Sectors</p>
+            <p class="text-xs font-semibold text-on-surface">SaaS, Fintech, D2C</p>
+          </div>
+          <span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 group-hover:text-tertiary-fixed transition-all duration-300 ml-auto">
+            arrow_forward
+          </span>
+        </div>
+      </div>
+
+      <!-- Peak XV Partners -->
+      <div class="vc-manager-card group bg-surface-container-lowest p-6
+                  border border-outline-variant/20
+                  hover:border-tertiary-fixed
+                  transition-all duration-300
+                  hover:shadow-[0_0_0_2px_#ffdea5]">
+        <div class="flex justify-between items-start mb-6">
+          <!-- Logo: neutral default → gold on hover (same as Blume) -->
+          <div class="vc-logo w-12 h-12 flex items-center justify-center
+                      bg-surface-container border border-outline-variant/30
+                      group-hover:bg-primary-container group-hover:border-tertiary-fixed
+                      transition-all duration-300">
+            <span class="font-headline text-2xl font-bold
+                         text-outline
+                         group-hover:text-tertiary-fixed
+                         transition-colors duration-300">P</span>
+          </div>
+          <span class="font-label text-[10px] bg-surface-container-high px-2 py-1 uppercase tracking-wider">Cat I AIF</span>
+        </div>
+        <h3 class="font-headline text-2xl mb-2 group-hover:text-primary-container transition-colors duration-300">Peak XV Partners</h3>
+        <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">
+          Formerly Sequoia India &amp; SEA, one of the most active and successful VC firms in India with investments in Zomato, Byju's, and hundreds of category-defining companies.
+        </p>
+        <div class="flex gap-4 items-center pt-4 border-t border-surface-container-low">
+          <div>
+            <p class="text-[10px] text-secondary uppercase font-label tracking-wider">Key Sectors</p>
+            <p class="text-xs font-semibold text-on-surface">Tech, Healthcare, Edtech</p>
+          </div>
+          <span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 group-hover:text-tertiary-fixed transition-all duration-300 ml-auto">
+            arrow_forward
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="bg-surface-container p-8 text-center border border-outline-variant/10">
+    <h3 class="font-headline text-2xl mb-4">Explore Venture Capital Opportunities</h3>
+    <p class="text-on-surface-variant text-sm mb-8">Connect with our VC specialists to understand current fund vintages and portfolio construction strategies.</p>
+    <button type="button"
+            class="js-open-consult inline-flex items-center gap-3 py-4 px-10 bg-primary-container text-on-primary font-label text-xs uppercase tracking-[0.2em] hover:bg-slate-800 transition-colors">
+      <span class="material-symbols-outlined text-sm">support_agent</span>
+      Consult Us
+    </button>
+  </div>
+
+</div>
+
+<!-- ── SCROLL-DRIVEN TIMELINE ANIMATION ───────────────────────────────────── -->
+<script is:inline>
+(function () {
+  var section   = document.getElementById('vc-journey');
+  var timeline  = document.getElementById('vc-timeline');
+  var progLine  = document.getElementById('vc-progress-line');
+  var phases    = document.querySelectorAll('.vc-phase');
+  var dots      = document.querySelectorAll('.vc-dot');
+
+  if (!section || !progLine || !phases.length) return;
+
+  /* ── IntersectionObserver: reveal each phase + activate dot ── */
+  var phaseObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var phase = entry.target;
+      var idx   = Array.from(phases).indexOf(phase);
+
+      // Reveal the phase content
+      phase.style.opacity   = '1';
+      phase.style.transform = 'translateX(0)';
+
+      // Light up the corresponding dot in gold
+      if (dots[idx]) {
+        dots[idx].style.background  = '#ffdea5';
+        dots[idx].style.boxShadow   = '0 0 0 4px rgba(255,222,165,0.25)';
+      }
+
+      phaseObserver.unobserve(phase);
+    });
+  }, { threshold: 0.3 });
+
+  phases.forEach(function (p) { phaseObserver.observe(p); });
+
+  /* ── Scroll handler: grow the golden progress line ── */
+  function onScroll () {
+    if (!timeline) return;
+    var rect       = timeline.getBoundingClientRect();
+    var winH       = window.innerHeight;
+    var totalH     = timeline.offsetHeight;
+
+    // Distance from the timeline's top that the mid-screen has passed
+    var scrolled   = winH * 0.6 - rect.top;
+    var pct        = Math.min(100, Math.max(0, (scrolled / totalH) * 100));
+
+    progLine.style.height = pct + '%';
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  // Run once in case section is already in view
+  onScroll();
+})();
+</script>
+
+</BaseLayout>

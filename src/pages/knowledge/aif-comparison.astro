@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="AIF Category Comparison | The Sovereign Ledger" currentPage="knowledge/aif-comparison">
+
+<div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
+
+  <!-- Hero -->
+  <section class="py-16 md:py-20 border-b border-outline-variant/20 mb-16">
+    <span class="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-4 block">Regulatory Framework</span>
+    <h1 class="text-5xl md:text-7xl font-headline text-primary-container leading-tight mb-6">
+      AIF Category <span class="italic font-light">Framework</span>
+    </h1>
+    <p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed">
+      A definitive comparative analysis of the three AIF categories as defined under the SEBI (Alternative Investment Funds) Regulations, 2012 — helping institutional allocators identify the appropriate structure for their investment mandate.
+    </p>
+  </section>
+
+  <!-- 3-Column Framework Cards -->
+  <section class="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+    {[
+      {
+        num: 'I', color: 'border-t-4 border-tertiary-fixed',
+        badgeBg: 'bg-tertiary-fixed text-on-tertiary-fixed',
+        title: 'Category I AIF',
+        subtitle: 'Socially & Economically Desirable',
+        desc: 'Funds investing in sectors the government and regulators consider as socially or economically desirable. These include start-ups, early-stage ventures, and SMEs. They attract specific government/regulatory incentives.',
+        chars: ['Government incentives eligible', 'No leverage permitted', 'Pass-through tax treatment', 'Min 3-year close-ended tenure', 'SEBI-registered managers only'],
+        href: '/knowledge/aif/category-i',
+      },
+      {
+        num: 'II', color: 'border-t-4 border-secondary',
+        badgeBg: 'bg-secondary text-white',
+        title: 'Category II AIF',
+        subtitle: 'Private Equity & Debt Strategies',
+        desc: 'A residual category encompassing all AIFs that do not fall under Category I or III. These funds do not undertake leverage beyond day-to-day operational requirements and focus on private equity and debt strategies.',
+        chars: ['No leverage beyond operations', 'Pass-through tax treatment', 'Min 3-year close-ended tenure', 'Broad strategy flexibility', 'Diverse investor base'],
+        href: '/knowledge/aif/category-ii',
+      },
+      {
+        num: 'III', color: 'border-t-4 border-primary-container',
+        badgeBg: 'bg-primary-container text-white',
+        title: 'Category III AIF',
+        subtitle: 'Hedge Funds & Complex Strategies',
+        desc: 'Funds employing diverse and complex trading strategies. May use leverage including through investment in listed or unlisted derivatives. Includes hedge funds, long-short equity, and multi-strategy vehicles.',
+        chars: ['Leverage and derivatives allowed', 'Fund-level taxation at MMR', 'Open or close-ended structure', 'Sophisticated strategies', 'Complex risk profile'],
+        href: '/knowledge/aif/category-iii',
+      },
+    ].map(cat => (
+      <div class={`bg-surface-container-lowest p-8 flex flex-col ${cat.color}`}>
+        <div class="flex items-center gap-3 mb-6">
+          <span class={`text-[10px] px-3 py-1 uppercase font-bold tracking-widest ${cat.badgeBg}`}>Category {cat.num}</span>
+        </div>
+        <h2 class="font-headline text-2xl text-primary-container mb-2">{cat.title}</h2>
+        <p class="text-[11px] uppercase font-bold tracking-widest text-outline mb-4">{cat.subtitle}</p>
+        <p class="text-sm text-on-surface-variant leading-relaxed mb-6 flex-grow">{cat.desc}</p>
+        <ul class="space-y-2 mb-8">
+          {cat.chars.map(c => (
+            <li class="flex items-center gap-2 text-xs text-on-surface-variant">
+              <span class="material-symbols-outlined text-[12px] text-tertiary-fixed-dim">check_circle</span>{c}
+            </li>
+          ))}
+        </ul>
+        <a href={cat.href} class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-primary-container border-b border-primary-container/30 pb-1 w-fit hover:border-tertiary-fixed-dim hover:text-tertiary-fixed-dim transition-all">
+          Explore Category {cat.num} <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+    ))}
+  </section>
+
+  <!-- Large Comparison Table -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-2">Detailed Comparison</h2>
+    <div class="w-12 h-1 bg-tertiary-fixed-dim mb-10"></div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse min-w-[700px]">
+        <thead>
+          <tr class="bg-primary-container text-white">
+            <th class="py-5 px-6 text-[11px] font-bold uppercase tracking-widest w-48">Parameter</th>
+            <th class="py-5 px-6 text-[11px] font-bold uppercase tracking-widest">
+              <span class="block text-tertiary-fixed text-xs mb-0.5">Category I</span>
+              VC, Infrastructure, Social
+            </th>
+            <th class="py-5 px-6 text-[11px] font-bold uppercase tracking-widest">
+              <span class="block text-slate-300 text-xs mb-0.5">Category II</span>
+              PE, Debt, Distressed
+            </th>
+            <th class="py-5 px-6 text-[11px] font-bold uppercase tracking-widest">
+              <span class="block text-amber-200 text-xs mb-0.5">Category III</span>
+              Hedge, Long-Short, Macro
+            </th>
+          </tr>
+        </thead>
+        <tbody class="text-sm">
+          {[
+            {
+              param: 'SEBI Regulation',
+              i: 'AIF Regulations, 2012 – Schedule I',
+              ii: 'AIF Regulations, 2012 – Schedule II',
+              iii: 'AIF Regulations, 2012 – Schedule III',
+            },
+            {
+              param: 'Leverage',
+              i: 'Not permitted',
+              ii: 'Operational only (day-to-day)',
+              iii: 'Allowed (via derivatives)',
+            },
+            {
+              param: 'Min Investment',
+              i: '₹1 Crore (₹25L for employees)',
+              ii: '₹1 Crore (₹25L for employees)',
+              iii: '₹1 Crore (₹25L for employees)',
+            },
+            {
+              param: 'Investor Type',
+              i: 'Accredited / Institutional',
+              ii: 'Accredited / Institutional',
+              iii: 'Sophisticated / Accredited',
+            },
+            {
+              param: 'Taxation',
+              i: 'Pass-through at investor level',
+              ii: 'Pass-through at investor level',
+              iii: 'Fund-level at Maximum Marginal Rate',
+            },
+            {
+              param: 'Tenure',
+              i: 'Min 3 years (close-ended)',
+              ii: 'Min 3 years (close-ended)',
+              iii: 'Open or close-ended',
+            },
+            {
+              param: 'Max Investors',
+              i: '1,000 per scheme',
+              ii: '1,000 per scheme',
+              iii: '1,000 per scheme',
+            },
+            {
+              param: 'Govt. Incentives',
+              i: 'Eligible for specific incentives',
+              ii: 'No specific incentives',
+              iii: 'No specific incentives',
+            },
+          ].map((row, i) => (
+            <tr class={`border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors ${i % 2 !== 0 ? 'bg-surface-container-low/40' : 'bg-surface-container-lowest'}`}>
+              <td class="py-5 px-6 font-bold text-on-surface text-[11px] uppercase tracking-widest">{row.param}</td>
+              <td class="py-5 px-6 text-on-surface-variant">{row.i}</td>
+              <td class="py-5 px-6 text-on-surface-variant">{row.ii}</td>
+              <td class="py-5 px-6 text-on-surface-variant">{row.iii}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Key Differences Callout -->
+  <section class="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-amber-50 border border-amber-200 p-8">
+      <span class="material-symbols-outlined text-amber-600 text-2xl mb-4 block">bolt</span>
+      <h3 class="font-headline text-xl text-primary-container mb-3">Taxation is the Critical Differentiator</h3>
+      <p class="text-sm text-on-surface-variant leading-relaxed">
+        Category I & II enjoy pass-through taxation — investors are taxed at their applicable rate. Category III funds are taxed at the Maximum Marginal Rate (30%+) at the fund level, which may erode net returns significantly for lower-bracket investors.
+      </p>
+    </div>
+    <div class="bg-blue-50 border border-blue-200 p-8">
+      <span class="material-symbols-outlined text-blue-600 text-2xl mb-4 block">balance</span>
+      <h3 class="font-headline text-xl text-primary-container mb-3">Leverage Is Only for Category III</h3>
+      <p class="text-sm text-on-surface-variant leading-relaxed">
+        Only Category III AIFs may employ leverage through derivatives, borrowing, or margin. This enables sophisticated long-short and market-neutral strategies but also introduces counterparty risk, margin call risk, and regulatory oversight of leverage limits.
+      </p>
+    </div>
+    <div class="bg-green-50 border border-green-200 p-8">
+      <span class="material-symbols-outlined text-green-600 text-2xl mb-4 block">schedule</span>
+      <h3 class="font-headline text-xl text-primary-container mb-3">Structure and Liquidity</h3>
+      <p class="text-sm text-on-surface-variant leading-relaxed">
+        Category I and II are mandatorily close-ended with a minimum 3-year tenure, preserving long-duration capital for illiquid strategies. Category III can be open or close-ended, accommodating liquid trading strategies that require daily or weekly investor liquidity windows.
+      </p>
+    </div>
+  </section>
+
+  <!-- Links to Category Pages -->
+  <section class="border-t border-outline-variant/20 pt-12">
+    <h2 class="font-headline text-3xl text-primary-container mb-8">Explore Each Category</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {[
+        { title: 'Category I AIF', sub: 'Venture Capital, Infrastructure, Social Venture', href: '/knowledge/aif/category-i' },
+        { title: 'Category II AIF', sub: 'Private Equity, Debt, Distressed, Real Estate', href: '/knowledge/aif/category-ii' },
+        { title: 'Category III AIF', sub: 'Hedge Funds, Long-Short, Multi-Strategy', href: '/knowledge/aif/category-iii' },
+      ].map(link => (
+        <a href={link.href} class="group flex items-center justify-between gap-4 bg-surface-container-lowest p-6 border border-outline-variant/10 hover:border-secondary/30 hover:bg-white transition-all">
+          <div>
+            <h3 class="font-headline text-xl text-primary-container mb-1 group-hover:translate-x-1 transition-transform">{link.title}</h3>
+            <p class="text-[11px] text-on-surface-variant uppercase tracking-widest font-medium">{link.sub}</p>
+          </div>
+          <span class="material-symbols-outlined text-secondary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+</div>
+
+</BaseLayout>

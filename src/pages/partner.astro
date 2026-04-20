@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Partner With Us | The Sovereign Ledger" currentPage="partner">
+
+<!-- Hero Section: Asymmetric Layout -->
+<section class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-24 py-16 md:py-28 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+  <div class="lg:col-span-7 flex flex-col justify-center">
+    <span class="font-label text-[11px] uppercase tracking-[0.3em] text-secondary mb-6 block">Distributor Partnerships</span>
+    <h1 class="text-6xl md:text-8xl font-headline italic tracking-tight text-primary-container leading-[0.9] mb-8" data-reveal>
+      Elevating Global<br/><span class="pl-12 md:pl-24">Distributions.</span>
+    </h1>
+    <p class="text-xl md:text-2xl font-light text-secondary max-w-xl leading-relaxed mb-12" data-reveal>
+      Forge a partnership rooted in institutional rigor and architectural precision. Join our network of elite distributors accessing the AlternaVest Capital ecosystem.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="#partner-form-section"
+         class="inline-flex items-center gap-3 bg-primary-container text-on-primary px-8 py-4 font-label text-xs uppercase tracking-widest hover:bg-slate-800 transition-colors">
+        Register as Distributor
+        <span class="material-symbols-outlined text-sm">arrow_downward</span>
+      </a>
+      <button type="button"
+              class="js-open-consult inline-flex items-center gap-3 border border-outline text-primary-container px-8 py-4 font-label text-xs uppercase tracking-widest hover:bg-surface-container-low transition-colors">
+        Investor Enquiry
+        <span class="material-symbols-outlined text-sm">open_in_new</span>
+      </button>
+    </div>
+  </div>
+  <div class="lg:col-span-5 relative">
+    <div class="aspect-[4/5] w-full bg-surface-container-low overflow-hidden shadow-2xl relative" data-reveal>
+      <img class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+           alt="Two executives in tailored suits discussing partnership"
+           src="https://lh3.googleusercontent.com/aida-public/AB6AXuB53xUOLLNDZLcI9WM7mZwokEY6iBtRv77H499ZurTSlhzU5VUH1waIeyij70eMtGz4-KLaXSnonk9IoWkZsHrwUt8FWLuCXTQuY66iiToKuFx9iSwWyp1NBPYKVztXRZx_Z6iqazI7pjJPNKV-vPXC4sSZUcwpIy8n2GvMfGNjqwzt7_-uR8eXg4RR9hy5A0w3eMPl9WBzDasvMUq5Mxda2em7_Khveu-kenkdn_mkpPLyiyWlL9jwrK3edgj3eFrGvrsf1_oz0vo" />
+      <div class="absolute inset-0 bg-primary-container/10"></div>
+    </div>
+    <div class="absolute -bottom-10 -left-10 hidden xl:block p-8 bg-surface-container-lowest shadow-xl border-l-4 border-tertiary-fixed max-w-xs">
+      <p class="font-headline italic text-2xl text-primary-container">"Trust is the ultimate asset."</p>
+      <p class="font-label text-xs uppercase tracking-tighter mt-4 text-secondary">AlternaVest Capital — Partnership Mandate</p>
+    </div>
+  </div>
+</section>
+
+<!-- Partnership Benefits -->
+<section class="bg-surface-container-low py-24 px-6 md:px-12 lg:px-24">
+  <div class="max-w-4xl mx-auto text-center mb-20" data-reveal>
+    <h2 class="text-4xl md:text-5xl font-headline text-primary-container mb-6">The Sovereign Advantage</h2>
+    <div class="h-px w-24 bg-tertiary-fixed mx-auto"></div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+    {[
+      { icon: 'verified_user',  title: 'Institutional Integrity',    text: 'Access a tier of compliance and governance protocols designed for AMFI-registered distributors seeking to offer AIF and PMS products.' },
+      { icon: 'query_stats',   title: 'Analytical Supremacy',       text: 'Our proprietary data platform provides partners with real-time fund analytics, manager intelligence, and investor-ready materials.' },
+      { icon: 'hub',           title: 'Bespoke Infrastructure',     text: 'Dedicated partner portal, co-branded materials, and a relationship manager to support your client acquisition and retention goals.' },
+    ].map(b => (
+      <div class="flex flex-col gap-6" data-reveal>
+        <span class="material-symbols-outlined text-4xl text-on-tertiary-container">{b.icon}</span>
+        <h3 class="text-2xl font-headline italic">{b.title}</h3>
+        <p class="text-on-surface-variant leading-relaxed">{b.text}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- What We Offer Partners -->
+<section class="max-w-5xl mx-auto px-6 md:px-12 lg:px-24 py-24" id="partner-form-section">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+
+    <!-- Left: Info -->
+    <div data-reveal>
+      <h2 class="text-4xl font-headline text-primary-container mb-6 leading-tight">Distributor<br/><span class="italic">Registration</span></h2>
+      <p class="text-on-surface-variant mb-8 leading-relaxed">Complete the form to register as an authorised distribution partner. Our partnership team reviews every application and responds within 2 business days.</p>
+
+      <ul class="space-y-4 mb-10">
+        {[
+          'Access to curated AIF, PMS, and alternative investment products',
+          'Co-branded investor pitch decks and fund summaries',
+          'Dedicated relationship manager for partner support',
+          'Early access to new fund launches and market intelligence',
+        ].map(item => (
+          <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-tertiary-fixed-dim text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <!-- Important note box -->
+      <div class="p-6 bg-surface-container-low border-l-2 border-secondary mb-8">
+        <p class="text-xs font-label uppercase tracking-widest text-secondary mb-2 font-bold">Important</p>
+        <p class="text-sm text-on-surface-variant leading-relaxed">This form is designed for <strong class="text-primary-container">AMFI-registered distributors</strong> (MFDs / RIAs) and wealth management firms wishing to add AIF & PMS products to their offerings. For investor enquiries, please use the <button type="button" class="js-open-consult text-secondary underline underline-offset-2 hover:text-primary-container transition-colors font-medium">Investor Enquiry form</button>.</p>
+      </div>
+
+      <div class="p-6 bg-primary-container text-amber-200 flex items-center gap-6">
+        <span class="material-symbols-outlined text-4xl" style="font-variation-settings:'FILL' 1,'wght' 300,'GRAD' 0,'opsz' 24">lock</span>
+        <div>
+          <p class="font-label text-xs uppercase tracking-widest font-bold">Secure Submission</p>
+          <p class="text-sm text-slate-400">Your data is encrypted and used only for partner onboarding.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Form -->
+    <form id="partner-form" class="space-y-8" novalidate data-reveal>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Full Name -->
+        <div class="flex flex-col gap-2">
+          <label class="font-label text-[10px] uppercase tracking-widest text-secondary font-bold" for="partner-name">
+            Full Name <span class="text-error">*</span>
+          </label>
+          <input id="partner-name" name="name" type="text" required
+                 placeholder="Rajesh Mehta"
+                 class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
+        </div>
+        <!-- Email -->
+        <div class="flex flex-col gap-2">
+          <label class="font-label text-[10px] uppercase tracking-widest text-secondary font-bold" for="partner-email">
+            Email Address <span class="text-error">*</span>
+          </label>
+          <input id="partner-email" name="email" type="email" required
+                 placeholder="r.mehta@wealth.com"
+                 class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
+        </div>
+        <!-- Phone -->
+        <div class="flex flex-col gap-2">
+          <label class="font-label text-[10px] uppercase tracking-widest text-secondary font-bold" for="partner-phone">
+            Contact Number <span class="text-error">*</span>
+          </label>
+          <input id="partner-phone" name="phone" type="tel" required
+                 placeholder="+91 98765 43210"
+                 class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
+        </div>
+        <!-- City -->
+        <div class="flex flex-col gap-2">
+          <label class="font-label text-[10px] uppercase tracking-widest text-secondary font-bold" for="partner-city">
+            City <span class="text-error">*</span>
+          </label>
+          <input id="partner-city" name="city" type="text" required
+                 placeholder="Mumbai"
+                 class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
+        </div>
+      </div>
+
+      <!-- ARN -->
+      <div class="flex flex-col gap-2">
+        <label class="font-label text-[10px] uppercase tracking-widest text-secondary font-bold" for="partner-arn">
+          ARN Number <span class="text-error">*</span>
+          <span class="font-normal text-outline ml-2 normal-case tracking-normal">AMFI Registration Number</span>
+        </label>
+        <input id="partner-arn" name="arn_number" type="text" required
+               placeholder="ARN-XXXXXX"
+               class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
+      </div>
+
+      <!-- Business Name -->
+      <div class="flex flex-col gap-2">
+        <label class="font-label text-[10px] uppercase tracking-widest text-secondary font-bold" for="partner-business">
+          Firm / Business Name
+        </label>
+        <input id="partner-business" name="business_name" type="text"
+               placeholder="Meridian Wealth Advisory"
+               class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
+      </div>
+
+      <!-- Message -->
+      <div class="flex flex-col gap-2">
+        <label class="font-label text-[10px] uppercase tracking-widest text-secondary font-bold" for="partner-message">
+          Tell Us About Your Distribution Reach
+        </label>
+        <textarea id="partner-message" name="message" rows="4"
+                  placeholder="Briefly describe your client base, AUM managed, and partnership goals..."
+                  class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container resize-none"></textarea>
+      </div>
+
+      <div class="pt-4">
+        <button type="submit"
+                class="group flex items-center gap-4 bg-primary-container text-on-primary px-10 py-5 hover:bg-slate-800 transition-all duration-300 w-full md:w-auto justify-center md:justify-start">
+          <span class="font-label text-sm uppercase tracking-[0.2em] font-bold">Submit Application</span>
+          <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+        </button>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+<!-- Bottom CTA for investors who landed here by mistake -->
+<section class="bg-primary-container py-16 px-6 md:px-12 text-center" data-reveal>
+  <p class="text-tertiary-fixed text-[10px] font-label uppercase tracking-[0.3em] mb-4">For Investors</p>
+  <h2 class="font-headline text-3xl md:text-4xl text-white mb-6">Looking to invest instead?</h2>
+  <p class="text-slate-400 max-w-lg mx-auto mb-8 text-sm leading-relaxed">If you're an individual investor looking to explore PMS or AIF products, our advisory team is here to guide you.</p>
+  <button type="button" class="js-open-consult inline-flex items-center gap-3 bg-tertiary-fixed text-on-primary-container px-8 py-4 font-label text-xs uppercase tracking-widest hover:bg-amber-300 transition-colors font-bold">
+    <span class="material-symbols-outlined text-sm">support_agent</span>
+    Book an Investor Consultation
+  </button>
+</section>
+
+</BaseLayout>

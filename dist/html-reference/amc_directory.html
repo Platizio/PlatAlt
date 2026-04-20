@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&amp;family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#a17f3b",
+                    "on-surface-variant": "#44474c",
+                    "surface-container-highest": "#e2e3df",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f0f1ed",
+                    "surface": "#f9faf5",
+                    "surface-container-low": "#f3f4f0",
+                    "primary-fixed": "#d6e4f9",
+                    "on-secondary-container": "#48617e",
+                    "outline": "#74777d",
+                    "secondary": "#47607e",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#d1e4ff",
+                    "tertiary-container": "#261900",
+                    "primary": "#000000",
+                    "primary-container": "#0f1c2c",
+                    "surface-dim": "#d9dad6",
+                    "on-surface": "#1a1c1a",
+                    "surface-bright": "#f9faf5",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#2f4865",
+                    "secondary-container": "#c2dcff",
+                    "on-primary-container": "#778598",
+                    "on-primary-fixed-variant": "#3a4859",
+                    "surface-container-high": "#e8e8e4",
+                    "on-tertiary-fixed": "#261900",
+                    "surface-tint": "#525f71",
+                    "outline-variant": "#c4c6cc",
+                    "background": "#f9faf5",
+                    "surface-container": "#edeeea",
+                    "inverse-surface": "#2f312e",
+                    "secondary-fixed-dim": "#afc9ea",
+                    "error": "#ba1a1a",
+                    "on-background": "#1a1c1a",
+                    "tertiary-fixed-dim": "#e9c176",
+                    "surface-variant": "#e2e3df",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5d4201",
+                    "tertiary": "#000000",
+                    "tertiary-fixed": "#ffdea5",
+                    "inverse-primary": "#bac8dc",
+                    "on-secondary-fixed": "#001d36",
+                    "primary-fixed-dim": "#bac8dc",
+                    "on-primary-fixed": "#0f1c2c",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Cormorant Garamond", "Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-[#0D1B2A] dark:bg-[#08111A] flex justify-between items-center px-6 py-4 w-full fixed top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-secondary-container">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Close-up professional portrait of a business executive with a neutral background, soft studio lighting, corporate style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwka8pvfY9JpD_sGnZhVOUIpmSZxm0nSGZiMFy7d91cbIn5UyVJcztzsSZtRy1OuifMb70qRqt-X8LRl046WWx6QNS6MEll-hRYtWDIWXfZ8eRzzYliJlBPuutCMIhED8JJ2rb_HzzRDg5JUdIhSMadeTPHH0iT3AVyPIhkCtmVEXaO-NSlBWCf0kJM7nltJKPq_xFzcPHqtJrgimNIRW8opN6i8xkJyS4SyFrxh5q9-4cfx_ToR9cQ_J5AeR4W4kNWoPa5BZxamc"/>
+</div>
+<h1 class="text-xl font-serif tracking-tight text-[#ffdea5]">Sovereign Ledger</h1>
+</div>
+<button class="text-[#ffdea5] hover:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 mt-16 pb-24 px-6">
+<!-- Hero Section -->
+<section class="py-10">
+<h2 class="text-4xl font-serif text-primary-container leading-tight mb-2">Institutional Directory</h2>
+<p class="text-on-primary-container font-body text-sm tracking-wide opacity-80">Access our curated network of global asset management partners.</p>
+</section>
+<!-- Sophisticated Search Bar -->
+<div class="relative mb-10 group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-lowest border-none border-b border-outline/20 focus:ring-0 focus:border-tertiary-fixed text-on-surface font-body py-4 pl-12 pr-4 transition-all duration-300 placeholder:text-outline/50 placeholder:font-light italic" placeholder="Search AMCs" type="text"/>
+<div class="absolute bottom-0 left-0 w-0 h-[1px] bg-tertiary-fixed group-focus-within:w-full transition-all duration-500"></div>
+</div>
+<!-- Directory List -->
+<div class="space-y-8">
+<!-- AMC Card 1 -->
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="w-14 h-14 bg-surface-container-high flex items-center justify-center rounded-sm overflow-hidden p-2">
+<img alt="Institutional logo" class="w-full h-full object-contain mix-blend-multiply opacity-80" data-alt="Minimalist abstract corporate logo design in navy and silver, geometric professional aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvX9TdnwPjBoBOlXNjteGk6yIyNP3QeQ_WuXD0BlP83X7Zu1zJqXUEQaBAmwrtKloVZGdX2b__fGi0NBWrvkKflWpq_DRjzSHKfi50HrksUXhhE7fNGNBCGUr7c8BLim3USaDLTSKJboip1oa_p4qmy0bV_wpMpRDGIKknSVtW1Yv0X00--KEW29Pja3T0YYXZ_V7zmi2E8fwrHhs_iqYH0LCj2bPOQvVg8c0KeYUlJFiq7G2Ot2ALxWXjQxrTSuo57uv-cYTZxnk"/>
+</div>
+<div class="flex flex-col">
+<h3 class="text-lg font-serif font-bold text-primary-container">Vanguard Sovereign</h3>
+<p class="text-on-surface-variant text-sm font-body italic">Pioneering multi-asset strategies for enduring wealth.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline/40" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/10"></div>
+</div>
+<!-- AMC Card 2 -->
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="w-14 h-14 bg-surface-container-high flex items-center justify-center rounded-sm overflow-hidden p-2">
+<img alt="Institutional logo" class="w-full h-full object-contain mix-blend-multiply opacity-80" data-alt="Elegant architectural logo featuring thin gold lines on a white background, high-end financial branding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOg70NxXKPrSV70KJ-gbT_JB-jnBEJbTQDqpkCdJf-9DHyIUr5dsuoh5uQ-0L_lMaC7Jr6ykpd-o1qWJy47QBKcAgQ4qKehPLkEZDuP__yO2o8nszgBVYa860_CR2TvLhP9NXckFmhadowmkKrVLDaq8BPyTFRuzew1cyHJfE8_0j53D5CckEs7mSTMwNvGyiETo6WtSgdu51BRs-Isi5_LA8jgkU291sTFxIU_mQXrWnQuIspwi9421C4xtnlTRpnzqmuZpRSZPc"/>
+</div>
+<div class="flex flex-col">
+<h3 class="text-lg font-serif font-bold text-primary-container">Blackwood Capital</h3>
+<p class="text-on-surface-variant text-sm font-body italic">Specialized fixed income and private credit solutions.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline/40" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/10"></div>
+</div>
+<!-- Featured Card (Asymmetric Layout) -->
+<div class="bg-primary-container p-6 rounded-sm text-surface shadow-2xl relative overflow-hidden my-12">
+<div class="relative z-10">
+<span class="text-[10px] uppercase tracking-[0.2em] font-bold text-tertiary-fixed mb-4 block">Premier Partner</span>
+<h3 class="text-2xl font-serif mb-2">Meridian Private Equity</h3>
+<p class="text-on-primary-container text-xs leading-relaxed max-w-[80%] mb-6">Exclusive access to Tier-1 infrastructure and tech-driven venture cycles.</p>
+<button class="text-tertiary-fixed text-xs font-bold uppercase tracking-widest border-b border-tertiary-fixed/30 pb-1">Request Briefing</button>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-10">
+<span class="material-symbols-outlined text-[160px]" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+</div>
+<!-- AMC Card 3 -->
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="w-14 h-14 bg-surface-container-high flex items-center justify-center rounded-sm overflow-hidden p-2">
+<img alt="Institutional logo" class="w-full h-full object-contain mix-blend-multiply opacity-80" data-alt="Symmetrical corporate emblem with a focus on trust and stability, deep slate blue and charcoal tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2B_1ne5WhR0HYQKb-_pyECWk0x9PMf2urkOsqntfDatkR6xzrhAUeB4k9IW_X32n-NdxX0kQeKDQHM0VaLIVeR6ylZ75E-LU3iwdxK83UNrGrqM-FzTH7oPNl9PkCSwohnjyNJetfULbcJJEyevOtWXF3NKyI05F6asYi97VT3qxyf7VIDAk11o2mzygMJnppfnuLx7jhQELbOasYusgEcgh2pRG-NQoaqM7GswT5FYNvNc67xJA_1YZR14gDS6ILhRxlbiV6xwA"/>
+</div>
+<div class="flex flex-col">
+<h3 class="text-lg font-serif font-bold text-primary-container">Aethelred Global</h3>
+<p class="text-on-surface-variant text-sm font-body italic">Systematic equity management with an ESG directive.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline/40" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/10"></div>
+</div>
+<!-- AMC Card 4 -->
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="w-14 h-14 bg-surface-container-high flex items-center justify-center rounded-sm overflow-hidden p-2">
+<img alt="Institutional logo" class="w-full h-full object-contain mix-blend-multiply opacity-80" data-alt="A clean modern monogram in gold foil, luxury investment bank logo style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-PwQkO_lii5XXNHyNcEbClFoJF5K0U6rtTMotaclasww-Li6wdN2Kw14-RM6EHqbuS5coOV9nmSpWn679_CaLNIE88uzN7OLUC-bIkzOyov0fXz1aGryk1orQLOw8fFlHh2_jVehFdKj6aLpwqpQvEMot0J9Q_jQmwv6JEsDA5z6noW4BkfACsbTnBnDQ5bnbVQLKLevkHWMpYUJkGuqZBKUiERC8Aa3PzGTVAPT75eu7kBX23sOuAw1yPsgYrY2YJNTefmqM2I0"/>
+</div>
+<div class="flex flex-col">
+<h3 class="text-lg font-serif font-bold text-primary-container">Solstice Real Estate</h3>
+<p class="text-on-surface-variant text-sm font-body italic">Direct ownership in high-yield commercial corridors.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline/40" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/10"></div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_-4px_32px_rgba(26,28,26,0.04)] border-t border-slate-100/10">
+<a class="flex flex-col items-center justify-center text-slate-400 pt-2 hover:text-[#47607e] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="text-[11px] uppercase tracking-widest font-sans font-semibold mt-1">Portfolio</span>
+</a>
+<!-- ACTIVE TAB: Funds (Directory context) -->
+<a class="flex flex-col items-center justify-center text-[#47607e] dark:text-[#ffdea5] border-t-2 border-[#ffdea5] pt-2 scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-[11px] uppercase tracking-widest font-sans font-semibold mt-1">Funds</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 pt-2 hover:text-[#47607e] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="auto_graph">auto_graph</span>
+<span class="text-[11px] uppercase tracking-widest font-sans font-semibold mt-1">Insights</span>
+</a>
+</nav>
+</body></html>

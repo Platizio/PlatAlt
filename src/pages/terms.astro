@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Terms of Service | The Sovereign Ledger" currentPage="">
+
+<div class="max-w-3xl mx-auto px-6 md:px-10 py-16">
+  <div class="mb-12">
+    <p class="text-tertiary-fixed-dim text-[10px] font-bold uppercase tracking-[0.3em] mb-4">Legal</p>
+    <h1 class="font-headline text-5xl md:text-6xl font-light text-primary-container mb-6">Terms of <span class="italic">Service</span></h1>
+    <p class="text-on-surface-variant">Last updated: January 1, 2025</p>
+  </div>
+
+  <div class="space-y-10 text-on-surface-variant leading-relaxed">
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">1. Acceptance of Terms</h2>
+      <p>By accessing The Sovereign Ledger platform operated by AlternaVest Capital Management LLP ("AlternaVest"), you agree to be bound by these Terms of Service. If you do not agree, please discontinue use immediately. These terms govern all use of our website, platform, and associated services.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">2. Eligibility</h2>
+      <p>This platform is intended exclusively for "Sophisticated Investors" as defined under SEBI (Alternative Investment Funds) Regulations, 2012 — individuals or entities with a minimum net worth of ₹5 Crore or institutional investors. Access by retail investors is neither intended nor permitted. By using this platform, you represent that you meet eligibility criteria.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">3. Nature of Information</h2>
+      <p>All fund data, performance metrics, allocations, and market commentary on this platform are for <strong class="text-primary-container">informational and educational purposes only</strong>. Nothing on this platform constitutes investment advice, an offer to sell securities, or a solicitation. Past performance is not indicative of future returns. All investments in AIFs are subject to market risk.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">4. Intellectual Property</h2>
+      <p>All content, trademarks, logos, data visualizations, and platform architecture are the exclusive property of AlternaVest Capital Management LLP. Reproduction, distribution, or commercial use without prior written consent is prohibited. Limited non-commercial use for research is permitted with proper attribution.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">5. Prohibited Conduct</h2>
+      <p class="mb-4">Users must not:</p>
+      <ul class="space-y-3 pl-4">
+        {[
+          'Misrepresent eligibility as a sophisticated investor',
+          'Reproduce or redistribute fund data for commercial purposes',
+          'Attempt unauthorized access to restricted sections or investor portals',
+          'Use automated tools to scrape or harvest platform data',
+          'Engage in conduct that disrupts platform availability or security',
+        ].map(item => (
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-error text-sm mt-0.5 shrink-0">block</span>
+            <span class="text-sm">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">6. Limitation of Liability</h2>
+      <p>AlternaVest shall not be liable for any indirect, incidental, or consequential losses arising from reliance on platform content. Our aggregate liability for any direct damages is limited to ₹10,000. This limitation does not apply to fraud or willful misconduct.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">7. Governing Law</h2>
+      <p>These terms are governed by the laws of India. Disputes shall be subject to the exclusive jurisdiction of courts in Mumbai, Maharashtra. Any arbitration shall be conducted under the Arbitration and Conciliation Act, 1996.</p>
+    </section>
+
+    <section>
+      <h2 class="font-headline text-2xl text-primary-container mb-4">8. Modifications</h2>
+      <p>AlternaVest reserves the right to modify these terms at any time. Continued use of the platform following notice of changes constitutes acceptance. Material changes will be communicated via registered email to institutional account holders.</p>
+    </section>
+  </div>
+
+  <div class="mt-16 pt-8 border-t border-outline-variant/20 flex flex-col sm:flex-row gap-4">
+    <a href="/privacy" class="text-xs font-label uppercase tracking-widest text-secondary hover:text-primary-container transition-colors">Privacy Policy</a>
+    <a href="/risk-disclaimer" class="text-xs font-label uppercase tracking-widest text-secondary hover:text-primary-container transition-colors">Risk Disclaimer</a>
+    <a href="/regulatory-disclosure" class="text-xs font-label uppercase tracking-widest text-secondary hover:text-primary-container transition-colors">Regulatory Disclosure</a>
+  </div>
+</div>
+
+</BaseLayout>
