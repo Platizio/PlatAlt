@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Category II AIF | PlatAlt" currentPage="knowledge/aif">
+<BaseLayout title="Category II AIF | Platizio Alternatives" currentPage="knowledge/aif">
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
@@ -35,7 +35,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
           <ul class="space-y-3">
             {[
               'Does not fall under Category I or III',
-              'No leverage beyond day-to-day operations',
+              'No leverage to invest; short-term borrowing only (30 days, 4x a year, 10% of investable funds)',
               'Pass-through taxation at investor level',
               'Private equity, debt and real estate',
               'Close-ended, min. 3-year tenure',
@@ -137,7 +137,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
           points: [
             'Mandatory registration with SEBI before any fundraising or investment activity',
             'Application via Form A with track record, due diligence documents, and draft PPM',
-            'Registration fee: ₹5 Lakh (application) + ₹15 Lakh (registration) + ₹1 Lakh p.a. (annual fees)',
+            'Application fee: ₹1 Lakh + 18% GST. Registration fee on approval: ₹10 Lakh + 18% GST',
+            'Scheme fee: ₹1 Lakh + 18% GST per scheme, payable when the placement memorandum is filed. The first scheme launched by an AIF is exempt. There is no annual or recurring SEBI fee',
+            'Co-investment schemes: ₹1 Lakh to file a shelf placement memorandum, filed through a merchant banker at least ten working days before launch',
             'Separate SEBI registration required for each AIF entity; schemes under same entity permitted',
           ]
         },
@@ -180,8 +182,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
         {
           title: 'Leverage Restrictions',
           points: [
-            'Leverage strictly prohibited except for day-to-day operational requirements',
-            'No borrowing to fund portfolio investments under any circumstance',
+            'No borrowing or leverage to make investments. Short-term borrowing is permitted only to meet temporary funding requirements and day-to-day operational needs — for no more than 30 days at a time, on no more than four occasions a year, and up to 10% of investable funds',
+            'A 30-day cooling-off period applies between two borrowings, counted from repayment of the previous one',
+            'Borrowing to cover a shortfall in investor drawdown is permitted as a last resort, capped at the lowest of 20% of the proposed investment, 10% of the scheme\u2019s investable funds, or the commitment pending from non-defaulting investors — disclosed in the PPM, with the cost borne by the defaulting investors',
             'Portfolio companies may themselves use leverage; this is permissible',
             'Debt funds may invest in leveraged companies — issuer-level vs. fund-level distinction',
           ]
@@ -210,17 +213,17 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       <div class="flex items-start gap-4 mb-6">
         <span class="material-symbols-outlined text-secondary text-3xl shrink-0">percent</span>
         <div>
-          <h3 class="font-headline text-2xl text-primary-container mb-2">Pass-Through Status — Section 115UB</h3>
+          <h3 class="font-headline text-2xl text-primary-container mb-2">Pass-Through Status — Section 224</h3>
           <p class="text-sm text-on-surface-variant leading-relaxed">
-            Category II AIFs are granted pass-through tax treatment under Section 115UB of the Income Tax Act, 1961 (inserted by Finance Act, 2015). Income (other than business income) accruing or arising to the AIF is not taxed at the fund level. It is deemed to be the income of the investor in the same proportion as their capital contribution and is taxed at the investor's applicable rate in the year of accrual — irrespective of actual distribution.
+            Category II AIFs are granted pass-through tax treatment under Section 224 of the Income-tax Act, 2025 (introduced as Section 115UB by the Finance Act, 2015). Income (other than business income) accruing or arising to the AIF is not taxed at the fund level. It is deemed to be the income of the investor in the same proportion as their capital contribution and is taxed at the investor's applicable rate in the year of accrual — irrespective of actual distribution.
           </p>
         </div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-6 border-t border-outline-variant/20">
         {[
-          { label: 'LTCG — Listed Equity', text: 'Taxed at 10% (plus applicable surcharge and cess) on gains exceeding ₹1 Lakh, after 12 months of holding. (Sec 112A)' },
-          { label: 'STCG — Listed Equity', text: 'Taxed at 15% (plus surcharge and cess) for equity shares held less than 12 months, per Section 111A.' },
-          { label: 'Unlisted Securities', text: 'LTCG on unlisted shares after 24 months: 20% with indexation benefit. STCG: As per investor\'s applicable income tax slab.' },
+          { label: 'LTCG — Listed Equity', text: 'Taxed at 12.5% (plus applicable surcharge and cess) on gains exceeding ₹1.25 Lakh, after 12 months of holding. (Sec. 198, IT Act 2025)' },
+          { label: 'STCG — Listed Equity', text: 'Taxed at 20% (plus surcharge and cess) for equity shares held less than 12 months, per Section 196 of the Income-tax Act, 2025.' },
+          { label: 'Unlisted Securities', text: 'LTCG on unlisted shares after 24 months: 12.5% without indexation. STCG: As per investor\'s applicable income tax slab.' },
           { label: 'Business Income Exception', text: 'Business income earned by the AIF is taxed at the fund level at Maximum Marginal Rate (~42.744%) before pass-through to investors.' },
         ].map(item => (
           <div class="bg-surface-container-low p-5">
@@ -232,7 +235,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       <div class="mt-6 pt-6 border-t border-outline-variant/20 bg-surface-container-low p-5">
         <p class="text-[10px] uppercase font-bold tracking-widest text-secondary mb-2">TDS on Distributions</p>
         <p class="text-sm text-on-surface-variant leading-relaxed">
-          As per Finance Act 2023, Category II AIFs are required to deduct TDS at 10% on income distributed to resident investors. TDS at applicable treaty rates or 20% (whichever is lower) applies to non-resident investors. The AIF must file TDS returns (Form 26Q / 27Q) quarterly with the Income Tax Department.
+          Under Section 393(1) (Table: Sl. No. 4(iii)) of the Income-tax Act, 2025 — successor to Section 194LBB of the 1961 Act, introduced by the Finance Act, 2015 — a Category II AIF deducts tax at 10% on income credited or paid to resident unit holders, with no threshold. This applies to all streamed income, not only interest. For non-resident and foreign-company unit holders, Section 393(2) (Table: Sl. No. 8) requires withholding at the rates in force: the Finance Act rate for the character of income streamed, or the applicable treaty rate on production of a tax residency certificate. Where no character-specific rate applies, the residual rates are 30% for a non-corporate non-resident and 35% for a foreign company, plus surcharge and cess — there is no flat 20% rate, though Section 397(2) imposes a 20% floor where PAN is not furnished. The fund files quarterly withholding statements in Form 140 (residents) and Form 144 (non-residents), and reports streamed income annually in Form 79 to the department and Form 78 to each unit holder. Forms 26Q and 27Q apply only to periods up to 31 March 2026.
         </p>
       </div>
     </div>
@@ -249,8 +252,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
         { label: 'Max. Investors',       value: '1,000',                  sub: 'per scheme' },
         { label: 'Fund Structure',       value: 'Close-Ended',            sub: 'mandatory' },
         { label: 'Minimum Tenure',       value: '3 Years',                sub: 'from final close' },
-        { label: 'Leverage',             value: 'Not Permitted',          sub: 'fund level' },
-        { label: 'Taxation',             value: 'Pass-Through',           sub: 'Sec. 115UB IT Act' },
+        { label: 'Leverage',             value: 'Not Permitted',          sub: 'except short-term borrowing' },
+        { label: 'Taxation',             value: 'Pass-Through',           sub: 'Sec. 224, IT Act 2025' },
         { label: 'Skin-in-the-Game',     value: '2.5% / ₹5 Cr',         sub: 'whichever is lower' },
       ].map(p => (
         <div class="border border-secondary/30 p-5">
@@ -310,7 +313,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-lg relative z-10">
       <h2 class="font-headline text-3xl text-amber-100 mb-2">Explore Category II Funds</h2>
-      <p class="text-slate-400 text-sm leading-relaxed">Browse registered Category II AIFs — private equity, debt, real estate, and distressed — available through PlatAlt's platform.</p>
+      <p class="text-slate-400 text-sm leading-relaxed">Browse registered Category II AIFs — private equity, debt, real estate, and distressed — available through Platizio Alternatives's platform.</p>
     </div>
     <div class="flex flex-col sm:flex-row gap-4 relative z-10">
       <a href="/explore" class="inline-flex items-center gap-2 bg-tertiary-fixed text-on-tertiary-fixed px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:opacity-90 transition-opacity">

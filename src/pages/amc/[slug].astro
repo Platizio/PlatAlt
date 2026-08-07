@@ -1,698 +1,95 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-/* ─────────────────────────────────────────────────────────
-   ALL AMC DATA
-───────────────────────────────────────────────────────── */
-const amcs: Record<string, any> = {
-
-  'motilal-oswal-amc': {
-    name: 'Motilal Oswal AMC', shortName: 'MOFSL AMC',
-    categoryType: 'PMS', categoryLabel: 'PMS',
-    tagline: '"Partnering wealth creators with the discipline of Buy Right, Sit Tight across India\'s finest businesses."',
-    icon: 'account_balance', iconColor: 'text-tertiary-fixed',
-    aum: '₹38,500 Cr', founded: 2003, strategies: 12, clients: '12,800+', asOn: 'March 2026',
-    sebi: 'INP000000670',
-    hq: '10th Floor, Motilal Oswal Tower, Rahimtullah Sayani Road, Prabhadevi, Mumbai – 400025, Maharashtra',
-    team: '145 Investment Professionals', investorBase: 'HNIs, Family Offices & Institutions',
-    products: 'PMS – Discretionary', memberOf: 'AMFI & IVCA Member since 2008',
-    about: [
-      'Motilal Oswal AMC is one of India\'s most recognised Portfolio Management Services providers with a singular investment philosophy: "Buy Right, Sit Tight." Founded in 2003, the firm pioneered quality investing in India by focusing on high-conviction positions in businesses with strong competitive moats, superior management quality, and compounding earnings trajectories. With over two decades of track record, the firm has grown to manage over ₹38,500 Crore across discretionary PMS strategies.',
-      'The firm\'s investment process integrates both quantitative screening for earnings quality and qualitative assessments of management credibility and business durability. Its investment committee — led by founder Raamdeo Agarwal — has published the annual Wealth Creation Study since 1996, establishing the firm as a thought leader in long-term equity investing in India.'
-    ],
-    approach: {
-      headline: '"Buy Right, Sit Tight"',
-      text: 'Motilal Oswal AMC\'s philosophy is built on a deceptively simple framework: identify exceptional businesses at sensible prices and hold them through complete market cycles. The team believes wealth creation is a function of business quality and patience, not market timing or portfolio rotation.',
-      principles: [
-        { title: 'Quality First', desc: 'Companies screened for ROE >15%, clean balance sheets, high earnings cash conversion, and durable competitive advantages — the QGLP framework.' },
-        { title: 'High Conviction', desc: 'Concentrated portfolios of 15–20 stocks held with deep conviction, sized to reflect the team\'s confidence in each business, not index weights.' },
-        { title: 'Long Duration', desc: 'Average holding period of 5–7 years. Annual portfolio churn kept below 20% to preserve tax efficiency and minimise transaction friction.' },
-      ]
-    },
-    funds: [
-      { category: 'PMS · Discretionary', name: 'Motilal Oswal Value Strategy', returns: '24.1% p.a. (3Y)', aum: '₹12,000 Cr', tenure: 'Open-ended', href: '/knowledge/pms' },
-    ],
-    website: 'https://www.motilaloswalmf.com',
-    linkedin: 'https://linkedin.com/company/motilal-oswal-asset-management',
-    twitter: 'https://twitter.com/MOAMCLtd',
-  },
-
-  'iifl-asset-management': {
-    name: 'IIFL Asset Management', shortName: 'IIFL AMC',
-    categoryType: 'PMS', categoryLabel: 'PMS · AIF Cat III',
-    tagline: '"Rigorous research, disciplined risk management, and sustainable alpha for India\'s most discerning investors."',
-    icon: 'analytics', iconColor: 'text-secondary',
-    aum: '₹15,200 Cr', founded: 2007, strategies: 18, clients: '9,500+', asOn: 'March 2026',
-    sebi: 'INP000002213',
-    hq: '6th Floor, IIFL House, Sun Infotech Park, Road 16W, Thane Industrial Area, Wagle Estate, Thane – 400604, Maharashtra',
-    team: '95 Investment Professionals', investorBase: 'HNIs, Ultra HNIs & Institutions',
-    products: 'PMS – Non-Discretionary; AIF Category III', memberOf: 'AMFI Member since 2012',
-    about: [
-      'IIFL Asset Management is a diversified alternative investment manager offering Portfolio Management Services and Category III AIF strategies. The firm\'s investment teams operate across public equity (PMS) and hedge fund structures (AIF), sharing a common research platform that synthesises fundamental analysis with systematic risk controls. Established in 2007, IIFL AMC has built a reputation for rigorous bottoms-up research across mid and small-cap Indian equities.',
-      'The Non-Discretionary PMS franchise empowers sophisticated investors to co-create their portfolios with the fund manager\'s research team, retaining final approval rights on each trade. The multi-strategy AIF arm deploys capital across four independent strategy pods — equity long/short, statistical arbitrage, event-driven, and macro — managed by a central risk desk with real-time drawdown monitoring.',
-    ],
-    approach: {
-      headline: 'Research-First, Risk-Managed',
-      text: 'IIFL AMC\'s investment process begins with deep primary research — direct engagement with management, channel checks, and supply chain analysis — before any capital is committed. Risk management is embedded at every stage: position sizing, sector concentration, and drawdown limits are enforced systematically across all strategies.',
-      principles: [
-        { title: 'Primary Research', desc: 'Each investment thesis backed by direct company engagement, scuttlebutt analysis, and scenario-based earnings modelling before any position is taken.' },
-        { title: 'Risk Budgeting', desc: 'Defined risk budgets per strategy and per position, with automatic stop-loss enforcement that prevents single positions from driving portfolio-level losses.' },
-        { title: 'Multi-Horizon', desc: 'PMS strategies hold 12–36 months; AIF pods operate across 1-day to 18-month horizons, providing return stream diversification across economic cycles.' },
-      ]
-    },
-    funds: [
-      { category: 'PMS · Non-Discretionary', name: 'IIFL Emerging Companies PMS', returns: '19.4% p.a. (3Y)', aum: '₹5,200 Cr', tenure: 'Open-ended', href: '/knowledge/pms' },
-      { category: 'AIF Cat III · Multi-Strategy', name: 'IIFL Multi-Strategy Alpha Fund', returns: '16.9% p.a. (1Y)', aum: '₹2,400 Cr', tenure: 'Open-ended', href: '/knowledge/aif/category-iii/multi-strategy' },
-    ],
-    website: 'https://www.iiflmf.com',
-    linkedin: 'https://linkedin.com/company/iifl-asset-management',
-    twitter: 'https://twitter.com/IIFL_AMC',
-  },
-
-  'kotak-mahindra-amc': {
-    name: 'Kotak Mahindra AMC', shortName: 'Kotak AMC',
-    categoryType: 'PMS', categoryLabel: 'PMS · AIF Cat II',
-    tagline: '"Decades of institutional trust — delivering multi-asset investment excellence across India\'s evolving market landscape."',
-    icon: 'corporate_fare', iconColor: 'text-tertiary-fixed',
-    aum: '₹4,80,000 Cr', founded: 1998, strategies: 22, clients: '45,000+', asOn: 'March 2026',
-    sebi: 'INP000000258',
-    hq: '27BKC, 3rd Floor, Plot No. C-27, G Block, Bandra Kurla Complex, Bandra (East), Mumbai – 400051, Maharashtra',
-    team: '280 Investment Professionals', investorBase: 'Retail, HNIs & Institutional',
-    products: 'PMS – Advisory; AIF Category II', memberOf: 'AMFI & IVCA Member since 2001',
-    about: [
-      'Kotak Mahindra AMC is one of India\'s largest and most diversified asset management companies, managing over ₹4.8 lakh crore across mutual funds, PMS, and Alternative Investment Funds. Part of the Kotak Mahindra Group — one of India\'s premier financial conglomerates — the AMC brings institutional-grade investment processes across equity, fixed income, real estate, and alternative credit strategies.',
-      'The Advisory PMS platform serves sophisticated investors who seek the firm\'s institutional research and portfolio construction expertise while retaining complete discretion over their own capital. The AIF arm focuses on real estate private equity and structured credit, leveraging Kotak\'s deep origination network across India\'s property sector.',
-    ],
-    approach: {
-      headline: 'Conservative Growth, Institutional Discipline',
-      text: 'Kotak AMC\'s philosophy centres on capital preservation first and growth second. The investment team prioritises risk-adjusted returns over absolute performance, deploying a multi-asset lens that identifies opportunities across equities, fixed income, and alternatives depending on the macro environment.',
-      principles: [
-        { title: 'Risk-Adjusted Focus', desc: 'Every investment evaluated on Sharpe ratio and maximum drawdown potential, not just IRR. Capital preservation is the first mandate.' },
-        { title: 'Multi-Asset Capability', desc: 'Research teams covering equities, credit, real estate, and macro ensure capital is allocated to the best risk-reward opportunity across asset classes.' },
-        { title: 'Governance & Transparency', desc: 'SEBI-compliant reporting, independent trustee oversight, and quarterly investor communications form the backbone of the firm\'s governance framework.' },
-      ]
-    },
-    funds: [
-      { category: 'PMS · Advisory', name: 'Kotak Advisory Growth Strategy', returns: '16.8% p.a. (3Y)', aum: '₹3,800 Cr', tenure: 'Open-ended', href: '/knowledge/pms' },
-      { category: 'AIF Cat II · Real Estate', name: 'Kotak Real Estate Fund XII', returns: '16.8% IRR', aum: '₹3,200 Cr', tenure: '6 Years', href: '/knowledge/aif/category-ii/real-estate' },
-    ],
-    website: 'https://www.kotakmf.com',
-    linkedin: 'https://linkedin.com/company/kotak-mahindra-asset-management-company',
-    twitter: 'https://twitter.com/KotakMF',
-  },
-
-  'blume-ventures': {
-    name: 'Blume Ventures', shortName: 'Blume',
-    categoryType: 'AIF_CAT1', categoryLabel: 'AIF Category I',
-    tagline: '"Backing India\'s most audacious founders at the earliest stage, before the world knows their name."',
-    icon: 'rocket_launch', iconColor: 'text-secondary',
-    aum: '₹4,800 Cr', founded: 2011, strategies: 4, clients: '150+ portfolio companies', asOn: 'December 2025',
-    sebi: 'IN/AIF1/12-13/0017',
-    hq: 'Suite 301, One BKC, G Block, Bandra Kurla Complex, Bandra (East), Mumbai – 400051, Maharashtra',
-    team: '32 Investment Professionals', investorBase: 'Domestic & Global Institutional LPs',
-    products: 'AIF Category I – Venture Capital', memberOf: 'IVCA Member since 2013',
-    about: [
-      'Blume Ventures is India\'s leading seed and early-stage venture capital firm, having invested in over 150 startups since 2011. The firm invests at the earliest institutional stage — typically pre-product-market-fit — providing founders not just capital but deep operational support, network access, and follow-on syndication across Series A and beyond. Blume\'s portfolio has produced three unicorns and multiple soonicorns across fintech, SaaS, climate, and consumer sectors.',
-      'Fund IV, its latest vehicle registered as a Category I AIF, focuses on deep tech, climate tech, and B2B SaaS — sectors where India\'s engineering talent and domestic market scale combine to create globally competitive businesses. The fund has a 10-year investment horizon with a 3-year investment period and the ability to participate in follow-on rounds through an evergreen sidecar structure.',
-    ],
-    approach: {
-      headline: 'Thesis-Led, Founder-First',
-      text: 'Blume invests with a thesis — a specific hypothesis about where value will be created in a sector — and then actively seeks founders building in that direction. This thesis-driven deal sourcing creates proprietary access to the best founders before they enter competitive processes.',
-      principles: [
-        { title: 'Deep Sector Theses', desc: 'Investment professionals develop multi-year sector theses in fintech, climate, SaaS, and deep tech before sourcing deals, ensuring conviction precedes capital.' },
-        { title: 'Founder-First Support', desc: 'Post-investment support includes CFO advisory, legal network access, customer introductions, and the Blume community — 150+ portfolio founders available for peer learning.' },
-        { title: 'Early Entry Advantage', desc: 'Investing at pre-seed to seed stage (₹50L to ₹3 Cr typical first check) ensures meaningful ownership with industry-leading return multiples on successful exits.' },
-      ]
-    },
-    funds: [
-      { category: 'AIF Cat I · Venture Capital', name: 'Blume Ventures Fund IV', returns: '22.3% IRR (Gross)', aum: '₹1,200 Cr', tenure: '10 Years', href: '/knowledge/aif/category-i/venture-capital' },
-    ],
-    website: 'https://www.blume.vc',
-    linkedin: 'https://linkedin.com/company/blume-ventures',
-    twitter: 'https://twitter.com/BlumeVentures',
-  },
-
-  'indian-angel-network': {
-    name: 'Indian Angel Network', shortName: 'IAN Fund',
-    categoryType: 'AIF_CAT1', categoryLabel: 'AIF Category I',
-    tagline: '"Connecting India\'s most experienced operators with the nation\'s most promising early-stage entrepreneurs."',
-    icon: 'groups', iconColor: 'text-secondary',
-    aum: '₹1,200 Cr', founded: 2006, strategies: 3, clients: '550+ angels, 175+ startups', asOn: 'December 2025',
-    sebi: 'IN/AIF1/15-16/0258',
-    hq: 'Level 7, Worldmark-3, Aerocity, IGI Airport, New Delhi – 110037, Delhi',
-    team: '25 Investment Professionals', investorBase: 'Accredited Angel Investors',
-    products: 'AIF Category I – Angel Fund', memberOf: 'IVCA & NASSCOM Member since 2009',
-    about: [
-      'Indian Angel Network is India\'s first and largest angel investor network, having facilitated investments in over 175 startups since 2006. IAN Fund III, its third SEBI-registered Angel Fund, operates as a co-investment vehicle where accredited angels pool capital into promising pre-Series A companies across India. The network\'s 550+ active members span founders, CXOs, and senior professionals across technology, healthcare, consumer, and fintech.',
-      'The fund\'s differentiated advantage lies in its mentor-capital model: every investee receives not just funding but an active mentor from the network with directly relevant sector expertise. This operational guidance materially improves startup survival rates and Series A success. IAN has produced several notable exits including PolicyBazaar, Druva, and Sapience Analytics.',
-    ],
-    approach: {
-      headline: 'Mentor-Capital Model',
-      text: 'IAN\'s investment model is inseparable from its mentorship platform. Capital from the angel fund is paired with a designated mentor — a network member with direct domain expertise — who actively supports the founding team through the first 18–36 months of growth.',
-      principles: [
-        { title: 'Mentor Pairing', desc: 'Every portfolio startup receives a dedicated mentor with direct industry experience, providing strategic counsel, customer introductions, and crisis management support.' },
-        { title: 'Network Effect', desc: '550+ active angels from across industries create a powerful cross-referral network, accelerating business development and follow-on fundraising for portfolio companies.' },
-        { title: 'Stage Discipline', desc: 'Investments strictly at pre-Series A (typically ₹25L–₹2 Cr per company from the fund), maintaining discipline on entry stage to preserve return multiples.' },
-      ]
-    },
-    funds: [
-      { category: 'AIF Cat I · Angel Fund', name: 'IAN Fund III', returns: '18.7% IRR (Gross)', aum: '₹350 Cr', tenure: '8 Years', href: '/knowledge/aif/category-i/angel' },
-    ],
-    website: 'https://www.ianfund.in',
-    linkedin: 'https://linkedin.com/company/indian-angel-network',
-    twitter: 'https://twitter.com/IAN_connects',
-  },
-
-  'nhai-infrastructure-trust': {
-    name: 'NHAI Infrastructure Trust', shortName: 'NHAI InvIT',
-    categoryType: 'AIF_CAT1', categoryLabel: 'AIF Category I',
-    tagline: '"Channelling institutional capital into India\'s national highway network — one of the world\'s largest infrastructure programmes."',
-    icon: 'construction', iconColor: 'text-secondary',
-    aum: '₹21,000 Cr', founded: 2018, strategies: 2, clients: '480+ institutional investors', asOn: 'March 2026',
-    sebi: 'IN/AIF1/18-19/0489',
-    hq: 'G-5 & 6, Sector 10, Dwarka, Near Dwarka Sector 10 Metro Station, New Delhi – 110075, Delhi',
-    team: '45 Investment Professionals', investorBase: 'Domestic & Global Institutions',
-    products: 'AIF Category I – Infrastructure Fund', memberOf: 'IVCA Member since 2019',
-    about: [
-      'NHAI Infrastructure Trust is the investment vehicle through which the National Highways Authority of India (NHAI) channels institutional capital into India\'s national highway development programme. As a Category I AIF Infrastructure Fund, it invests in Hybrid Annuity Model (HAM) and Build-Operate-Transfer (BOT) road projects, offering investors exposure to government-backed annuity payments over concession periods of 15–30 years.',
-      'The trust provides investors with inflation-linked cash flows underpinned by the sovereign credit of NHAI — a government of India undertaking. With India\'s highway construction pace exceeding 40 km/day and a pipeline of over ₹10 lakh crore in planned expenditure under PM Gati Shakti, the trust offers a compelling long-duration yield opportunity for institutions seeking infrastructure exposure within the SEBI-regulated AIF framework.',
-    ],
-    approach: {
-      headline: 'Sovereign-Backed Long-Duration Yield',
-      text: 'The trust\'s investment philosophy is straightforward: deploy capital into government-backed highway concessions where annuity payments are contractually guaranteed by NHAI, insulating investors from traffic volume risk while providing inflation-linked returns.',
-      principles: [
-        { title: 'Annuity Security', desc: 'HAM project investments carry bi-annual NHAI annuity payments, effectively collateralised by the sovereign, providing CRISIL AAA-equivalent credit quality.' },
-        { title: 'Long Duration', desc: '15–30 year concession periods align with the liability profiles of pension funds, insurance companies, and endowments seeking long-duration, predictable cash flows.' },
-        { title: 'Project Selection', desc: 'Only NHAI-approved projects with completed environmental clearances, land acquisition >90%, and appointed date achieved are eligible for investment.' },
-      ]
-    },
-    funds: [
-      { category: 'AIF Cat I · Infrastructure', name: 'NHAI Infrastructure Fund I', returns: '12.4% Yield p.a.', aum: '₹8,500 Cr', tenure: '25 Years', href: '/knowledge/aif/category-i/infrastructure' },
-    ],
-    website: 'https://www.nhai.gov.in',
-    linkedin: 'https://linkedin.com/company/nhai',
-    twitter: 'https://twitter.com/NHAI_Official',
-  },
-
-  'aavishkaar-capital': {
-    name: 'Aavishkaar Capital', shortName: 'Aavishkaar',
-    categoryType: 'AIF_CAT1', categoryLabel: 'AIF Category I',
-    tagline: '"Investing at the intersection of financial returns and transformative social outcomes for India\'s underserved."',
-    icon: 'volunteer_activism', iconColor: 'text-secondary',
-    aum: '₹2,800 Cr', founded: 2001, strategies: 5, clients: '350+ investors, 65+ portfolio companies', asOn: 'December 2025',
-    sebi: 'IN/AIF1/13-14/0036',
-    hq: '801, Hallmark Business Park, Sant Dnyaneshwar Marg, Bandra (East), Mumbai – 400051, Maharashtra',
-    team: '68 Investment Professionals', investorBase: 'DFIs, Family Offices & Impact Investors',
-    products: 'AIF Category I – Social Venture Fund', memberOf: 'GIIN & IVCA Member since 2007',
-    about: [
-      'Aavishkaar Capital is India\'s oldest impact investment fund manager, founded in 2001 with a mission to channel institutional capital into enterprises serving the economically excluded. Over two decades, Aavishkaar has deployed capital across financial inclusion (microfinance, rural banking), agri-value chains, affordable healthcare, and clean energy — measuring both financial returns and social outcomes with equal rigour.',
-      'Fund VIII represents the firm\'s latest and largest vehicle, investing in Category I Social Venture AIF framework. The fund applies the IRIS+ impact measurement taxonomy and reports annually against the UN Sustainable Development Goals. Aavishkaar\'s investor base includes international development finance institutions (IFC, FMO, USAID), Indian family offices with social mandates, and SIDBI\'s impact fund-of-funds.',
-    ],
-    approach: {
-      headline: 'Impact-First, Returns-Accountable',
-      text: 'Aavishkaar rejects the false dichotomy between impact and returns. The firm\'s thesis: enterprises serving underserved markets — rural financial inclusion, agri-logistics, affordable diagnostics — have large and underserved TAMs that generate both social value and superior risk-adjusted financial returns when managed well.',
-      principles: [
-        { title: 'Double Bottom Line', desc: 'Every investment evaluated on two scorecards: financial (IRR, MOIC, yield) and impact (beneficiaries reached, lives improved, SDGs advanced). Neither compromises the other.' },
-        { title: 'IRIS+ Measurement', desc: 'Standardised impact metrics using the Global Impact Investing Network\'s IRIS+ framework, with third-party impact audits published annually alongside financial accounts.' },
-        { title: 'Blended Finance', desc: 'Concessional first-loss capital from DFIs (typically 10–20% of fund size) reduces overall risk for commercial LPs, improving net returns while expanding the investment mandate.' },
-      ]
-    },
-    funds: [
-      { category: 'AIF Cat I · Social Venture', name: 'Aavishkaar Fund VIII', returns: '14.2% IRR (Gross)', aum: '₹650 Cr', tenure: '10 Years', href: '/knowledge/aif/category-i/social-venture' },
-    ],
-    website: 'https://www.aavishkaar.in',
-    linkedin: 'https://linkedin.com/company/aavishkaar-capital-management',
-    twitter: 'https://twitter.com/Aavishkaar',
-  },
-
-  'edelweiss-asset-management': {
-    name: 'Edelweiss Asset Management', shortName: 'Edelweiss AMC',
-    categoryType: 'AIF_CAT1', categoryLabel: 'AIF Cat I · AIF Cat II',
-    tagline: '"Structured creativity in credit, equity, and alternatives — building India\'s most versatile alternative investment platform."',
-    icon: 'workspace_premium', iconColor: 'text-tertiary-fixed',
-    aum: '₹42,000 Cr', founded: 2009, strategies: 15, clients: '22,000+', asOn: 'March 2026',
-    sebi: 'INP000004657',
-    hq: 'Edelweiss House, Off CST Road, Kalina, Santacruz (East), Mumbai – 400098, Maharashtra',
-    team: '185 Investment Professionals', investorBase: 'HNIs, Family Offices & Institutions',
-    products: 'AIF Category I (SME); AIF Category II (Debt & Credit)', memberOf: 'AMFI & IVCA Member since 2010',
-    about: [
-      'Edelweiss Asset Management is one of India\'s leading alternative investment platforms, with a multi-strategy presence across SME growth equity, private debt, structured credit, and real assets. Part of the Edelweiss Financial Services group — a diversified financial conglomerate with over ₹2 lakh crore in total assets — the AMC leverages group-wide deal origination capabilities across corporate banking, wealth management, and institutional broking.',
-      'The SME Growth Fund franchise provides growth equity to profitable mid-market Indian businesses in specialty chemicals, pharmaceuticals, auto ancillaries, and technical textiles. The debt platform deploys structured credit — senior secured NCDs, mezzanine, and promoter financing — to mid-market borrowers that commercial banks cannot adequately serve within their collateral norms.',
-    ],
-    approach: {
-      headline: 'Structured Creativity Across the Capital Stack',
-      text: 'Edelweiss AMC\'s competitive advantage lies in its ability to deploy capital at any point in the corporate capital stack — equity, quasi-equity, structured debt, or senior secured lending — and to structure instruments bespoke to each borrower\'s cash flow profile and collateral availability.',
-      principles: [
-        { title: 'Capital Stack Agility', desc: 'Investment teams can provide equity, CCDs, mezzanine, NCDs, or receivable-backed instruments — accessing opportunities that mono-strategy managers cannot structure.' },
-        { title: 'Origination Network', desc: 'Group-wide sourcing across Edelweiss\'s banking, brokerage, and wealth management arms generates proprietary deal flow unavailable to standalone fund managers.' },
-        { title: 'Credit Discipline', desc: 'Conservative underwriting with minimum 1.5× DSCR for debt investments, first-charge collateral, and covenant-heavy documentation across all structured credit positions.' },
-      ]
-    },
-    funds: [
-      { category: 'AIF Cat I · SME', name: 'Edelweiss SME Growth Fund II', returns: '20.1% IRR (Gross)', aum: '₹1,800 Cr', tenure: '7 Years', href: '/knowledge/aif/category-i/sme' },
-      { category: 'AIF Cat II · Debt', name: 'Edelweiss Crossover Opportunities III', returns: '14.2% Yield p.a.', aum: '₹4,500 Cr', tenure: '5 Years', href: '/knowledge/aif/category-ii/debt' },
-    ],
-    website: 'https://www.edelweissmf.com',
-    linkedin: 'https://linkedin.com/company/edelweiss-asset-management',
-    twitter: 'https://twitter.com/Edelweiss_MF',
-  },
-
-  'chryscapital': {
-    name: 'ChrysCapital', shortName: 'ChrysCapital',
-    categoryType: 'AIF_CAT2', categoryLabel: 'AIF Category II',
-    tagline: '"Twenty-five years of compounding institutional capital in India\'s most durable growth businesses."',
-    icon: 'business_center', iconColor: 'text-tertiary-fixed',
-    aum: '₹1,05,000 Cr', founded: 1999, strategies: 9, clients: '200+ institutional LPs', asOn: 'March 2026',
-    sebi: 'IN/AIF2/09-10/0015',
-    hq: '5th Floor, Mafatlal House, H.T. Parekh Marg, Backbay Reclamation, Churchgate, Mumbai – 400020, Maharashtra',
-    team: '55 Investment Professionals', investorBase: 'Global Institutional LPs',
-    products: 'AIF Category II – Private Equity', memberOf: 'IVCA Member since 2005',
-    about: [
-      'ChrysCapital is India\'s most established domestic private equity firm, having invested over $5 billion across 9 funds since 1999. The firm focuses on growth equity — acquiring significant minority or majority stakes in established, profitable Indian businesses — and has produced an aggregate portfolio of over 130 investments across financial services, healthcare, consumer, technology, and manufacturing.',
-      'Fund IX, the firm\'s current vehicle, targets growth equity investments of ₹400–2,000 Crore in companies with proven business models, strong management teams, and identifiable value creation pathways. ChrysCapital\'s 25-year track record, deep relationships with Indian promoter families, and DPI-focused exit discipline have cemented its position as India\'s institutional LPs\' preferred domestic PE manager.',
-    ],
-    approach: {
-      headline: 'Operational Value Creation in Indian Growth Businesses',
-      text: 'ChrysCapital\'s investment process begins with a thorough evaluation of business quality, management credibility, and market positioning. The firm then applies a structured value-creation playbook — governance professionalisation, management incentive alignment, and strategic repositioning — before pursuing exit options.',
-      principles: [
-        { title: 'Business Quality First', desc: 'Only established, profitable companies with ROE >12%, sustainable competitive advantages, and addressable growth opportunities enter the investment committee pipeline.' },
-        { title: 'Management Partnership', desc: 'ChrysCapital invests alongside promoter management — taking significant minority or control positions — and professionalises governance through board-level representation and independent director nominations.' },
-        { title: 'DPI Discipline', desc: 'Explicit focus on realised returns (Distributions to Paid-In Capital) over paper NAV. Exit orientation from day one with defined pathways to IPO, strategic sale, or secondary.' },
-      ]
-    },
-    funds: [
-      { category: 'AIF Cat II · Private Equity', name: 'ChrysCapital Growth Fund IX', returns: '21.4% IRR (Gross)', aum: '₹18,000 Cr', tenure: '8 Years', href: '/knowledge/aif/category-ii/private-equity' },
-    ],
-    website: 'https://www.chryscapital.com',
-    linkedin: 'https://linkedin.com/company/chryscapital',
-    twitter: '',
-  },
-
-  'altico-capital': {
-    name: 'Altico Capital', shortName: 'Altico',
-    categoryType: 'AIF_CAT2', categoryLabel: 'AIF Category II',
-    tagline: '"Contrarian capital deployed in India\'s most complex restructuring situations — where patience meets special situations expertise."',
-    icon: 'warning_amber', iconColor: 'text-secondary',
-    aum: '₹6,800 Cr', founded: 2015, strategies: 3, clients: '180+ investors', asOn: 'December 2025',
-    sebi: 'IN/AIF2/15-16/0338',
-    hq: '14th Floor, Peninsula Business Park, Tower B, Senapati Bapat Marg, Lower Parel, Mumbai – 400013, Maharashtra',
-    team: '42 Investment Professionals', investorBase: 'Institutional & UHNI Investors',
-    products: 'AIF Category II – Distressed Asset Fund', memberOf: 'IVCA Member since 2016',
-    about: [
-      'Altico Capital is a specialist distressed asset and special situations fund manager, deploying capital into stressed corporate assets through IBC CIRP processes, SARFAESI enforcement, and debt-to-equity conversions. The firm\'s investment team combines credit underwriting expertise with operational restructuring capabilities, enabling it to acquire distressed businesses and revive them through management changes, asset rationalisation, and fresh growth capital.',
-      'The firm focuses primarily on real estate and mid-market industrial businesses — segments with significant NPA stock accumulated post-2018. Altico\'s Special Situations Fund I has participated in 12 CIRP resolution plans across the real estate, hospitality, and manufacturing sectors, generating above-benchmark recoveries for investors.',
-    ],
-    approach: {
-      headline: 'Contrarian Resolution Investing',
-      text: 'Altico Capital invests when distress creates mispricing — acquiring assets at 30–50% discounts to intrinsic value when lenders are motivated sellers and resolution candidates are overlooked. The firm\'s edge lies not in identifying cheap assets but in executing successful resolutions of complex, multi-creditor situations.',
-      principles: [
-        { title: 'IBC Expertise', desc: 'Dedicated legal and restructuring team with 40+ completed IBC CIRP transactions provides superior insight into resolution timelines, CoC dynamics, and NCLT jurisprudence.' },
-        { title: 'Turnaround Capability', desc: 'Post-acquisition, Altico installs professional management, implements operational rightsizing, and provides fresh working capital to revive viable businesses from distressed situations.' },
-        { title: 'Conservative Entry', desc: 'Acquisition pricing at 50–70% of estimated liquidation value ensures a margin of safety even in pessimistic recovery scenarios.' },
-      ]
-    },
-    funds: [
-      { category: 'AIF Cat II · Distressed Assets', name: 'Altico Special Situations Fund I', returns: '22.1% IRR (Target)', aum: '₹2,800 Cr', tenure: '7 Years', href: '/knowledge/aif/category-ii/distressed-assets' },
-    ],
-    website: 'https://www.alticocapital.com',
-    linkedin: 'https://linkedin.com/company/altico-capital',
-    twitter: '',
-  },
-
-  'marcellus-investment-managers': {
-    name: 'Marcellus Investment Managers', shortName: 'Marcellus',
-    categoryType: 'AIF_CAT3', categoryLabel: 'AIF Category III',
-    tagline: '"Owning India\'s most durable compounding machines — businesses so well-built that time is their greatest advantage."',
-    icon: 'trending_up', iconColor: 'text-secondary',
-    aum: '₹14,500 Cr', founded: 2018, strategies: 4, clients: '2,800+', asOn: 'March 2026',
-    sebi: 'INH000007815',
-    hq: '502, Wanhill Solitaire, Near Andheri Station (West), Andheri (West), Mumbai – 400053, Maharashtra',
-    team: '28 Investment Professionals', investorBase: 'HNIs, Family Offices',
-    products: 'AIF Category III – Long Only Equity', memberOf: 'AMFI Member since 2018',
-    about: [
-      'Marcellus Investment Managers is India\'s most concentrated quality equity house, founded in 2018 by former Ambit Capital CIO Saurabh Mukherjea. The firm\'s investment thesis — invest in companies with deep competitive moats, clean financial accounts, and superior capital allocation records, and hold them for decades — has attracted a loyal following among India\'s most sophisticated investors. Marcellus manages AIF and PMS strategies with a consistent philosophy across all vehicles.',
-      'The Consistent Compounders AIF holds 10–15 stocks with a minimum holding period of 5 years. The investment team spends over 70% of its time evaluating management quality, accounting integrity, and competitive moat durability — not macro analysis or near-term earnings forecasting. The strategy has delivered among the highest Sharpe ratios in the Indian long-only equity category since inception.',
-    ],
-    approach: {
-      headline: 'QGLP: Quality, Growth, Longevity, Price',
-      text: 'Marcellus\'s investment process is systematised around four filters: Quality (accounting purity, management integrity), Growth (earnings CAGR >15%), Longevity (competitive moat with 20+ year durability), and Price (entry at a reasonable valuation relative to intrinsic value). All four must pass before a company enters the portfolio.',
-      principles: [
-        { title: 'Accounting Quality First', desc: 'Proprietary 12-factor forensic accounting model screens for accounting manipulation before any investment is considered. Companies with red flags are permanently excluded.' },
-        { title: 'Moat-Centric', desc: 'Only businesses with identifiable, durable competitive advantages — pricing power, regulatory barriers, network effects, or switching costs — qualify for the portfolio.' },
-        { title: 'Extreme Patience', desc: 'Minimum 5-year investment horizon. Average holding period is 7+ years. Turnover <15% annually. The fund benefits from compounding uninterrupted by short-term market noise.' },
-      ]
-    },
-    funds: [
-      { category: 'AIF Cat III · Long Only', name: 'Marcellus Consistent Compounders AIF', returns: '18.3% p.a. (3Y)', aum: '₹6,200 Cr', tenure: 'Open-ended', href: '/knowledge/aif/category-iii/long-only' },
-    ],
-    website: 'https://www.marcellus.in',
-    linkedin: 'https://linkedin.com/company/marcellus-investment-managers',
-    twitter: 'https://twitter.com/MarcellusinMgrs',
-  },
-
-  'avendus-capital': {
-    name: 'Avendus Capital', shortName: 'Avendus',
-    categoryType: 'AIF_CAT3', categoryLabel: 'AIF Category III',
-    tagline: '"Alpha-first, benchmark-agnostic — generating absolute returns through disciplined long/short equity across India\'s listed markets."',
-    icon: 'sync_alt', iconColor: 'text-secondary',
-    aum: '₹85,000 Cr', founded: 2001, strategies: 11, clients: '6,500+', asOn: 'March 2026',
-    sebi: 'INH000001043',
-    hq: '901/902, 9th Floor, One BKC Tower B, G Block, Bandra Kurla Complex, Bandra (East), Mumbai – 400051, Maharashtra',
-    team: '95 Investment Professionals', investorBase: 'HNIs, Ultra HNIs & Family Offices',
-    products: 'AIF Category III – Long Short Equity', memberOf: 'AMFI & IVCA Member since 2006',
-    about: [
-      'Avendus Capital is India\'s premier investment banking and alternate asset management group, with the Absolute Return Fund representing its flagship hedge fund strategy. The Cat III AIF deploys a long/short equity approach — holding concentrated long positions in quality compounders alongside short positions in fundamentally weak businesses via NSE F&O — with a net long bias of 40–60%. The strategy is entirely benchmark-agnostic, targeting 12–18% absolute returns across market cycles.',
-      'Avendus\'s equity research team covers over 300 listed Indian companies across sectors, generating proprietary earnings models, channel checks, and management assessments that feed both the long and short books. The risk management framework enforces position-level stop-losses, sector concentration limits, and gross exposure ceilings, ensuring drawdowns are managed actively rather than passively.',
-    ],
-    approach: {
-      headline: 'Alpha from Both Books',
-      text: 'Avendus believes the Indian equity market — with its high information asymmetry, diverse investor base, and frequent mispricing — offers exceptional alpha opportunities on both the long and short sides. The team exploits these inefficiencies through deep research-driven stock selection rather than systematic factor exposure.',
-      principles: [
-        { title: 'Long Book Quality', desc: 'Long positions in 20–30 companies with strong fundamentals, near-term earnings catalysts, and valuation support. Average holding period 12–24 months for the long book.' },
-        { title: 'Short Book Discipline', desc: 'Short positions in businesses with deteriorating fundamentals, over-leveraged balance sheets, or accounting red flags. Implemented via F&O with defined stop-losses.' },
-        { title: 'Net Exposure Management', desc: 'Net exposure dynamically managed between 30–70% based on market valuation, macro signals, and risk-appetite indicators, reducing market sensitivity in expensive periods.' },
-      ]
-    },
-    funds: [
-      { category: 'AIF Cat III · Long Short', name: 'Avendus Absolute Return Fund II', returns: '15.6% p.a. (1Y)', aum: '₹3,800 Cr', tenure: 'Open-ended', href: '/knowledge/aif/category-iii/long-short' },
-    ],
-    website: 'https://www.avendus.com',
-    linkedin: 'https://linkedin.com/company/avendus-capital',
-    twitter: 'https://twitter.com/AvendusCapital',
-  },
-
-  'tata-asset-management': {
-    name: 'Tata Asset Management', shortName: 'Tata AMC',
-    categoryType: 'AIF_CAT3', categoryLabel: 'AIF Category III',
-    tagline: '"The trust of the Tata name — applied to India\'s most sophisticated market-neutral and multi-asset investment strategies."',
-    icon: 'balance', iconColor: 'text-tertiary-fixed',
-    aum: '₹1,55,000 Cr', founded: 1994, strategies: 32, clients: '85,000+', asOn: 'March 2026',
-    sebi: 'INP000004977',
-    hq: '1903, B Wing, Parinee Crescenzo, G Block, Bandra Kurla Complex, Bandra (East), Mumbai – 400051, Maharashtra',
-    team: '312 Investment Professionals', investorBase: 'Retail, HNIs & Institutional',
-    products: 'Mutual Funds; PMS; AIF Category III', memberOf: 'AMFI Member since 1995',
-    about: [
-      'Tata Asset Management is one of India\'s oldest and most trusted fund houses, established in 1994 as part of the Tata Group\'s financial services vertical. Managing over ₹1.55 lakh crore across mutual funds, PMS, and alternative investments, the firm brings institutional-grade investment processes underpinned by the Tata Group\'s governance standards and century-old brand equity.',
-      'Tata Market Neutral Fund I represents the firm\'s entry into the AIF Category III hedge fund space, deploying a sophisticated market-neutral strategy across India\'s Nifty 200 F&O universe. The strategy aims for a near-zero net beta to the market, generating returns exclusively from relative stock selection alpha through pairs trading and statistical arbitrage.',
-    ],
-    approach: {
-      headline: 'Pure Alpha Through Beta Neutrality',
-      text: 'Tata AMC\'s market neutral strategy eliminates market beta entirely — maintaining equal long and short positions so that overall market movements cancel out. Returns are generated solely from the relative performance of long positions vs short positions, providing a genuine low-correlation return stream.',
-      principles: [
-        { title: 'Beta Neutrality', desc: 'Net equity exposure maintained within ±10% of NAV at all times through continuous hedging with index and single-stock futures.' },
-        { title: 'Quantitative Discipline', desc: 'Systematic factor models identify pairs with statistically significant historical price relationships that have deviated beyond 2-sigma thresholds — the entry signal for pairs trades.' },
-        { title: 'Risk Management', desc: 'Individual pair loss limits at 0.5% of NAV, strategy-level drawdown limits at 8%, and independent risk oversight ensure disciplined position management.' },
-      ]
-    },
-    funds: [
-      { category: 'AIF Cat III · Market Neutral', name: 'Tata Market Neutral Fund I', returns: 'Sharpe 1.82', aum: '₹1,600 Cr', tenure: 'Open-ended', href: '/knowledge/aif/category-iii/long-short-market-neutral' },
-    ],
-    website: 'https://www.tatamutualfund.com',
-    linkedin: 'https://linkedin.com/company/tata-mutual-fund',
-    twitter: 'https://twitter.com/TataMutualFund',
-  },
-
-  'kotak-ifsc-asset-management': {
-    name: 'Kotak IFSC Asset Management', shortName: 'Kotak IFSC',
-    categoryType: 'GIFT_CITY', categoryLabel: 'GIFT City IFSC',
-    tagline: '"Your gateway to USD-denominated global investment opportunities from India\'s first international financial services centre."',
-    icon: 'public', iconColor: 'text-secondary',
-    aum: '₹8,400 Cr', founded: 2021, strategies: 5, clients: '1,200+', asOn: 'December 2025',
-    sebi: 'IV/AIFM/GIFT/2021/0012',
-    hq: 'Unit 8, GIFT One Building, Block 12, Road 1-D, GIFT City SEZ, Gandhinagar – 382355, Gujarat',
-    team: '24 Investment Professionals', investorBase: 'NRIs, FPIs & Resident Indians (LRS)',
-    products: 'SEBI IFSC – Restricted Schemes (AIF Equivalent)', memberOf: 'IFSCA Regulated since 2021',
-    about: [
-      'Kotak IFSC Asset Management is the GIFT City-based investment management subsidiary of the Kotak Mahindra Group, established to serve investors seeking USD-denominated exposure to global markets from within India\'s regulatory framework. As an IFSCA-regulated entity at GIFT City\'s International Financial Services Centre, the firm offers Restricted Schemes that provide accredited investors access to global listed equities, USD sovereign bonds, and multi-asset strategies previously unavailable through SEBI-regulated domestic vehicles.',
-      'NRIs, FPIs, and resident Indian investors (under the RBI\'s Liberalised Remittance Scheme) can access the firm\'s global investment strategies through GIFT City\'s tax-advantaged framework, which exempts fund income from Indian taxes for the IFSC entity. The platform benefits from the Kotak Group\'s global research capabilities and its relationships with premier international custodians and prime brokers.',
-    ],
-    approach: {
-      headline: 'Global Diversification from India\'s International Gateway',
-      text: 'Kotak IFSC\'s investment approach leverages GIFT City\'s unique regulatory framework to offer Indian investors access to international capital markets with institutional-grade governance, USD settlement, and IFSCA oversight — bridging the gap between Indian wealth and global investment opportunities.',
-      principles: [
-        { title: 'USD Denomination', desc: 'All investments and returns in USD, providing natural currency diversification for Indian investors\' rupee-concentrated wealth portfolios.' },
-        { title: 'Global Asset Classes', desc: 'Access to global listed equities, USD sovereign bonds, global REITs, and commodity ETFs — asset classes unavailable or tax-inefficient through the domestic mutual fund route.' },
-        { title: 'IFSCA Compliance', desc: 'Regulated by IFSCA under the IFSC Authority Act 2019, with SEBI-analogous investor protection norms and FATF-compliant AML/KYC frameworks.' },
-      ]
-    },
-    funds: [
-      { category: 'GIFT City · Restricted Scheme', name: 'Kotak GIFT City Global Fund I', returns: '19.2% p.a. (1Y)', aum: '₹2,400 Cr', tenure: 'Open-ended', href: '/gift-city' },
-    ],
-    website: 'https://www.kotakmf.com/gift-city',
-    linkedin: 'https://linkedin.com/company/kotak-mahindra-asset-management-company',
-    twitter: '',
-  },
-
-  'mirae-asset-ifsc': {
-    name: 'Mirae Asset IFSC', shortName: 'Mirae IFSC',
-    categoryType: 'GIFT_CITY', categoryLabel: 'GIFT City IFSC',
-    tagline: '"Democratising global investment access for India\'s next generation of wealth creators through GIFT City\'s innovative IFSC framework."',
-    icon: 'language', iconColor: 'text-secondary',
-    aum: '₹2,800 Cr', founded: 2022, strategies: 3, clients: '4,500+', asOn: 'December 2025',
-    sebi: 'IV/AIFM/GIFT/2022/0024',
-    hq: 'Unit 212, GIFT One Building, Block 12, Road 1-D, GIFT City SEZ, Gandhinagar – 382355, Gujarat',
-    team: '18 Investment Professionals', investorBase: 'NRIs, Resident Indians & FPIs',
-    products: 'SEBI IFSC – Retail Schemes', memberOf: 'IFSCA Regulated since 2022',
-    about: [
-      'Mirae Asset IFSC is the GIFT City subsidiary of Mirae Asset Global Investments — South Korea\'s largest asset manager with over $280 billion in global AUM. The India IFSC entity offers Retail Schemes providing individual investors access to Mirae Asset\'s global equity and multi-asset strategies with lower minimum investment thresholds than Restricted Scheme equivalents.',
-      'The Retail Scheme framework, recently introduced by IFSCA, enables a broader set of investors — including resident Indians under the LRS scheme and NRIs — to participate in globally diversified portfolios managed by a world-class investment team. Mirae Asset\'s global presence in 16 countries provides its GIFT City fund with unique access to on-the-ground research in Asian, European, and US equity markets.',
-    ],
-    approach: {
-      headline: 'Global Multi-Asset, Value-Oriented',
-      text: 'Mirae Asset IFSC\'s investment philosophy — honed across decades of global market experience — emphasises fundamental value across asset classes, disciplined portfolio construction, and long-term wealth creation for investors willing to look beyond India\'s domestic markets.',
-      principles: [
-        { title: 'Global Research Depth', desc: 'Research teams in 16 countries provide differentiated on-the-ground insights into international equities, unavailable to purely domestic Indian investment managers.' },
-        { title: 'Value Discipline', desc: 'Valuation-anchored approach across global equities — focusing on quality businesses trading at reasonable multiples relative to their growth-adjusted earnings.' },
-        { title: 'Accessible Entry', desc: 'Retail Scheme framework enables lower minimum investments vs Restricted Schemes, democratising global diversification for a broader set of GIFT City eligible investors.' },
-      ]
-    },
-    funds: [
-      { category: 'GIFT City · Retail Scheme', name: 'Mirae Asset GIFT Retail Opportunities', returns: '11.4% p.a. (1Y)', aum: '₹800 Cr', tenure: 'Open-ended', href: '/gift-city' },
-    ],
-    website: 'https://www.miraeasset.co.in',
-    linkedin: 'https://linkedin.com/company/mirae-asset-financial-group',
-    twitter: 'https://twitter.com/MiraeAssetIndia',
-  },
-};
+import { getAmc, getAmcSlugs, amcFunds } from '../../data/amcs';
+import { PERFORMANCE_DISCLAIMER } from '../../data/funds';
 
 export function getStaticPaths() {
-  // Hardcode slugs here — avoids Astro module-scope hoisting issue
-  // (amcs is instance-scope and not accessible from getStaticPaths at build time)
-  const slugs = [
-    'motilal-oswal-amc',
-    'iifl-asset-management',
-    'kotak-mahindra-amc',
-    'blume-ventures',
-    'indian-angel-network',
-    'nhai-infrastructure-trust',
-    'aavishkaar-capital',
-    'edelweiss-asset-management',
-    'chryscapital',
-    'altico-capital',
-    'marcellus-investment-managers',
-    'avendus-capital',
-    'tata-asset-management',
-    'kotak-ifsc-asset-management',
-    'mirae-asset-ifsc',
-  ];
-  return slugs.map(slug => ({ params: { slug } }));
+  return getAmcSlugs().map((slug) => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params;
-const amc = amcs[slug];
+const amc = getAmc(slug!);
 if (!amc) return Astro.redirect('/amc');
+const funds = amcFunds(slug!);
 
-const categoryBadgeStyle = {
-  PMS:        'bg-amber-100 text-amber-800 border border-amber-300/50',
-  AIF_CAT1:   'bg-emerald-100 text-emerald-800 border border-emerald-300/50',
-  AIF_CAT2:   'bg-blue-100 text-blue-800 border border-blue-300/50',
-  AIF_CAT3:   'bg-violet-100 text-violet-800 border border-violet-300/50',
-  GIFT_CITY:  'bg-indigo-100 text-indigo-800 border border-indigo-300/50',
-}[amc.categoryType] ?? 'bg-surface-container text-secondary border border-outline-variant/30';
+const clr = {
+  PMS:       { accent: 'text-amber-300',  bg: 'bg-amber-900/25',   border: 'border-amber-700/40',  badge: 'bg-amber-900/30 text-amber-200 border border-amber-700/40'  },
+  AIF_CAT1:  { accent: 'text-emerald-300',bg: 'bg-emerald-900/25', border: 'border-emerald-700/40',badge: 'bg-emerald-900/30 text-emerald-300 border border-emerald-700/40'},
+  AIF_CAT2:  { accent: 'text-blue-300',   bg: 'bg-blue-900/25',    border: 'border-blue-700/40',   badge: 'bg-blue-900/30 text-blue-300 border border-blue-700/40'      },
+  AIF_CAT3:  { accent: 'text-violet-300', bg: 'bg-violet-900/25',  border: 'border-violet-700/40', badge: 'bg-violet-900/30 text-violet-300 border border-violet-700/40' },
+  GIFT_CITY: { accent: 'text-indigo-300', bg: 'bg-indigo-900/25',  border: 'border-indigo-700/40', badge: 'bg-indigo-900/30 text-indigo-300 border border-indigo-700/40' },
+}[amc.categoryType] ?? { accent: 'text-amber-300', bg: 'bg-amber-900/25', border: 'border-amber-700/40', badge: 'bg-amber-900/30 text-amber-200 border border-amber-700/40' };
+
+const stats = [
+  { label: 'Combined AUM', value: amc.aum },
+  { label: 'Strategies', value: String(amc.strategies) },
+  { label: 'Categories', value: amc.categoryLabel },
+];
 ---
 
-<BaseLayout title={`${amc.name} | AMC Profile | PlatAlt`} currentPage="amc">
+<BaseLayout title={`${amc.name} | AMC Profile | Platizio Alternatives`} currentPage="amc">
 
-<div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
+<div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-28">
 
   <!-- Breadcrumb -->
-  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20 flex-wrap">
+  <nav class="py-5 flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20 flex-wrap">
     <a href="/amc" class="hover:text-secondary transition-colors">AMC Directory</a>
     <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
     <span class="text-on-surface-variant">{amc.name}</span>
   </nav>
 
-  <!-- AMC Header -->
-  <section class="py-12 md:py-16 mb-8 border-b border-outline-variant/20">
-    <div class="flex flex-col md:flex-row gap-10 items-start">
-      <div class="w-24 h-24 bg-primary-container flex items-center justify-center shrink-0">
-        <span class={`material-symbols-outlined text-5xl ${amc.iconColor}`} style="font-variation-settings:'FILL' 1">{amc.icon}</span>
+  <!-- Hero -->
+  <section class="pt-10 pb-8 border-b border-outline-variant/20">
+    <div class="flex items-start gap-6">
+      <div class={`w-16 h-16 ${clr.bg} ${clr.border} border flex items-center justify-center shrink-0`}>
+        <span class={`material-symbols-outlined text-3xl ${clr.accent}`}>{amc.icon}</span>
       </div>
       <div class="flex-1">
-        <div class="flex flex-wrap items-start gap-3 mb-4">
-          <div>
-            <span class="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold mb-2 block">{amc.categoryLabel}</span>
-            <h1 class="text-4xl md:text-6xl font-headline text-primary-container leading-tight">{amc.name}</h1>
-          </div>
-          <div class="flex flex-col gap-2 self-start mt-2">
-            <span class={`px-3 py-1.5 text-[9px] uppercase font-bold tracking-widest ${categoryBadgeStyle}`}>{amc.categoryLabel}</span>
-            <span class="px-3 py-1.5 bg-surface-container text-outline border border-outline-variant/30 text-[9px] uppercase font-bold tracking-widest">As on {amc.asOn}</span>
-          </div>
-        </div>
-        <p class="text-base md:text-lg text-on-surface-variant font-light italic leading-relaxed max-w-2xl">
-          {amc.tagline}
-        </p>
+        <span class={`text-[10px] px-3 py-1.5 uppercase font-bold tracking-widest ${clr.badge}`}>{amc.categoryLabel}</span>
+        <h1 class="text-4xl md:text-6xl font-headline text-primary-container leading-tight mt-4 mb-3">{amc.name}</h1>
+        <p class="text-sm text-on-surface-variant max-w-2xl leading-relaxed">{amc.tagline}</p>
       </div>
     </div>
   </section>
 
-  <!-- Stats Bar (5 cells) -->
-  <section class="grid grid-cols-2 md:grid-cols-5 gap-0 bg-surface-container-lowest border border-outline-variant/20 mb-12">
-    {[
-      { icon: 'payments',       label: 'AUM',        value: amc.aum },
-      { icon: 'calendar_today', label: 'Founded',     value: String(amc.founded) },
-      { icon: 'folder_special', label: 'Strategies',  value: String(amc.strategies) },
-      { icon: 'groups',         label: 'Total Clients', value: amc.clients },
-      { icon: 'update',         label: 'As On',       value: amc.asOn },
-    ].map((stat, i) => (
-      <div class={`p-6 text-center flex flex-col items-center gap-3 ${i < 4 ? 'border-b md:border-b-0 md:border-r border-outline-variant/20' : ''}`}>
-        <span class="material-symbols-outlined text-secondary text-2xl">{stat.icon}</span>
-        <span class="text-[9px] uppercase tracking-widest font-bold text-outline">{stat.label}</span>
-        <span class="text-xl font-headline text-primary-container leading-tight">{stat.value}</span>
+  <!-- Stats -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 border border-outline-variant/20 mb-12">
+    {stats.map((s, i) => (
+      <div class={`px-6 py-5 ${i < stats.length - 1 ? 'border-b sm:border-b-0 sm:border-r border-outline-variant/20' : ''}`}>
+        <p class="text-[9px] uppercase tracking-widest font-bold text-outline mb-1.5">{s.label}</p>
+        <p class="text-sm font-bold text-primary-container leading-tight">{s.value}</p>
       </div>
     ))}
-  </section>
+  </div>
 
-  <!-- About + Key Attributes -->
-  <section class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-    <div class="md:col-span-7">
-      <h2 class="font-headline text-4xl text-primary-container mb-6">About {amc.name}</h2>
-      {amc.about.map((para: string) => (
-        <p class="text-on-surface-variant text-base leading-relaxed mb-5">{para}</p>
-      ))}
+  <!-- Funds -->
+  <section class="mb-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">inventory_2</span>
+      <h2 class="font-headline text-2xl text-primary-container">Funds on Platizio Alternatives</h2>
     </div>
-    <div class="md:col-span-5">
-      <div class="bg-surface-container-low p-8 h-full">
-        <h3 class="font-headline text-2xl text-primary-container mb-6">Key Attributes</h3>
-        <ul class="space-y-5">
-          {[
-            { icon: 'verified_user',   label: 'SEBI Registration',  value: amc.sebi },
-            { icon: 'location_city',   label: 'Headquarters',       value: amc.hq },
-            { icon: 'groups',          label: 'Investment Team',     value: amc.team },
-            { icon: 'public',          label: 'Investor Base',       value: amc.investorBase },
-            { icon: 'gavel',           label: 'Products',            value: amc.products },
-            { icon: 'workspace_premium', label: 'Memberships',      value: amc.memberOf },
-          ].map(attr => (
-            <li class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
-                <span class="material-symbols-outlined text-secondary text-lg">{attr.icon}</span>
-              </div>
-              <div class="min-w-0">
-                <span class="block text-[10px] uppercase font-bold tracking-widest text-outline mb-0.5">{attr.label}</span>
-                <span class="text-sm font-semibold text-on-surface leading-snug">{attr.value}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Investment Approach -->
-  <section class="mb-16 bg-primary-container text-surface px-8 md:px-12 py-12 relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
-    <div class="relative z-10">
-      <span class="text-[10px] uppercase tracking-[0.3em] text-tertiary-fixed font-bold block mb-3">Philosophy</span>
-      <h2 class="font-headline text-3xl text-tertiary-fixed mb-4">Investment <span class="italic">Approach</span></h2>
-      <h3 class="font-headline text-xl text-amber-100 mb-5">{amc.approach.headline}</h3>
-      <p class="text-slate-300 text-sm leading-relaxed max-w-3xl mb-10">{amc.approach.text}</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {amc.approach.principles.map((p: {title: string; desc: string}) => (
-          <div class="border border-secondary/30 p-6 bg-secondary/5">
-            <h4 class="font-semibold text-tertiary-fixed text-sm mb-3 uppercase tracking-wide">{p.title}</h4>
-            <p class="text-slate-400 text-xs leading-relaxed">{p.desc}</p>
+    <div class="bg-surface-container-lowest border border-outline-variant/10 divide-y divide-outline-variant/10">
+      {funds.map((f) => (
+        <a href={f.href} class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-8 py-5 hover:bg-surface-container-low transition-colors group">
+          <div>
+            <span class={`text-[10px] uppercase tracking-widest font-bold ${clr.accent}`}>{f.category}</span>
+            <h3 class="font-headline text-lg text-primary-container group-hover:translate-x-0.5 transition-transform">{f.name}</h3>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Socials & Website -->
-  <section class="mb-16 bg-surface-container-low border border-outline-variant/20 px-8 md:px-12 py-10">
-    <h2 class="font-headline text-2xl text-primary-container mb-6">Connect with {amc.shortName}</h2>
-    <div class="flex flex-wrap gap-4">
-      <a href={amc.website} target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-primary-container text-white px-6 py-3 text-[11px] uppercase font-bold tracking-widest hover:bg-secondary transition-colors">
-        <span class="material-symbols-outlined text-base">language</span>Official Website
-      </a>
-      <a href={amc.linkedin} target="_blank" rel="noopener" class="inline-flex items-center gap-2 border border-outline-variant/40 text-on-surface-variant px-6 py-3 text-[11px] uppercase font-bold tracking-widest hover:border-secondary hover:text-secondary transition-colors">
-        <span class="material-symbols-outlined text-base">work</span>LinkedIn
-      </a>
-      {amc.twitter && (
-        <a href={amc.twitter} target="_blank" rel="noopener" class="inline-flex items-center gap-2 border border-outline-variant/40 text-on-surface-variant px-6 py-3 text-[11px] uppercase font-bold tracking-widest hover:border-secondary hover:text-secondary transition-colors">
-          <span class="material-symbols-outlined text-base">alternate_email</span>Twitter / X
-        </a>
-      )}
-      <a href={`https://www.sebi.gov.in`} target="_blank" rel="noopener" class="inline-flex items-center gap-2 border border-outline-variant/40 text-on-surface-variant px-6 py-3 text-[11px] uppercase font-bold tracking-widest hover:border-secondary hover:text-secondary transition-colors">
-        <span class="material-symbols-outlined text-base">verified_user</span>SEBI: {amc.sebi}
-      </a>
-    </div>
-  </section>
-
-  <!-- Funds Offered -->
-  <section class="mb-16">
-    <div class="flex items-end justify-between mb-8">
-      <div>
-        <h2 class="font-headline text-4xl text-primary-container mb-2">Funds Offered</h2>
-        <div class="w-12 h-1 bg-tertiary-fixed-dim"></div>
-      </div>
-      <a href="/explore" class="text-[11px] font-bold uppercase tracking-widest text-secondary hover:text-primary-container flex items-center gap-1 transition-colors">
-        View All Funds <span class="material-symbols-outlined text-sm">arrow_forward</span>
-      </a>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-1 bg-surface-container-low border border-outline-variant/10">
-      {amc.funds.map((fund: {category: string; name: string; returns: string; aum: string; tenure: string; href: string}) => (
-        <a href={fund.href} class="bg-surface-container-lowest p-8 hover:bg-white transition-all group">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-[9px] px-2 py-1 bg-secondary-container text-on-secondary-fixed-variant uppercase font-bold tracking-widest">{fund.category}</span>
-            <span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors">arrow_outward</span>
-          </div>
-          <h3 class="font-headline text-xl text-primary-container mb-5 group-hover:translate-x-1 transition-transform">{fund.name}</h3>
-          <div class="grid grid-cols-3 gap-4 pt-5 border-t border-surface-container">
-            <div>
-              <span class="block text-[9px] uppercase text-outline font-bold tracking-tighter mb-1">Returns</span>
-              <span class="text-base font-bold text-secondary">{fund.returns}</span>
+          <div class="flex items-center gap-6 shrink-0">
+            <div class="text-right">
+              <span class="block text-[9px] uppercase text-outline font-bold tracking-tighter">AUM</span>
+              <span class="text-sm font-bold text-primary-container">{f.aum}</span>
             </div>
-            <div>
-              <span class="block text-[9px] uppercase text-outline font-bold tracking-tighter mb-1">AUM</span>
-              <span class="text-base font-bold text-primary-container">{fund.aum}</span>
-            </div>
-            <div>
-              <span class="block text-[9px] uppercase text-outline font-bold tracking-tighter mb-1">Tenure</span>
-              <span class="text-base font-bold">{fund.tenure}</span>
-            </div>
+            <span class="material-symbols-outlined text-secondary">arrow_forward</span>
           </div>
         </a>
       ))}
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="bg-primary-container text-white px-10 md:px-16 py-14 relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-72 h-72 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
-    <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-      <div class="max-w-lg">
-        <span class="text-[10px] uppercase tracking-[0.3em] text-tertiary-fixed font-bold block mb-3">Institutional Enquiries</span>
-        <h2 class="font-headline text-4xl text-amber-100 mb-3 leading-tight">Invest with {amc.shortName}</h2>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Connect with our team to explore investment opportunities, mandate customisation, and onboarding with {amc.name}.
-        </p>
-      </div>
-      <button type="button" class="js-open-consult inline-flex items-center gap-3 bg-tertiary-fixed text-on-tertiary-fixed px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:opacity-90 transition-opacity shrink-0 cursor-pointer">
-        Book a Consultation <span class="material-symbols-outlined text-sm">arrow_forward</span>
-      </button>
-    </div>
+  <section class="border-t border-outline-variant/20 pt-6">
+    <p class="text-[10px] text-outline-variant leading-relaxed max-w-3xl">{PERFORMANCE_DISCLAIMER}</p>
   </section>
 
 </div>
-
 </BaseLayout>

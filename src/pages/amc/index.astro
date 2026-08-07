@@ -1,158 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAmcCards } from '../../data/amcs';
 
-const amcs = [
-  {
-    slug: 'motilal-oswal-amc',
-    name: 'Motilal Oswal AMC',
-    tagline: 'Pioneering quality investing through two decades of Buy Right, Sit Tight discipline.',
-    icon: 'account_balance',
-    aum: '₹38,500 Cr',
-    strategies: 12,
-    categoryType: 'PMS',
-    categoryLabel: 'PMS',
-  },
-  {
-    slug: 'iifl-asset-management',
-    name: 'IIFL Asset Management',
-    tagline: 'Rigorous research and disciplined risk management across PMS and multi-strategy AIF.',
-    icon: 'analytics',
-    aum: '₹15,200 Cr',
-    strategies: 18,
-    categoryType: 'PMS',
-    categoryLabel: 'PMS · AIF Cat III',
-  },
-  {
-    slug: 'kotak-mahindra-amc',
-    name: 'Kotak Mahindra AMC',
-    tagline: 'Decades of institutional trust delivering multi-asset investment excellence across India.',
-    icon: 'corporate_fare',
-    aum: '₹4,80,000 Cr',
-    strategies: 22,
-    categoryType: 'PMS',
-    categoryLabel: 'PMS · AIF Cat II',
-  },
-  {
-    slug: 'blume-ventures',
-    name: 'Blume Ventures',
-    tagline: "Backing India's most audacious founders at the earliest institutional stage.",
-    icon: 'rocket_launch',
-    aum: '₹4,800 Cr',
-    strategies: 4,
-    categoryType: 'AIF_CAT1',
-    categoryLabel: 'AIF Category I',
-  },
-  {
-    slug: 'indian-angel-network',
-    name: 'Indian Angel Network',
-    tagline: "Connecting India's most experienced operators with the nation's promising early-stage entrepreneurs.",
-    icon: 'groups',
-    aum: '₹1,200 Cr',
-    strategies: 3,
-    categoryType: 'AIF_CAT1',
-    categoryLabel: 'AIF Category I',
-  },
-  {
-    slug: 'nhai-infrastructure-trust',
-    name: 'NHAI Infrastructure Trust',
-    tagline: "Channelling institutional capital into India's national highway network under sovereign backing.",
-    icon: 'construction',
-    aum: '₹21,000 Cr',
-    strategies: 2,
-    categoryType: 'AIF_CAT1',
-    categoryLabel: 'AIF Category I',
-  },
-  {
-    slug: 'aavishkaar-capital',
-    name: 'Aavishkaar Capital',
-    tagline: "Investing at the intersection of financial returns and transformative social outcomes for India's underserved.",
-    icon: 'volunteer_activism',
-    aum: '₹2,800 Cr',
-    strategies: 5,
-    categoryType: 'AIF_CAT1',
-    categoryLabel: 'AIF Category I',
-  },
-  {
-    slug: 'edelweiss-asset-management',
-    name: 'Edelweiss Asset Management',
-    tagline: 'Structured creativity in credit, equity, and alternatives across the full corporate capital stack.',
-    icon: 'workspace_premium',
-    aum: '₹42,000 Cr',
-    strategies: 15,
-    categoryType: 'AIF_CAT1',
-    categoryLabel: 'AIF Cat I · AIF Cat II',
-  },
-  {
-    slug: 'chryscapital',
-    name: 'ChrysCapital',
-    tagline: "Twenty-five years of compounding institutional capital in India's most durable growth businesses.",
-    icon: 'business_center',
-    aum: '₹1,05,000 Cr',
-    strategies: 9,
-    categoryType: 'AIF_CAT2',
-    categoryLabel: 'AIF Category II',
-  },
-  {
-    slug: 'altico-capital',
-    name: 'Altico Capital',
-    tagline: "Contrarian capital deployed in India's most complex distressed and special situations.",
-    icon: 'warning_amber',
-    aum: '₹6,800 Cr',
-    strategies: 3,
-    categoryType: 'AIF_CAT2',
-    categoryLabel: 'AIF Category II',
-  },
-  {
-    slug: 'marcellus-investment-managers',
-    name: 'Marcellus Investment Managers',
-    tagline: "Owning India's most durable compounding machines — businesses so well-built that time is their greatest advantage.",
-    icon: 'trending_up',
-    aum: '₹14,500 Cr',
-    strategies: 4,
-    categoryType: 'AIF_CAT3',
-    categoryLabel: 'AIF Category III',
-  },
-  {
-    slug: 'avendus-capital',
-    name: 'Avendus Capital',
-    tagline: 'Alpha-first, benchmark-agnostic — generating absolute returns through disciplined long/short equity.',
-    icon: 'sync_alt',
-    aum: '₹85,000 Cr',
-    strategies: 11,
-    categoryType: 'AIF_CAT3',
-    categoryLabel: 'AIF Category III',
-  },
-  {
-    slug: 'tata-asset-management',
-    name: 'Tata Asset Management',
-    tagline: "The trust of the Tata name applied to India's most sophisticated market-neutral investment strategies.",
-    icon: 'balance',
-    aum: '₹1,55,000 Cr',
-    strategies: 32,
-    categoryType: 'AIF_CAT3',
-    categoryLabel: 'AIF Category III',
-  },
-  {
-    slug: 'kotak-ifsc-asset-management',
-    name: 'Kotak IFSC Asset Management',
-    tagline: 'Your gateway to USD-denominated global investment opportunities from GIFT City IFSC.',
-    icon: 'public',
-    aum: '₹8,400 Cr',
-    strategies: 5,
-    categoryType: 'GIFT_CITY',
-    categoryLabel: 'GIFT City IFSC',
-  },
-  {
-    slug: 'mirae-asset-ifsc',
-    name: 'Mirae Asset IFSC',
-    tagline: "Democratising global investment access through GIFT City's innovative IFSC framework.",
-    icon: 'language',
-    aum: '₹2,800 Cr',
-    strategies: 3,
-    categoryType: 'GIFT_CITY',
-    categoryLabel: 'GIFT City IFSC',
-  },
-];
+const amcs = getAmcCards();
 
 const filterTabs = [
   { label: 'All', value: 'ALL' },
@@ -182,7 +32,7 @@ const iconClass: Record<string, string> = {
 };
 ---
 
-<BaseLayout title="AMC Directory | PlatAlt" currentPage="amc">
+<BaseLayout title="AMC Directory | Platizio Alternatives" currentPage="amc">
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
@@ -195,7 +45,7 @@ const iconClass: Record<string, string> = {
           Institutional <span class="italic font-light">Directory</span>
         </h1>
         <p class="mt-4 text-on-surface-variant max-w-xl text-base leading-relaxed">
-          Profiles of premier asset management companies offering institutional-grade PMS, AIF, and GIFT City strategies — curated from funds featured in the Sovereign Ledger.
+          Profiles of premier asset management companies offering institutional-grade PMS, AIF, and GIFT City strategies — curated from funds featured on Platizio Alternatives.
         </p>
       </div>
       <!-- Search -->
@@ -291,7 +141,7 @@ const iconClass: Record<string, string> = {
   <div class="bg-surface-container-low border border-outline-variant/20 px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
     <div>
       <h3 class="font-headline text-2xl text-primary-container mb-1">Are you an asset manager?</h3>
-      <p class="text-sm text-on-surface-variant">Apply for institutional listing on PlatAlt platform.</p>
+      <p class="text-sm text-on-surface-variant">Apply for institutional listing on Platizio Alternatives platform.</p>
     </div>
     <a href="/partner" class="inline-flex items-center gap-2 bg-primary-container text-white px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:bg-secondary transition-colors shrink-0">
       Partnership Enquiry <span class="material-symbols-outlined text-sm">arrow_forward</span>
