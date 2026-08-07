@@ -1,0 +1,985 @@
+[
+  {
+    "source": "sebi_aif",
+    "reg_no": "IN/AIF3/19-20/0686",
+    "name": "2Point2 Capital Trust",
+    "amc": "2Point2 Capital Advisors",
+    "amc_slug": "2point2-capital-advisors",
+    "product_type": "aif",
+    "category": "category-iii",
+    "pms_type": null,
+    "sub_strategy": "long-only",
+    "site_type": "AIF_CAT3",
+    "aum_cr": null,
+    "aum_as_of": null,
+    "aum_source": null,
+    "benchmark": null,
+    "inception_date": "2019-04-23",
+    "returns": [],
+    "slug": "2point2-capital-aif",
+    "description": "A SEBI-registered Category III Alternative Investment Fund running a concentrated long-only strategy in listed Indian equities.",
+    "min_investment": "₹1 Crore",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "sebi_aif",
+    "reg_no": "IN/AIF1/21-22/1011",
+    "name": "360 ONE Asset Angel Fund 1",
+    "amc": "360 ONE Asset Management",
+    "amc_slug": "360-one-asset-management",
+    "product_type": "aif",
+    "category": "category-i",
+    "pms_type": null,
+    "sub_strategy": "angel",
+    "site_type": "AIF_CAT1",
+    "aum_cr": null,
+    "aum_as_of": null,
+    "aum_source": null,
+    "benchmark": null,
+    "inception_date": "2022-03-14",
+    "returns": [],
+    "slug": "360-one-angel-fund",
+    "description": "A SEBI-registered Category I Alternative Investment Fund investing in early-stage ventures as an angel fund.",
+    "min_investment": "₹1 Crore",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "seed",
+    "reg_no": "IFSC/AIF3/2025-26/0339",
+    "name": "360 ONE Bharat Growth Fund",
+    "amc": "360 ONE Asset Management",
+    "amc_slug": "360-one-asset-management",
+    "product_type": "aif",
+    "category": "gift-city",
+    "pms_type": null,
+    "sub_strategy": "restricted",
+    "site_type": "GIFT_CITY",
+    "aum_cr": null,
+    "aum_as_of": null,
+    "aum_source": null,
+    "benchmark": null,
+    "inception_date": "2026-02-23",
+    "returns": [],
+    "slug": "360-one-bharat-growth-gift",
+    "description": "An IFSCA-registered GIFT IFSC restricted scheme (Category III) offering exposure to Indian growth equities to global and NRI investors from the GIFT City International Financial Services Centre.",
+    "min_investment": "USD 150,000",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [
+      {
+        "label": "IFSCA Registration No.",
+        "value": "IFSC/AIF3/2025-26/0339"
+      },
+      {
+        "label": "GIFT IFSC Scheme Type",
+        "value": "Restricted Scheme (Category III)"
+      }
+    ],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "sebi_aif",
+    "reg_no": "IN/AIF2/12-13/0015",
+    "name": "360 ONE Private Equity Fund",
+    "amc": "360 ONE Asset Management",
+    "amc_slug": "360-one-asset-management",
+    "product_type": "aif",
+    "category": "category-ii",
+    "pms_type": null,
+    "sub_strategy": "private-equity",
+    "site_type": "AIF_CAT2",
+    "aum_cr": null,
+    "aum_as_of": null,
+    "aum_source": null,
+    "benchmark": null,
+    "inception_date": "2012-11-16",
+    "returns": [],
+    "slug": "360-one-private-equity-fund",
+    "description": "A SEBI-registered Category II Alternative Investment Fund pursuing a private-equity strategy in unlisted Indian companies.",
+    "min_investment": "₹1 Crore",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "apmi",
+    "reg_no": "INP000000506",
+    "name": "HDFC Diversified Portfolio – Hybrid",
+    "amc": "HDFC Asset Management Company",
+    "amc_slug": "hdfc-asset-management-company",
+    "product_type": "pms",
+    "category": null,
+    "pms_type": "discretionary",
+    "sub_strategy": "discretionary",
+    "site_type": "PMS",
+    "aum_cr": 38.22,
+    "aum_as_of": "2026-06-30",
+    "aum_source": "apmi",
+    "benchmark": null,
+    "inception_date": null,
+    "returns": [
+      {
+        "period": "1M",
+        "return_pct": 2.21,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "1Y",
+        "return_pct": 3.96,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "2Y",
+        "return_pct": 6.94,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3M",
+        "return_pct": 4.95,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3Y",
+        "return_pct": 9.13,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "5Y",
+        "return_pct": 8.35,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "6M",
+        "return_pct": 0.67,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "SI",
+        "return_pct": 8.45,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      }
+    ],
+    "slug": "hdfc-diversified-hybrid-pms",
+    "description": "A discretionary hybrid PMS blending equity and fixed income to balance growth and stability across market cycles through dynamic allocation.",
+    "min_investment": "₹50 Lakhs",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [
+      {
+        "label": "SEBI PMS Registration",
+        "value": "INP000000506"
+      },
+      {
+        "label": "Strategy Type",
+        "value": "Hybrid · Discretionary"
+      }
+    ],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "apmi",
+    "reg_no": "INP000000373",
+    "name": "ICICI Prudential PMS Contra Strategy",
+    "amc": "ICICI Prudential Asset Management Company",
+    "amc_slug": "icici-prudential-asset-management",
+    "product_type": "pms",
+    "category": null,
+    "pms_type": "discretionary",
+    "sub_strategy": "discretionary",
+    "site_type": "PMS",
+    "aum_cr": 13837.43,
+    "aum_as_of": "2026-06-30",
+    "aum_source": "apmi",
+    "benchmark": "BSE 500 TRI",
+    "inception_date": null,
+    "returns": [
+      {
+        "period": "1M",
+        "return_pct": 1.01,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "1Y",
+        "return_pct": 2.04,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "2Y",
+        "return_pct": 2.76,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3M",
+        "return_pct": 10.73,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3Y",
+        "return_pct": 16.61,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "5Y",
+        "return_pct": 17.47,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "6M",
+        "return_pct": -1.44,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "SI",
+        "return_pct": 18.02,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      }
+    ],
+    "slug": "icici-pru-contra-pms",
+    "description": "A discretionary equity PMS following a contrarian approach — buying fundamentally sound businesses that are temporarily out of favour, with a focus on mean reversion and margin of safety.",
+    "min_investment": "₹50 Lakhs",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [
+      {
+        "label": "SEBI PMS Registration",
+        "value": "INP000000373"
+      },
+      {
+        "label": "Strategy Type",
+        "value": "Equity · Discretionary"
+      }
+    ],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "apmi",
+    "reg_no": "INP000000837",
+    "name": "Kotak Evolv Moderate Asset Allocation",
+    "amc": "Kotak Mahindra Asset Management Company",
+    "amc_slug": "kotak-mahindra-asset-management-company",
+    "product_type": "pms",
+    "category": null,
+    "pms_type": "discretionary",
+    "sub_strategy": "discretionary",
+    "site_type": "PMS",
+    "aum_cr": 51.19,
+    "aum_as_of": "2026-06-30",
+    "aum_source": "apmi",
+    "benchmark": null,
+    "inception_date": null,
+    "returns": [
+      {
+        "period": "1M",
+        "return_pct": 0.69,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "1Y",
+        "return_pct": 4.46,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "2Y",
+        "return_pct": 4.84,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3M",
+        "return_pct": 7.69,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3Y",
+        "return_pct": 10.82,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "6M",
+        "return_pct": 0.89,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "SI",
+        "return_pct": 9.87,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      }
+    ],
+    "slug": "kotak-evolv-moderate-multi-asset-pms",
+    "description": "A discretionary multi-asset PMS allocating across equity, debt and other asset classes at a moderate risk profile, rebalanced to a target allocation.",
+    "min_investment": "₹50 Lakhs",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [
+      {
+        "label": "SEBI PMS Registration",
+        "value": "INP000000837"
+      },
+      {
+        "label": "Strategy Type",
+        "value": "Multi Asset · Discretionary"
+      }
+    ],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "apmi",
+    "reg_no": "INP000000837",
+    "name": "Kotak KKORE Non-Discretionary PMS",
+    "amc": "Kotak Mahindra Asset Management Company",
+    "amc_slug": "kotak-mahindra-asset-management-company",
+    "product_type": "pms",
+    "category": null,
+    "pms_type": "non-discretionary",
+    "sub_strategy": "non-discretionary",
+    "site_type": "PMS",
+    "aum_cr": 3982.7,
+    "aum_as_of": "2026-06-30",
+    "aum_source": "apmi",
+    "benchmark": null,
+    "inception_date": null,
+    "returns": [
+      {
+        "period": "1M",
+        "return_pct": 3.8,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "1Y",
+        "return_pct": 2.65,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "2Y",
+        "return_pct": 5.86,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3M",
+        "return_pct": 16.53,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3Y",
+        "return_pct": 15.94,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "5Y",
+        "return_pct": 14.3,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "6M",
+        "return_pct": -0.01,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "SI",
+        "return_pct": 14.3,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      }
+    ],
+    "slug": "kotak-kkore-ndpms",
+    "description": "A non-discretionary equity PMS where each investment decision is presented to the client for approval before execution, combining Kotak's research with investor-directed control.",
+    "min_investment": "₹50 Lakhs",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [
+      {
+        "label": "SEBI PMS Registration",
+        "value": "INP000000837"
+      },
+      {
+        "label": "Strategy Type",
+        "value": "Equity · Non-Discretionary"
+      }
+    ],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "apmi",
+    "reg_no": "INP000006183",
+    "name": "Marcellus Consistent Compounders",
+    "amc": "Marcellus Investment Managers",
+    "amc_slug": "marcellus-investment-managers",
+    "product_type": "pms",
+    "category": null,
+    "pms_type": "discretionary",
+    "sub_strategy": "discretionary",
+    "site_type": "PMS",
+    "aum_cr": 1666.34,
+    "aum_as_of": "2026-06-30",
+    "aum_source": "apmi",
+    "benchmark": "BSE 500 TRI",
+    "inception_date": null,
+    "returns": [
+      {
+        "period": "1M",
+        "return_pct": 2.42,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "1Y",
+        "return_pct": -6.29,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "2Y",
+        "return_pct": -0.6,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3M",
+        "return_pct": 17.51,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3Y",
+        "return_pct": 4.7,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "5Y",
+        "return_pct": 4.41,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "6M",
+        "return_pct": -0.78,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "SI",
+        "return_pct": 11.8,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      }
+    ],
+    "slug": "marcellus-consistent-compounders",
+    "description": "A discretionary equity PMS that builds a concentrated portfolio of high-quality Indian businesses with clean accounts and durable competitive advantages, held for the long term.",
+    "min_investment": "₹50 Lakhs",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [
+      {
+        "label": "SEBI PMS Registration",
+        "value": "INP000006183"
+      },
+      {
+        "label": "Strategy Type",
+        "value": "Equity · Discretionary"
+      }
+    ],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "apmi",
+    "reg_no": "INP000006183",
+    "name": "Marcellus Non-Discretionary PMS",
+    "amc": "Marcellus Investment Managers",
+    "amc_slug": "marcellus-investment-managers",
+    "product_type": "pms",
+    "category": null,
+    "pms_type": "non-discretionary",
+    "sub_strategy": "non-discretionary",
+    "site_type": "PMS",
+    "aum_cr": 47.49,
+    "aum_as_of": "2026-06-30",
+    "aum_source": "apmi",
+    "benchmark": null,
+    "inception_date": null,
+    "returns": [
+      {
+        "period": "1M",
+        "return_pct": 3.87,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "1Y",
+        "return_pct": -5.56,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "2Y",
+        "return_pct": 2.29,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3M",
+        "return_pct": 17.91,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3Y",
+        "return_pct": 5.34,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "5Y",
+        "return_pct": 3.91,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "6M",
+        "return_pct": -0.92,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "SI",
+        "return_pct": 16.57,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      }
+    ],
+    "slug": "marcellus-non-discretionary-pms",
+    "description": "A non-discretionary equity PMS applying Marcellus' quality-investing framework, with each trade presented to the client for sign-off before execution.",
+    "min_investment": "₹50 Lakhs",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [
+      {
+        "label": "SEBI PMS Registration",
+        "value": "INP000006183"
+      },
+      {
+        "label": "Strategy Type",
+        "value": "Equity · Non-Discretionary"
+      }
+    ],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "apmi",
+    "reg_no": "INP000000670",
+    "name": "Motilal Oswal Founders Portfolio",
+    "amc": "Motilal Oswal Asset Management Company",
+    "amc_slug": "motilal-oswal-asset-management",
+    "product_type": "pms",
+    "category": null,
+    "pms_type": "discretionary",
+    "sub_strategy": "discretionary",
+    "site_type": "PMS",
+    "aum_cr": 4097.29,
+    "aum_as_of": "2026-06-30",
+    "aum_source": "apmi",
+    "benchmark": "Nifty 500 TRI",
+    "inception_date": null,
+    "returns": [
+      {
+        "period": "1M",
+        "return_pct": 4.65,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "1Y",
+        "return_pct": 1.38,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "2Y",
+        "return_pct": 5.92,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3M",
+        "return_pct": 21.7,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3Y",
+        "return_pct": 21.99,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "6M",
+        "return_pct": 7.0,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "SI",
+        "return_pct": 25.71,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      }
+    ],
+    "slug": "motilal-oswal-founders-pms",
+    "description": "A discretionary equity PMS investing in a focused portfolio of promoter/founder-led businesses with strong capital-allocation records and long-term compounding potential.",
+    "min_investment": "₹50 Lakhs",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [
+      {
+        "label": "SEBI PMS Registration",
+        "value": "INP000000670"
+      },
+      {
+        "label": "Strategy Type",
+        "value": "Equity · Discretionary"
+      }
+    ],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "apmi",
+    "reg_no": "INP000007085",
+    "name": "Nippon India High Yield Portfolio",
+    "amc": "Nippon Life India Asset Management",
+    "amc_slug": "nippon-life-india-asset-management",
+    "product_type": "pms",
+    "category": null,
+    "pms_type": "discretionary",
+    "sub_strategy": "discretionary",
+    "site_type": "PMS",
+    "aum_cr": 458.9,
+    "aum_as_of": "2026-06-30",
+    "aum_source": "apmi",
+    "benchmark": null,
+    "inception_date": null,
+    "returns": [
+      {
+        "period": "1M",
+        "return_pct": 1.41,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "1Y",
+        "return_pct": 11.63,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3M",
+        "return_pct": 3.0,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "6M",
+        "return_pct": 5.51,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "SI",
+        "return_pct": 11.31,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      }
+    ],
+    "slug": "nippon-high-yield-debt-pms",
+    "description": "A discretionary debt PMS pursuing accrual-led returns from a curated set of higher-yielding corporate credit instruments, managed for income with active credit selection.",
+    "min_investment": "₹50 Lakhs",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [
+      {
+        "label": "SEBI PMS Registration",
+        "value": "INP000007085"
+      },
+      {
+        "label": "Strategy Type",
+        "value": "Debt · Discretionary"
+      }
+    ],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "apmi",
+    "reg_no": "INP000007207",
+    "name": "Nuvama Infinity Core Plus",
+    "amc": "Nuvama Asset Management",
+    "amc_slug": "nuvama-asset-management",
+    "product_type": "pms",
+    "category": null,
+    "pms_type": "non-discretionary",
+    "sub_strategy": "non-discretionary",
+    "site_type": "PMS",
+    "aum_cr": 2830.23,
+    "aum_as_of": "2026-06-30",
+    "aum_source": "apmi",
+    "benchmark": null,
+    "inception_date": null,
+    "returns": [
+      {
+        "period": "1M",
+        "return_pct": 0.15,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "1Y",
+        "return_pct": 7.28,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "2Y",
+        "return_pct": 7.53,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3M",
+        "return_pct": 5.1,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "3Y",
+        "return_pct": 9.73,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "5Y",
+        "return_pct": 8.24,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "6M",
+        "return_pct": 1.45,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      },
+      {
+        "period": "SI",
+        "return_pct": 7.86,
+        "benchmark_return_pct": null,
+        "as_of": "2026-06-30",
+        "source": "apmi"
+      }
+    ],
+    "slug": "nuvama-infinity-core-plus-ndpms",
+    "description": "A non-discretionary multi-asset PMS building a core allocation across asset classes, with investment decisions confirmed by the client before execution.",
+    "min_investment": "₹50 Lakhs",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [
+      {
+        "label": "SEBI PMS Registration",
+        "value": "INP000007207"
+      },
+      {
+        "label": "Strategy Type",
+        "value": "Multi Asset · Non-Discretionary"
+      }
+    ],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  },
+  {
+    "source": "seed",
+    "reg_no": "IFSC/Retail/2025-26/005",
+    "name": "Parag Parikh IFSC S&P 500 Fund of Fund",
+    "amc": "PPFAS Asset Management (IFSC)",
+    "amc_slug": "ppfas-asset-management-ifsc",
+    "product_type": "aif",
+    "category": "gift-city",
+    "pms_type": null,
+    "sub_strategy": "retail",
+    "site_type": "GIFT_CITY",
+    "aum_cr": null,
+    "aum_as_of": null,
+    "aum_source": null,
+    "benchmark": null,
+    "inception_date": "2025-11-14",
+    "returns": [],
+    "slug": "ppfas-ifsc-sp500-fof-gift",
+    "description": "An IFSCA-registered GIFT IFSC retail scheme — a fund of fund providing Indian and NRI investors access to the US S&P 500 index from the GIFT City International Financial Services Centre.",
+    "min_investment": "USD 10,000",
+    "manager": null,
+    "philosophy": null,
+    "strategy": null,
+    "fund_details": [
+      {
+        "label": "IFSCA Registration No.",
+        "value": "IFSC/Retail/2025-26/005"
+      },
+      {
+        "label": "GIFT IFSC Scheme Type",
+        "value": "Retail Scheme"
+      }
+    ],
+    "editorial_aum": null,
+    "status": "active",
+    "quarantine_reason": null,
+    "last_synced_at": "2026-07-24T04:45:07.085761Z"
+  }
+]

@@ -1,3 +1,5 @@
 node_modules
 .superpowers/
 .claude-flow/
+.astro/
+.playwright-mcp/
