@@ -1,5 +1,5 @@
 /**
- * Platizio Alternatives Capital — The Sovereign Ledger
+ * Platizio Alternatives
  * Site-wide interactive features:
  *   - Investor Enquiry Modal (opens via .js-open-consult buttons)
  *   - Consultation Booking Popup (auto-triggers at 90 seconds)
@@ -145,7 +145,7 @@
             '</div>',
             '<label class="av-consent">',
               '<input id="consultation-consent" name="consent" type="checkbox" required />',
-              '<span>I hereby give my consent to receive calls, WhatsApp messages, SMS and e-mails from Platizio Alternatives Capital regarding my investment consultation.</span>',
+              '<span>I hereby give my consent to receive calls, WhatsApp messages, SMS and e-mails from Platizio Services LLP regarding my investment consultation.</span>',
             '</label>',
             '<div class="av-consultation-actions">',
               '<button class="av-consultation-submit" type="submit">',
