@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { STAT } from '../../../../data/aif-facts';
 ---
 <BaseLayout title="Long Only Funds | Category III AIF | Platizio Alternatives" currentPage="knowledge/aif">
 
@@ -125,13 +126,13 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
     <h2 class="font-headline text-3xl text-tertiary-fixed mb-10 relative z-10">Key <span class="italic">Characteristics at a Glance</span></h2>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 relative z-10">
       {[
-        { label: 'Minimum Corpus',       value: '₹20 Crore',        sub: 'per scheme' },
-        { label: 'Min. Investor Ticket', value: '₹1 Crore',         sub: '₹25L for employees' },
-        { label: 'Fund Structure',       value: 'Open / Closed',     sub: 'as per PPM' },
+        STAT.minCorpus,
+        STAT.minTicket,
+        STAT.openOrClosed,
         { label: 'Short Selling',        value: 'Not Permitted',     sub: 'long positions only' },
         { label: 'Leverage',             value: 'Up to 2× NAV',      sub: 'via derivatives' },
-        { label: 'Taxation',             value: 'Fund Level',        sub: 'MMR ~42.744%' },
-        { label: 'Skin-in-the-Game',     value: '5% / ₹10 Cr',      sub: 'whichever is lower' },
+        STAT.fundLevelMmr,
+        STAT.skinInGameCat3,
         { label: 'Target Alpha',         value: '4–8% p.a.',         sub: 'above Nifty 50' },
       ].map(p => (
         <div class="border border-secondary/30 p-5">

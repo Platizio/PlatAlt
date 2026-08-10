@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { STAT } from '../../../../data/aif-facts';
 ---
 <BaseLayout title="Angel Funds | Category I AIF | Platizio Alternatives" currentPage="knowledge/aif">
 
@@ -106,9 +107,9 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
         { label: 'Min. per Investor',    value: 'None',             sub: 'Accredited Investors only' },
         { label: 'Min. Investors',       value: '5',                 sub: 'Accredited Investors' },
         { label: 'Max. per Startup',     value: '₹25 Crore',        sub: 'min ₹10 Lakh per investee' },
-        { label: 'Fund Structure',       value: 'Close-Ended',       sub: 'mandatory' },
-        { label: 'Leverage',             value: 'Not Permitted',     sub: 'except short-term borrowing' },
-        { label: 'Taxation',             value: 'Pass-Through',      sub: 'Sec. 224, IT Act 2025' },
+        STAT.closeEnded,
+        STAT.noLeverage,
+        STAT.passThrough,
         { label: 'Startup Eligibility',  value: 'DPIIT-recognised',  sub: 'up to 10 yrs from incorporation' },
       ].map(p => (
         <div class="border border-secondary/30 p-5">

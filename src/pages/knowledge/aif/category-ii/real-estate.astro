@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { STAT } from '../../../../data/aif-facts';
 ---
 <BaseLayout title="Real Estate Funds | Category II AIF | Platizio Alternatives" currentPage="knowledge/aif">
 
@@ -123,13 +124,13 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
     <h2 class="font-headline text-3xl text-tertiary-fixed mb-10 relative z-10">Key <span class="italic">Characteristics at a Glance</span></h2>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 relative z-10">
       {[
-        { label: 'Minimum Corpus',       value: '₹20 Crore',        sub: 'per scheme' },
-        { label: 'Min. Investor Ticket', value: '₹1 Crore',         sub: '₹25L for employees' },
-        { label: 'Fund Structure',       value: 'Close-Ended',       sub: 'mandatory' },
+        STAT.minCorpus,
+        STAT.minTicket,
+        STAT.closeEnded,
         { label: 'Typical Tenure',       value: '5–8 Years',         sub: 'from final close' },
         { label: 'Leverage',             value: 'Not Permitted',     sub: 'at AIF fund level' },
         { label: 'Target IRR',           value: '14–20%',            sub: 'gross, indicative' },
-        { label: 'Taxation',             value: 'Pass-Through',      sub: 'Sec. 224, IT Act 2025' },
+        STAT.passThrough,
         { label: 'Regulatory',           value: 'SEBI + RERA',       sub: 'dual compliance' },
       ].map(p => (
         <div class="border border-secondary/30 p-5">

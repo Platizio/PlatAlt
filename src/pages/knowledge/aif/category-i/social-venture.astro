@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { STAT } from '../../../../data/aif-facts';
 ---
 <BaseLayout title="Social Venture Funds | Category I AIF | Platizio Alternatives" currentPage="knowledge/aif">
 
@@ -102,12 +103,12 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
     <h2 class="font-headline text-3xl text-tertiary-fixed mb-10 relative z-10">Key <span class="italic">Characteristics at a Glance</span></h2>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 relative z-10">
       {[
-        { label: 'Minimum Corpus',       value: '₹20 Crore',        sub: 'per scheme' },
+        STAT.minCorpus,
         { label: 'Min. Investor Ticket', value: '₹1 Crore',         sub: '₹1,000 for NPO-only SIFs on the SSE' },
-        { label: 'Fund Structure',       value: 'Close-Ended',       sub: 'mandatory' },
+        STAT.closeEnded,
         { label: 'Typical Tenure',       value: '7–10 Years',        sub: 'incl. extension options' },
-        { label: 'Leverage',             value: 'Not Permitted',     sub: 'except short-term borrowing' },
-        { label: 'Taxation',             value: 'Pass-Through',      sub: 'Sec. 224, IT Act 2025' },
+        STAT.noLeverage,
+        STAT.passThrough,
         { label: 'Target Returns',       value: '10–15% IRR',        sub: 'financial + impact' },
         { label: 'Impact Reporting',     value: 'Mandatory',         sub: 'annual, IRIS+ aligned' },
       ].map(p => (

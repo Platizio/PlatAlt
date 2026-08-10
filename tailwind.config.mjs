@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,md}'],
+  // src/data holds datasets and shared facts, never markup. Scanning it made
+  // Tailwind emit utilities for ordinary English words in comments and copy —
+  // "inline" in a code comment produced .inline{display:inline}, which changed
+  // the content-hashed CSS filename and so every page that links it.
+  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,md}', '!./src/data/**'],
   darkMode: 'class',
   theme: {
     extend: {

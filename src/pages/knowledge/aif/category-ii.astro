@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { STAT } from '../../../data/aif-facts';
 ---
 <BaseLayout title="Category II AIF | Platizio Alternatives" currentPage="knowledge/aif">
 
@@ -247,14 +248,14 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     <h2 class="font-headline text-3xl text-tertiary-fixed mb-10 relative z-10">Key <span class="italic">Characteristics at a Glance</span></h2>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 relative z-10">
       {[
-        { label: 'Minimum Corpus',       value: '₹20 Crore',             sub: 'per scheme' },
-        { label: 'Min. Investor Ticket', value: '₹1 Crore',              sub: '₹25L for employees' },
-        { label: 'Max. Investors',       value: '1,000',                  sub: 'per scheme' },
-        { label: 'Fund Structure',       value: 'Close-Ended',            sub: 'mandatory' },
-        { label: 'Minimum Tenure',       value: '3 Years',                sub: 'from final close' },
-        { label: 'Leverage',             value: 'Not Permitted',          sub: 'except short-term borrowing' },
-        { label: 'Taxation',             value: 'Pass-Through',           sub: 'Sec. 224, IT Act 2025' },
-        { label: 'Skin-in-the-Game',     value: '2.5% / ₹5 Cr',         sub: 'whichever is lower' },
+        STAT.minCorpus,
+        STAT.minTicket,
+        STAT.maxInvestors,
+        STAT.closeEnded,
+        STAT.minTenure,
+        STAT.noLeverage,
+        STAT.passThrough,
+        STAT.skinInGameCat12,
       ].map(p => (
         <div class="border border-secondary/30 p-5">
           <p class="text-[10px] uppercase font-label tracking-wider text-slate-400 mb-1">{p.label}</p>

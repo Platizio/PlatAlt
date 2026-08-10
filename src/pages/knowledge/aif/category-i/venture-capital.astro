@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { STAT } from '../../../../data/aif-facts';
 ---
 <BaseLayout title="Venture Capital Funds | Category I AIF | Platizio Alternatives" currentPage="knowledge/aif">
 
@@ -102,13 +103,13 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
     <h2 class="font-headline text-3xl text-tertiary-fixed mb-10 relative z-10">Key <span class="italic">Characteristics at a Glance</span></h2>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 relative z-10">
       {[
-        { label: 'Minimum Corpus',       value: '₹20 Crore',        sub: 'per scheme' },
-        { label: 'Min. Investor Ticket', value: '₹1 Crore',         sub: '₹25L for employees' },
-        { label: 'Max. Investors',       value: '1,000',             sub: 'per scheme' },
-        { label: 'Fund Structure',       value: 'Close-Ended',       sub: 'mandatory' },
+        STAT.minCorpus,
+        STAT.minTicket,
+        STAT.maxInvestors,
+        STAT.closeEnded,
         { label: 'Typical Tenure',       value: '7–10 Years',        sub: 'incl. extension options' },
-        { label: 'Leverage',             value: 'Not Permitted',     sub: 'except short-term borrowing' },
-        { label: 'Taxation',             value: 'Pass-Through',      sub: 'Sec. 224, IT Act 2025' },
+        STAT.noLeverage,
+        STAT.passThrough,
         { label: 'Target IRR',           value: '20–30%+',           sub: 'gross, indicative' },
       ].map(p => (
         <div class="border border-secondary/30 p-5">
