@@ -136,7 +136,7 @@ export const STAT = {
   leverageCat3: {
     label: 'Leverage',
     value: LIMIT.maxLeverageCat3,
-    sub: 'SEBI circular 2021',
+    sub: 'Master Circular para 7.2.3',
   },
   /** Categories I and II — taxed in the investor's hands, not the fund's. */
   passThrough: {
