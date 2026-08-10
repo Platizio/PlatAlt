@@ -1,7 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllFunds, tagFor, aumDisplay, NOT_DISCLOSED } from '../data/funds';
+
+const fmtD = (d: string | null) =>
+  d ? new Date(d).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) : NOT_DISCLOSED;
+
+const compareData = Object.fromEntries(getAllFunds().map((f) => [f.slug, {
+  name: f.name, type: f.site_type, category: tagFor(f), amc: f.amc,
+  aum: aumDisplay(f), inception: fmtD(f.inception_date),
+  strategy: f.description, minInvestment: f.min_investment ?? NOT_DISCLOSED,
+  manager: f.manager?.name ?? NOT_DISCLOSED,
+  inceptionYear: f.inception_date ? new Date(f.inception_date).getUTCFullYear() : null,
+  href: `/funds/${f.slug}`,
+}]));
+const fundDataJson = JSON.stringify(compareData);
 ---
-<BaseLayout title="Compare Funds | PlatAlt" currentPage="compare">
+<BaseLayout title="Compare Funds | Platizio Alternatives" currentPage="compare">
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
@@ -70,6 +84,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 </div>
 
+<script type="application/json" id="fund-data" set:html={fundDataJson}></script>
 <!-- ─── Client-side compare renderer ──────────────────────────── -->
 <script is:inline>
 (function () {
@@ -86,242 +101,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   };
 
   /* ── Complete fund lookup ────────────────────────────────────── */
-  var FUND_DATA = {
-    "motilal-value-pms": {
-      name: "Motilal Oswal Value Strategy",
-      amc: "Motilal Oswal AMC",
-      aum: "₹12,000 Cr",
-      inception: "January 2003",
-      inceptionYear: 2003,
-      strategy: "Long-term wealth creation through a concentrated 15–20 stock portfolio of quality businesses with strong competitive moats and superior capital allocation.",
-      category: "PMS · Discretionary",
-      minInvestment: "₹50 Lakhs",
-      manager: "Siddharth Bothra",
-      href: "/funds/motilal-value-pms",
-      type: "PMS"
-    },
-    "iifl-nondiscretionary-pms": {
-      name: "IIFL Emerging Companies PMS",
-      amc: "IIFL Asset Management",
-      aum: "₹5,200 Cr",
-      inception: "June 2011",
-      inceptionYear: 2011,
-      strategy: "Client-approved stock selection in high-growth mid and small-cap companies. Investor retains sign-off authority over each trade before execution.",
-      category: "PMS · Non-Discretionary",
-      minInvestment: "₹50 Lakhs",
-      manager: "Anup Maheshwari",
-      href: "/funds/iifl-nondiscretionary-pms",
-      type: "PMS"
-    },
-    "kotak-advisory-pms": {
-      name: "Kotak Advisory Growth Strategy",
-      amc: "Kotak Mahindra AMC",
-      aum: "₹3,800 Cr",
-      inception: "March 2012",
-      inceptionYear: 2012,
-      strategy: "Institutional-grade research and stock recommendations delivered to the investor, who retains full decision-making authority over every transaction.",
-      category: "PMS · Advisory",
-      minInvestment: "₹50 Lakhs",
-      manager: "Harsha Upadhyaya",
-      href: "/funds/kotak-advisory-pms",
-      type: "PMS"
-    },
-    "blume-vc-fund": {
-      name: "Blume Ventures Fund IV",
-      amc: "Blume Ventures",
-      aum: "₹1,200 Cr",
-      inception: "June 2022",
-      inceptionYear: 2022,
-      strategy: "Early-stage technology investments across SaaS, Fintech, Climate Tech, and Deep Tech. Portfolio includes 40+ startups, managed by India's leading seed-stage VC firm.",
-      category: "AIF Cat I · Venture Capital",
-      minInvestment: "₹1 Crore",
-      manager: "Sanjay Nath & Karthik Reddy",
-      href: "/funds/blume-vc-fund",
-      type: "AIF_CAT1"
-    },
-    "ian-angel-fund": {
-      name: "IAN Fund III",
-      amc: "Indian Angel Network",
-      aum: "₹350 Cr",
-      inception: "March 2019",
-      inceptionYear: 2019,
-      strategy: "Co-investment vehicle for accredited angels in pre-Series A Indian startups. Network of 550+ angels provides mentorship, introductions, and follow-on syndication.",
-      category: "AIF Cat I · Angel Fund",
-      minInvestment: "₹25 Lakhs",
-      manager: "Padmaja Ruparel",
-      href: "/funds/ian-angel-fund",
-      type: "AIF_CAT1"
-    },
-    "nhai-infra-fund": {
-      name: "NHAI Infrastructure Fund I",
-      amc: "NHAI Infrastructure Trust",
-      aum: "₹8,500 Cr",
-      inception: "September 2018",
-      inceptionYear: 2018,
-      strategy: "Invests in HAM road projects and BOT highway concessions under the National Infrastructure Pipeline. Government annuity payments provide predictable, inflation-linked cash flows.",
-      category: "AIF Cat I · Infrastructure",
-      minInvestment: "₹1 Crore",
-      manager: "NHAI Investment Management Division",
-      href: "/funds/nhai-infra-fund",
-      type: "AIF_CAT1"
-    },
-    "aavishkaar-social": {
-      name: "Aavishkaar Fund VIII",
-      amc: "Aavishkaar Capital",
-      aum: "₹650 Cr",
-      inception: "January 2020",
-      inceptionYear: 2020,
-      strategy: "Impact investment in financial inclusion, agri-value chains, and affordable healthcare enterprises serving rural India. IRIS+ impact metrics reported alongside financials.",
-      category: "AIF Cat I · Social Venture",
-      minInvestment: "₹1 Crore",
-      manager: "Vineet Rai",
-      href: "/funds/aavishkaar-social",
-      type: "AIF_CAT1"
-    },
-    "edelweiss-sme-fund": {
-      name: "Edelweiss SME Growth Fund II",
-      amc: "Edelweiss Asset Management",
-      aum: "₹1,800 Cr",
-      inception: "April 2017",
-      inceptionYear: 2017,
-      strategy: "Growth equity in profitable Indian SMEs with ₹50–300 Cr revenue. Focus on specialty chemicals, auto ancillaries, pharma API, and technical textiles with BSE SME exit pathway.",
-      category: "AIF Cat I · SME",
-      minInvestment: "₹1 Crore",
-      manager: "Nitin Jain",
-      href: "/funds/edelweiss-sme-fund",
-      type: "AIF_CAT1"
-    },
-    "chryscapital-pe": {
-      name: "ChrysCapital Growth Fund IX",
-      amc: "ChrysCapital",
-      aum: "₹18,000 Cr",
-      inception: "March 2022",
-      inceptionYear: 2022,
-      strategy: "Growth equity in India's leading mid-market companies across healthcare, financial services, consumer brands, and B2B technology. Over $5 billion deployed across 8 prior funds.",
-      category: "AIF Cat II · Private Equity",
-      minInvestment: "₹5 Crores",
-      manager: "Kunal Shroff",
-      href: "/funds/chryscapital-pe",
-      type: "AIF_CAT2"
-    },
-    "edelweiss-debt-fund": {
-      name: "Edelweiss Crossover Opportunities III",
-      amc: "Edelweiss Asset Management",
-      aum: "₹4,500 Cr",
-      inception: "July 2020",
-      inceptionYear: 2020,
-      strategy: "Senior secured NCDs and structured credit to mid-market companies. Portfolio diversified across 20+ borrowers with first-charge collateral and covenant-rich documentation.",
-      category: "AIF Cat II · Debt",
-      minInvestment: "₹1 Crore",
-      manager: "Ajay Agnihotri",
-      href: "/funds/edelweiss-debt-fund",
-      type: "AIF_CAT2"
-    },
-    "kotak-re-fund": {
-      name: "Kotak Real Estate Fund XII",
-      amc: "Kotak Mahindra AMC",
-      aum: "₹3,200 Cr",
-      inception: "February 2021",
-      inceptionYear: 2021,
-      strategy: "Development equity and construction finance in RERA-registered residential and Grade-A commercial projects across Mumbai, Bengaluru, and NCR with escrow-backed cash flows.",
-      category: "AIF Cat II · Real Estate",
-      minInvestment: "₹1 Crore",
-      manager: "Vikas Chimakurthy",
-      href: "/funds/kotak-re-fund",
-      type: "AIF_CAT2"
-    },
-    "altico-distressed": {
-      name: "Altico Special Situations Fund I",
-      amc: "Altico Capital",
-      aum: "₹2,800 Cr",
-      inception: "October 2019",
-      inceptionYear: 2019,
-      strategy: "Acquires stressed real estate and corporate loans via IBC CIRP and SARFAESI at 30–50% discounts. Returns driven by resolution, turnaround, and asset monetisation.",
-      category: "AIF Cat II · Distressed",
-      minInvestment: "₹1 Crore",
-      manager: "Rajiv Sabharwal",
-      href: "/funds/altico-distressed",
-      type: "AIF_CAT2"
-    },
-    "marcellus-long-only": {
-      name: "Marcellus Consistent Compounders AIF",
-      amc: "Marcellus Investment Managers",
-      aum: "₹6,200 Cr",
-      inception: "August 2019",
-      inceptionYear: 2019,
-      strategy: "Concentrated 10–15 stock portfolio of Indian companies with deep competitive moats, clean accounts, and superior capital allocation. 7-year average holding period.",
-      category: "AIF Cat III · Long Only",
-      minInvestment: "₹1 Crore",
-      manager: "Saurabh Mukherjea",
-      href: "/funds/marcellus-long-only",
-      type: "AIF_CAT3"
-    },
-    "avendus-long-short": {
-      name: "Avendus Absolute Return Fund II",
-      amc: "Avendus Capital",
-      aum: "₹3,800 Cr",
-      inception: "April 2021",
-      inceptionYear: 2021,
-      strategy: "Benchmark-agnostic long/short equity with 40–60% net long exposure. Alpha generated from both long book (quality compounders) and short book via NSE F&O.",
-      category: "AIF Cat III · Long Short",
-      minInvestment: "₹1 Crore",
-      manager: "Andrew Holland",
-      href: "/funds/avendus-long-short",
-      type: "AIF_CAT3"
-    },
-    "iifl-multi-strategy": {
-      name: "IIFL Multi-Strategy Alpha Fund",
-      amc: "IIFL Asset Management",
-      aum: "₹2,400 Cr",
-      inception: "November 2020",
-      inceptionYear: 2020,
-      strategy: "Dynamic allocation across 4 sub-strategies: equity long/short, statistical arbitrage, event-driven, and macro. Central risk desk manages real-time drawdown limits per pod.",
-      category: "AIF Cat III · Multi-Strategy",
-      minInvestment: "₹1 Crore",
-      manager: "Anup Maheshwari",
-      href: "/funds/iifl-multi-strategy",
-      type: "AIF_CAT3"
-    },
-    "tata-market-neutral": {
-      name: "Tata Market Neutral Fund I",
-      amc: "Tata Asset Management",
-      aum: "₹1,600 Cr",
-      inception: "January 2022",
-      inceptionYear: 2022,
-      strategy: "Beta-neutral strategy with near-zero net market exposure. Returns from pairs trading and statistical arbitrage across the Nifty 200 F&O universe. Target Sharpe ratio >1.5.",
-      category: "AIF Cat III · Market Neutral",
-      minInvestment: "₹1 Crore",
-      manager: "Rahul Singh",
-      href: "/funds/tata-market-neutral",
-      type: "AIF_CAT3"
-    },
-    "kotak-gift-restricted": {
-      name: "Kotak GIFT City Global Fund I",
-      amc: "Kotak IFSC Asset Management",
-      aum: "₹2,400 Cr",
-      inception: "March 2023",
-      inceptionYear: 2023,
-      strategy: "SEBI-registered Restricted Scheme investing in global listed equities and USD-denominated debt. Accessible to NRIs, FPIs, and resident Indians under LRS.",
-      category: "GIFT City · Restricted Scheme",
-      minInvestment: "USD 150,000",
-      manager: "International Investment Committee",
-      href: "/funds/kotak-gift-restricted",
-      type: "GIFT_CITY"
-    },
-    "mirae-gift-retail": {
-      name: "Mirae Asset GIFT Retail Opportunities",
-      amc: "Mirae Asset IFSC",
-      aum: "₹800 Cr",
-      inception: "January 2024",
-      inceptionYear: 2024,
-      strategy: "SEBI-registered Retail Scheme with multi-asset portfolio of global equities, ETFs, and sovereign bonds. Lower minimum threshold targets individual investors.",
-      category: "GIFT City · Retail Scheme",
-      minInvestment: "USD 5,000",
-      manager: "Global Investment Committee",
-      href: "/funds/mirae-gift-retail",
-      type: "GIFT_CITY"
-    }
-  };
+  var FUND_DATA = JSON.parse(document.getElementById('fund-data').textContent || '{}');
 
   /* ── Comparison rows definition ──────────────────────────────── */
   var ROWS = [
@@ -399,8 +179,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     funds.forEach(function (fund, fi) {
       var val;
       if (row.key === '__age') {
-        var age = CURRENT_YEAR - fund.inceptionYear;
-        val = age + (age === 1 ? ' year' : ' years');
+        if (fund.inceptionYear == null) { val = '—'; } else { var age = CURRENT_YEAR - fund.inceptionYear; val = age + (age === 1 ? ' year' : ' years'); }
       } else {
         val = fund[row.key] || '—';
       }

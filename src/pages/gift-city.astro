@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="GIFT City IFSC | PlatAlt" currentPage="knowledge/gift-city">
+<BaseLayout title="GIFT City IFSC | Platizio Alternatives" currentPage="knowledge/gift-city">
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
@@ -60,7 +60,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
       <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
         {[
-          { icon: 'business_center', title: 'Unified Regulator', desc: 'The IFSC Authority (IFSCA) acts as a single regulator overseeing banking, capital markets, insurance, and fund management within GIFT IFSC.' },
+          { icon: 'business_center', title: 'Unified Regulator', desc: 'The International Financial Services Centres Authority (IFSCA), established in 2020 under the International Financial Services Centres Authority Act, 2019, is the unified regulator for GIFT IFSC. It exercises the powers of the RBI, SEBI, IRDAI and PFRDA in respect of the IFSC.' },
           { icon: 'globe', title: 'Global Standards', desc: 'Operations aligned with international best practices, enabling seamless cross-border transactions and multi-currency settlements.' },
           { icon: 'trending_up', title: 'Growth Trajectory', desc: 'Home to 500+ entities including global banks, fund managers, stock exchanges, and insurance companies as of 2024.' },
           { icon: 'domain', title: 'World-Class Infrastructure', desc: 'State-of-the-art physical and digital infrastructure with 24×7 operations, data centers, and global connectivity.' },
@@ -109,8 +109,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {[
         {
-          category: 'Fund Vehicles',
-          items: ['Alternative Investment Funds (AIFs)', 'Mutual Funds (specified)', 'Exchange Traded Funds', 'Fund of Funds']
+          category: 'Fund Management Entity Tiers',
+          items: ['Authorised FME \u2014 net worth USD 75,000', 'Registered FME (Non-Retail) \u2014 USD 500,000', 'Registered FME (Retail) \u2014 USD 1 million', 'Each tier carries the permissions of those below it']
         },
         {
           category: 'Institutional Investors',
@@ -136,31 +136,54 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Fund Types at GIFT City -->
+  <!-- Fund Types at GIFT IFSC -->
   <section class="mb-16">
-    <div class="mb-10">
-      <h2 class="font-headline text-4xl text-primary-container mb-2">Fund Types at GIFT City</h2>
+    <div class="mb-6">
+      <h2 class="font-headline text-4xl text-primary-container mb-2">Types of Funds at GIFT IFSC</h2>
       <div class="w-12 h-1 bg-tertiary-fixed-dim"></div>
     </div>
+    <p class="text-sm text-on-surface-variant leading-relaxed max-w-3xl mb-10">
+      A Fund Management Entity registered with IFSCA may launch six distinct products under the
+      IFSCA (Fund Management) Regulations, 2025. Which of them are available depends on the tier
+      of the FME&rsquo;s registration.
+    </p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {[
         {
           num: '01',
-          title: 'Restricted Schemes (AIF equivalent)',
-          desc: 'Similar to Category I and II AIFs onshore, these funds pool capital from institutional and sophisticated investors for deployment into private equity, infrastructure, debt, and real estate strategies.',
-          features: ['Close-ended structure', 'Min ₹1 Crore commitment', 'IFSCA regulated', 'Pass-through taxation'],
+          title: 'Venture Capital Scheme',
+          desc: 'The entry-level scheme, available to an Authorised FME. Invests primarily in unlisted securities of start-ups and early-stage ventures, and is filed with IFSCA as a venture capital fund under Category I AIF.',
+          features: ['Close-ended, minimum three-year tenure', 'Maximum 50 investors', 'Min USD 250,000 per investor', 'Minimum corpus USD 3 million'],
         },
         {
           num: '02',
-          title: 'Retail Schemes',
-          desc: 'Open-ended fund structures accepting broader investor participation within GIFT IFSC. Typically invest in listed securities across global markets with daily liquidity provisions.',
-          features: ['Open-ended structure', 'Lower minimum investment', 'Daily NAV publication', 'Broad market exposure'],
+          title: 'Restricted Scheme (Non-Retail)',
+          desc: 'The principal private-placement vehicle at GIFT IFSC, available to a Registered FME (Non-Retail). Filed as a Category I, II or III AIF according to strategy, spanning private equity, credit, infrastructure, real estate and derivative-based trading.',
+          features: ['Open-ended or close-ended', 'Up to 1,000 investors', 'Min USD 150,000 per investor', 'Minimum corpus USD 3 million'],
         },
         {
           num: '03',
-          title: 'Special Situation Funds',
-          desc: 'Sophisticated vehicles targeting stressed and distressed asset opportunities, merger arbitrage, corporate restructuring, and event-driven strategies with defined exit frameworks.',
-          features: ['Opportunistic mandates', 'Flexible structure', 'Event-driven strategy', 'Expert managers only'],
+          title: 'Special Situation Fund',
+          desc: 'A Restricted Scheme sub-category dedicated to distressed assets. Invests only in special situation assets: stressed loans transferable under the RBI Transfer of Loan Exposures Directions or an IBC resolution plan, security receipts issued by a registered Asset Reconstruction Company, and securities of companies in insolvency or sustained default.',
+          features: ['Close-ended only', 'Minimum tenure three years', 'Distressed assets only', 'No leverage permitted'],
+        },
+        {
+          num: '04',
+          title: 'Retail Scheme',
+          desc: 'The only scheme open to the general investing public, and available only to a Registered FME (Retail). Launched through an offer document filed with IFSCA at least 21 working days before launch.',
+          features: ['Open-ended or close-ended', 'NAV daily if open-ended, weekly if close-ended', 'Minimum 20 investors, none above 25%', 'Company or trust only'],
+        },
+        {
+          num: '05',
+          title: 'Exchange Traded Fund (IFSC ETF)',
+          desc: 'A listed, exchange-traded product available only to a Registered FME (Retail). Covers equity index, debt index, commodity, hybrid and actively managed strategies.',
+          features: ['Mandatorily exchange-listed', 'Daily NAV publication', 'IFSC ETF identifier required', 'Registered FME (Retail) only'],
+        },
+        {
+          num: '06',
+          title: 'Family Investment Fund',
+          desc: 'A self-managed vehicle established by a single family and run through its own Authorised FME registration. The broadest investment mandate in the regime, extending to physical assets including real estate, bullion and art.',
+          features: ['Single family, self-managed', 'Min USD 10 million within three years', 'Open-ended or close-ended', 'Borrowing and leverage permitted'],
         },
       ].map(item => (
         <div class="bg-surface-container-lowest p-8 flex flex-col border border-outline-variant/10">
@@ -177,6 +200,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       ))}
     </div>
+    <p class="text-sm text-on-surface-variant leading-relaxed max-w-3xl mt-8 pt-6 border-t border-outline-variant/20">
+      A Registered FME may also provide Portfolio Management Services, act as investment manager to an
+      Investment Trust &mdash; a REIT or InvIT &mdash; constituted in the IFSC, and, with separate
+      authorisation from IFSCA, provide Third-Party Fund Management Services, managing schemes on behalf
+      of an externally regulated third-party manager. These are fund management activities rather than
+      schemes, and are governed by Chapter VI of the regulations.
+    </p>
+    <p class="text-[11px] text-outline mt-6 uppercase tracking-widest">
+      Figures reflect the IFSCA (Fund Management) Regulations, 2025 as amended to 30 January 2026
+    </p>
   </section>
 
   <!-- CTA -->

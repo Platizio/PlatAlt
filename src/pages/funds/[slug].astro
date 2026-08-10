@@ -1,712 +1,63 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  getAllFunds, getFund, tagFor, subtypeDisplay, aumDisplay, headlineMetric,
+  returnByPeriod, sourceLabel, NOT_DISCLOSED, PERFORMANCE_DISCLAIMER,
+} from '../../data/funds';
 
-/* ═══════════════════════════════════════════════════════════
-   FUND DATA — all 18 funds
-═══════════════════════════════════════════════════════════ */
-const funds: Record<string, any> = {
-
-  /* ── PMS ──────────────────────────────────────────────────── */
-  'motilal-value-pms': {
-    name: 'Motilal Oswal Value Strategy',
-    type: 'PMS', subtype: 'Discretionary PMS',
-    amc: 'Motilal Oswal AMC', amcSlug: 'motilal-oswal-amc',
-    tag: 'PMS · Discretionary',
-    asOn: 'March 2026', benchmark: 'BSE 500 TRI',
-    inception: 'January 2003', minInvestment: '₹50 Lakhs', aum: '₹12,000 Cr',
-    metric: { label: 'Return (3Y)', value: '24.1% p.a.' },
-    manager: {
-      name: 'Siddharth Bothra',
-      title: 'Chief Investment Officer – Equity, Motilal Oswal AMC',
-      experience: '20+ years in Indian equity markets; CFA charterholder; IIM Ahmedabad',
-      bio: 'Siddharth Bothra has led the equity investment function at Motilal Oswal AMC since 2017 after serving as a senior fund manager at Motilal Oswal Mutual Fund. He is a CFA charterholder and IIM Ahmedabad alumnus with deep expertise in identifying quality compounders through the firm\'s proprietary QGLP framework. He oversees the investment committee and all portfolio decisions across PMS and equity AIF strategies.',
-    },
-    approachVsBenchmark: {
-      heading: 'Active Management vs BSE 500 TRI',
-      intro: 'Unlike a passive index fund that holds every BSE 500 constituent, the Value Strategy constructs a concentrated portfolio of 15–20 stocks selected purely on QGLP merit — regardless of index weight. This deliberate divergence drives active returns but also creates tracking error that investors must accept as the price of long-term alpha.',
-      rows: [
-        { label: 'Portfolio Holdings', portfolio: '15–20 stocks', benchmark: '500 stocks' },
-        { label: 'Top 10 Concentration', portfolio: '60–70%', benchmark: '~40%' },
-        { label: 'Annual Portfolio Churn', portfolio: '<20%', benchmark: 'Index rebalance ~5%' },
-        { label: '3-Year Alpha (gross)', portfolio: '+8.3% p.a.', benchmark: 'Base (0%)' },
-      ],
-    },
-    philosophy: {
-      heading: '"Buy Right, Sit Tight"',
-      text: 'Motilal Oswal\'s investment philosophy rests on a deceptively simple thesis: if you own exceptional businesses at sensible prices, the passage of time is your greatest ally. The QGLP framework — Quality, Growth, Longevity, Price — operationalises this into a repeatable, disciplined stock selection process that has compounded wealth for over two decades.',
-      principles: [
-        { title: 'Quality', icon: 'verified', desc: 'ROE consistently above 15%, clean balance sheet (D/E <1×), high earnings cash conversion, and identifiable competitive moats — pricing power, network effects, or switching costs.' },
-        { title: 'Growth', icon: 'trending_up', desc: 'EPS CAGR of 15%+ over a forward 3–5 year view, backed by top-line expansion in growing addressable markets — not margin compression recovery or one-off re-ratings.' },
-        { title: 'Longevity', icon: 'hourglass_top', desc: 'A realistic 20-year competitive position. Businesses that compound earnings reliably decade after decade — not cyclical recoveries or structural disruption candidates.' },
-        { title: 'Price', icon: 'price_check', desc: 'Entry P/E reflecting quality without paying an unsustainable premium. The portfolio monitors P/E vs expected EPS CAGR to maintain adequate margin of safety at all times.' },
-      ],
-    },
-    strategy: {
-      heading: 'Portfolio Construction & Risk Framework',
-      text: 'The portfolio is constructed entirely bottom-up, with each position sized 4–8% of NAV based on conviction strength. Sector diversification is a by-product of stock selection, not a top-down constraint. The strategy holds positions through volatility — intra-year drawdowns of 15–25% are expected and accepted as part of the long-term compounding journey.',
-      details: [
-        { label: 'Portfolio Size', value: '15–20 stocks' },
-        { label: 'Position Sizing', value: '4–8% per stock' },
-        { label: 'Max Sector Weight', value: '35% (informal guideline)' },
-        { label: 'Annual Portfolio Churn', value: '<20% of NAV' },
-        { label: 'Average Holding Period', value: '5–7 years' },
-        { label: 'Liquidity Screen', value: 'Min. 10× daily volume vs position size' },
-      ],
-    },
-    fundDetails: [
-      { label: 'SEBI PMS Registration', value: 'INP000000670' },
-      { label: 'Strategy Classification', value: 'Discretionary – Equity Long Only' },
-      { label: 'Holdings Range', value: '15–20 stocks' },
-      { label: 'Management Fee', value: '2.5% p.a. on AUM (fixed fee model)' },
-      { label: 'Performance Fee', value: 'Nil' },
-      { label: 'Exit Load', value: '1% within 12 months; Nil thereafter' },
-      { label: 'Custodian', value: 'HDFC Bank Limited' },
-      { label: 'Tax Treatment', value: 'Pass-through — STCG 20%, LTCG 12.5% (Finance Act 2024)' },
-      { label: 'Reporting', value: 'Monthly statement + annual audit' },
-    ],
-  },
-
-  'iifl-nondiscretionary-pms': {
-    name: 'IIFL Emerging Companies PMS',
-    type: 'PMS', subtype: 'Non-Discretionary PMS',
-    amc: 'IIFL Asset Management', amcSlug: 'iifl-asset-management',
-    tag: 'PMS · Non-Discretionary',
-    asOn: 'March 2026', benchmark: 'BSE Midcap 150 TRI',
-    inception: 'June 2011', minInvestment: '₹50 Lakhs', aum: '₹5,200 Cr',
-    metric: { label: 'Return (3Y)', value: '19.4% p.a.' },
-    manager: {
-      name: 'Anup Maheshwari',
-      title: 'Chief Investment Officer, IIFL Asset Management',
-      experience: '25+ years across mutual funds, PMS & alternatives; IIM Ahmedabad; Chartered Accountant',
-      bio: 'Anup Maheshwari is a veteran Indian equity fund manager with over 25 years of experience. He previously served as CIO–Equities at DSP Investment Managers and has managed mid-cap strategies with consistent long-term track records across multiple market cycles. He oversees IIFL AMC\'s entire investment platform including PMS, AIF, and proprietary strategies.',
-    },
-    approachVsBenchmark: {
-      heading: 'Non-Discretionary Model vs BSE Midcap 150 TRI',
-      intro: 'Unlike a passive midcap tracker, IIFL\'s Non-Discretionary PMS empowers sophisticated investors to co-create their portfolios. Each trade recommendation arrives with a detailed research note — enabling investors to validate the thesis before approving execution. This model is ideal for investors who want expert guidance while maintaining full authority over their own capital.',
-      rows: [
-        { label: 'Portfolio Holdings', portfolio: '25–40 stocks', benchmark: '150 stocks' },
-        { label: 'Decision Authority', portfolio: 'Investor approves each trade', benchmark: 'Passive rebalancing' },
-        { label: 'Market Cap Bias', portfolio: 'Mid-Small cap focus', benchmark: 'Pure Midcap 150' },
-        { label: '3-Year Alpha (gross)', portfolio: '+5.2% p.a.', benchmark: 'Base (0%)' },
-      ],
-    },
-    philosophy: {
-      heading: 'Informed Investor Empowerment',
-      text: 'IIFL\'s Non-Discretionary PMS is built on the conviction that sophisticated investors deserve full transparency and control. The research team provides detailed investment theses — but the investor retains the final decision on each trade, creating a genuine partnership where institutional-grade expertise meets investor accountability.',
-      principles: [
-        { title: 'Primary Research', icon: 'manage_search', desc: 'Every recommendation backed by direct management engagement, supply chain checks, and scenario-based earnings models before any presentation to the investor.' },
-        { title: 'Investor Veto', icon: 'gavel', desc: 'Client retains full authority to reject any individual trade recommendation without affecting the rest of the portfolio or their ongoing IIFL relationship.' },
-        { title: 'Transparency First', icon: 'visibility', desc: 'Detailed research notes accompany every trade idea: bull/base/bear cases, key risks, position sizing rationale, and estimated holding horizon.' },
-        { title: 'Mid-Small Cap Alpha', icon: 'bar_chart', desc: 'India\'s mid and small cap segment offers superior earnings growth and underfollowed names — consistent alpha opportunities unavailable in large-cap strategies.' },
-      ],
-    },
-    strategy: {
-      heading: 'Portfolio Management & Client Engagement',
-      text: 'The strategy maintains 25–40 stocks with a mid-small cap bias. Recommendations are presented weekly with full investment notes. Clients interact with a dedicated relationship manager and have direct access to the fund management team for quarterly strategy reviews.',
-      details: [
-        { label: 'Portfolio Size', value: '25–40 stocks' },
-        { label: 'Market Cap Focus', value: 'Mid Cap + Small Cap (60–80%)' },
-        { label: 'Typical Holding Horizon', value: '12–36 months' },
-        { label: 'Trade Frequency', value: '5–8 recommendations per quarter' },
-        { label: 'Client Reviews', value: 'Quarterly portfolio reviews + monthly reports' },
-        { label: 'Risk Limits', value: 'Max 8% single stock; 30% single sector' },
-      ],
-    },
-    fundDetails: [
-      { label: 'SEBI PMS Registration', value: 'INP000002213' },
-      { label: 'Strategy Classification', value: 'Non-Discretionary – Equity' },
-      { label: 'Holdings Range', value: '25–40 stocks' },
-      { label: 'Management Fee', value: '2.0% p.a. on AUM' },
-      { label: 'Performance Fee', value: '20% above 8% hurdle (high water mark)' },
-      { label: 'Exit Load', value: '1% within 12 months; Nil thereafter' },
-      { label: 'Custodian', value: 'Kotak Mahindra Bank' },
-      { label: 'Tax Treatment', value: 'Pass-through — STCG 20%, LTCG 12.5%' },
-      { label: 'Reporting', value: 'Monthly + on-demand real-time access' },
-    ],
-  },
-
-  'kotak-advisory-pms': {
-    name: 'Kotak Advisory Growth Strategy',
-    type: 'PMS', subtype: 'Advisory PMS',
-    amc: 'Kotak Mahindra AMC', amcSlug: 'kotak-mahindra-amc',
-    tag: 'PMS · Advisory',
-    asOn: 'March 2026', benchmark: 'Nifty 500 TRI',
-    inception: 'March 2012', minInvestment: '₹50 Lakhs', aum: '₹3,800 Cr',
-    metric: { label: 'Return (3Y)', value: '16.8% p.a.' },
-    manager: {
-      name: 'Harsha Upadhyaya',
-      title: 'Chief Investment Officer – Equity, Kotak Mahindra AMC',
-      experience: '22+ years in Indian equity research and fund management; CFA charterholder; IIM Lucknow',
-      bio: 'Harsha Upadhyaya is one of India\'s most respected equity CIOs, overseeing Kotak AMC\'s entire equity franchise including mutual funds, PMS, and AIF strategies. He manages the firm\'s institutional research output and investment committee decisions across ₹4.8 lakh crore of total assets under management.',
-    },
-    approachVsBenchmark: {
-      heading: 'Advisory Model vs Nifty 500 TRI',
-      intro: 'The Advisory Growth Strategy provides Kotak\'s institutional-grade research as actionable recommendations to investors who retain full decision authority. Recommendations are multi-cap but quality-biased — focusing on businesses where Kotak\'s 280-professional research team has proprietary insights. Investors choose which recommendations to implement and at what portfolio weight.',
-      rows: [
-        { label: 'Portfolio Holdings', portfolio: '20–30 stocks (investor\'s choice)', benchmark: '500 stocks' },
-        { label: 'Decision Authority', portfolio: 'Investor implements at discretion', benchmark: 'N/A (index)' },
-        { label: 'Market Cap Bias', portfolio: 'Multi-cap, Large-Mid tilt', benchmark: 'Nifty 500 blend' },
-        { label: '3-Year Alpha (gross)', portfolio: '+3.6% p.a.', benchmark: 'Base (0%)' },
-      ],
-    },
-    philosophy: {
-      heading: 'Research Advantage, Investor Autonomy',
-      text: 'Kotak AMC\'s Advisory PMS model is premised on a clear insight: India\'s most sophisticated investors want access to institutional research quality without surrendering control of their portfolios. The advisory model democratises access to Kotak\'s 280-strong investment team while preserving the investor\'s final authority on every portfolio decision.',
-      principles: [
-        { title: 'Institutional Research', icon: 'analytics', desc: 'Recommendations backed by Kotak\'s 280-professional research platform spanning equities, credit, and macro — the same team managing ₹4.8 lakh crore in institutional mandates.' },
-        { title: 'Multi-Cap Flexibility', icon: 'layers', desc: 'Coverage spans large, mid, and small caps — giving investors access to a broader opportunity set than any single-cap mandated strategy.' },
-        { title: 'Risk Transparency', icon: 'shield', desc: 'Every recommendation includes risk assessment: downside scenario, key risk factors, and recommended maximum portfolio weight.' },
-        { title: 'Full Autonomy', icon: 'tune', desc: 'Investor decides whether to implement each recommendation, at what size, and when to exit — full control with full institutional support.' },
-      ],
-    },
-    strategy: {
-      heading: 'Advisory Process & Implementation',
-      text: 'The investment committee meets weekly to formulate and review recommendations. Each idea comes with a target price, investment thesis, risk factors, and suggested portfolio weight. A dedicated client advisory team helps investors construct their portfolios from the recommendation set based on individual risk preferences.',
-      details: [
-        { label: 'Portfolio Size', value: '20–30 stocks (at investor\'s discretion)' },
-        { label: 'Market Cap Focus', value: 'Multi-cap (Large ~40%, Mid ~35%, Small ~25%)' },
-        { label: 'Recommendation Frequency', value: '6–10 ideas per month' },
-        { label: 'Review Frequency', value: 'Quarterly portfolio review meeting' },
-        { label: 'Coverage Universe', value: '300+ Indian listed companies' },
-        { label: 'Research Depth', value: 'Primary research + channel checks per idea' },
-      ],
-    },
-    fundDetails: [
-      { label: 'SEBI PMS Registration', value: 'INP000000258' },
-      { label: 'Strategy Classification', value: 'Advisory – Equity Multi-Cap' },
-      { label: 'Holdings Range', value: '20–30 stocks' },
-      { label: 'Advisory Fee', value: '1.5% p.a. on AUM' },
-      { label: 'Performance Fee', value: 'Nil' },
-      { label: 'Exit Load', value: 'Nil' },
-      { label: 'Custodian', value: 'Investor\'s own demat account (Kotak Securities)' },
-      { label: 'Tax Treatment', value: 'Investor\'s own account — standard equity tax rates apply' },
-      { label: 'Reporting', value: 'Monthly snapshot + real-time advisory app access' },
-    ],
-  },
-
-  /* ── AIF CAT I ─────────────────────────────────────────────── */
-  'blume-vc-fund': {
-    name: 'Blume Ventures Fund IV',
-    type: 'AIF_CAT1', subtype: 'Venture Capital Fund',
-    amc: 'Blume Ventures', amcSlug: 'blume-ventures',
-    tag: 'AIF Cat I · Venture Capital',
-    targetSize: '₹1,500 Cr', tenure: '10 Years (3Y investment + 7Y harvest)',
-    minCommitment: '₹1 Crore', structure: 'Close-Ended Contributory Trust',
-    metric: { label: 'IRR (Gross)', value: '22.3%' },
-    about: [
-      'Blume Ventures Fund IV is the fourth generation of India\'s leading seed and early-stage venture capital franchise, targeting ₹1,500 Crore in total commitments. The fund focuses on deep tech, climate tech, and B2B SaaS — sectors where India\'s engineering talent base and domestic market scale are creating globally competitive businesses. As of December 2025, the fund has made 14 initial investments with two at unicorn-scale potential.',
-      'Fund IV builds on three prior funds with a combined portfolio of 150+ startups including three unicorns (Unacademy, Dunzo, Slice) and multiple soonicorns. The thesis-driven approach — developing sector investment hypotheses before sourcing — creates proprietary access to the best founding teams before they enter competitive processes. The fund also maintains an evergreen sidecar for follow-on investments in breakout portfolio companies.',
-    ],
-    manager: {
-      name: 'Sanjay Nath & Karthik Reddy',
-      title: 'Managing Partners, Blume Ventures',
-      experience: 'Combined 45+ years in venture capital and technology entrepreneurship; IIT Delhi / Carnegie Mellon / Wharton and IIT Madras / INSEAD pedigrees',
-      bio: 'Sanjay Nath and Karthik Reddy co-founded Blume in 2011 after careers in tech entrepreneurship and venture investing in Silicon Valley and India. They lead a team of 12 investment professionals across deep tech, SaaS, climate, and consumer sectors. Both are widely regarded as defining practitioners of India\'s seed-stage VC ecosystem.',
-    },
-    fundDetails: [
-      { label: 'SEBI AIF Registration', value: 'IN/AIF1/12-13/0017' },
-      { label: 'Fund Category', value: 'Category I AIF – Venture Capital Fund' },
-      { label: 'Regulation', value: 'SEBI (AIF) Regulations 2012, Reg 3(4)(a)' },
-      { label: 'Investment Period', value: '3 years from first close' },
-      { label: 'Extension Option', value: '1 year (with 2/3 LP consent)' },
-      { label: 'Management Fee', value: '2.0% p.a. on committed capital (investment period); 2.0% on invested cost (harvest)' },
-      { label: 'Hurdle Rate', value: '8% p.a. (simple)' },
-      { label: 'Carried Interest', value: '20% above hurdle' },
-      { label: 'Fund Administrator', value: 'KFIN Technologies Limited' },
-      { label: 'Trustee', value: 'Beacon Trusteeship Services' },
-      { label: 'Tax Treatment', value: 'Pass-through under Sec 115UB — investor taxed as if directly invested' },
-    ],
-  },
-
-  'ian-angel-fund': {
-    name: 'IAN Fund III',
-    type: 'AIF_CAT1', subtype: 'Angel Fund',
-    amc: 'Indian Angel Network', amcSlug: 'indian-angel-network',
-    tag: 'AIF Cat I · Angel Fund',
-    targetSize: '₹500 Cr', tenure: '8 Years',
-    minCommitment: '₹25 Lakhs', structure: 'Close-Ended Angel Fund Trust (SEBI Reg 19A)',
-    metric: { label: 'IRR (Gross)', value: '18.7%' },
-    about: [
-      'IAN Fund III is India\'s most established SEBI-registered angel fund, co-investing with IAN\'s 550+ accredited angel investors in pre-Series A Indian startups. The fund operates under SEBI\'s Angel Fund sub-category within the AIF framework, enabling minimum investments as low as ₹25 Lakhs — making institutional-quality co-investment accessible to a broader set of accredited investors without the ₹1 Crore threshold of standard AIFs.',
-      'Each investee company receives both capital (up to ₹10 Crore per company from the fund) and a dedicated sector mentor from the IAN network with directly relevant domain expertise. This mentor-capital model has materially improved Series A success rates across the portfolio. IAN Fund III targets 60–80 investments across technology, healthcare, fintech, and consumer sectors, with an average first-cheque size of ₹75 Lakhs per company.',
-    ],
-    manager: {
-      name: 'Padmaja Ruparel',
-      title: 'Co-Founder & President, Indian Angel Network',
-      experience: '20+ years in angel investing and startup ecosystem development; founder of India\'s first and largest angel investor network',
-      bio: 'Padmaja Ruparel co-founded IAN in 2006 and has personally mentored over 50 portfolio companies through growth, crisis, and exit. She has served on government advisory committees on startup policy (DPIIT, Startup India) and is one of the most influential voices in India\'s early-stage investment ecosystem. She chairs the fund\'s investment committee.',
-    },
-    fundDetails: [
-      { label: 'SEBI AIF Registration', value: 'IN/AIF1/15-16/0258' },
-      { label: 'Fund Category', value: 'Category I AIF – Angel Fund (Reg 19A)' },
-      { label: 'Max Investment per Company', value: '₹10 Crore (SEBI Angel Fund norms)' },
-      { label: 'Min. Angel Investor Body', value: '20 accredited investors' },
-      { label: 'Investment Period', value: '3 years from first close' },
-      { label: 'Management Fee', value: '2.5% p.a. on committed capital' },
-      { label: 'Hurdle Rate', value: 'Nil' },
-      { label: 'Carried Interest', value: '20% of gains' },
-      { label: 'Fund Administrator', value: 'NSDL e-Governance Infrastructure' },
-      { label: 'Trustee', value: 'IDBI Trusteeship Services' },
-      { label: 'Tax Treatment', value: 'Pass-through under Sec 115UB' },
-    ],
-  },
-
-  'nhai-infra-fund': {
-    name: 'NHAI Infrastructure Fund I',
-    type: 'AIF_CAT1', subtype: 'Infrastructure Fund',
-    amc: 'NHAI Infrastructure Trust', amcSlug: 'nhai-infrastructure-trust',
-    tag: 'AIF Cat I · Infrastructure',
-    targetSize: '₹12,000 Cr', tenure: '25 Years',
-    minCommitment: '₹1 Crore', structure: 'Close-Ended Irrevocable Infrastructure Trust',
-    metric: { label: 'Yield p.a.', value: '12.4%' },
-    about: [
-      'NHAI Infrastructure Fund I invests exclusively in Hybrid Annuity Model (HAM) and Build-Operate-Transfer (BOT) highway projects under India\'s National Infrastructure Pipeline. The fund provides investors with predictable, inflation-linked annuity cash flows underpinned by NHAI\'s sovereign credit — offering a long-duration yield instrument with de facto government guarantee backing quarterly distributions.',
-      'India\'s highway construction programme — at 40 km/day and accelerating under PM Gati Shakti — creates a decade-long pipeline of investible HAM projects. The fund selects only projects with completed environmental clearances, >90% land acquisition, and achieved "appointed date" status — ensuring investors are not exposed to pre-construction execution risk. NHAI annuity payments provide regular quarterly distributions with built-in inflation escalation clauses.',
-    ],
-    manager: {
-      name: 'NHAI Investment Management Division',
-      title: 'Professional Infrastructure Fund Management Team',
-      experience: '45-person team of infrastructure finance, project management, and legal professionals',
-      bio: 'The fund is managed by NHAI\'s dedicated investment management division headed by a Joint Secretary-level officer with oversight from NHAI\'s Board and an independent Investment Committee. The team manages the entire project selection, due diligence, and ongoing monitoring functions, backed by NHAI\'s sovereign credibility and access to India\'s entire national highway portfolio.',
-    },
-    fundDetails: [
-      { label: 'SEBI AIF Registration', value: 'IN/AIF1/18-19/0489' },
-      { label: 'Fund Category', value: 'Category I AIF – Infrastructure Fund' },
-      { label: 'Project Concession Period', value: '15–30 years per project' },
-      { label: 'Investment Period', value: '5 years (project-by-project deployment)' },
-      { label: 'Distribution Frequency', value: 'Quarterly (HAM annuity payments)' },
-      { label: 'Management Fee', value: '0.75% p.a. on deployed capital' },
-      { label: 'Hurdle Rate', value: '8% p.a.' },
-      { label: 'Carried Interest', value: '15% above hurdle' },
-      { label: 'Fund Administrator', value: 'SBI Cap Securities' },
-      { label: 'Trustee', value: 'SBI Cap Trustee Company' },
-      { label: 'Tax Treatment', value: 'Pass-through under Sec 115UB; distributions partially exempt under Sec 10(23FBA)' },
-    ],
-  },
-
-  'aavishkaar-social': {
-    name: 'Aavishkaar Fund VIII',
-    type: 'AIF_CAT1', subtype: 'Social Venture Fund',
-    amc: 'Aavishkaar Capital', amcSlug: 'aavishkaar-capital',
-    tag: 'AIF Cat I · Social Venture',
-    targetSize: '₹1,000 Cr', tenure: '10 Years',
-    minCommitment: '₹1 Crore', structure: 'Close-Ended Trust (SEBI AIF + SIDBI NIDHI empanelled)',
-    metric: { label: 'IRR (Gross)', value: '14.2%' },
-    about: [
-      'Aavishkaar Fund VIII is the eighth and largest vehicle from India\'s pioneer impact investment manager, targeting ₹1,000 Crore in committed capital. The fund invests in the Category I Social Venture AIF framework, targeting enterprises serving economically excluded populations across financial inclusion, agri-value chains, affordable healthcare, clean energy, and sanitation. Impact measurement follows the IRIS+ taxonomy with annual third-party verification.',
-      'Fund VIII uses a blended finance structure where DFI first-loss capital from IFC, FMO, and USAID — contributing approximately 15% of fund size — reduces overall portfolio risk for commercial LPs while expanding the eligible investment universe to earlier-stage or smaller enterprises. This concessional cushion allows the fund to simultaneously deliver superior social outcomes and risk-adjusted financial returns across a broader enterprise spectrum.',
-    ],
-    manager: {
-      name: 'Vineet Rai',
-      title: 'Founder & Group CEO, Aavishkaar Capital',
-      experience: '25+ years in impact investing and rural enterprise development; World Economic Forum Social Entrepreneur Fellow; GIIN Advisory Board Member',
-      bio: 'Vineet Rai founded Aavishkaar in 2001 with the conviction that market mechanisms can solve social problems better than philanthropy. Over two decades, he has built one of India\'s most recognised impact investment brands managing over ₹2,800 Crore across eight funds. He serves on the GIIN Advisory Board and has received the Schwab Foundation Social Entrepreneur of the Year award.',
-    },
-    fundDetails: [
-      { label: 'SEBI AIF Registration', value: 'IN/AIF1/13-14/0036' },
-      { label: 'Fund Category', value: 'Category I AIF – Social Venture Fund' },
-      { label: 'DFI First-Loss Tranche', value: '15% concessional capital (IFC, FMO, USAID)' },
-      { label: 'Investment Period', value: '4 years from first close' },
-      { label: 'Impact Reporting', value: 'Annual IRIS+ verified third-party audit' },
-      { label: 'Management Fee', value: '2.0% p.a. on committed capital' },
-      { label: 'Hurdle Rate', value: '8% p.a.' },
-      { label: 'Carried Interest', value: '15% above hurdle' },
-      { label: 'Fund Administrator', value: 'KFIN Technologies' },
-      { label: 'Trustee', value: 'Catalyst Trusteeship Limited' },
-      { label: 'Tax Treatment', value: 'Pass-through under Sec 115UB' },
-    ],
-  },
-
-  'edelweiss-sme-fund': {
-    name: 'Edelweiss SME Growth Fund II',
-    type: 'AIF_CAT1', subtype: 'SME Fund',
-    amc: 'Edelweiss Asset Management', amcSlug: 'edelweiss-asset-management',
-    tag: 'AIF Cat I · SME',
-    targetSize: '₹2,000 Cr', tenure: '7 Years',
-    minCommitment: '₹1 Crore', structure: 'Close-Ended Contributory Trust',
-    metric: { label: 'IRR (Gross)', value: '20.1%' },
-    about: [
-      'Edelweiss SME Growth Fund II provides growth equity to profitable Indian SMEs with ₹50–300 Crore in annual revenues. The fund targets specialty chemicals, auto ancillaries, pharma API manufacturers, and technical textiles — sectors with strong domestic demand tailwinds and clear export market potential. Portfolio companies receive not just capital but active operational value-add through Edelweiss Group\'s industrial network spanning corporate banking and institutional broking.',
-      'The exit strategy leverages India\'s vibrant SME capital markets — BSE SME and NSE Emerge platforms — which have seen 200+ successful SME IPOs over the past three years. The fund\'s origination network through Edelweiss Group\'s banking and wealth management arms generates proprietary deal flow from profitable, growth-stage SMEs that lack access to PE capital through conventional routes.',
-    ],
-    manager: {
-      name: 'Nitin Jain',
-      title: 'Head – Private Equity, Edelweiss Alternatives',
-      experience: '18+ years in SME private equity and structured finance; IIM Bangalore; Chartered Accountant',
-      bio: 'Nitin Jain leads Edelweiss\'s SME growth equity franchise with 18 years of mid-market PE experience. He previously served at Kotak PE and ICICI Venture with deep domain expertise in industrial manufacturing, specialty chemicals, and agri-processing. He manages a team of 12 investment professionals and oversees portfolio company operational support.',
-    },
-    fundDetails: [
-      { label: 'SEBI AIF Registration', value: 'INP000004657' },
-      { label: 'Fund Category', value: 'Category I AIF – SME Fund' },
-      { label: 'Target Revenue Range', value: '₹50 Cr – ₹300 Cr per company' },
-      { label: 'Investment Period', value: '3.5 years' },
-      { label: 'Typical Equity Stake', value: '20–49% (significant minority)' },
-      { label: 'Management Fee', value: '2.0% p.a. on committed capital' },
-      { label: 'Hurdle Rate', value: '10% p.a.' },
-      { label: 'Carried Interest', value: '20% above hurdle' },
-      { label: 'Fund Administrator', value: 'KFIN Technologies' },
-      { label: 'Trustee', value: 'Axis Trustee Services' },
-      { label: 'Tax Treatment', value: 'Pass-through under Sec 115UB' },
-    ],
-  },
-
-  /* ── AIF CAT II ─────────────────────────────────────────────── */
-  'chryscapital-pe': {
-    name: 'ChrysCapital Growth Fund IX',
-    type: 'AIF_CAT2', subtype: 'Private Equity Fund',
-    amc: 'ChrysCapital', amcSlug: 'chryscapital',
-    tag: 'AIF Cat II · Private Equity',
-    targetSize: '₹20,000 Cr', tenure: '8 Years',
-    minCommitment: '₹5 Crores', structure: 'Close-Ended Limited Partnership',
-    metric: { label: 'IRR (Gross)', value: '21.4%' },
-    about: [
-      'ChrysCapital Growth Fund IX is the ninth fund in India\'s most established domestic private equity franchise, targeting ₹20,000 Crore. The fund deploys growth equity tickets of ₹400–2,000 Crore in profitable, established Indian businesses with identifiable value creation pathways. Sector focus: financial services, healthcare, consumer, technology, and specialty manufacturing — areas where ChrysCapital has 25 years of proprietary network and deal-flow advantages.',
-      'Fund IX builds on $5 billion+ of cumulative investments across 130+ companies and eight prior funds, with iconic exits in Mphasis, HDFC Standard Life, and Jubilant Foodworks. The fund\'s 25-year institutional LP relationships with global pension funds, sovereign wealth funds, and university endowments provide high-quality, long-duration capital aligned with the growth equity investment mandate.',
-    ],
-    manager: {
-      name: 'Kunal Shroff',
-      title: 'Managing Partner, ChrysCapital',
-      experience: '20+ years in Indian private equity; IIT / Wharton pedigree; board director at 8+ portfolio companies',
-      bio: 'Kunal Shroff joined ChrysCapital in 2006 and has led investments across financial services, healthcare, and technology. He serves on the boards of multiple portfolio companies and leads ChrysCapital\'s governance professionalisation and management incentive alignment programmes. He is a Managing Partner overseeing Fund IX\'s investment committee.',
-    },
-    fundDetails: [
-      { label: 'SEBI AIF Registration', value: 'IN/AIF2/09-10/0015' },
-      { label: 'Fund Category', value: 'Category II AIF – Private Equity Fund' },
-      { label: 'Investment Ticket Size', value: '₹400 Cr – ₹2,000 Cr' },
-      { label: 'Investment Period', value: '4 years' },
-      { label: 'Extension Options', value: '2 × 1-year extensions (66% LP consent)' },
-      { label: 'Management Fee', value: '2.0% p.a. during investment period; 1.5% thereafter' },
-      { label: 'Hurdle Rate', value: '8% p.a.' },
-      { label: 'Carried Interest', value: '20% above hurdle (whole-fund carry)' },
-      { label: 'Fund Administrator', value: 'KFIN Technologies' },
-      { label: 'General Partner', value: 'ChrysCapital Management Company' },
-      { label: 'Tax Treatment', value: 'Pass-through under Sec 115UB; LTCG 12.5% on equity exits post 24 months' },
-    ],
-  },
-
-  'edelweiss-debt-fund': {
-    name: 'Edelweiss Crossover Opportunities III',
-    type: 'AIF_CAT2', subtype: 'Debt Fund',
-    amc: 'Edelweiss Asset Management', amcSlug: 'edelweiss-asset-management',
-    tag: 'AIF Cat II · Debt',
-    targetSize: '₹5,000 Cr', tenure: '5 Years',
-    minCommitment: '₹1 Crore', structure: 'Close-Ended Contributory Trust',
-    metric: { label: 'Target Yield', value: '14.2% p.a.' },
-    about: [
-      'Edelweiss Crossover Opportunities III is a Category II AIF debt fund investing in senior secured NCDs, structured credit, and mezzanine instruments issued by mid-market Indian companies. The fund targets 20–25 borrowers across specialty manufacturing, healthcare, real estate, and consumer sectors, with portfolio concentration capped at 8% per borrower. First-charge collateral is mandatory on all senior NCD investments, with covenant-heavy documentation providing active lender protection.',
-      'The "Crossover" thesis captures credit opportunities in companies too large for NBFC lending but too early-stage for public bond markets. These borrowers offer superior yields (12–16% per annum) with institutional-grade documentation. Finance Act 2023 reduced TDS on AIF debt income to 10%, improving after-tax yields materially for investors in the 30%+ bracket.',
-    ],
-    manager: {
-      name: 'Ajay Agnihotri',
-      title: 'Head – Credit Investments, Edelweiss Alternatives',
-      experience: '22+ years in structured credit, NCD origination, and credit underwriting; formerly DSP Merrill Lynch and Citigroup',
-      bio: 'Ajay Agnihotri leads Edelweiss\'s structured credit franchise with 22 years of origination and underwriting experience. He manages a team of 18 credit analysts across sectors and oversees all investment committee decisions for the debt AIF platform. His prior experience at DSP Merrill Lynch and Citigroup in high-yield and mezzanine financing informs the fund\'s differentiated credit structuring approach.',
-    },
-    fundDetails: [
-      { label: 'SEBI AIF Registration', value: 'INP000004657' },
-      { label: 'Fund Category', value: 'Category II AIF – Debt Fund' },
-      { label: 'Instrument Types', value: 'Senior Secured NCDs; Structured Credit; Mezzanine' },
-      { label: 'Yield Range', value: '12–16% p.a. per instrument (pre-tax)' },
-      { label: 'Borrower Concentration', value: '20–25 companies; max 8% per borrower' },
-      { label: 'Management Fee', value: '1.5% p.a. on committed capital' },
-      { label: 'Hurdle Rate', value: '10% p.a.' },
-      { label: 'Carried Interest', value: '15% above hurdle' },
-      { label: 'TDS on Interest Income', value: '10% (Finance Act 2023, Sec 194LBC)' },
-      { label: 'Fund Administrator', value: 'KFIN Technologies' },
-      { label: 'Tax Treatment', value: 'Pass-through under Sec 115UB; interest taxed as business income at investor slab' },
-    ],
-  },
-
-  'kotak-re-fund': {
-    name: 'Kotak Real Estate Fund XII',
-    type: 'AIF_CAT2', subtype: 'Real Estate Fund',
-    amc: 'Kotak Mahindra AMC', amcSlug: 'kotak-mahindra-amc',
-    tag: 'AIF Cat II · Real Estate',
-    targetSize: '₹4,000 Cr', tenure: '6 Years',
-    minCommitment: '₹1 Crore', structure: 'Close-Ended AIF Trust (SEBI + RERA compliant)',
-    metric: { label: 'Target IRR', value: '16.8%' },
-    about: [
-      'Kotak Real Estate Fund XII deploys development equity and construction finance in RERA-registered residential projects and Grade-A commercial developments across Mumbai Metropolitan Region, Bengaluru, and National Capital Region. Structural protections — project-level RERA escrow accounts, senior security over land and receivables, and RERA registration mandates — provide layered downside protection for investor capital.',
-      'Fund XII benefits from Kotak Group\'s 30-year relationships with India\'s premier developers, enabling proprietary access to premium transactions unavailable in the open market. The fund targets 8–12 investments with typical deal sizes of ₹300–500 Crore each. Exit mechanisms include project completion sales, pre-leased asset monetisation, and InvIT/REIT IPO pathways for commercial assets.',
-    ],
-    manager: {
-      name: 'Vikas Chimakurthy',
-      title: 'Co-Head – Real Estate Investments, Kotak AMC',
-      experience: '19+ years in real estate PE and development finance; IIM Calcutta; formerly Piramal Capital and Standard Chartered',
-      bio: 'Vikas Chimakurthy co-heads Kotak\'s real estate AIF platform with 19 years of experience in development finance, structured real estate lending, and PE investments across residential, commercial, and logistics sectors. He oversees the investment committee and maintains Kotak\'s developer relationships across the three target geographies.',
-    },
-    fundDetails: [
-      { label: 'SEBI AIF Registration', value: 'INP000000258' },
-      { label: 'Fund Category', value: 'Category II AIF – Real Estate Fund' },
-      { label: 'Target Geographies', value: 'Mumbai MMR, Bengaluru, NCR' },
-      { label: 'Typical Deal Size', value: '₹300 Cr – ₹500 Cr per project' },
-      { label: 'Security Structure', value: 'First-charge on land + receivables; RERA project escrow' },
-      { label: 'Management Fee', value: '1.75% p.a. on committed capital' },
-      { label: 'Hurdle Rate', value: '10% p.a.' },
-      { label: 'Carried Interest', value: '20% above hurdle' },
-      { label: 'Fund Administrator', value: 'KFIN Technologies' },
-      { label: 'Trustee', value: 'Kotak Mahindra Trusteeship Services' },
-      { label: 'Tax Treatment', value: 'Pass-through under Sec 115UB; LTCG 12.5% on equity; interest at slab rate' },
-    ],
-  },
-
-  'altico-distressed': {
-    name: 'Altico Special Situations Fund I',
-    type: 'AIF_CAT2', subtype: 'Distressed Asset Fund',
-    amc: 'Altico Capital', amcSlug: 'altico-capital',
-    tag: 'AIF Cat II · Distressed',
-    targetSize: '₹3,500 Cr', tenure: '7 Years',
-    minCommitment: '₹1 Crore', structure: 'Close-Ended Contributory Trust',
-    metric: { label: 'Target IRR', value: '22.1%' },
-    about: [
-      'Altico Special Situations Fund I deploys capital into stressed corporate assets acquired through IBC CIRP processes, SARFAESI enforcement, and bilateral debt-for-equity conversions. The fund targets mid-market real estate and industrial companies where distress has created acquisition opportunities at 30–50% discounts to intrinsic value — followed by operational turnarounds that unlock value for resolution applicants.',
-      'The fund\'s competitive advantage lies not merely in buying cheap assets but in executing successful resolutions of complex, multi-creditor situations. The dedicated restructuring team — with 40+ completed IBC CIRP transactions — provides superior insight into CoC dynamics, NCLT jurisprudence, and resolution timelines. Post-acquisition, the fund installs professional management, implements operational rightsizing, and deploys fresh working capital to revive viable businesses.',
-    ],
-    manager: {
-      name: 'Rajiv Sabharwal',
-      title: 'Managing Director & CEO, Altico Capital',
-      experience: '28+ years in corporate banking, distressed debt, and special situations; formerly ICICI Bank and Apollo Global Management India',
-      bio: 'Rajiv Sabharwal leads Altico\'s distressed asset franchise with 28 years of experience spanning ICICI Bank corporate banking and Apollo Global Management\'s India distressed credit platform. His team of 42 investment and restructuring professionals has executed 40+ IBC CIRP resolution plans across real estate, hospitality, and manufacturing.',
-    },
-    fundDetails: [
-      { label: 'SEBI AIF Registration', value: 'IN/AIF2/15-16/0338' },
-      { label: 'Fund Category', value: 'Category II AIF – Distressed Asset Fund' },
-      { label: 'Entry Mechanisms', value: 'IBC CIRP resolution applicant; SARFAESI acquisition; bilateral distressed debt purchase' },
-      { label: 'Target Entry Discount', value: '30–50% of liquidation value' },
-      { label: 'Typical Holding Period', value: '3–5 years per asset' },
-      { label: 'Management Fee', value: '2.0% p.a. on invested capital' },
-      { label: 'Hurdle Rate', value: '12% p.a.' },
-      { label: 'Carried Interest', value: '25% above hurdle (deal-by-deal)' },
-      { label: 'IBC/NCLT Team', value: 'Dedicated 8-member legal & restructuring team' },
-      { label: 'Trustee', value: 'Beacon Trusteeship Services' },
-      { label: 'Tax Treatment', value: 'Pass-through under Sec 115UB' },
-    ],
-  },
-
-  /* ── AIF CAT III ────────────────────────────────────────────── */
-  'marcellus-long-only': {
-    name: 'Marcellus Consistent Compounders AIF',
-    type: 'AIF_CAT3', subtype: 'Long Only (Category III AIF)',
-    amc: 'Marcellus Investment Managers', amcSlug: 'marcellus-investment-managers',
-    tag: 'AIF Cat III · Long Only',
-    benchmark: 'BSE 500 TRI',
-    inception: 'August 2019', minInvestment: '₹1 Crore', aum: '₹6,200 Cr',
-    metric: { label: 'Return (3Y)', value: '18.3% p.a.' },
-    about: [
-      'Marcellus Consistent Compounders AIF is India\'s most concentrated long-only equity AIF, holding just 10–15 stocks with a minimum 5-year investment horizon and annual turnover below 15%. Registered as a Category III AIF, the fund is permitted to deploy leverage up to 2× NAV — though the strategy intentionally runs unleveraged, preserving purity of return attribution to the portfolio\'s underlying business quality.',
-      'The fund\'s investment process is anchored in forensic accounting analysis — a proprietary 12-factor model screens for accounting manipulation before any company is considered for investment. This forensic-first approach filters out India\'s most famous corporate frauds (DHFL, IL&FS, Satyam-era businesses) that deceived conventional fundamental analysis. Only businesses with clean accounts, deep competitive moats, and 15%+ earnings compounding pass the screening.',
-    ],
-    manager: {
-      name: 'Saurabh Mukherjea',
-      title: 'Founder & Chief Investment Officer, Marcellus Investment Managers',
-      experience: '23+ years in Indian equity research and fund management; former CEO of Ambit Capital; author of "The Unusual Billionaires" and "Coffee Can Investing"',
-      bio: 'Saurabh Mukherjea founded Marcellus in 2018 after serving as CEO of Ambit Capital. He has built the most distinctive brand in Indian quality equity investing, with a loyal following among the country\'s most sophisticated investors. He personally oversees all investment committee decisions and has maintained the QGLP discipline consistently since inception.',
-    },
-  },
-
-  'avendus-long-short': {
-    name: 'Avendus Absolute Return Fund II',
-    type: 'AIF_CAT3', subtype: 'Long Short Equity (Category III AIF)',
-    amc: 'Avendus Capital', amcSlug: 'avendus-capital',
-    tag: 'AIF Cat III · Long Short',
-    benchmark: 'Nifty 50 TRI',
-    inception: 'April 2021', minInvestment: '₹1 Crore', aum: '₹3,800 Cr',
-    metric: { label: 'Return (1Y)', value: '15.6% p.a.' },
-    about: [
-      'Avendus Absolute Return Fund II is a benchmark-agnostic long/short equity AIF targeting 12–18% absolute returns across market cycles. The fund maintains 40–60% net long exposure through a research-driven long book of quality compounders and a disciplined short book of fundamentally challenged businesses implemented via NSE F&O instruments. This structure enables the fund to profit in both rising and falling markets — generating alpha from both sides of the book.',
-      'The fund\'s research edge lies in Avendus\'s 300+ company coverage universe, generating proprietary insights on both the long and short sides. Long positions are held 12–24 months on average; short positions are tactical and managed with defined stop-losses. The risk management framework enforces gross exposure ceilings, sector concentration limits, and individual position loss thresholds reviewed daily by an independent risk desk.',
-    ],
-    manager: {
-      name: 'Andrew Holland',
-      title: 'CEO – Public Market Alternatives, Avendus Capital',
-      experience: '28+ years in global and Indian equity markets; formerly Deutsche Bank, DBS, and IL&FS',
-      bio: 'Andrew Holland is one of India\'s most respected alternative investment managers with 28 years of experience spanning global investment banking and Indian equity market-making. He joined Avendus Capital to build the Category III AIF platform and has delivered consistent absolute returns across three distinct market cycles since the strategy\'s inception.',
-    },
-  },
-
-  'iifl-multi-strategy': {
-    name: 'IIFL Multi-Strategy Alpha Fund',
-    type: 'AIF_CAT3', subtype: 'Multi-Strategy (Category III AIF)',
-    amc: 'IIFL Asset Management', amcSlug: 'iifl-asset-management',
-    tag: 'AIF Cat III · Multi-Strategy',
-    benchmark: 'Nifty 50 TRI',
-    inception: 'November 2020', minInvestment: '₹1 Crore', aum: '₹2,400 Cr',
-    metric: { label: 'Return (1Y)', value: '16.9% p.a.' },
-    about: [
-      'IIFL Multi-Strategy Alpha Fund operates across four independent strategy pods — equity long/short, statistical arbitrage, event-driven, and macro — each managed by a dedicated portfolio manager with its own risk budget, VaR limit, and strategy-specific stop-loss rules. A central risk desk aggregates exposures in real time and enforces fund-level gross exposure limits, providing a smoother return profile than single-strategy alternatives.',
-      'Pod allocations are reviewed quarterly and may be re-weighted based on market regime conditions and each pod\'s drawdown utilisation relative to its budget. This dynamic allocation architecture allows capital to flow toward higher-opportunity strategies within a cycle while maintaining diversification across return drivers. The multi-pod structure has delivered consistent low-correlation returns across bull, bear, and sideways Indian market phases.',
-    ],
-    manager: {
-      name: 'Anup Maheshwari',
-      title: 'CIO & Head of Alternatives, IIFL Asset Management',
-      experience: '25+ years in Indian equity and multi-asset strategies; IIM Ahmedabad; Chartered Accountant',
-      bio: 'Anup Maheshwari oversees IIFL\'s entire alternative investment platform and chairs the Multi-Strategy Fund\'s investment committee. He structured the pod-based risk architecture and manages the equity long/short pod directly. The other pods are managed by dedicated PMs: statistical arbitrage (Prashant Nair), event-driven (Kapil Mathur), and macro (Head of Fixed Income Alternatives).',
-    },
-  },
-
-  'tata-market-neutral': {
-    name: 'Tata Market Neutral Fund I',
-    type: 'AIF_CAT3', subtype: 'Long Short — Market Neutral (Category III AIF)',
-    amc: 'Tata Asset Management', amcSlug: 'tata-asset-management',
-    tag: 'AIF Cat III · Market Neutral',
-    benchmark: 'CRISIL Liquid Fund Index',
-    inception: 'January 2022', minInvestment: '₹1 Crore', aum: '₹1,600 Cr',
-    metric: { label: 'Sharpe Ratio', value: '1.82' },
-    about: [
-      'Tata Market Neutral Fund I deploys a pure beta-neutral strategy — maintaining equal long and short exposure so that overall market movements cancel out, generating returns exclusively from stock selection alpha. Long positions in quality compounders are offset by short positions via Nifty 200 F&O instruments, keeping net equity beta within ±10% of NAV at all times. The fund is benchmarked against CRISIL Liquid Fund Index, reflecting its low market-correlated return profile.',
-      'The fund\'s quantitative engine screens the Nifty 200 F&O universe for pairs with statistically significant historical price relationships that have deviated beyond 2-sigma thresholds — the entry signal for pairs trades. Positions are exited when the spread reverts within 0.5 sigma. Individual pair loss limits at 0.5% of NAV and a strategy-level drawdown limit of 8% are enforced automatically, creating a self-disciplining risk management system.',
-    ],
-    manager: {
-      name: 'Rahul Singh',
-      title: 'Chief Investment Officer – Equities, Tata Asset Management',
-      experience: '22+ years in equity research and quantitative strategies; CFA charterholder; IIT Bombay; formerly HSBC Global Asset Management',
-      bio: 'Rahul Singh leads Tata AMC\'s equity investment function and personally oversees the Market Neutral AIF strategy. He built the quantitative factor model underlying the pairs trading system and manages a team of four dedicated quantitative analysts. Prior experience at HSBC Global Asset Management includes managing systematic strategies across Asian equity markets.',
-    },
-  },
-
-  /* ── GIFT CITY ───────────────────────────────────────────────── */
-  'kotak-gift-restricted': {
-    name: 'Kotak GIFT City Global Fund I',
-    type: 'GIFT_CITY', subtype: 'Restricted Scheme',
-    amc: 'Kotak IFSC Asset Management', amcSlug: 'kotak-ifsc-asset-management',
-    tag: 'GIFT City · Restricted Scheme',
-    minInvestment: 'USD 150,000',
-    structure: 'SEBI IFSC Restricted Scheme — IFSCA (Fund Management) Regulations 2022',
-    metric: { label: 'Return (1Y)', value: '19.2% p.a.' },
-    manager: {
-      name: 'International Investment Committee',
-      title: 'Kotak IFSC Asset Management, GIFT City',
-      experience: '24-person team combining Kotak Group India expertise with global market capabilities across London, Singapore, and New York offices',
-      bio: 'The fund is managed by Kotak IFSC\'s International Investment Committee — combining Kotak Group\'s deep India research advantage with global market expertise. The committee is supported by Kotak\'s international offices in London, Singapore, and New York, providing on-the-ground insights across global equity and bond markets unavailable to domestic-only fund managers.',
-    },
-    objective: 'To generate superior USD-denominated absolute returns by investing in a diversified portfolio of global listed equities, USD-denominated investment-grade and high-yield bonds, and global REITs — while prioritising capital preservation as the primary mandate across full market cycles.',
-    philosophy: {
-      heading: 'Global Multi-Asset Value Investing',
-      text: 'Kotak GIFT City Global Fund I applies Kotak Group\'s institutional quality discipline to international asset classes. The team seeks quality businesses globally — unconstrained by any index or geography — with a valuation anchor ensuring adequate margin of safety at entry. USD denomination provides natural currency diversification for rupee-concentrated Indian wealth.',
-      principles: [
-        { title: 'Quality Bias', icon: 'verified', desc: 'Global equities selected on QGLP-adjacent criteria: sustainable competitive advantages, strong management, clean financials, and durable earnings growth prospects across economic cycles.' },
-        { title: 'USD First', icon: 'attach_money', desc: 'All investments and returns denominated in USD, eliminating currency risk for NRI investors and providing natural hedging for USD-liability holders such as FPIs and global endowments.' },
-        { title: 'Asset Class Diversification', icon: 'pie_chart', desc: 'Tactical allocation across equities (50–70%), USD bonds (20–40%), and global REITs (0–15%) based on relative valuation and macro regime, with rebalancing triggered at ±5% band breaches.' },
-        { title: 'Institutional Risk Management', icon: 'shield', desc: 'Maximum 5% single-stock, 40% single-country allocation with daily VaR monitoring and independent risk oversight by the IFSCA-mandated risk officer.' },
-      ],
-    },
-    strategy: {
-      heading: 'Investment Process & Execution',
-      text: 'The process combines top-down macro allocation (asset class and geography weights) with bottom-up security selection. Macro views are reviewed monthly by the Investment Committee; individual security selection follows a standardised protocol with buy/sell thresholds and systematic stop-loss rules.',
-      steps: [
-        { label: 'Macro Allocation', desc: 'Monthly review of global macro signals — interest rate cycles, USD index, earnings revision trends, credit spreads — to set asset class weights within strategic bands.' },
-        { label: 'Country Screening', desc: 'Bottom-up analysis of 20+ country universes scored on political risk, regulatory environment, corporate governance quality, and earnings growth potential.' },
-        { label: 'Security Selection', desc: 'Factor-based quant screen narrows each country universe to quality/value top quartile; fundamental analysis selects the highest-conviction names from that filtered pool.' },
-        { label: 'Portfolio Construction', desc: 'Mean-variance optimisation subject to position, sector, and country concentration limits; targeting 40–60 equity positions and 15–25 bond positions.' },
-        { label: 'Risk Monitoring', desc: 'Daily VaR calculation, weekly stress testing against 2008/2020 market scenarios, and monthly independent risk review by the IFSCA-mandated risk officer.' },
-        { label: 'Execution & Custody', desc: 'Deutsche Bank GIFT branch as custodian and Goldman Sachs IFSC as prime broker ensure institutional-grade USD settlement, securities lending, and cash management.' },
-      ],
-    },
-  },
-
-  'mirae-gift-retail': {
-    name: 'Mirae Asset GIFT Retail Opportunities',
-    type: 'GIFT_CITY', subtype: 'Retail Scheme',
-    amc: 'Mirae Asset IFSC', amcSlug: 'mirae-asset-ifsc',
-    tag: 'GIFT City · Retail Scheme',
-    minInvestment: 'USD 5,000',
-    structure: 'SEBI IFSC Retail Scheme — IFSCA (Fund Management) Regulations 2022',
-    metric: { label: 'Return (1Y)', value: '11.4% p.a.' },
-    manager: {
-      name: 'Global Investment Committee',
-      title: 'Mirae Asset IFSC, GIFT City',
-      experience: 'Supported by Mirae Asset Global Investments\' $280 billion platform across 16 countries with research teams in Korea, Hong Kong, India, UK, and the US',
-      bio: 'The fund benefits from Mirae Asset Global Investments\' world-class $280 billion research platform. The GIFT City committee coordinates with Mirae\'s regional teams for real-time global investment insights unavailable to purely domestic fund managers. Mirae\'s 16-country presence provides differentiated on-the-ground research across Asian, European, and US equity markets.',
-    },
-    objective: 'To generate long-term capital appreciation and income in USD for retail investors by deploying a diversified multi-asset portfolio across global equities, USD bonds, global ETFs, and sovereign fixed income — with a focus on fundamental value and disciplined risk management accessible at a lower minimum investment threshold.',
-    philosophy: {
-      heading: 'Value-Oriented Global Diversification',
-      text: 'Mirae Asset IFSC\'s investment philosophy — shaped by Mirae Global\'s core conviction — holds that disciplined value investing across global markets delivers superior risk-adjusted returns over full market cycles. The team focuses on businesses with genuine competitive advantages, sustainable earnings growth, and valuations providing adequate margin of safety.',
-      principles: [
-        { title: 'Value Discipline', icon: 'balance', desc: 'Investments anchored to fundamental intrinsic value — P/E, P/B, and free cash flow yield — avoiding momentum chasing or trend-following at the expense of valuation margin of safety.' },
-        { title: 'Global Research Depth', icon: 'public', desc: 'Research teams in 16 countries generate on-the-ground insights into local corporate governance, competitive dynamics, and sector trends unavailable from an India-only investment process.' },
-        { title: 'Accessible Entry', icon: 'arrow_downward', desc: 'IFSCA\'s Retail Scheme framework enables USD 5,000 minimum investment — dramatically lower than Restricted Schemes — democratising global diversification for a broader investor base.' },
-        { title: 'Currency Strategy', icon: 'currency_exchange', desc: 'USD base currency with tactical FX hedging overlay on non-USD equity positions to manage currency drag on global equity returns for USD-denominated investors.' },
-      ],
-    },
-    strategy: {
-      heading: 'Multi-Asset Strategy & Execution',
-      text: 'The Retail Opportunities fund follows a strategic asset allocation framework with tactical overlay adjustments. Core allocation is maintained across three asset classes, with rebalancing triggered by threshold deviations or significant macro regime changes identified by the global investment committee.',
-      steps: [
-        { label: 'Strategic Allocation', desc: 'Base: 55% global equities / 30% USD bonds / 15% global REITs + commodity ETFs — reviewed semi-annually against long-run return expectations.' },
-        { label: 'Tactical Overlay', desc: 'Monthly tactical shifts of ±10% within each asset class based on relative valuation, yield curves, and Mirae Global\'s proprietary macro signals.' },
-        { label: 'Equity Selection', desc: 'Factor-model shortlists of global quality-value composites; final stock selection by Mirae regional investment teams with global coordination.' },
-        { label: 'Fixed Income Selection', desc: 'Focus on investment-grade USD corporates (BBB–AA) and US Treasury ladders; selective high-yield allocation (max 20% of bond book) for yield enhancement.' },
-        { label: 'ETF Integration', desc: 'Low-cost global sector ETFs (Vanguard, iShares) used for tactical exposures in markets where direct security selection infrastructure is limited.' },
-        { label: 'Liquidity Management', desc: 'Minimum 20% in liquid instruments (T-bills, money market) for daily redemption processing. T+3 settlement on equity; T+1 on bond positions.' },
-      ],
-    },
-  },
-};
-
-/* ── Static paths (hardcoded to avoid Astro hoisting issue) ── */
 export function getStaticPaths() {
-  const slugs = [
-    'motilal-value-pms', 'iifl-nondiscretionary-pms', 'kotak-advisory-pms',
-    'blume-vc-fund', 'ian-angel-fund', 'nhai-infra-fund', 'aavishkaar-social', 'edelweiss-sme-fund',
-    'chryscapital-pe', 'edelweiss-debt-fund', 'kotak-re-fund', 'altico-distressed',
-    'marcellus-long-only', 'avendus-long-short', 'iifl-multi-strategy', 'tata-market-neutral',
-    'kotak-gift-restricted', 'mirae-gift-retail',
-  ];
-  return slugs.map(slug => ({ params: { slug } }));
+  return getAllFunds().map((f) => ({ params: { slug: f.slug } }));
 }
 
 const { slug } = Astro.params;
-const fund = funds[slug];
+const fund = getFund(slug!);
 if (!fund) return Astro.redirect('/explore');
-
-const isPMS   = fund.type === 'PMS';
-const isAIF12 = fund.type === 'AIF_CAT1' || fund.type === 'AIF_CAT2';
-const isAIF3  = fund.type === 'AIF_CAT3';
-const isGIFT  = fund.type === 'GIFT_CITY';
 
 /* ── Colour tokens per type ── */
 const clr = {
-  PMS:       { accent: 'text-amber-300',  border: 'border-amber-700/40',  bg: 'bg-amber-900/25',   badge: 'bg-amber-900/30 text-amber-200 border border-amber-700/40',   icon: 'text-amber-300',   sep: 'border-amber-700/30'  },
-  AIF_CAT1:  { accent: 'text-emerald-300',border: 'border-emerald-700/40',bg: 'bg-emerald-900/25', badge: 'bg-emerald-900/30 text-emerald-300 border border-emerald-700/40',icon: 'text-emerald-400', sep: 'border-emerald-700/30'},
-  AIF_CAT2:  { accent: 'text-blue-300',   border: 'border-blue-700/40',   bg: 'bg-blue-900/25',    badge: 'bg-blue-900/30 text-blue-300 border border-blue-700/40',       icon: 'text-blue-400',    sep: 'border-blue-700/30'   },
-  AIF_CAT3:  { accent: 'text-violet-300', border: 'border-violet-700/40', bg: 'bg-violet-900/25',  badge: 'bg-violet-900/30 text-violet-300 border border-violet-700/40',  icon: 'text-violet-400',  sep: 'border-violet-700/30' },
-  GIFT_CITY: { accent: 'text-indigo-300', border: 'border-indigo-700/40', bg: 'bg-indigo-900/25',  badge: 'bg-indigo-900/30 text-indigo-300 border border-indigo-700/40',  icon: 'text-indigo-400',  sep: 'border-indigo-700/30' },
-}[fund.type];
+  PMS:       { accent: 'text-amber-300',  border: 'border-amber-700/40',  bg: 'bg-amber-900/25',   badge: 'bg-amber-900/30 text-amber-200 border border-amber-700/40'  },
+  AIF_CAT1:  { accent: 'text-emerald-300',border: 'border-emerald-700/40',bg: 'bg-emerald-900/25', badge: 'bg-emerald-900/30 text-emerald-300 border border-emerald-700/40'},
+  AIF_CAT2:  { accent: 'text-blue-300',   border: 'border-blue-700/40',   bg: 'bg-blue-900/25',    badge: 'bg-blue-900/30 text-blue-300 border border-blue-700/40'      },
+  AIF_CAT3:  { accent: 'text-violet-300', border: 'border-violet-700/40', bg: 'bg-violet-900/25',  badge: 'bg-violet-900/30 text-violet-300 border border-violet-700/40' },
+  GIFT_CITY: { accent: 'text-indigo-300', border: 'border-indigo-700/40', bg: 'bg-indigo-900/25',  badge: 'bg-indigo-900/30 text-indigo-300 border border-indigo-700/40' },
+}[fund.site_type];
 
-/* ── Stats bar cells per type ── */
-const statCells = isPMS ? [
-  { label: 'Fund Type',     value: fund.subtype },
-  { label: 'As on',         value: fund.asOn },
-  { label: 'Benchmark',     value: fund.benchmark },
-  { label: 'Inception Date',value: fund.inception },
-  { label: 'Min. Investment',value: fund.minInvestment },
-  { label: 'AUM',           value: fund.aum },
-] : isAIF12 ? [
-  { label: 'Fund Type',       value: fund.subtype },
-  { label: 'Fund Target Size',value: fund.targetSize },
-  { label: 'Fund Tenure',     value: fund.tenure },
-  { label: 'Min. Commitment', value: fund.minCommitment },
-  { label: 'Fund Structure',  value: fund.structure },
-] : isAIF3 ? [
-  { label: 'Fund Type',     value: fund.subtype },
-  { label: 'Benchmark',     value: fund.benchmark },
-  { label: 'Inception Date',value: fund.inception },
-  { label: 'Min. Investment',value: fund.minInvestment },
-  { label: 'AUM',           value: fund.aum },
-] : [
-  { label: 'Fund Type',      value: fund.subtype },
-  { label: 'Min. Investment',value: fund.minInvestment },
-  { label: 'Structure',      value: fund.structure },
+const fmtDate = (d: string | null) =>
+  d ? new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : NOT_DISCLOSED;
+
+const metric = headlineMetric(fund);
+
+/* ── Stat cells (only real, sourced values) ── */
+const aumAttr = fund.aum_as_of
+  ? `as on ${fmtDate(fund.aum_as_of)} · ${sourceLabel(fund.aum_source)}`
+  : (fund.aum_cr == null ? 'not officially disclosed' : '');
+
+const statCells = [
+  { label: 'Fund Type',        value: subtypeDisplay(fund), note: '' },
+  { label: 'AUM',              value: aumDisplay(fund),     note: aumAttr },
+  { label: 'Benchmark',        value: fund.benchmark ?? NOT_DISCLOSED, note: '' },
+  { label: 'Inception',        value: fmtDate(fund.inception_date), note: fund.inception_date ? 'registration date' : '' },
+  { label: 'Min. Investment',  value: fund.min_investment ?? NOT_DISCLOSED, note: '' },
+  { label: 'SEBI Reg. No.',    value: fund.reg_no ?? NOT_DISCLOSED, note: '' },
 ];
 
-const statColClass = statCells.length <= 3 ? 'grid-cols-1 sm:grid-cols-3'
-  : statCells.length <= 4 ? 'grid-cols-2 md:grid-cols-4'
-  : statCells.length === 5 ? 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5'
-  : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-6';
+/* ── Returns table ── */
+const PERIODS = [
+  { key: '1M', label: '1 Month' }, { key: '3M', label: '3 Months' },
+  { key: '6M', label: '6 Months' }, { key: '1Y', label: '1 Year' },
+  { key: '3Y', label: '3 Years' }, { key: '5Y', label: '5 Years' },
+  { key: 'SI', label: 'Since Inception' },
+];
+const returnRows = PERIODS.map((p) => {
+  const r = returnByPeriod(fund, p.key);
+  return { label: p.label, value: r && r.return_pct != null ? `${r.return_pct.toFixed(2)}%` : '—' };
+});
+const hasReturns = fund.returns.some((r) => r.return_pct != null);
+const returnsAsOf = fund.returns.find((r) => r.return_pct != null)?.as_of ?? null;
+const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
 ---
 
-<BaseLayout title={`${fund.name} | Fund Detail | PlatAlt`} currentPage="explore">
+<BaseLayout title={`${fund.name} | Fund Detail | Platizio Alternatives`} currentPage="explore">
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-28">
 
@@ -714,7 +65,7 @@ const statColClass = statCells.length <= 3 ? 'grid-cols-1 sm:grid-cols-3'
   <nav class="py-5 flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20 flex-wrap">
     <a href="/explore" class="hover:text-secondary transition-colors">Fund Explorer</a>
     <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
-    <a href={`/amc/${fund.amcSlug}`} class="hover:text-secondary transition-colors">{fund.amc}</a>
+    <a href={`/amc/${fund.amc_slug}`} class="hover:text-secondary transition-colors">{fund.amc}</a>
     <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
     <span class="text-on-surface-variant">{fund.name}</span>
   </nav>
@@ -724,347 +75,92 @@ const statColClass = statCells.length <= 3 ? 'grid-cols-1 sm:grid-cols-3'
     <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
       <div class="flex-1">
         <div class="flex flex-wrap items-center gap-3 mb-4">
-          <span class={`text-[10px] px-3 py-1.5 uppercase font-bold tracking-widest ${clr.badge}`}>{fund.tag}</span>
-          <a href={`/amc/${fund.amcSlug}`} class={`text-[10px] px-3 py-1.5 font-bold uppercase tracking-widest border border-outline-variant/40 text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors`}>
+          <span class={`text-[10px] px-3 py-1.5 uppercase font-bold tracking-widest ${clr.badge}`}>{tagFor(fund)}</span>
+          <a href={`/amc/${fund.amc_slug}`} class="text-[10px] px-3 py-1.5 font-bold uppercase tracking-widest border border-outline-variant/40 text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors">
             {fund.amc} <span class="material-symbols-outlined text-xs align-middle ml-0.5">open_in_new</span>
           </a>
         </div>
-        <h1 class="text-4xl md:text-6xl font-headline text-primary-container leading-tight mb-3">
-          {fund.name}
-        </h1>
+        <h1 class="text-4xl md:text-6xl font-headline text-primary-container leading-tight mb-3">{fund.name}</h1>
+        <p class="text-sm text-on-surface-variant max-w-2xl leading-relaxed">{fund.description}</p>
       </div>
       <!-- Key metric pill -->
       <div class={`shrink-0 ${clr.bg} ${clr.border} border px-8 py-6 text-center min-w-[180px]`}>
-        <p class="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">{fund.metric.label}</p>
-        <p class={`text-3xl font-bold font-headline ${clr.accent}`}>{fund.metric.value}</p>
+        <p class="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">{metric.label}</p>
+        <p class={`text-3xl font-bold font-headline ${clr.accent}`}>{metric.value}</p>
       </div>
     </div>
   </section>
 
   <!-- ── Stats Bar ── -->
-  <div class={`grid ${statColClass} border border-outline-variant/20 mb-12`}>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 border border-outline-variant/20 mb-12">
     {statCells.map((cell, i) => (
-      <div class={`px-6 py-5 ${i < statCells.length - 1 ? 'border-b md:border-b-0 md:border-r border-outline-variant/20' : ''}`}>
+      <div class={`px-6 py-5 ${i < statCells.length - 1 ? 'border-b sm:border-b-0 sm:border-r border-outline-variant/20' : ''}`}>
         <p class="text-[9px] uppercase tracking-widest font-bold text-outline mb-1.5">{cell.label}</p>
-        <p class="text-sm font-bold text-primary-container leading-tight">{cell.value}</p>
+        <p class="text-sm font-bold text-primary-container leading-tight break-words">{cell.value}</p>
+        {cell.note && <p class="text-[9px] text-outline-variant mt-1 lowercase tracking-wide">{cell.note}</p>}
       </div>
     ))}
   </div>
 
-  <!-- ════════════════════════════════════════════════
-       PMS — SPECIFIC SECTIONS
-  ════════════════════════════════════════════════ -->
-
-  {/* 1. Fund Manager Info */}
-  {isPMS && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">person</span>
-        <h2 class="font-headline text-2xl text-primary-container">Fund Manager</h2>
-      </div>
-      <div class="bg-surface-container-lowest border border-outline-variant/10 p-8 flex flex-col md:flex-row gap-8">
-        <div class={`w-16 h-16 ${clr.bg} ${clr.border} border flex items-center justify-center shrink-0`}>
-          <span class={`material-symbols-outlined text-3xl ${clr.icon}`} style="font-variation-settings:'FILL' 1">person</span>
-        </div>
-        <div>
-          <h3 class="font-headline text-xl text-primary-container mb-1">{fund.manager.name}</h3>
-          <p class={`text-[11px] uppercase tracking-widest font-bold ${clr.accent} mb-3`}>{fund.manager.title}</p>
-          <p class="text-xs font-semibold text-outline uppercase tracking-widest mb-4 border-l-2 border-outline-variant/40 pl-3">{fund.manager.experience}</p>
-          <p class="text-sm text-on-surface-variant leading-relaxed">{fund.manager.bio}</p>
-        </div>
-      </div>
-    </section>
-  )}
-
-  {/* 2. Investment Approach vs Benchmark */}
-  {isPMS && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">compare_arrows</span>
-        <h2 class="font-headline text-2xl text-primary-container">Investment Approach vs Benchmark</h2>
-      </div>
-      <p class="text-sm text-on-surface-variant leading-relaxed mb-8 max-w-3xl">{fund.approachVsBenchmark.intro}</p>
-      <div class="border border-outline-variant/20 overflow-hidden">
-        <div class="grid grid-cols-3 bg-surface-container px-6 py-3 border-b border-outline-variant/20">
-          <span class="text-[10px] uppercase tracking-widest font-bold text-outline">Metric</span>
-          <span class={`text-[10px] uppercase tracking-widest font-bold ${clr.accent}`}>This Strategy</span>
-          <span class="text-[10px] uppercase tracking-widest font-bold text-outline">Benchmark</span>
-        </div>
-        {fund.approachVsBenchmark.rows.map((row: any, i: number) => (
-          <div class={`grid grid-cols-3 px-6 py-4 ${i % 2 === 0 ? 'bg-surface-container-lowest' : 'bg-surface-container/30'} border-b border-outline-variant/10 last:border-b-0`}>
-            <span class="text-sm font-semibold text-on-surface-variant">{row.label}</span>
-            <span class={`text-sm font-bold ${clr.accent}`}>{row.portfolio}</span>
-            <span class="text-sm text-outline">{row.benchmark}</span>
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {/* 3. Investment Philosophy */}
-  {isPMS && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-2">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">lightbulb</span>
-        <h2 class="font-headline text-2xl text-primary-container">Investment Philosophy</h2>
-      </div>
-      <p class={`font-headline italic text-xl ${clr.accent} mb-4`}>{fund.philosophy.heading}</p>
-      <p class="text-sm text-on-surface-variant leading-relaxed mb-10 max-w-3xl">{fund.philosophy.text}</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {fund.philosophy.principles.map((p: any) => (
-          <div class={`${clr.bg} border ${clr.border} p-6`}>
-            <span class={`material-symbols-outlined text-2xl ${clr.icon} mb-4 block`} style="font-variation-settings:'FILL' 1">{p.icon}</span>
-            <h4 class="font-headline text-base text-primary-container mb-2">{p.title}</h4>
-            <p class="text-xs text-on-surface-variant leading-relaxed">{p.desc}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {/* 4. Strategy Information */}
-  {isPMS && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-4">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">account_tree</span>
-        <h2 class="font-headline text-2xl text-primary-container">Strategy Information</h2>
-      </div>
-      <p class="text-sm text-on-surface-variant leading-relaxed mb-8 max-w-3xl">{fund.strategy.text}</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {fund.strategy.details.map((d: any) => (
-          <div class="bg-surface-container-lowest border border-outline-variant/10 p-5">
-            <p class="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">{d.label}</p>
-            <p class={`text-sm font-bold ${clr.accent}`}>{d.value}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {/* 5. Fund Details (PMS) */}
-  {isPMS && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">info</span>
-        <h2 class="font-headline text-2xl text-primary-container">Fund Details</h2>
-      </div>
-      <div class="border border-outline-variant/20 overflow-hidden">
-        {fund.fundDetails.map((row: any, i: number) => (
-          <div class={`grid grid-cols-1 md:grid-cols-2 gap-0 border-b border-outline-variant/10 last:border-b-0 ${i % 2 === 0 ? 'bg-surface-container-lowest' : 'bg-surface-container/20'}`}>
-            <div class="px-6 py-4 border-b md:border-b-0 md:border-r border-outline-variant/10">
-              <p class="text-[10px] uppercase tracking-widest font-bold text-outline">{row.label}</p>
+  <!-- ── Performance ── -->
+  <section class="mb-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">trending_up</span>
+      <h2 class="font-headline text-2xl text-primary-container">Standardized Performance</h2>
+    </div>
+    {hasReturns ? (
+      <div class="bg-surface-container-lowest border border-outline-variant/10 p-8">
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-px bg-outline-variant/10 border border-outline-variant/10">
+          {returnRows.map((row) => (
+            <div class="bg-surface-container-lowest px-4 py-5 text-center">
+              <p class="text-[9px] uppercase tracking-widest font-bold text-outline mb-2">{row.label}</p>
+              <p class={`text-lg font-bold font-headline ${row.value.startsWith('-') ? 'text-red-400' : clr.accent}`}>{row.value}</p>
             </div>
-            <div class="px-6 py-4">
-              <p class="text-sm text-primary-container font-medium">{row.value}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <p class="text-[10px] text-outline-variant mt-4 tracking-wide">
+          TWRR returns as on {fmtDate(returnsAsOf)} · Source: {returnsSource}
+          {fund.benchmark && <> · Benchmark: {fund.benchmark}</>}
+        </p>
       </div>
-    </section>
-  )}
+    ) : (
+      <div class="bg-surface-container-lowest border border-outline-variant/10 p-8 text-center">
+        <span class="material-symbols-outlined text-4xl text-outline-variant mb-3 block">visibility_off</span>
+        <p class="font-headline text-xl text-primary-container mb-1">Performance not officially disclosed</p>
+        <p class="text-sm text-on-surface-variant max-w-md mx-auto">
+          Fund-level performance for this {fund.site_type.startsWith('AIF') ? 'AIF' : 'fund'} is not
+          published in SEBI / APMI disclosures. Only regulator-confirmed identity and
+          registration details are shown.
+        </p>
+      </div>
+    )}
+  </section>
 
-  <!-- ════════════════════════════════════════════════
-       AIF CAT I & II — SPECIFIC SECTIONS
-  ════════════════════════════════════════════════ -->
-
-  {/* 1. About the Fund */}
-  {isAIF12 && (
+  <!-- ── Fund Details ── -->
+  {fund.fund_details.length > 0 && (
     <section class="mb-12">
       <div class="flex items-center gap-3 mb-6">
         <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">description</span>
-        <h2 class="font-headline text-2xl text-primary-container">About the Fund</h2>
-      </div>
-      <div class="max-w-4xl space-y-5">
-        {fund.about.map((para: string) => (
-          <p class="text-sm text-on-surface-variant leading-relaxed">{para}</p>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {/* 2. Fund Manager Details (AIF Cat I/II) */}
-  {isAIF12 && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">manage_accounts</span>
-        <h2 class="font-headline text-2xl text-primary-container">Fund Manager Details</h2>
-      </div>
-      <div class="bg-surface-container-lowest border border-outline-variant/10 p-8 flex flex-col md:flex-row gap-8">
-        <div class={`w-16 h-16 ${clr.bg} ${clr.border} border flex items-center justify-center shrink-0`}>
-          <span class={`material-symbols-outlined text-3xl ${clr.icon}`} style="font-variation-settings:'FILL' 1">person</span>
-        </div>
-        <div class="flex-1">
-          <h3 class="font-headline text-xl text-primary-container mb-1">{fund.manager.name}</h3>
-          <p class={`text-[11px] uppercase tracking-widest font-bold ${clr.accent} mb-3`}>{fund.manager.title}</p>
-          <p class="text-xs font-semibold text-outline uppercase tracking-widest mb-4 border-l-2 border-outline-variant/40 pl-3">{fund.manager.experience}</p>
-          <p class="text-sm text-on-surface-variant leading-relaxed">{fund.manager.bio}</p>
-        </div>
-      </div>
-    </section>
-  )}
-
-  {/* 3. Fund Details (AIF Cat I/II) */}
-  {isAIF12 && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">info</span>
         <h2 class="font-headline text-2xl text-primary-container">Fund Details</h2>
       </div>
-      <div class="border border-outline-variant/20 overflow-hidden">
-        {fund.fundDetails.map((row: any, i: number) => (
-          <div class={`grid grid-cols-1 md:grid-cols-2 border-b border-outline-variant/10 last:border-b-0 ${i % 2 === 0 ? 'bg-surface-container-lowest' : 'bg-surface-container/20'}`}>
-            <div class="px-6 py-4 border-b md:border-b-0 md:border-r border-outline-variant/10">
-              <p class="text-[10px] uppercase tracking-widest font-bold text-outline">{row.label}</p>
-            </div>
-            <div class="px-6 py-4">
-              <p class="text-sm text-primary-container font-medium">{row.value}</p>
-            </div>
+      <div class="bg-surface-container-lowest border border-outline-variant/10 divide-y divide-outline-variant/10">
+        {fund.fund_details.map((d) => (
+          <div class="flex justify-between gap-6 px-8 py-4">
+            <span class="text-xs uppercase tracking-widest font-bold text-outline">{d.label}</span>
+            <span class="text-sm font-semibold text-primary-container text-right">{d.value}</span>
           </div>
         ))}
       </div>
     </section>
   )}
 
-  <!-- ════════════════════════════════════════════════
-       AIF CAT III — SPECIFIC SECTIONS
-  ════════════════════════════════════════════════ -->
-
-  {/* 1. About the Fund */}
-  {isAIF3 && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">description</span>
-        <h2 class="font-headline text-2xl text-primary-container">About the Fund</h2>
-      </div>
-      <div class="max-w-4xl space-y-5">
-        {fund.about.map((para: string) => (
-          <p class="text-sm text-on-surface-variant leading-relaxed">{para}</p>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {/* 2. Fund Manager Details (AIF Cat III) */}
-  {isAIF3 && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">manage_accounts</span>
-        <h2 class="font-headline text-2xl text-primary-container">Fund Manager Details</h2>
-      </div>
-      <div class="bg-surface-container-lowest border border-outline-variant/10 p-8 flex flex-col md:flex-row gap-8">
-        <div class={`w-16 h-16 ${clr.bg} ${clr.border} border flex items-center justify-center shrink-0`}>
-          <span class={`material-symbols-outlined text-3xl ${clr.icon}`} style="font-variation-settings:'FILL' 1">person</span>
-        </div>
-        <div class="flex-1">
-          <h3 class="font-headline text-xl text-primary-container mb-1">{fund.manager.name}</h3>
-          <p class={`text-[11px] uppercase tracking-widest font-bold ${clr.accent} mb-3`}>{fund.manager.title}</p>
-          <p class="text-xs font-semibold text-outline uppercase tracking-widest mb-4 border-l-2 border-outline-variant/40 pl-3">{fund.manager.experience}</p>
-          <p class="text-sm text-on-surface-variant leading-relaxed">{fund.manager.bio}</p>
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- ════════════════════════════════════════════════
-       GIFT CITY — SPECIFIC SECTIONS
-  ════════════════════════════════════════════════ -->
-
-  {/* 1. Fund Manager Details (GIFT City) */}
-  {isGIFT && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-6">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">manage_accounts</span>
-        <h2 class="font-headline text-2xl text-primary-container">Fund Manager Details</h2>
-      </div>
-      <div class="bg-surface-container-lowest border border-outline-variant/10 p-8 flex flex-col md:flex-row gap-8">
-        <div class={`w-16 h-16 ${clr.bg} ${clr.border} border flex items-center justify-center shrink-0`}>
-          <span class={`material-symbols-outlined text-3xl ${clr.icon}`} style="font-variation-settings:'FILL' 1">groups</span>
-        </div>
-        <div class="flex-1">
-          <h3 class="font-headline text-xl text-primary-container mb-1">{fund.manager.name}</h3>
-          <p class={`text-[11px] uppercase tracking-widest font-bold ${clr.accent} mb-3`}>{fund.manager.title}</p>
-          <p class="text-xs font-semibold text-outline uppercase tracking-widest mb-4 border-l-2 border-outline-variant/40 pl-3">{fund.manager.experience}</p>
-          <p class="text-sm text-on-surface-variant leading-relaxed">{fund.manager.bio}</p>
-        </div>
-      </div>
-    </section>
-  )}
-
-  {/* 2. Investment Objective */}
-  {isGIFT && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-4">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">flag</span>
-        <h2 class="font-headline text-2xl text-primary-container">Investment Objective</h2>
-      </div>
-      <div class={`${clr.bg} border ${clr.border} p-8 max-w-4xl`}>
-        <p class="text-base text-primary-container leading-relaxed font-medium">{fund.objective}</p>
-      </div>
-    </section>
-  )}
-
-  {/* 3. Investment Philosophy (GIFT City) */}
-  {isGIFT && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-2">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">lightbulb</span>
-        <h2 class="font-headline text-2xl text-primary-container">Investment Philosophy</h2>
-      </div>
-      <p class={`font-headline italic text-xl ${clr.accent} mb-4`}>{fund.philosophy.heading}</p>
-      <p class="text-sm text-on-surface-variant leading-relaxed mb-10 max-w-3xl">{fund.philosophy.text}</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {fund.philosophy.principles.map((p: any) => (
-          <div class={`${clr.bg} border ${clr.border} p-6`}>
-            <span class={`material-symbols-outlined text-2xl ${clr.icon} mb-4 block`} style="font-variation-settings:'FILL' 1">{p.icon}</span>
-            <h4 class="font-headline text-base text-primary-container mb-2">{p.title}</h4>
-            <p class="text-xs text-on-surface-variant leading-relaxed">{p.desc}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {/* 4. Investment Strategy & Process (GIFT City) */}
-  {isGIFT && (
-    <section class="mb-12">
-      <div class="flex items-center gap-3 mb-4">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">account_tree</span>
-        <h2 class="font-headline text-2xl text-primary-container">Investment Strategy &amp; Process</h2>
-      </div>
-      <p class="text-sm text-on-surface-variant leading-relaxed mb-8 max-w-3xl">{fund.strategy.text}</p>
-      <div class="space-y-3">
-        {fund.strategy.steps.map((step: any, i: number) => (
-          <div class="flex gap-5 bg-surface-container-lowest border border-outline-variant/10 p-6">
-            <div class={`w-8 h-8 ${clr.bg} ${clr.border} border flex items-center justify-center shrink-0 mt-0.5`}>
-              <span class={`text-[11px] font-bold ${clr.accent}`}>{String(i + 1).padStart(2, '0')}</span>
-            </div>
-            <div>
-              <h4 class="font-semibold text-sm text-primary-container mb-1">{step.label}</h4>
-              <p class="text-sm text-on-surface-variant leading-relaxed">{step.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
-
-  <!-- ════════════════════════════════════════════════
-       COMMON FOOTER CTA
-  ════════════════════════════════════════════════ -->
-  <div class="border border-outline-variant/20 bg-surface-container-low px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6 mt-4">
-    <div>
-      <h3 class="font-headline text-2xl text-primary-container mb-1">Interested in this fund?</h3>
-      <p class="text-sm text-on-surface-variant">Speak with our institutional advisory team for eligibility, documentation, and onboarding.</p>
-    </div>
-    <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-      <a href={`/amc/${fund.amcSlug}`} class="inline-flex items-center gap-2 border border-secondary text-secondary px-6 py-3 text-[11px] uppercase font-bold tracking-widest hover:bg-secondary/5 transition-colors">
-        View AMC Profile <span class="material-symbols-outlined text-sm">open_in_new</span>
-      </a>
-      <button type="button" class="js-open-consult inline-flex items-center gap-2 bg-amber-200 text-slate-900 px-6 py-3 text-[11px] uppercase font-bold tracking-widest hover:bg-amber-100 transition-colors cursor-pointer">
-        Request Consultation <span class="material-symbols-outlined text-sm">arrow_forward</span>
-      </button>
-    </div>
-  </div>
+  <!-- ── Provenance & disclaimer ── -->
+  <section class="border-t border-outline-variant/20 pt-6">
+    <p class="text-[10px] text-outline-variant leading-relaxed max-w-3xl">
+      {PERFORMANCE_DISCLAIMER}
+      {fund.last_synced_at && <> Last refreshed {fmtDate(fund.last_synced_at.slice(0, 10))}.</>}
+    </p>
+  </section>
 
 </div>
 </BaseLayout>

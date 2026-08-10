@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "2point2-capital-advisors",
+    "name": "2Point2 Capital Advisors",
+    "fund_count": 1,
+    "fund_slugs": [
+      "2point2-capital-aif"
+    ]
+  },
+  {
+    "slug": "360-one-asset-management",
+    "name": "360 ONE Asset Management",
+    "fund_count": 3,
+    "fund_slugs": [
+      "360-one-angel-fund",
+      "360-one-private-equity-fund",
+      "360-one-bharat-growth-gift"
+    ]
+  },
+  {
+    "slug": "hdfc-asset-management-company",
+    "name": "HDFC Asset Management Company",
+    "fund_count": 1,
+    "fund_slugs": [
+      "hdfc-diversified-hybrid-pms"
+    ]
+  },
+  {
+    "slug": "icici-prudential-asset-management",
+    "name": "ICICI Prudential Asset Management Company",
+    "fund_count": 1,
+    "fund_slugs": [
+      "icici-pru-contra-pms"
+    ]
+  },
+  {
+    "slug": "kotak-mahindra-asset-management-company",
+    "name": "Kotak Mahindra Asset Management Company",
+    "fund_count": 2,
+    "fund_slugs": [
+      "kotak-evolv-moderate-multi-asset-pms",
+      "kotak-kkore-ndpms"
+    ]
+  },
+  {
+    "slug": "marcellus-investment-managers",
+    "name": "Marcellus Investment Managers",
+    "fund_count": 2,
+    "fund_slugs": [
+      "marcellus-consistent-compounders",
+      "marcellus-non-discretionary-pms"
+    ]
+  },
+  {
+    "slug": "motilal-oswal-asset-management",
+    "name": "Motilal Oswal Asset Management Company",
+    "fund_count": 1,
+    "fund_slugs": [
+      "motilal-oswal-founders-pms"
+    ]
+  },
+  {
+    "slug": "nippon-life-india-asset-management",
+    "name": "Nippon Life India Asset Management",
+    "fund_count": 1,
+    "fund_slugs": [
+      "nippon-high-yield-debt-pms"
+    ]
+  },
+  {
+    "slug": "nuvama-asset-management",
+    "name": "Nuvama Asset Management",
+    "fund_count": 1,
+    "fund_slugs": [
+      "nuvama-infinity-core-plus-ndpms"
+    ]
+  },
+  {
+    "slug": "ppfas-asset-management-ifsc",
+    "name": "PPFAS Asset Management (IFSC)",
+    "fund_count": 1,
+    "fund_slugs": [
+      "ppfas-ifsc-sp500-fof-gift"
+    ]
+  }
+]

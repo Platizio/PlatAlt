@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Privacy Policy | PlatAlt" currentPage="">
+<BaseLayout title="Privacy Policy | Platizio Alternatives" currentPage="">
 
 <div class="max-w-3xl mx-auto px-6 md:px-10 py-16">
   <div class="mb-12">
-    <p class="text-tertiary-fixed-dim text-[10px] font-bold uppercase tracking-[0.3em] mb-4">Legal</p>
+    <p class="text-tertiary-fixed-dim text-sm font-bold uppercase tracking-[0.3em] mb-4">Legal</p>
     <h1 class="font-headline text-5xl md:text-6xl font-light text-primary-container mb-6">Privacy <span class="italic">Policy</span></h1>
     <p class="text-on-surface-variant">Last updated: January 1, 2025</p>
   </div>
@@ -14,7 +14,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <section>
       <h2 class="font-headline text-2xl text-primary-container mb-4">1. Introduction</h2>
-      <p>PlatAlt Management LLP ("PlatAlt", "we", "us", or "our") operates PlatAlt platform. This Privacy Policy describes how we collect, use, and safeguard information you provide when using our website and services. By accessing our platform, you consent to the practices described in this policy.</p>
+      <p>Platizio Services LLP ("Platizio", "we", "us", or "our") operates the Platizio Alternatives platform. This Privacy Policy describes how we collect, use, and safeguard information you provide when using our website and services. By accessing our platform, you consent to the practices described in this policy.</p>
     </section>
 
     <section>
@@ -57,7 +57,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <section>
       <h2 class="font-headline text-2xl text-primary-container mb-4">4. Data Sharing & Disclosure</h2>
-      <p>We do not sell, rent, or trade your personal information. Information may be shared with: (a) SEBI, PMLA-designated authorities, and other regulatory bodies when legally required; (b) Registered fund managers and trustees of AIFs in which you invest; (c) SEBI-registered KYC Registration Agencies (KRAs) for investor verification; (d) Auditors, legal advisors, and technology service providers under strict confidentiality agreements.</p>
+      <p class="mb-4">We do not sell, rent, or trade your personal information. Information may be shared with:</p>
+      <ul class="space-y-3 pl-4">
+        {[
+          'SEBI, PMLA-designated authorities, and other regulatory bodies when legally required',
+          'Registered fund managers and trustees of AIFs in which you invest',
+          'SEBI-registered KYC Registration Agencies (KRAs) for investor verification',
+          'Auditors, legal advisors, and technology service providers under strict confidentiality agreements',
+        ].map(item => (
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-tertiary-fixed-dim text-sm mt-0.5 shrink-0">check_small</span>
+            <span class="text-sm">{item}</span>
+          </li>
+        ))}
+      </ul>
     </section>
 
     <section>
@@ -67,12 +80,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <section>
       <h2 class="font-headline text-2xl text-primary-container mb-4">6. Your Rights</h2>
-      <p>Subject to applicable law, you may request access to, correction of, or deletion of your personal data. To exercise these rights, contact our Data Protection Officer at <span class="text-secondary">privacy@alternavest.in</span>. We respond to verified requests within 30 business days.</p>
+      <p>Subject to applicable law, you may request access to, correction of, or deletion of your personal data. To exercise these rights, contact our Data Protection Officer at <a class="text-secondary underline underline-offset-2 hover:no-underline" href="mailto:info.alternatives@platizio.com">info.alternatives@platizio.com</a>. We respond to verified requests within 30 business days.</p>
     </section>
 
     <section>
       <h2 class="font-headline text-2xl text-primary-container mb-4">7. Contact</h2>
-      <p>For privacy-related inquiries: PlatAlt Management LLP, Data Protection Office, One BKC, Mumbai – 400 051. Email: privacy@alternavest.in</p>
+      <p>For privacy-related inquiries: Platizio Services LLP, Data Protection Office, One BKC, Mumbai – 400 051. Email: <a class="text-secondary underline underline-offset-2 hover:no-underline" href="mailto:info.alternatives@platizio.com">info.alternatives@platizio.com</a></p>
     </section>
   </div>
 
