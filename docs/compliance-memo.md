@@ -20,15 +20,16 @@ left alone — that judgement is yours, and guessing at it in code would have be
 worse than flagging it.
 
 Nothing in Parts A or B has been changed. Part C items are factual errors that can
-be corrected on your instruction without a legal decision.
+be corrected on your instruction without a legal decision; C1 and C2 have since been
+corrected and are marked FIXED.
 
 | Part | Items | Nature |
 | --- | --- | --- |
 | A | 2 | Registration and eligibility statements. Highest exposure. |
 | B | 3 | Clause drafting and enforceability. |
-| C | 4 | Verified factual defects. Fixable on instruction. |
+| C | 5 | Verified factual defects. C1 and C2 now fixed. |
 | D | 6 | Legal copy already changed in this programme, for your awareness. |
-| E | 4 | Where the site deviates from the client's own written instruction. |
+| E | 5 | Where the site deviates from the client's own written instruction. |
 | F | 1 | Dated — acts on its own timetable. |
 
 ---
@@ -140,33 +141,58 @@ actually operates, or have the paragraph softened to what can be evidenced.
 
 ## Part C — Verified factual defects
 
-These are wrong as a matter of fact, not judgement. Each can be corrected on your
-instruction without a legal decision. They are listed here rather than fixed because
-they sit on the regulatory pages.
+These are wrong as a matter of fact, not judgement — each can be corrected without a
+legal decision. C1 and C2 have been corrected on instruction and are retained below
+so the record shows what was changed and why. C3 to C5 are still open, and are listed
+rather than fixed because they sit on regulatory pages or turn on A1.
 
-### C1. A regulation is cited under the wrong name
+### C1. A regulation was cited under the wrong name — **FIXED**
 
-`src/pages/regulatory-disclosure.astro:49` lists:
+`src/pages/regulatory-disclosure.astro:49` read:
 
 > SEBI (Prevention of Insider Trading) Regulations, 2015
 
 The instrument is the SEBI (**Prohibition** of Insider Trading) Regulations, 2015.
+Corrected on instruction; see commit history for `regulatory-disclosure.astro`.
 
-### C2. The disclosure page cites a superseded tax statute
+### C2. The disclosure page cited a superseded tax statute — **FIXED**
 
-`src/pages/regulatory-disclosure.astro:51` lists:
+`src/pages/regulatory-disclosure.astro:51` read:
 
 > Income Tax Act, 1961 — Tax treatment of AIF investments and distributions
 
 The Income-tax Act, **2025** has been in force since 1 April 2026 and replaces the
 1961 Act. The knowledge centre was re-based to the 2025 Act during this programme —
-sections 224, 196, 198, 197 and 393 now appear throughout — so the disclosure page
-currently contradicts the rest of the site.
+sections 224, 196, 198, 197 and 393 appear throughout — so the disclosure page
+contradicted the rest of the site.
 
-C1 and C2 both sit in "4. Applicable Regulations". The client's change list asked to
+Now reads: *"Income-tax Act, 2025 — tax treatment of AIF investments and
+distributions, in force from 1 April 2026 in place of the Income-tax Act, 1961."*
+The superseded Act is named rather than dropped, so a reader holding older material
+can see which statute replaced which. Spelling standardised to the statutory
+"Income-tax", matching the knowledge centre.
+
+C1 and C2 both sat in "4. Applicable Regulations". The client's change list asked to
 "correct points 4–5" of this page without saying what was wrong; these two defects
-are the most likely referent, and answering that open question is the main reason
-they are called out precisely here.
+are the most likely referent. **If something else was meant by that instruction, it
+is still unaddressed** — the remaining three entries in the list (AIF Regulations
+2012, PMLA 2002, FEMA 1999) were checked and are correctly titled, and point 5
+(Investor Grievance Redressal) is reviewed at C5 below.
+
+### C5. Grievance redressal points only at SEBI
+
+`src/pages/regulatory-disclosure.astro:63` onward directs complaints to SEBI SCORES,
+the SEBI helpline and SEBI's Mumbai office, prefaced "For complaints against any fund
+manager or AIF registered with SEBI".
+
+That framing is correct for complaints against the *funds*. It leaves no route for a
+complaint against **Platizio itself**. If the entity's actual registration is the
+AMFI/MFD one (see A1), grievances against it would not fall to SCORES, and a
+distributor is ordinarily expected to publish its own grievance contact and
+escalation path.
+
+No wording is proposed, because the right answer depends entirely on how A1 is
+resolved. Flagged so point 5 is not assumed clean.
 
 ### C3. Return language on private-credit content
 
@@ -312,8 +338,10 @@ them, rather than as settled.
 1. **A1** — it is on every page, and the answer determines whether the site's core
    activity is within the registration it discloses.
 2. **A2** — it governs who may use the platform.
-3. **C1, C2** — factual, cheap, and they answer an open client question.
-4. **C4** — deleting two unlinked pages of invented financial content is low-cost
+3. ~~**C1, C2** — factual, cheap, and they answer an open client question.~~ Done.
+4. **C5** — depends on A1, but a distributor with no published grievance route of
+   its own is a visible gap.
+5. **C4** — deleting two unlinked pages of invented financial content is low-cost
    and removes published material nobody is defending.
-5. **B1–B3** — before any material investor volume.
-6. **C3, E1–E5** — copy decisions, no deadline.
+6. **B1–B3** — before any material investor volume.
+7. **C3, E1–E5** — copy decisions, no deadline.
