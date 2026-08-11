@@ -27,8 +27,13 @@ The dev server runs on `http://localhost:4321`.
 | `npm run preview` | Serve the built output |
 
 There is no test, lint or typecheck script — **the build is the only automated
-gate**. Run `npm run build` before committing and check it reports 73 pages
+gate**. Run `npm run build` before committing and check it reports 78 pages
 with zero errors.
+
+The build also fails if a route has no entry in `src/data/seo.ts` and passes no
+`description` to `BaseLayout`. That is deliberate: it is what stops a new or
+renamed page from silently falling back to a shared meta description, which is
+how 72 of the then-73 pages ended up with identical descriptions.
 
 ## Layout
 

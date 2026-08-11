@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getAllFunds } from '../data/funds';
+import { termOf } from '../data/aif-taxonomy';
 
 // Ticker is driven off the real SEBI/APMI dataset so it cannot go stale.
 // Names and categories only - the dataset carries no return figures.
@@ -29,7 +30,7 @@ const insightLinks = [
   { tag: 'GIFT IFSC', title: 'Investing through GIFT City', href: '/gift-city' },
 ];
 ---
-<BaseLayout title="Platizio Alternatives" currentPage="home">
+<BaseLayout currentPage="home">
 
 <!-- Hero Section -->
 <section class="relative min-h-[91vh] flex items-center overflow-hidden bg-primary-container">
@@ -91,18 +92,25 @@ const insightLinks = [
       </a>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      {/*
+        These point at the /knowledge pages rather than /funds/<strategy>.
+        The homepage is the strongest internal link source on the site, and
+        /funds/<strategy> canonicalises into /knowledge — linking sitewide into
+        a canonicalised URL contradicts the canonical it carries. Paths come
+        from the taxonomy module so a renamed sub-category cannot strand them.
+      */}
       {[
-        { label: 'Venture Capital', href: '/funds/venture-capital', icon: 'rocket_launch' },
-        { label: 'Private Equity', href: '/funds/private-equity', icon: 'account_balance' },
-        { label: 'Real Estate', href: '/funds/real-estate', icon: 'domain' },
-        { label: 'Debt Funds', href: '/funds/debt', icon: 'payments' },
-        { label: 'Infrastructure', href: '/funds/infrastructure', icon: 'construction' },
-        { label: 'Long Short', href: '/funds/long-short', icon: 'swap_vert' },
-        { label: 'Multi Strategy', href: '/funds/multi-strategy', icon: 'hub' },
-        { label: 'Angel Funds', href: '/funds/angel', icon: 'star' },
-        { label: 'Structured Credit', href: '/funds/structured-credit', icon: 'credit_card' },
-        { label: 'SME Funds', href: '/funds/sme', icon: 'storefront' },
-      ].map(cat => (
+        { sub: 'venture-capital', label: 'Venture Capital', icon: 'rocket_launch' },
+        { sub: 'private-equity', label: 'Private Equity', icon: 'account_balance' },
+        { sub: 'real-estate', label: 'Real Estate', icon: 'domain' },
+        { sub: 'debt', label: 'Debt Funds', icon: 'payments' },
+        { sub: 'infrastructure', label: 'Infrastructure', icon: 'construction' },
+        { sub: 'long-short', label: 'Long Short', icon: 'swap_vert' },
+        { sub: 'multi-strategy', label: 'Multi Strategy', icon: 'hub' },
+        { sub: 'angel', label: 'Angel Funds', icon: 'star' },
+        { sub: 'sme', label: 'SME Funds', icon: 'storefront' },
+        { sub: 'distressed-assets', label: 'Distressed Assets', icon: 'credit_card' },
+      ].map(c => ({ ...c, href: termOf(c.sub)?.path ?? '/knowledge/aif' })).map(cat => (
         <a href={cat.href} class="bg-surface-container-lowest p-5 flex flex-col items-center text-center gap-3 hover:bg-white hover:shadow-md transition-all group border border-transparent hover:border-outline-variant/20">
           <span class="material-symbols-outlined text-secondary group-hover:text-primary-container transition-colors">{cat.icon}</span>
           <span class="text-sm font-bold uppercase tracking-wide text-on-surface">{cat.label}</span>
