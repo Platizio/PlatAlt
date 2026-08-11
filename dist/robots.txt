@@ -1,0 +1,27 @@
+# https://alternatives.platizio.com/robots.txt
+User-agent: *
+Allow: /
+
+# Gated portal. No search value.
+Disallow: /login
+Disallow: /404
+
+# Fabricated content pending deletion (docs/compliance-memo.md, Part C4).
+# Both carry invented performance figures. Remove these lines when the pages
+# are deleted, not before.
+Disallow: /fund
+Disallow: /knowledge/article
+
+# Build artefacts.
+Disallow: /_astro/
+
+# Large-model crawlers, allowed deliberately: this is a discovery platform
+# whose upside is being cited in answers about Indian AIF and PMS rules.
+# Flip to Disallow only on an explicit business decision.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://alternatives.platizio.com/sitemap-index.xml
