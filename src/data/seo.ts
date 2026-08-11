@@ -174,6 +174,17 @@ export const SEO: Record<string, SeoEntry> = {
       'Market neutral Category III AIFs hold matched long and short books to strip out market direction. Fund-level tax at ~42.744% MMR, leverage up to 2× NAV.',
   },
 
+  '/knowledge/aif-taxation': {
+    title: 'AIF Taxation in India: Category I, II & III Rates',
+    description:
+      'Category I and II AIFs are pass-through under Sec. 224. Category III is taxed at the fund at ~42.744%. Listed LTCG is 12.5%, STCG 20%, with 10% TDS on payouts.',
+  },
+  '/knowledge/pms-vs-aif-vs-mutual-fund': {
+    title: 'PMS vs AIF vs Mutual Fund: Which Should You Pick?',
+    description:
+      'Minimum investment is ₹50 Lakhs for PMS, ₹1 Crore for AIF and ₹500 for mutual funds. Compare ownership, regulation, leverage and tax before you allocate.',
+  },
+
   /* ── knowledge: PMS ───────────────────────────────────────────────────── */
   '/knowledge/pms': {
     title: 'What is PMS? Portfolio Management Services in India',
@@ -370,6 +381,41 @@ export function seoForFund(f: Fund): SeoEntry {
       160,
     ),
   };
+}
+
+/**
+ * The three PMS mandate spokes. Written so each targets its own query rather
+ * than competing inside /knowledge/pms, which is what they did before.
+ */
+const PMS_MANDATE_SEO: Record<string, SeoEntry> = {
+  discretionary: {
+    title: 'Discretionary PMS in India: Meaning & How It Works',
+    description:
+      'In discretionary PMS the manager buys and sells without per-trade client approval. SEBI minimum investment is ₹50 Lakhs. The most common PMS mandate in India.',
+  },
+  'non-discretionary': {
+    title: 'Non-Discretionary PMS in India: How It Works',
+    description:
+      'In non-discretionary PMS the manager recommends and you approve every trade before execution. SEBI minimum is ₹50 Lakhs, held in your own demat account.',
+  },
+  advisory: {
+    title: 'Advisory PMS in India: Meaning & How It Works',
+    description:
+      'In advisory PMS the manager gives research and recommendations only — you execute every trade. The lowest-cost PMS mandate, with a ₹50 Lakhs SEBI minimum.',
+  },
+};
+
+export function seoForPmsMandate(m: { key: string; name: string }): SeoEntry {
+  return (
+    PMS_MANDATE_SEO[m.key] ?? {
+      title: clamp(`${m.name} in India`, 60),
+      description: clamp(
+        `${m.name} explained — how the mandate works, what the manager can do without ` +
+          'your approval, and the SEBI minimum investment of ₹50 Lakhs.',
+        160,
+      ),
+    }
+  );
 }
 
 export function seoForAmc(a: AmcCard): SeoEntry {

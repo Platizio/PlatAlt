@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { VEHICLE_COMPARISON } from '../../data/vehicle-comparison';
+import { LIMIT, RATE, SECTION } from '../../data/aif-facts';
+import { PMS_MIN_INVESTMENT } from '../../data/pms-mandates';
+import { faqPageNode, articleNode } from '../../data/schema';
+import { SEO } from '../../data/seo';
+
+const path = '/knowledge/pms-vs-aif-vs-mutual-fund';
+
+const faqs = [
+  {
+    q: 'What is the minimum investment for PMS, AIF and mutual funds?',
+    a: `SEBI sets the PMS minimum at ${PMS_MIN_INVESTMENT} per client and the AIF minimum commitment at ${LIMIT.minTicket} per investor (${LIMIT.minTicketEmployee} for employees and directors of the Manager). Mutual funds have no comparable floor — most accept a few hundred rupees.`,
+  },
+  {
+    q: 'Do I own the shares directly in PMS, AIF or a mutual fund?',
+    a: 'In PMS you own the underlying securities directly in your own demat account. In both AIFs and mutual funds you own units of a pooled vehicle instead, and the fund owns the securities.',
+  },
+  {
+    q: 'How is each vehicle taxed?',
+    a: `PMS and mutual funds are taxed in the investor's hands. Category I and II AIFs have pass-through status under Section ${SECTION.passThrough} of the Income-tax Act, 2025, so income other than business income is taxed at the investor level. Category III AIFs are taxed at the fund level at the maximum marginal rate of ${RATE.maximumMarginal}.`,
+  },
+  {
+    q: 'Which should an HNI choose first?',
+    a: `The ${PMS_MIN_INVESTMENT} PMS floor is half the ${LIMIT.minTicket} an AIF requires, and PMS portfolios stay liquid and fully transparent at holding level, so PMS is often the first step into managed alternatives. AIFs open up strategies a PMS cannot run — private equity, private credit, and leveraged Category III books.`,
+  },
+  {
+    q: 'Can an AIF use leverage when a PMS cannot?',
+    a: `Yes. Category III AIFs may lever up to ${LIMIT.maxLeverageCat3} under the SEBI Master Circular. Categories I and II may not borrow to invest, and PMS mandates do not permit leverage either.`,
+  },
+];
+---
+<BaseLayout
+  currentPage="knowledge/pms"
+  breadcrumbs={[
+    { name: 'Home', item: '/' },
+    { name: 'Knowledge', item: '/knowledge/aif' },
+    { name: 'PMS vs AIF vs Mutual Fund' },
+  ]}
+  schema={[
+    faqPageNode(faqs),
+    articleNode({
+      path,
+      headline: 'PMS vs AIF vs Mutual Fund in India',
+      description: SEO[path].description,
+    }),
+  ]}
+>
+
+<div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
+
+  <!-- Breadcrumb -->
+  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20 flex-wrap">
+    <a href="/knowledge/aif" class="hover:text-secondary transition-colors">Knowledge</a>
+    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span class="text-on-surface-variant">PMS vs AIF vs Mutual Fund</span>
+  </nav>
+
+  <!-- Hero -->
+  <section class="py-14 md:py-20 border-b border-outline-variant/20 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
+      <div class="md:col-span-8">
+        <span class="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold mb-3 block">Comparison · SEBI-regulated vehicles</span>
+        <h1 class="text-5xl md:text-7xl font-headline text-primary-container leading-tight mb-6">
+          PMS vs AIF vs <span class="italic font-light">Mutual Fund</span>
+        </h1>
+        <p class="text-on-surface-variant text-lg leading-relaxed max-w-2xl">
+          Three SEBI-regulated ways to have someone else manage your money, separated by
+          how much you must commit, what you actually own, and how the returns are taxed.
+        </p>
+      </div>
+      <div class="md:col-span-4">
+        <div class="bg-tertiary-fixed p-8">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-on-tertiary-fixed/70 block mb-4">The Short Answer</span>
+          <ul class="space-y-3">
+            {[
+              `Mutual fund — from ₹500, pooled units, fully liquid`,
+              `PMS — from ${PMS_MIN_INVESTMENT}, securities in your own demat`,
+              `AIF — from ${LIMIT.minTicket}, pooled units, close-ended`,
+            ].map((item) => (
+              <li class="text-sm text-on-tertiary-fixed font-medium flex items-start gap-2">
+                <span class="material-symbols-outlined text-[14px] mt-0.5 shrink-0">check_circle</span>{item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison table -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-8">Side by Side</h2>
+    <div class="overflow-x-auto border border-outline-variant/20">
+      <table class="w-full text-left border-collapse min-w-[640px]">
+        <thead>
+          <tr class="bg-primary-container">
+            <th class="p-4 text-[10px] uppercase tracking-widest font-bold text-tertiary-fixed">Feature</th>
+            <th class="p-4 text-[10px] uppercase tracking-widest font-bold text-tertiary-fixed">PMS</th>
+            <th class="p-4 text-[10px] uppercase tracking-widest font-bold text-tertiary-fixed">Mutual Fund</th>
+            <th class="p-4 text-[10px] uppercase tracking-widest font-bold text-tertiary-fixed">AIF</th>
+          </tr>
+        </thead>
+        <tbody>
+          {VEHICLE_COMPARISON.map((row) => (
+            <tr class="border-t border-outline-variant/20">
+              <td class="p-4 text-xs font-bold text-primary-container">{row.feature}</td>
+              <td class="p-4 text-xs text-on-surface-variant">{row.pms}</td>
+              <td class="p-4 text-xs text-on-surface-variant">{row.mutualFund}</td>
+              <td class="p-4 text-xs text-on-surface-variant">{row.aif}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- What actually separates them -->
+  <section class="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-surface-container-low p-8">
+      <h2 class="font-headline text-2xl text-primary-container mb-4">What you own</h2>
+      <p class="text-sm text-on-surface-variant leading-loose">
+        This is the sharpest structural difference. A PMS holds securities in
+        <strong class="text-primary-container"> your own demat account</strong>, so you can see every
+        position and the portfolio can be tailored to you. Mutual funds and AIFs both issue
+        <strong class="text-primary-container"> units of a pooled vehicle</strong> — the fund owns the
+        securities, and every investor holds the same blend.
+      </p>
+    </div>
+    <div class="bg-surface-container-low p-8">
+      <h2 class="font-headline text-2xl text-primary-container mb-4">What it costs to enter</h2>
+      <p class="text-sm text-on-surface-variant leading-loose">
+        SEBI sets a floor for two of the three: <strong class="text-primary-container">{PMS_MIN_INVESTMENT}</strong>
+        for PMS and <strong class="text-primary-container">{LIMIT.minTicket}</strong> for an AIF, reduced to
+        {' '}{LIMIT.minTicketEmployee} for employees and directors of the Manager. An AIF scheme must also
+        reach a corpus of {LIMIT.minCorpus} and is capped at {LIMIT.maxInvestors} investors.
+      </p>
+    </div>
+    <div class="bg-surface-container-low p-8">
+      <h2 class="font-headline text-2xl text-primary-container mb-4">How gains are taxed</h2>
+      <p class="text-sm text-on-surface-variant leading-loose">
+        PMS and mutual funds are taxed in your hands. Category I and II AIFs are
+        <strong class="text-primary-container"> pass-through</strong> under Section {SECTION.passThrough},
+        Income-tax Act 2025. Category III is the exception — taxed
+        <strong class="text-primary-container"> at the fund</strong> at the maximum marginal rate of
+        {' '}{RATE.maximumMarginal}, so distributions reach you already taxed.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-8">Frequently Asked Questions</h2>
+    <div class="space-y-2">
+      {faqs.map((faq, i) => (
+        <details class="group bg-surface-container-lowest" open={i === 0}>
+          <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+            <h3 class="font-headline text-xl text-primary-container">{faq.q}</h3>
+            <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">{faq.a}</div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Onward -->
+  <section>
+    <h2 class="font-headline text-4xl text-primary-container mb-8">Go Deeper</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {[
+        { href: '/knowledge/pms', title: 'Portfolio Management Services', copy: 'What PMS is, the three mandate types, fees, taxation and reporting.' },
+        { href: '/knowledge/aif', title: 'Alternative Investment Funds', copy: 'The SEBI AIF framework and how Categories I, II and III differ.' },
+        { href: '/knowledge/aif-taxation', title: 'AIF Taxation in India', copy: 'Pass-through, fund-level tax, capital gains rates and TDS.' },
+      ].map((c) => (
+        <a href={c.href} class="block p-8 bg-surface-container-lowest border border-outline-variant/20 hover:border-secondary transition-colors">
+          <h3 class="font-headline text-2xl text-primary-container mb-3">{c.title}</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">{c.copy}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+</div>
+</BaseLayout>

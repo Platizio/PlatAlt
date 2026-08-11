@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { RATE, SECTION, LIMIT } from '../../data/aif-facts';
+import { faqPageNode, articleNode } from '../../data/schema';
+import { SEO } from '../../data/seo';
+
+const path = '/knowledge/aif-taxation';
+
+/**
+ * Every figure here comes from src/data/aif-facts.ts, which is sourced to the
+ * SEBI AIF Regulations 2012 (as amended 2025), the SEBI Master Circular, and
+ * the Income-tax Act 2025 in force 1 April 2026. This page composes those
+ * facts; it does not introduce a new one.
+ */
+const byCategory = [
+  {
+    cat: 'Category I',
+    treatment: 'Pass-through',
+    detail: `Income other than business income is taxed in the investor's hands under Section ${SECTION.passThrough}. The fund itself pays no tax on that income.`,
+    tds: `${RATE.tdsResident} on distributions to resident unit holders, under Section ${SECTION.tdsOnDistribution}.`,
+  },
+  {
+    cat: 'Category II',
+    treatment: 'Pass-through',
+    detail: `Identical to Category I — pass-through under Section ${SECTION.passThrough} for all income other than business income, which is taxed at the fund.`,
+    tds: `${RATE.tdsResident} on distributions to resident unit holders, under Section ${SECTION.tdsOnDistribution}.`,
+  },
+  {
+    cat: 'Category III',
+    treatment: 'Taxed at the fund',
+    detail: `No pass-through. A Category III AIF structured as a determinate trust is taxed at the fund level at the maximum marginal rate of ${RATE.maximumMarginal}, which is the ${RATE.maximumMarginal.replace('~', '')} figure inclusive of surcharge and cess — not the bare 30% slab rate.`,
+    tds: 'Not applicable in the same way — distributions reach the investor already taxed.',
+  },
+];
+
+const gains = [
+  { kind: 'Short-term capital gains, listed equity', rate: RATE.stcgListed, note: 'Was 15% before 23 July 2024.' },
+  { kind: 'Long-term capital gains, listed equity', rate: RATE.ltcgListed, note: `Annual exemption of ${RATE.ltcgExemption}. Was 10% before 23 July 2024.` },
+  { kind: 'Long-term capital gains, unlisted', rate: RATE.ltcgUnlisted, note: `Long-term after ${RATE.unlistedHoldingPeriod}. Indexation is no longer available.` },
+  { kind: 'Business income, any category', rate: RATE.maximumMarginal, note: 'Taxed at the fund at the maximum marginal rate.' },
+];
+
+const faqs = [
+  {
+    q: 'Are AIFs taxed at the fund level or the investor level?',
+    a: `It depends on the category. Categories I and II have pass-through status under Section ${SECTION.passThrough} of the Income-tax Act, 2025, so income other than business income is taxed in the investor's hands. Category III has no pass-through and is taxed at the fund at the maximum marginal rate of ${RATE.maximumMarginal}.`,
+  },
+  {
+    q: 'What is the maximum marginal rate for a Category III AIF?',
+    a: `${RATE.maximumMarginal} at the highest slab, inclusive of surcharge and cess. The bare 30% slab rate is not the figure to quote, because it excludes both.`,
+  },
+  {
+    q: 'What are the capital gains rates for AIF investors?',
+    a: `For transfers on or after 23 July 2024: short-term capital gains on listed equity are taxed at ${RATE.stcgListed}, and long-term at ${RATE.ltcgListed} with an annual exemption of ${RATE.ltcgExemption}. Unlisted long-term gains are also ${RATE.ltcgUnlisted}, and become long-term after ${RATE.unlistedHoldingPeriod}. Indexation was withdrawn.`,
+  },
+  {
+    q: 'Is TDS deducted on AIF distributions?',
+    a: `Yes, for Categories I and II. Distributions to resident unit holders attract ${RATE.tdsResident} withholding under Section ${SECTION.tdsOnDistribution} of the Income-tax Act, 2025.`,
+  },
+  {
+    q: 'Does the minimum investment change the tax treatment?',
+    a: `No. The ${LIMIT.minTicket} minimum commitment (${LIMIT.minTicketEmployee} for employees and directors of the Manager) is a SEBI structural requirement, not a tax threshold. Tax treatment follows the fund's category, not the size of your ticket.`,
+  },
+];
+---
+<BaseLayout
+  currentPage="knowledge/aif"
+  breadcrumbs={[
+    { name: 'Home', item: '/' },
+    { name: 'Knowledge', item: '/knowledge/aif' },
+    { name: 'AIF Taxation' },
+  ]}
+  schema={[
+    faqPageNode(faqs),
+    articleNode({
+      path,
+      headline: 'AIF Taxation in India: Category I, II and III',
+      description: SEO[path].description,
+    }),
+  ]}
+>
+
+<div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
+
+  <!-- Breadcrumb -->
+  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20 flex-wrap">
+    <a href="/knowledge/aif" class="hover:text-secondary transition-colors">AIF Knowledge</a>
+    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span class="text-on-surface-variant">Taxation</span>
+  </nav>
+
+  <!-- Hero -->
+  <section class="py-14 md:py-20 border-b border-outline-variant/20 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
+      <div class="md:col-span-8">
+        <span class="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold mb-3 block">Income-tax Act, 2025 · in force 1 April 2026</span>
+        <h1 class="text-5xl md:text-7xl font-headline text-primary-container leading-tight mb-6">
+          AIF <span class="italic font-light">Taxation</span>
+        </h1>
+        <p class="text-on-surface-variant text-lg leading-relaxed max-w-2xl">
+          How Alternative Investment Funds are taxed in India — which categories pass income
+          through to you, which pay tax at the fund, and the rates that apply to each.
+        </p>
+      </div>
+      <div class="md:col-span-4">
+        <div class="bg-tertiary-fixed p-8">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-on-tertiary-fixed/70 block mb-4">At a Glance</span>
+          <ul class="space-y-3">
+            {[
+              `Cat I & II — pass-through, Sec. ${SECTION.passThrough}`,
+              `Cat III — fund level at ${RATE.maximumMarginal}`,
+              `Listed LTCG ${RATE.ltcgListed}, STCG ${RATE.stcgListed}`,
+              `TDS ${RATE.tdsResident} on resident distributions`,
+            ].map((item) => (
+              <li class="text-sm text-on-tertiary-fixed font-medium flex items-start gap-2">
+                <span class="material-symbols-outlined text-[14px] mt-0.5 shrink-0">check_circle</span>{item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- By category -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-8">Taxation by Category</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {byCategory.map((c) => (
+        <div class="bg-surface-container-low p-8 flex flex-col">
+          <span class="text-[10px] uppercase tracking-widest font-bold text-secondary mb-3">{c.cat}</span>
+          <h3 class="font-headline text-2xl text-primary-container mb-4">{c.treatment}</h3>
+          <p class="text-sm text-on-surface-variant leading-loose mb-6 flex-grow">{c.detail}</p>
+          <div class="bg-surface-container-lowest p-4 border-l-2 border-secondary">
+            <p class="text-[10px] uppercase tracking-widest font-bold text-secondary mb-1">Withholding</p>
+            <p class="text-xs text-on-surface-variant">{c.tds}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Rates -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-8">Rates That Apply</h2>
+    <div class="overflow-x-auto border border-outline-variant/20">
+      <table class="w-full text-left border-collapse min-w-[560px]">
+        <thead>
+          <tr class="bg-primary-container">
+            <th class="p-4 text-[10px] uppercase tracking-widest font-bold text-tertiary-fixed">Income type</th>
+            <th class="p-4 text-[10px] uppercase tracking-widest font-bold text-tertiary-fixed">Rate</th>
+            <th class="p-4 text-[10px] uppercase tracking-widest font-bold text-tertiary-fixed">Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          {gains.map((g) => (
+            <tr class="border-t border-outline-variant/20">
+              <td class="p-4 text-xs font-bold text-primary-container">{g.kind}</td>
+              <td class="p-4 text-xs text-secondary font-bold">{g.rate}</td>
+              <td class="p-4 text-xs text-on-surface-variant">{g.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-outline mt-4 leading-relaxed max-w-3xl">
+      Rates apply to transfers on or after 23 July 2024. Section numbers are those of the
+      Income-tax Act, 2025; the 1961 Act equivalents were 115UB, 111A, 112A, 112 and 194LBB.
+      This page is general information, not tax advice — your treatment depends on your
+      residency, the fund's structure and its private placement memorandum.
+    </p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-16">
+    <h2 class="font-headline text-4xl text-primary-container mb-8">Frequently Asked Questions</h2>
+    <div class="space-y-2">
+      {faqs.map((faq, i) => (
+        <details class="group bg-surface-container-lowest" open={i === 0}>
+          <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+            <h3 class="font-headline text-xl text-primary-container">{faq.q}</h3>
+            <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">{faq.a}</div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Onward -->
+  <section>
+    <h2 class="font-headline text-4xl text-primary-container mb-8">Related</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {[
+        { href: '/knowledge/aif-comparison', title: 'Category I vs II vs III', copy: 'The full comparison across tenure, leverage and taxation.' },
+        { href: '/knowledge/aif/category-iii', title: 'Category III AIF', copy: 'The one category taxed at the fund, and why leverage is allowed.' },
+        { href: '/knowledge/pms-vs-aif-vs-mutual-fund', title: 'PMS vs AIF vs Mutual Fund', copy: 'How the three vehicles differ on ownership, minimums and tax.' },
+      ].map((c) => (
+        <a href={c.href} class="block p-8 bg-surface-container-lowest border border-outline-variant/20 hover:border-secondary transition-colors">
+          <h3 class="font-headline text-2xl text-primary-container mb-3">{c.title}</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">{c.copy}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+</div>
+</BaseLayout>

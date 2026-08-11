@@ -1,7 +1,27 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { AIF_FAQS } from '../../data/faqs';
+import { ALL_AIF_TERMS } from '../../data/aif-taxonomy';
+import { faqPageNode, articleNode, definedTermSetNode } from '../../data/schema';
+import { SEO } from '../../data/seo';
 ---
-<BaseLayout currentPage="knowledge/aif">
+<BaseLayout
+  currentPage="knowledge/aif"
+  breadcrumbs={[
+    { name: 'Home', item: '/' },
+    { name: 'Knowledge', item: '/knowledge/aif' },
+    { name: 'Alternative Investment Funds' },
+  ]}
+  schema={[
+    faqPageNode(AIF_FAQS),
+    definedTermSetNode(ALL_AIF_TERMS),
+    articleNode({
+      path: '/knowledge/aif',
+      headline: 'Alternative Investment Funds (AIF) in India',
+      description: SEO['/knowledge/aif'].description,
+    }),
+  ]}
+>
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 pb-24">
 
@@ -163,12 +183,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
       </div>
       <div class="md:col-span-8 space-y-2">
-        {[
-          { q: 'Who can invest in an AIF?', a: 'AIFs are intended for sophisticated investors, including Resident Indians, NRIs, and foreign nationals. Institutional investors like banks, pension funds, and insurance companies also participate. The primary requirement is a minimum investment of ₹1 Crore (₹25 Lakhs for employees/directors of the Manager).' },
-          { q: 'What is the taxation structure for AIFs?', a: 'Category I and II AIFs enjoy "Pass-Through" status, where income (other than business income) is taxed at the investor level. Category III AIFs are taxed at the fund level as a Determinate Trust at the Maximum Marginal Rate (MMR).' },
-          { q: 'What is the tenure of an AIF?', a: 'Category I and II AIFs are close-ended with a minimum tenure of 3 years. Category III AIFs can be either open-ended or close-ended. Extensions are possible with 2/3rd majority approval of investors.' },
-          { q: 'What is SEBI\'s role in regulating AIFs?', a: 'SEBI (Securities and Exchange Board of India) is the primary regulatory authority for AIFs in India. All AIFs must be registered with SEBI before commencing operations. SEBI prescribes eligibility criteria, investment conditions, and ongoing compliance requirements.' },
-        ].map((faq, i) => (
+        {AIF_FAQS.map((faq, i) => (
           <details class="group bg-surface-container-lowest transition-all" open={i === 0}>
             <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
               <h4 class="font-headline text-xl">{faq.q}</h4>

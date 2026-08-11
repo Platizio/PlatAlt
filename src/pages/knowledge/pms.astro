@@ -1,7 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { PMS_FAQS } from '../../data/faqs';
+import { faqPageNode, articleNode } from '../../data/schema';
+import { SEO } from '../../data/seo';
 ---
-<BaseLayout currentPage="knowledge/pms">
+<BaseLayout
+  currentPage="knowledge/pms"
+  breadcrumbs={[
+    { name: 'Home', item: '/' },
+    { name: 'Knowledge', item: '/knowledge/aif' },
+    { name: 'Portfolio Management Services' },
+  ]}
+  schema={[
+    faqPageNode(PMS_FAQS),
+    articleNode({
+      path: '/knowledge/pms',
+      headline: 'Portfolio Management Services (PMS) in India',
+      description: SEO['/knowledge/pms'].description,
+    }),
+  ]}
+>
 
 <!-- Sticky Sub-Nav -->
 <nav class="sticky top-[72px] z-40 bg-surface-container-lowest border-b border-outline-variant/20 shadow-sm">
@@ -336,35 +354,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="mb-8">
     <h2 class="font-headline text-4xl text-primary-container mb-10">Frequently Asked Questions</h2>
     <div class="space-y-2">
-      <details class="group bg-surface-container-lowest" open>
-        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-          <h4 class="font-headline text-xl text-primary-container">Can I withdraw from a PMS at any time?</h4>
-          <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
-        </summary>
-        <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">
-          Most PMS mandates are open-ended in nature, allowing clients to initiate withdrawals at any time. However, the Portfolio Manager typically requires 30–90 days' notice to liquidate positions in an orderly manner without materially impacting portfolio value. Some strategies with illiquid assets may have lock-in provisions — these are disclosed in the Investment Policy Statement at onboarding.
-        </div>
-      </details>
-
-      <details class="group bg-surface-container-lowest">
-        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-          <h4 class="font-headline text-xl text-primary-container">What is the difference between Discretionary and Non-Discretionary PMS?</h4>
-          <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
-        </summary>
-        <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">
-          In Discretionary PMS, the Portfolio Manager has full authority to make investment decisions without requiring the client's approval for each transaction. This enables timely execution of strategy. In Non-Discretionary PMS, the Portfolio Manager provides investment advice and recommendations, but the client must approve each trade before it is executed. Advisory PMS goes a step further — the manager only provides recommendations, and the client executes independently.
-        </div>
-      </details>
-
-      <details class="group bg-surface-container-lowest">
-        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-          <h4 class="font-headline text-xl text-primary-container">Are there hidden costs in PMS beyond the stated fees?</h4>
-          <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
-        </summary>
-        <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">
-          SEBI mandates full disclosure of all fees and charges in the PMS Disclosure Document. Apart from management fees (fixed or performance-linked), clients may incur brokerage, custodian charges, audit fees, and Goods & Services Tax on management fees. There are no hidden costs — all charges must be explicitly disclosed, and Portfolio Managers are required to provide a detailed fee statement. Always review the Disclosure Document and Client Agreement before signing.
-        </div>
-      </details>
+      {PMS_FAQS.map((faq, i) => (
+        <details class="group bg-surface-container-lowest" open={i === 0}>
+          <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+            <h4 class="font-headline text-xl text-primary-container">{faq.q}</h4>
+            <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">{faq.a}</div>
+        </details>
+      ))}
     </div>
   </section>
 
