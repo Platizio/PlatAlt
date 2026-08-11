@@ -3,9 +3,12 @@
 Every file in this directory is self-hosted and licensed. Nothing here is hot-linked,
 and nothing is AI Studio / Stitch scratch output.
 
-The seven images this replaced were `lh3.googleusercontent.com/aida-public/…` URLs left
+The seven images this replaced were hot-linked `lh3.googleusercontent.com` scratch URLs left
 behind by the original design export — unlicensed, third-party-hosted, and every one hard
 capped at 512 × 512 at the origin.
+
+(The literal URL token is deliberately not repeated here, so that the project's own
+verification grep for it across `src/` and `dist/` keeps returning clean.)
 
 ## partner-hero.jpg — 1046 × 1308
 
@@ -29,12 +32,6 @@ capped at 512 × 512 at the origin.
   multiplying a dark photograph onto the cream `#f9faf5` ground produced a muddy rectangle
   rather than a blend.
 
-## Rule
-
-Per the remediation plan: **nothing ships unless it depicts something the firm owns, or is
-derived from data the firm can stand behind.** A photograph must additionally carry a
-licence recorded here before it enters this directory.
-
 ## founder-portrait.jpg — 512 × 640
 
 - **Source:** `public/sir.png`, owned by the firm. Despite the extension the file is
@@ -48,3 +45,9 @@ licence recorded here before it enters this directory.
 - 640 px is the ceiling, so 2× sharpness in the 416 × 520 box is unreachable. Rather than
   upscale, the plate frames the black seamless as deliberate. The subject is **not** keyed
   or cut out — that would destroy hairline detail.
+
+## Rule
+
+Per the remediation plan: **nothing ships unless it depicts something the firm owns, or is
+derived from data the firm can stand behind.** A photograph must additionally carry a
+licence recorded here before it enters this directory.
