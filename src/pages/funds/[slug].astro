@@ -6,6 +6,13 @@ import {
 } from '../../data/funds';
 import { seoForFund } from '../../data/seo';
 import { fundNode } from '../../data/schema';
+import { KNOWLEDGE_FOR, termOf } from '../../data/aif-taxonomy';
+
+const CAT_NAME_INLINE: Record<string, string> = {
+  AIF_CAT1: 'Category I AIF',
+  AIF_CAT2: 'Category II AIF',
+  AIF_CAT3: 'Category III AIF',
+};
 
 export function getStaticPaths() {
   return getAllFunds().map((f) => ({ params: { slug: f.slug } }));
@@ -16,6 +23,9 @@ const fund = getFund(slug!);
 if (!fund) return Astro.redirect('/explore');
 
 const seo = seoForFund(fund);
+// Only AIF sub-strategies have a knowledge page; PMS mandate types and the
+// GIFT City schemes resolve to their own hubs via KNOWLEDGE_FOR instead.
+const subTerm = termOf(fund.sub_strategy);
 
 /* ── Colour tokens per type ── */
 const clr = {
@@ -84,6 +94,22 @@ const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
     <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
     <span class="text-on-surface-variant">{fund.name}</span>
   </nav>
+
+  {/*
+    Route back into the knowledge cluster. Before this the fund pages linked
+    only sideways — to /explore and to their AMC — so a reader who landed on a
+    fund had no way to reach the page explaining the structure it uses, and the
+    two halves of the site passed no link equity to each other.
+  */}
+  <p class="pt-5 text-xs text-on-surface-variant">
+    New to this structure? Read
+    <a href={KNOWLEDGE_FOR[fund.site_type] ?? '/knowledge/aif'} class="text-secondary underline hover:no-underline">
+      {fund.site_type === 'PMS' ? 'what Portfolio Management Services are'
+        : fund.site_type === 'GIFT_CITY' ? 'how GIFT City IFSC funds work'
+        : `how ${CAT_NAME_INLINE[fund.site_type]} works`}</a>{subTerm && (
+      <>, or the guide to <a href={subTerm.path} class="text-secondary underline hover:no-underline">{subTerm.name.toLowerCase()}</a></>
+    )}.
+  </p>
 
   <!-- ── Hero ── -->
   <section class="pt-10 pb-8 border-b border-outline-variant/20">

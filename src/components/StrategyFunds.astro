@@ -1,0 +1,54 @@
+---
+/**
+ * Lists the real funds implementing one AIF sub-strategy, on that strategy's
+ * knowledge page.
+ *
+ * Two jobs. For a reader it is the step from "what is an Angel Fund" to "here
+ * is one you can look at". For crawling it is the only route into the
+ * /funds/[slug] detail pages other than /explore, /compare and the AMC pages —
+ * the knowledge cluster and the fund inventory were otherwise two islands.
+ *
+ * The dataset is small (14 funds across ~18 sub-strategies), so most strategies
+ * have no match today. That case renders a pointer to the explorer rather than
+ * an empty grid, and never an empty <section>.
+ */
+import { getAllFunds } from '../data/funds';
+
+export interface Props {
+  /** Matches Fund['sub_strategy'] and AifTerm['sub']. */
+  sub: string;
+  /** Display name, e.g. "Angel Funds". */
+  label: string;
+}
+
+const { sub, label } = Astro.props;
+const funds = getAllFunds().filter((f) => f.sub_strategy === sub);
+---
+
+<section class="mb-16">
+  <h2 class="font-headline text-4xl text-primary-container mb-8">{label} on Platizio</h2>
+  {funds.length > 0 ? (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {funds.map((f) => (
+        <a href={`/funds/${f.slug}`} class="block p-6 bg-surface-container-lowest border border-outline-variant/20 hover:border-secondary transition-colors">
+          <span class="text-[10px] uppercase tracking-widest font-bold text-secondary block mb-2">{f.amc}</span>
+          <h3 class="font-headline text-xl text-primary-container mb-2">{f.name}</h3>
+          {f.reg_no && (
+            <span class="text-[11px] text-outline block mb-1">Reg. no. {f.reg_no}</span>
+          )}
+          {f.min_investment && (
+            <span class="text-xs text-on-surface-variant">Minimum {f.min_investment}</span>
+          )}
+        </a>
+      ))}
+    </div>
+  ) : (
+    <p class="text-sm text-on-surface-variant leading-loose max-w-2xl">
+      No {label.toLowerCase()} are listed on the platform yet. Browse every registered
+      PMS and AIF strategy in the
+      <a href="/explore" class="text-secondary underline hover:no-underline"> fund explorer</a>,
+      or compare the SEBI categories in the
+      <a href="/knowledge/aif-comparison" class="text-secondary underline hover:no-underline"> category comparison</a>.
+    </p>
+  )}
+</section>

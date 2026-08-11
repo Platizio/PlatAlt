@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import StrategyFunds from '../../../../components/StrategyFunds.astro';
 import { STAT } from '../../../../data/aif-facts';
 ---
 <BaseLayout currentPage="knowledge/aif">
@@ -196,6 +197,8 @@ import { STAT } from '../../../../data/aif-facts';
       <span class="font-headline text-lg text-primary-container group-hover:text-secondary transition-colors">Category III AIF</span>
     </a>
   </div>
+
+  <StrategyFunds sub="long-short-market-neutral" label="Market Neutral Funds" />
 
 </div>
 </BaseLayout>
