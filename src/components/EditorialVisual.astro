@@ -1,0 +1,54 @@
+---
+// Hero visual built from the design system rather than a photograph.
+//
+// This is the construction the site already used in knowledge/article.astro and
+// knowledge/pms.astro — a tinted gradient field, an oversized Material Symbol and
+// an optional micro-caps caption. It is the house alternative to stock photography
+// on a site where 68 of 72 pages carry no photograph at all.
+//
+// `ratio` and `class` are passed through to Tailwind verbatim, so callers must use
+// literal class strings (e.g. ratio="aspect-square") for the scanner to emit them.
+
+interface Props {
+  /** Material Symbols ligature name, e.g. "account_balance". */
+  icon: string;
+  /** Optional micro-caps caption under the icon. */
+  label?: string;
+  /** Tailwind aspect-ratio class. Literal strings only. */
+  ratio?: string;
+  /** `dark` sits on navy and marks in white; `light` sits on cream and marks in navy. */
+  tone?: 'dark' | 'light';
+  class?: string;
+}
+
+const {
+  icon,
+  label,
+  ratio = 'aspect-[16/7]',
+  tone = 'dark',
+  class: className = '',
+} = Astro.props;
+
+const wash =
+  tone === 'dark'
+    ? 'bg-gradient-to-br from-primary-container/40 to-secondary/20'
+    : 'bg-gradient-to-br from-primary-container/10 to-secondary/5';
+
+const markTone = tone === 'dark' ? 'text-white/20' : 'text-primary-container/20';
+const labelTone = tone === 'dark' ? 'text-white/30' : 'text-primary-container/30';
+---
+
+<div class:list={[ratio, 'bg-surface-container relative overflow-hidden', className]}>
+  <div class:list={['absolute inset-0', wash]}></div>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <div class="text-center">
+      <span
+        class:list={['material-symbols-outlined text-8xl', markTone]}
+        style="font-variation-settings:'FILL' 1"
+        aria-hidden="true">{icon}</span>
+      {label && (
+        <p class:list={[labelTone, 'text-sm mt-4 uppercase tracking-widest font-bold']}>{label}</p>
+      )}
+    </div>
+  </div>
+</div>

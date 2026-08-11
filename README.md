@@ -27,7 +27,7 @@ The dev server runs on `http://localhost:4321`.
 | `npm run preview` | Serve the built output |
 
 There is no test, lint or typecheck script — **the build is the only automated
-gate**. Run `npm run build` before committing and check it reports 73 pages
+gate**. Run `npm run build` before committing and check it reports 72 pages
 with zero errors.
 
 ## Layout

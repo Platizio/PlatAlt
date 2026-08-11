@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import EditorialVisual from '../../components/EditorialVisual.astro';
 ---
 <BaseLayout title="PMS Knowledge Centre | Platizio Alternatives" currentPage="knowledge/pms">
 
@@ -36,12 +37,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </p>
       </div>
       <div class="md:col-span-5 hidden md:block">
-        <div class="aspect-square bg-surface-container overflow-hidden relative">
-          <div class="absolute inset-0 bg-gradient-to-br from-primary-container/10 to-secondary/5"></div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="material-symbols-outlined text-8xl text-primary-container/20" style="font-variation-settings:'FILL' 1">analytics</span>
-          </div>
-        </div>
+        <EditorialVisual icon="analytics" ratio="aspect-square" tone="light" />
       </div>
     </div>
   </section>
