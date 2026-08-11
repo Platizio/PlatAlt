@@ -1,0 +1,15 @@
+total funds: 14
+- 2Point2 Capital Trust                      | AIF_CAT3   | aum=None     | no returns
+- 360 ONE Asset Angel Fund 1                 | AIF_CAT1   | aum=None     | no returns
+- 360 ONE Bharat Growth Fund                 | GIFT_CITY  | aum=None     | no returns
+- 360 ONE Private Equity Fund                | AIF_CAT2   | aum=None     | no returns
+- HDFC Diversified Portfolio – Hybrid        | PMS        | aum=38.22    | 1M=None; 1Y=None; 2Y=None
+- ICICI Prudential PMS Contra Strategy       | PMS        | aum=13837.43 | 1M=None; 1Y=None; 2Y=None
+- Kotak Evolv Moderate Asset Allocation      | PMS        | aum=51.19    | 1M=None; 1Y=None; 2Y=None
+- Kotak KKORE Non-Discretionary PMS          | PMS        | aum=3982.7   | 1M=None; 1Y=None; 2Y=None
+- Marcellus Consistent Compounders           | PMS        | aum=1666.34  | 1M=None; 1Y=None; 2Y=None
+- Marcellus Non-Discretionary PMS            | PMS        | aum=47.49    | 1M=None; 1Y=None; 2Y=None
+- Motilal Oswal Founders Portfolio           | PMS        | aum=4097.29  | 1M=None; 1Y=None; 2Y=None
+- Nippon India High Yield Portfolio          | PMS        | aum=458.9    | 1M=None; 1Y=None; 3M=None
+- Nuvama Infinity Core Plus                  | PMS        | aum=2830.23  | 1M=None; 1Y=None; 2Y=None
+- Parag Parikh IFSC S&P 500 Fund of Fund     | GIFT_CITY  | aum=None     | no returns
