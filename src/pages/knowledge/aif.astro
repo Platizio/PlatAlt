@@ -1,5 +1,23 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { STAT, SECTION, RATE } from '../../data/aif-facts';
+
+/**
+ * Replaces the former intro photograph. Every value is read from aif-facts.ts,
+ * so this strip is statutory structure rather than performance data — there is
+ * nothing here that could be invented or that goes stale independently of the
+ * shared source.
+ *
+ * Categories I and II are identical on all four axes; that is the actual
+ * regulatory position, and showing it is the point of the strip — the real
+ * cleavage is Category III against the other two.
+ */
+const CATEGORY_ROWS = [
+  { label: 'Fund Structure', i: STAT.closeEnded, ii: STAT.closeEnded, iii: STAT.openOrClosed },
+  { label: 'Leverage', i: STAT.noLeverage, ii: STAT.noLeverage, iii: STAT.leverageCat3 },
+  { label: 'Taxation', i: STAT.passThrough, ii: STAT.passThrough, iii: STAT.fundLevelMmr },
+  { label: 'Skin-in-the-Game', i: STAT.skinInGameCat12, ii: STAT.skinInGameCat12, iii: STAT.skinInGameCat3 },
+];
 ---
 <BaseLayout title="AIF Knowledge Center | Platizio Alternatives" currentPage="knowledge/aif">
 
@@ -22,10 +40,45 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
     <!-- Intro Visual -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-6" id="what-is-aif">
-      <div class="md:col-span-8 overflow-hidden relative aspect-[16/9]">
-        <img class="w-full h-full object-cover" alt="Modern brutalist architecture"
-             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDatL7dmB8MHGbdOd5Sxu2MvHQN-2dUxOyOXsIQ3nO4JZlDjsHuPUsqV1W-JpK9Ctjt8LBPRF9X9DgAsHkpCtQAE4CTR4cJZzfv-m0-QoN-Xz28OowsMITV1tHd5m1ndBUqa1--aLbw1as3LRcSz4-ETlcrcL1Hq4BQSuj8hzEfFKfeiG6o1DdrgVUbdXtwv7tpoxjT2y5Z6fcnKYWGZFC_3mkMqxy1Yw23howERxDDGMyStX8KdfzCMTY1Ym1nisT5P2nhtfz2ntM" />
-        <div class="absolute inset-0 bg-primary-container/20"></div>
+      <div class="md:col-span-8 bg-primary-container text-white p-8 md:p-10 flex flex-col">
+        <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-tertiary-fixed-dim">At a Glance</span>
+        <h2 class="font-headline text-2xl md:text-3xl mt-2 mb-8 font-light">How the three categories differ</h2>
+
+        <div class="overflow-x-auto flex-grow">
+          <table class="w-full text-left border-collapse">
+            <caption class="sr-only">
+              Structural comparison of SEBI Alternative Investment Fund Categories I, II and III
+              across fund structure, leverage, taxation and manager contribution.
+            </caption>
+            <thead>
+              <tr class="border-b border-white/20">
+                <th scope="col" class="py-3 pr-4 text-[10px] font-bold uppercase tracking-widest text-slate-400 font-label">Feature</th>
+                <th scope="col" class="py-3 px-3 text-[10px] font-bold uppercase tracking-widest text-amber-100 font-label">Cat I</th>
+                <th scope="col" class="py-3 px-3 text-[10px] font-bold uppercase tracking-widest text-amber-100 font-label">Cat II</th>
+                <th scope="col" class="py-3 px-3 text-[10px] font-bold uppercase tracking-widest text-amber-100 font-label">Cat III</th>
+              </tr>
+            </thead>
+            <tbody>
+              {CATEGORY_ROWS.map(row => (
+                <tr class="border-b border-white/10 align-top">
+                  <th scope="row" class="py-4 pr-4 text-xs font-semibold text-slate-300 whitespace-nowrap">{row.label}</th>
+                  {[row.i, row.ii, row.iii].map(cell => (
+                    <td class="py-4 px-3">
+                      <span class="block text-sm font-medium leading-snug">{cell.value}</span>
+                      <span class="block text-[10px] text-slate-400 mt-1 leading-snug">{cell.sub}</span>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-[10px] text-slate-500 mt-6 leading-relaxed">
+          SEBI (Alternative Investment Funds) Regulations, 2012 as amended 2025; SEBI Master Circular
+          for AIFs. Taxation per Sec. {SECTION.passThrough}, Income-tax Act, 2025; Category III is
+          taxed at fund level at the maximum marginal rate of {RATE.maximumMarginal}.
+        </p>
       </div>
       <div class="md:col-span-4 flex flex-col justify-between bg-surface-container-low p-10">
         <div>

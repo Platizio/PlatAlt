@@ -33,9 +33,18 @@ const insightLinks = [
 
 <!-- Hero Section -->
 <section class="relative min-h-[91vh] flex items-center overflow-hidden bg-primary-container">
-  <div class="absolute inset-0 opacity-40">
-    <img class="w-full h-full object-cover" alt="Modern architectural glass building reflecting a clear blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8uDef_MfPsZRmcftAnNyxUtAhILTxX0PwtHCNDvqYVzdQF2b6JGFaFAgbXLQYszoOnWQnUBXAdCQqmk9Sk2blfjr3kDbxfxOH1MPjQYxwzYenTSMmgalEnqkXMWZlP9W2y2UXbhZjDzahiG6XGxrfgvPKeGO0pfJuGLZv6Kyy-DmH9cU9hSSLFbSmFo0qbY0f6Cjb59sz-MMxS8pL09kHtPrOPIXM0MRjhjslqxqSDj0MxSLDCDPEbUmj-4FGL-dNqxhab_xSri0" />
-  </div>
+  <!--
+    Retuned for the removal of the hero photograph. The old stack was
+    navy field -> photo at opacity-40 -> left-to-right navy-to-transparent scrim,
+    so the right-hand third of the hero was carried entirely by the picture.
+    With the photo gone that scrim resolves to flat navy, so the depth is rebuilt
+    from brand tokens: a slate bloom where the building used to catch light, a
+    warm amber counterlight off the right edge, and the original scrim kept in
+    front of both so the headline sits on solid navy exactly as before.
+  -->
+  <div class="absolute inset-0 bg-gradient-to-br from-transparent via-secondary/15 to-secondary/30" aria-hidden="true"></div>
+  <div class="absolute top-0 right-0 w-[42rem] h-[42rem] bg-secondary/25 rounded-full blur-3xl -translate-y-1/4 translate-x-1/4" aria-hidden="true"></div>
+  <div class="absolute bottom-0 right-1/4 w-[28rem] h-[28rem] bg-tertiary-fixed/10 rounded-full blur-3xl translate-y-1/3" aria-hidden="true"></div>
   <div class="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
   <div class="container mx-auto px-6 lg:px-10 relative z-10 grid md:grid-cols-12 gap-8 py-20">
     <div class="md:col-span-8 lg:col-span-7">
@@ -185,9 +194,6 @@ const insightLinks = [
 
 <!-- Final CTA Band -->
 <section class="py-24 relative overflow-hidden bg-slate-950">
-  <div class="absolute inset-0 opacity-20">
-    <img class="w-full h-full object-cover" alt="Luxury office lounge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqZfIxW5sCmCknsrDe8ycd30WoLTyruF8FaKqP8-YM5_YwJkswd_P4fktzSZyfzHucO7LUixCzLL1CAZy1f1TYcSaYwhPaLMAkCYTb7biEpdnW1OREFOXtYvV-ykaqJVoTKKvJsAGT8Uug8qKXRFCZtzxWCNUZxFfDIsH98AssNkmCa2W4mQFlkr9S4Vu8P8S4w7FoVSSnglIW9bJnmZfPlCnoGjiaTuQNuTAkJwQ04sFS-zbZkFfPRtGdcYUj_q8j_Z4pIe6TeUw" />
-  </div>
   <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
     <h2 class="text-4xl md:text-6xl text-white mb-8 font-serif italic">Invest with <span class="not-italic text-tertiary-fixed">Greater Clarity</span></h2>
     <p class="text-slate-400 max-w-2xl mx-auto mb-12 text-lg font-light leading-relaxed">

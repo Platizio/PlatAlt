@@ -16,8 +16,15 @@ interface Props {
   label?: string;
   /** Tailwind aspect-ratio class. Literal strings only. */
   ratio?: string;
-  /** `dark` sits on navy and marks in white; `light` sits on cream and marks in navy. */
-  tone?: 'dark' | 'light';
+  /**
+   * `dark`  — tinted wash on the light surface, white marks (knowledge/article).
+   * `light` — fainter wash on the light surface, navy marks (knowledge/pms).
+   * `navy`  — solid primary-container plate, amber marks. For slots that need to
+   *           read as a deliberate dark plate rather than a tinted panel.
+   */
+  tone?: 'dark' | 'light' | 'navy';
+  /** Hairline tertiary-fixed rule above the label. */
+  rule?: boolean;
   class?: string;
 }
 
@@ -26,19 +33,32 @@ const {
   label,
   ratio = 'aspect-[16/7]',
   tone = 'dark',
+  rule = false,
   class: className = '',
 } = Astro.props;
 
-const wash =
-  tone === 'dark'
-    ? 'bg-gradient-to-br from-primary-container/40 to-secondary/20'
-    : 'bg-gradient-to-br from-primary-container/10 to-secondary/5';
+const field = tone === 'navy' ? 'bg-primary-container' : 'bg-surface-container';
 
-const markTone = tone === 'dark' ? 'text-white/20' : 'text-primary-container/20';
-const labelTone = tone === 'dark' ? 'text-white/30' : 'text-primary-container/30';
+const wash = {
+  dark: 'bg-gradient-to-br from-primary-container/40 to-secondary/20',
+  light: 'bg-gradient-to-br from-primary-container/10 to-secondary/5',
+  navy: 'bg-gradient-to-br from-secondary/25 to-transparent',
+}[tone];
+
+const markTone = {
+  dark: 'text-white/20',
+  light: 'text-primary-container/20',
+  navy: 'text-tertiary-fixed/25',
+}[tone];
+
+const labelTone = {
+  dark: 'text-white/30',
+  light: 'text-primary-container/30',
+  navy: 'text-tertiary-fixed/70',
+}[tone];
 ---
 
-<div class:list={[ratio, 'bg-surface-container relative overflow-hidden', className]}>
+<div class:list={[ratio, field, 'relative overflow-hidden', className]}>
   <div class:list={['absolute inset-0', wash]}></div>
   <div class="absolute inset-0 flex items-center justify-center">
     <div class="text-center">
@@ -46,6 +66,7 @@ const labelTone = tone === 'dark' ? 'text-white/30' : 'text-primary-container/30
         class:list={['material-symbols-outlined text-8xl', markTone]}
         style="font-variation-settings:'FILL' 1"
         aria-hidden="true">{icon}</span>
+      {rule && <div class="h-px w-12 bg-tertiary-fixed/40 mx-auto mt-6" aria-hidden="true"></div>}
       {label && (
         <p class:list={[labelTone, 'text-sm mt-4 uppercase tracking-widest font-bold']}>{label}</p>
       )}
