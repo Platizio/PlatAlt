@@ -55,10 +55,16 @@ export const SEO: Record<string, SeoEntry> = {
     description:
       'Directory of SEBI and IFSCA registered managers running PMS, AIF and GIFT City strategies — 2Point2, 360 ONE, HDFC, ICICI Prudential, Kotak, Marcellus and more.',
   },
+  // The obvious keyword here is "GIFT City AIF for NRIs", and it is left on the
+  // table deliberately: the page contains no NRI content, and promising it in
+  // the snippet would send searchers to a page that does not answer them.
+  // Writing that section means asserting NRI eligibility rules that exist
+  // nowhere in this codebase, which is a regulatory claim needing sign-off.
+  // Flagged in the PR as a follow-up; retarget this entry when it lands.
   '/gift-city': {
-    title: 'GIFT City IFSC: AIF & Fund Routes for NRIs (2026)',
+    title: 'GIFT City IFSC: Fund Structures, FME Tiers & Tax',
     description:
-      'GIFT City IFSC lets NRIs and foreign investors reach Indian strategies in USD under IFSCA rules. Restricted schemes, retail schemes and tax treatment explained.',
+      'How funds are set up at GIFT City IFSC — the three FME registration tiers, which entities are eligible, the fund types permitted and the tax treatment applied.',
   },
   '/about': {
     title: 'About Platizio Alternatives | Platizio Services LLP',
