@@ -34,3 +34,17 @@ capped at 512 × 512 at the origin.
 Per the remediation plan: **nothing ships unless it depicts something the firm owns, or is
 derived from data the firm can stand behind.** A photograph must additionally carry a
 licence recorded here before it enters this directory.
+
+## founder-portrait.jpg — 512 × 640
+
+- **Source:** `public/sir.png`, owned by the firm. Despite the extension the file is
+  actually a JPEG (640 × 640, 74 KB).
+- **Processing:** cropped to 4:5 at `left=128, width=512`, **not** a centre crop. The
+  remediation plan assumed the discarded side strips were both pure black; measurement
+  shows that is true of the left strip (mean luminance 11.4, max 17) but false of the
+  right (mean 42.9, **max 255**). The subject occupies x159–639, so a centre crop would
+  have cut 64 px off the subject while keeping 95 px of empty black. Cropping from x=128
+  discards only black.
+- 640 px is the ceiling, so 2× sharpness in the 416 × 520 box is unreachable. Rather than
+  upscale, the plate frames the black seamless as deliberate. The subject is **not** keyed
+  or cut out — that would destroy hairline detail.
