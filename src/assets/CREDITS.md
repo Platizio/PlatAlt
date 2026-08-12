@@ -12,10 +12,10 @@ verification grep for it across `src/` and `dist/` keeps returning clean.)
 
 ## partner-hero.jpg — 1046 × 1308
 
-- **Source:** Pexels photo `16585160` — <https://www.pexels.com/photo/two-women-and-man-sitting-at-a-table-in-a-lobby-16585160/>
+- **Source:** Pexels photo `7256463` — <https://www.pexels.com/photo/men-doing-a-handshake-7256463/>
 - **Licence:** [Pexels License](https://www.pexels.com/license/) — free for commercial use,
   modification permitted, attribution not required.
-- **Original:** 5068 × 3379.
+- **Original:** 5687 × 3791.
 - **Processing:** centre-cropped to 4:5 and exported at 1046 × 1308, i.e. 2× the 523 × 654
   CSS box, so `object-cover` discards nothing at render time. Then duotoned — greyscale
   mapped through a smoothstep curve onto `#0f1c2c` (shadows) → `#ffdea5` (highlights), the
@@ -24,13 +24,13 @@ verification grep for it across `src/` and `dist/` keeps returning clean.)
 
 ## faq-pen.jpg — 800 × 800
 
-- **Source:** Pexels photo `1090680` — <https://www.pexels.com/photo/selective-focus-photography-of-fountain-pen-on-white-surface-1090680/>
+- **Source:** Pexels photo `8730987` — <https://www.pexels.com/photo/a-person-signing-a-document-in-close-up-shot-8730987/>
 - **Licence:** [Pexels License](https://www.pexels.com/license/) — as above.
-- **Original:** 5184 × 3456.
-- **Processing:** centre-cropped to 1:1 at 800 × 800. No duotone — black barrel, gold nib
-  and paper white are already on-palette. `mix-blend-multiply` was dropped at the call site;
-  multiplying a dark photograph onto the cream `#f9faf5` ground produced a muddy rectangle
-  rather than a blend.
+- **Original:** 3197 × 4789.
+- **Processing:** centre-cropped to 1:1 at 800 × 800. No duotone — the gold pen, navy suit
+  sleeve and paper white are already on-palette, and the navy picks up `brand-navy`.
+  `mix-blend-multiply` was dropped at the call site; multiplying a dark photograph onto the
+  cream `#f9faf5` ground produced a muddy rectangle rather than a blend.
 
 ## founder-portrait.jpg — 512 × 640
 
