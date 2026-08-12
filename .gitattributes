@@ -1,0 +1,29 @@
+# Line-ending policy.
+#
+# Why this file exists: dist/ is committed and the README requires a rebuild in
+# the same commit as any src/ or public/ change. On Windows with
+# core.autocrlf=true, git checks dist/ out as CRLF while `astro build` writes
+# LF, so every rebuild reported ~79 modified files whose real diff was
+# 0 insertions and 0 deletions. That made the "is dist/ in sync?" check —
+# the one gate protecting the published site from drifting out of step with
+# source — unreadable on Windows, and indistinguishable from genuine drift.
+
+# Normalise everything to LF in the repository, and let git decide what is text.
+* text=auto
+
+# dist/ is generated output. Pin it to LF in the working tree as well, so it
+# matches byte-for-byte what the build writes and never shows as modified.
+dist/** text eol=lf
+
+# Binary assets. These MUST come after dist/** — the last matching pattern
+# wins, and applying `text` to them would corrupt them on checkout.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.avif  binary
+*.webp  binary
+*.gif   binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
+*.pdf   binary
