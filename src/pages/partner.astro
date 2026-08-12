@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import partnerHero from '../assets/partner-hero.jpg';
 ---
 <BaseLayout currentPage="partner">
 
@@ -28,9 +30,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
   <div class="lg:col-span-5 relative">
     <div class="aspect-[4/5] w-full bg-surface-container-low overflow-hidden shadow-2xl relative" data-reveal>
-      <img class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
-           alt="Two executives in tailored suits discussing partnership"
-           src="https://lh3.googleusercontent.com/aida-public/AB6AXuB53xUOLLNDZLcI9WM7mZwokEY6iBtRv77H499ZurTSlhzU5VUH1waIeyij70eMtGz4-KLaXSnonk9IoWkZsHrwUt8FWLuCXTQuY66iiToKuFx9iSwWyp1NBPYKVztXRZx_Z6iqazI7pjJPNKV-vPXC4sSZUcwpIy8n2GvMfGNjqwzt7_-uR8eXg4RR9hy5A0w3eMPl9WBzDasvMUq5Mxda2em7_Khveu-kenkdn_mkpPLyiyWlL9jwrK3edgj3eFrGvrsf1_oz0vo" />
+      <Picture src={partnerHero} alt="" widths={[523, 1046]} sizes="(min-width: 1024px) 523px, 100vw"
+               formats={['avif', 'webp']} loading="lazy" decoding="async"
+               class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700" />
       <div class="absolute inset-0 bg-primary-container/10"></div>
     </div>
     <div class="absolute -bottom-10 -left-10 hidden xl:block p-8 bg-surface-container-lowest shadow-xl border-l-4 border-tertiary-fixed max-w-xs">

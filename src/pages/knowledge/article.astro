@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import EditorialVisual from '../../components/EditorialVisual.astro';
 ---
 <BaseLayout currentPage="knowledge/article">
 
@@ -44,16 +45,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
   </div>
 
-  <!-- Hero Image -->
-  <div class="aspect-[16/7] bg-surface-container mb-12 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-primary-container/40 to-secondary/20"></div>
-    <div class="absolute inset-0 flex items-center justify-center">
-      <div class="text-center">
-        <span class="material-symbols-outlined text-8xl text-white/20" style="font-variation-settings:'FILL' 1">account_balance</span>
-        <p class="text-white/30 text-sm mt-4 uppercase tracking-widest font-bold">Macro Architecture</p>
-      </div>
-    </div>
-  </div>
+  <!-- Hero Visual -->
+  <EditorialVisual icon="account_balance" label="Macro Architecture" ratio="aspect-[16/7]" class="mb-12" />
 
   <!-- Article Body -->
   <article class="prose max-w-none">

@@ -59,7 +59,18 @@ const title = titleProp ?? entry!.title;
 const description = descProp ?? entry!.description;
 const canonical = canonicalProp ?? entry?.canonical ?? absUrl(path);
 const noindex = noindexProp ?? entry?.noindex ?? false;
-const ogImage = image ? new URL(image, SITE.url).href : null;
+/**
+ * Share card. Falls back to the site-wide card rather than to nothing: a link
+ * pasted into WhatsApp — the actual distribution channel for a distributor-facing
+ * site — previews as a bare card without one, and no page passes `image` today.
+ *
+ * public/og-image.png is 1200x630 and draws the wordmark at its native 467x54,
+ * so it is pixel-exact rather than an enlargement. Dimensions are only asserted
+ * for that default, since a page-supplied image may be any size.
+ */
+const DEFAULT_OG_IMAGE = '/og-image.png';
+const ogImage = new URL(image ?? DEFAULT_OG_IMAGE, SITE.url).href;
+const ogImageIsDefault = !image;
 
 const graph = [
   organizationNode(),
@@ -81,7 +92,17 @@ const graph = [
     ? <meta name="robots" content="noindex,follow" />
     : <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />}
 
-  <link rel="icon" href="/logo.png" type="image/png" />
+  <!--
+    Icons. The mark is the wordmark's own 'P', cropped from public/logo.png at its
+    real 36x51 extent, so it is the firm's artwork rather than a substitute
+    letterform. /logo.png itself is 467x54 — a wide wordmark squeezed into a square
+    tab icon is unreadable, and browsers still requested /favicon.ico and 404'd.
+  -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0f1c2c" />
 
   <!-- Open Graph -->
   <meta property="og:type" content={ogType} />
@@ -90,18 +111,20 @@ const graph = [
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  {ogImage && (
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:alt" content={title} />
+  {ogImageIsDefault && (
     <>
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:image:alt" content={title} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
     </>
   )}
 
-  <!-- Twitter. summary_large_image only when there is an image to be large. -->
-  <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+  <!-- Twitter. There is always an image now, so always the large card. -->
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  {ogImage && <meta name="twitter:image" content={ogImage} />}
+  <meta name="twitter:image" content={ogImage} />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

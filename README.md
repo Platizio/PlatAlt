@@ -27,7 +27,7 @@ The dev server runs on `http://localhost:4321`.
 | `npm run preview` | Serve the built output |
 
 There is no test, lint or typecheck script — **the build is the only automated
-gate**. Run `npm run build` before committing and check it reports 78 pages
+gate**. Run `npm run build` before committing and check it reports 77 pages
 with zero errors.
 
 The build also fails if a route has no entry in `src/data/seo.ts` and passes no

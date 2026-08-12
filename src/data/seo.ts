@@ -308,13 +308,9 @@ export const SEO: Record<string, SeoEntry> = {
       'That page does not exist. Browse AIF categories, PMS guides, the fund explorer or the AMC directory on Platizio Alternatives.',
     noindex: true,
   },
-  // Fabricated content — docs/compliance-memo.md Part C4. Noindexed rather than
-  // deleted so the exposure stops now without moving the build page count.
-  '/fund': {
-    title: 'Fund Detail | Platizio Alternatives',
-    description: 'Sample fund detail layout. Not a live fund and not an offer.',
-    noindex: true,
-  },
+  // Fabricated content — docs/compliance-memo.md Part C4. /fund used to sit here,
+  // noindexed rather than deleted so the exposure stopped without moving the build
+  // page count. The page has now been deleted outright, so its entry is gone too.
   '/knowledge/article': {
     title: 'Insight | Platizio Alternatives',
     description: 'Editorial insight from Platizio Alternatives.',

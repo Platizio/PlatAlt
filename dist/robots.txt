@@ -9,7 +9,6 @@ Disallow: /404
 # Fabricated content pending deletion (docs/compliance-memo.md, Part C4).
 # Both carry invented performance figures. Remove these lines when the pages
 # are deleted, not before.
-Disallow: /fund
 Disallow: /knowledge/article
 
 # Build artefacts.
