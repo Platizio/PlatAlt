@@ -2,39 +2,102 @@
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import MobileNav from '../components/MobileNav.astro';
+import { SITE, absUrl, routeKey } from '../config/site';
+import { resolveSeo } from '../data/seo';
+import { organizationNode, websiteNode, breadcrumbNode } from '../data/schema';
 import '../styles/global.css';
 
 export interface Props {
+  /** Explicit override. Omit and the route's entry in src/data/seo.ts wins. */
   title?: string;
   description?: string;
   currentPage?: string;
   noFooter?: boolean;
+  /**
+   * Absolute URL. Omit and it is derived from the current route. Set to point
+   * elsewhere when a page defers to another — see CANONICAL_MAP in seo.ts.
+   */
+  canonical?: string;
+  /** Root-relative or absolute. */
+  image?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+  /** Trail for BreadcrumbList. The last item should carry no `item`. */
+  breadcrumbs?: { name: string; item?: string }[];
+  /** Extra JSON-LD nodes merged into this page's @graph. */
+  schema?: Record<string, unknown>[];
 }
 
 const {
-  title = 'Platizio Alternatives',
-  description = 'Access exclusive alternative investment frameworks designed for the discerning capital allocator. Precision, transparency, and institutional-grade rigor.',
+  title: titleProp,
+  description: descProp,
   currentPage = '',
   noFooter = false,
+  canonical: canonicalProp,
+  image,
+  ogType = 'website',
+  noindex: noindexProp,
+  breadcrumbs = [],
+  schema = [],
 } = Astro.props;
 
-// Absolute URLs, resolved against `site` in astro.config.mjs. Social scrapers do
-// not reliably follow a root-relative og:image.
-const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL('/og-image.png', Astro.site);
+const path = routeKey(Astro.url.pathname);
+const entry = resolveSeo(path);
+
+// `astro build` is the only automated gate in this repo, so an unmapped route
+// has to fail it. Without this throw, a renamed or added page silently falls
+// back to a shared default description — which is exactly the bug this whole
+// change exists to fix (72 of 73 pages shipped the same string before it).
+if (!entry && !descProp) {
+  throw new Error(
+    `[seo] No entry in src/data/seo.ts for "${path}", and no description prop was ` +
+      'passed. Add the route to SEO, or pass description={...} to BaseLayout.',
+  );
+}
+
+const title = titleProp ?? entry!.title;
+const description = descProp ?? entry!.description;
+const canonical = canonicalProp ?? entry?.canonical ?? absUrl(path);
+const noindex = noindexProp ?? entry?.noindex ?? false;
+/**
+ * Share card. Falls back to the site-wide card rather than to nothing: a link
+ * pasted into WhatsApp — the actual distribution channel for a distributor-facing
+ * site — previews as a bare card without one, and no page passes `image` today.
+ *
+ * public/og-image.png is 1200x630 and draws the wordmark at its native 467x54,
+ * so it is pixel-exact rather than an enlargement. Dimensions are only asserted
+ * for that default, since a page-supplied image may be any size.
+ */
+const DEFAULT_OG_IMAGE = '/og-image.png';
+const ogImage = new URL(image ?? DEFAULT_OG_IMAGE, SITE.url).href;
+const ogImageIsDefault = !image;
+
+const graph = [
+  organizationNode(),
+  websiteNode(),
+  ...(breadcrumbs.length ? [breadcrumbNode(breadcrumbs)] : []),
+  ...schema,
+];
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en-IN" class="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content={description} />
   <title>{title}</title>
+  <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
+  {noindex
+    ? <meta name="robots" content="noindex,follow" />
+    : <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />}
 
-  <!-- Icons. The mark is the wordmark's own 'P', cropped from public/logo.png,
-       so it is the firm's artwork rather than a substitute letterform. -->
+  <!--
+    Icons. The mark is the wordmark's own 'P', cropped from public/logo.png at its
+    real 36x51 extent, so it is the firm's artwork rather than a substitute
+    letterform. /logo.png itself is 467x54 — a wide wordmark squeezed into a square
+    tab icon is unreadable, and browsers still requested /favicon.ico and 404'd.
+  -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
@@ -42,18 +105,22 @@ const ogImage = new URL('/og-image.png', Astro.site);
   <meta name="theme-color" content="#0f1c2c" />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Platizio Alternatives" />
-  <meta property="og:locale" content="en_IN" />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:locale" content={SITE.locale} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={ogImage} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Platizio Alternatives — Curated PMS and AIF Discovery" />
+  <meta property="og:image:alt" content={title} />
+  {ogImageIsDefault && (
+    <>
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+    </>
+  )}
 
-  <!-- Twitter / X -->
+  <!-- Twitter. There is always an image now, so always the large card. -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
@@ -66,6 +133,8 @@ const ogImage = new URL('/og-image.png', Astro.site);
 
   <!-- Material Symbols -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })} />
 </head>
 <body class="bg-surface text-on-surface selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
   <Navbar currentPage={currentPage} />

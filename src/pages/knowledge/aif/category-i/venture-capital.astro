@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import StrategyFunds from '../../../../components/StrategyFunds.astro';
 import { STAT } from '../../../../data/aif-facts';
 ---
-<BaseLayout title="Venture Capital Funds | Category I AIF | Platizio Alternatives" currentPage="knowledge/aif">
+<BaseLayout currentPage="knowledge/aif">
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
@@ -170,6 +171,8 @@ import { STAT } from '../../../../data/aif-facts';
       <span class="font-headline text-lg text-primary-container group-hover:text-secondary transition-colors">Angel Funds</span>
     </a>
   </div>
+
+  <StrategyFunds sub="venture-capital" label="Venture Capital Funds" />
 
 </div>
 </BaseLayout>
