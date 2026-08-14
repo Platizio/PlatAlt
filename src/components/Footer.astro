@@ -1,4 +1,5 @@
 ---
+import { SITE } from '../config/site';
 ---
 <footer class="bg-slate-50 text-brand-navy py-20 px-6 border-t border-slate-200">
   <div class="container mx-auto max-w-7xl">
@@ -9,15 +10,44 @@
           <img src="/logo.png" alt="Platizio Alternatives" width="467" height="54"
                loading="lazy" decoding="async" class="h-7 w-auto" />
         </div>
-        <p class="text-slate-500 font-light max-w-sm mb-8 text-sm leading-relaxed">
-          A specialized division of Platizio Alternatives focused on institutional-grade discovery for private family offices and high-net-worth allocators. SEBI Registered RIA.
+        {/*
+          Rewritten 2026-08-13. The previous sentence named the brand as a
+          division of itself (the parent's name was lost in an earlier rename),
+          and asserted an adviser registration with no number on every page,
+          contradicting regulatory-disclosure.astro. The line below states the
+          position Platizio publishes at platizio.com.
+
+          Write notes like this as a JSX-style expression comment, never as an
+          HTML comment: Astro emits HTML comments into dist/, so a note that
+          quotes the string it just removed re-publishes that string on all 76
+          pages and trips the grep gate in the design spec.
+        */}
+        <p class="text-slate-500 font-light max-w-sm mb-6 text-sm leading-relaxed">
+          The PMS and AIF arm of <a href={SITE.parent.url} rel="noopener" class="text-brand-navy hover:text-brand-orange transition-colors">{SITE.parent.legalName}</a>, focused on institutional-grade discovery for family offices, high-net-worth allocators and distributors.
         </p>
+        <p class="text-slate-400 text-[11px] uppercase tracking-widest mb-8">
+          AMFI Registered &middot; SEBI Compliant
+        </p>
+
+        <address class="not-italic text-slate-500 text-sm font-light space-y-3 mb-8">
+          <div>
+            <span class="block text-[10px] font-bold uppercase tracking-[0.2em] text-brand-orange mb-1">Head Office</span>
+            {SITE.address.streetAddress}, {SITE.address.addressLocality}, {SITE.address.addressRegion} {SITE.address.postalCode}
+          </div>
+          <div class="flex flex-wrap gap-x-5 gap-y-1">
+            <a href={`tel:${SITE.telephoneHref}`} class="hover:text-brand-navy transition-colors">{SITE.telephone}</a>
+            <a href={`mailto:${SITE.email}`} class="hover:text-brand-navy transition-colors">{SITE.email}</a>
+          </div>
+        </address>
+
         <div class="flex gap-4">
-          <a href="/partner" class="w-10 h-10 border border-slate-300 flex items-center justify-center text-slate-500 hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all">
-            <span class="material-symbols-outlined text-sm">mail</span>
+          <a href={`mailto:${SITE.email}`} aria-label="Email Platizio Alternatives"
+             class="w-10 h-10 border border-slate-300 flex items-center justify-center text-slate-500 hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all">
+            <span class="material-symbols-outlined text-sm" aria-hidden="true">mail</span>
           </a>
-          <a href="/media" class="w-10 h-10 border border-slate-300 flex items-center justify-center text-slate-500 hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all">
-            <span class="material-symbols-outlined text-sm">share</span>
+          <a href={SITE.youtube} rel="noopener" aria-label="Platizio Alternatives on YouTube"
+             class="w-10 h-10 border border-slate-300 flex items-center justify-center text-slate-500 hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all">
+            <span class="material-symbols-outlined text-sm" aria-hidden="true">play_circle</span>
           </a>
         </div>
       </div>

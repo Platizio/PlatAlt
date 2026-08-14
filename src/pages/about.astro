@@ -86,18 +86,31 @@ import founderPortrait from '../assets/founder-portrait.jpg';
       </div>
     </div>
     <div class="lg:col-span-7">
-      <span class="font-label text-[11px] uppercase tracking-[0.3em] text-secondary mb-4 block">The Visionary</span>
-      <h2 class="text-5xl font-headline text-primary-container mb-6">Mr. Vividh Chaturvedi</h2>
+      <span class="font-label text-[11px] uppercase tracking-[0.3em] text-secondary mb-4 block">Leadership</span>
+      <h2 class="text-5xl font-headline text-primary-container mb-6">Vividh Chaturvedi</h2>
+      {/*
+        Replaced 2026-08-13. The previous version claimed two decades of
+        institutional asset management across three foreign financial centres,
+        two job titles, and advising sovereign wealth funds — none of which
+        Platizio publishes, and all of which contradicted platizio.com/about.
+        It also carried an invented pull-quote attributed to a named living
+        person. The credentials and biography below are the ones Platizio
+        publishes; the CFP® certification is the verifiable one and had been
+        omitted entirely.
+
+        Deliberately paraphrased rather than quoted: Astro emits HTML comments
+        into dist/, and this file is covered by a grep gate on the old strings.
+      */}
       <div class="flex flex-wrap gap-3 mb-8">
-        {['Founder & Chief Strategist', 'Ex-Executive Director', 'Sovereign Debt Specialist'].map(tag => (
+        {['Founder & CEO', 'Certified Financial Planner (CFP®)', 'Designated Partner'].map(tag => (
           <span class="px-4 py-1 bg-surface-container-high font-label text-[10px] uppercase tracking-widest text-on-secondary-container">{tag}</span>
         ))}
       </div>
-      <p class="text-lg text-on-surface leading-loose italic mb-8">
-        "In an era of digital transience, we provide the permanence of a well-maintained ledger. True wealth isn't just about accumulation; it's about the sovereignty to decide your own future."
+      <p class="text-on-surface-variant leading-relaxed mb-6">
+        Over 25 years of experience across financial services and international business, with a deep understanding of Indian financial markets — equities, bonds and commodities — and an active interest in equity derivatives and algorithmic trading.
       </p>
       <p class="text-on-surface-variant leading-relaxed mb-10">
-        With over two decades of experience in institutional asset management across London, Zurich, and Dubai, Mr. Chaturvedi founded Platizio Alternatives to bridge the gap between high-level macro strategy and individual private interests. His credentials include advising multiple sovereign wealth funds and a tenure at the helm of global risk committees.
+        Vividh Chaturvedi is a Designated Partner of Platizio Services LLP, alongside Akash Chaturvedi.
       </p>
       <a class="inline-flex items-center gap-4 text-primary-container font-label text-xs uppercase tracking-widest border-b border-primary-container pb-2 hover:text-secondary hover:border-secondary transition-all" href="/partner">
         Get in Touch <span class="material-symbols-outlined text-sm">arrow_forward</span>
@@ -106,23 +119,46 @@ import founderPortrait from '../assets/founder-portrait.jpg';
   </div>
 </section>
 
-<!-- Stats -->
-<section class="bg-primary-container text-surface py-24 px-6 md:px-16 lg:px-24 overflow-hidden relative">
-  <div class="absolute inset-0 opacity-10 pointer-events-none">
-    <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-700 to-transparent"></div>
-  </div>
-  <div class="max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 relative z-10">
-    {[
-      { value: '$14B+', label: 'Assets Under Consultation' },
-      { value: '12', label: 'Global Offices' },
-      { value: '85+', label: 'Strategic Jurisdictions' },
-      { value: '98%', label: 'Client Retention Rate' },
-    ].map(stat => (
-      <div class="text-center md:text-left">
-        <h3 class="text-4xl md:text-5xl font-headline text-amber-200 mb-2">{stat.value}</h3>
-        <p class="font-label text-[10px] uppercase tracking-[0.2em] text-slate-400">{stat.label}</p>
-      </div>
-    ))}
+{/*
+  A four-statistic band sat here until 2026-08-13 — assets under consultation,
+  a global office count, a jurisdiction count and a client retention rate.
+  Every figure was invented: none existed in src/data/, and the entity has two
+  offices, not the number claimed. The README forbids publishing numbers the
+  dataset does not hold. Do not reinstate without a source.
+*/}
+
+<!-- Team -->
+<section class="bg-surface-container-low py-24 px-6 md:px-16 lg:px-24">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="mb-14">
+      <span class="font-label text-[11px] uppercase tracking-[0.3em] text-secondary mb-4 block">The Team</span>
+      <h2 class="text-4xl font-headline text-primary-container">Who you work with</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-outline-variant/20 border border-outline-variant/20">
+      {[
+        { name: 'Vividh Chaturvedi', role: 'Founder & CEO' },
+        { name: 'Akash Chaturvedi', role: 'Designated Partner' },
+        { name: 'Deepika Agarwal', role: 'Financial Market Analyst' },
+        { name: 'Anuj Pal', role: null },
+        { name: 'Aanyaa Bhardwaj', role: null },
+        { name: 'Kartik Vishnani', role: null },
+        { name: 'Kavya Khatri', role: null },
+        { name: 'Sumit Katyal', role: null },
+        { name: 'Vinayak Tyagi', role: null },
+      ].map(person => (
+        <div class="bg-surface-container-lowest p-6 flex flex-col gap-1">
+          <h3 class="font-body font-bold text-primary-container text-sm leading-snug">{person.name}</h3>
+          {/*
+            Six of the nine carry no title because Platizio publishes none for
+            them. Inventing one would be the same defect this page was just
+            corrected for, so the slot stays empty until the firm supplies it.
+          */}
+          {person.role && (
+            <p class="text-on-surface-variant text-xs leading-relaxed">{person.role}</p>
+          )}
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 

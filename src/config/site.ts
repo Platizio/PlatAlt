@@ -18,12 +18,47 @@ export const SITE = {
   lang: 'en-IN',
   youtube: 'https://www.youtube.com/@platizioalternatives',
   email: 'info.alternatives@platizio.com',
-  /** src/pages/privacy.astro:88 */
+  telephone: '+91 92055 23100',
+  /** Digits only, for tel: and wa.me hrefs. */
+  telephoneHref: '+919205523100',
+  /**
+   * Parent. This site is the PMS and AIF arm; SIF, mutual funds and
+   * international investing are separate Platizio properties. Asserted in the
+   * footer and in Organization.parentOrganization so the relationship is
+   * visible to a reader and to a crawler.
+   */
+  parent: {
+    name: 'Platizio',
+    legalName: 'Platizio Services LLP',
+    url: 'https://www.platizio.com',
+  },
+  /** Companies Act identifier. Registrar of Companies, Delhi. */
+  llpin: 'AAQ-9558',
+  /**
+   * Principal place of business, and the address carried in JSON-LD.
+   *
+   * Until 2026-08-13 this read "One BKC, Mumbai 400051", which is not an
+   * address Platizio Services LLP holds — it went to Google as a
+   * machine-readable PostalAddress on every page. Both addresses below are the
+   * ones the company publishes at platizio.com/contact.
+   */
   address: {
-    streetAddress: 'One BKC',
-    addressLocality: 'Mumbai',
-    addressRegion: 'Maharashtra',
-    postalCode: '400051',
+    streetAddress: 'Unit No. 415, Tower-B, KLJ Noida One, Plot B-8, Sector-62',
+    addressLocality: 'Noida',
+    addressRegion: 'Uttar Pradesh',
+    postalCode: '201309',
+    addressCountry: 'IN',
+  },
+  /**
+   * Registered office of the LLP, per the MCA record for LLPIN AAQ-9558.
+   * Legal correspondence goes here, so it — not the head office — is the
+   * address named in the privacy policy. See src/pages/privacy.astro.
+   */
+  registeredAddress: {
+    streetAddress: 'Unit DGL-229, Second Floor, DLF Galleria Mall, Mayur Vihar Phase-1',
+    addressLocality: 'Delhi',
+    addressRegion: 'Delhi',
+    postalCode: '110092',
     addressCountry: 'IN',
   },
 } as const;
