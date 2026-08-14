@@ -12,7 +12,6 @@ export interface Props {
   title?: string;
   description?: string;
   currentPage?: string;
-  noFooter?: boolean;
   /**
    * Absolute URL. Omit and it is derived from the current route. Set to point
    * elsewhere when a page defers to another — see CANONICAL_MAP in seo.ts.
@@ -32,7 +31,6 @@ const {
   title: titleProp,
   description: descProp,
   currentPage = '',
-  noFooter = false,
   canonical: canonicalProp,
   image,
   ogType = 'website',
@@ -143,7 +141,7 @@ const graph = [
     <slot />
   </main>
 
-  {!noFooter && <Footer />}
+  <Footer />
 
   <MobileNav currentPage={currentPage} />
 

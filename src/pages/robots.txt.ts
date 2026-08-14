@@ -11,7 +11,7 @@ const body = `# ${SITE_URL}/robots.txt
 User-agent: *
 Allow: /
 
-# Gated portal. No search value.
+# Error surface. No search value.
 ${NON_INDEXABLE.map((p) => `Disallow: ${p}`).join('\n')}
 
 ${

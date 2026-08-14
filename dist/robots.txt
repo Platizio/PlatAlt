@@ -2,8 +2,7 @@
 User-agent: *
 Allow: /
 
-# Gated portal. No search value.
-Disallow: /login
+# Error surface. No search value.
 Disallow: /404
 
 # Build artefacts.

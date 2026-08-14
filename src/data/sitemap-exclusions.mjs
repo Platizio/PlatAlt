@@ -6,9 +6,17 @@
  */
 
 /**
- * Gated or error surfaces. No search intent either way.
+ * Error surfaces. No search intent.
+ *
+ * /login used to sit here. It was deleted on 2026-08-13 rather than kept
+ * hidden: it rendered a password field and an "Entity Identifier" field inside
+ * a form with no action attribute, on a static host with no backend, and told
+ * the visitor "Encrypted session. Two-factor authentication will be required."
+ * There was no session, no authentication and no portal behind it. Excluding a
+ * credential-collecting page from search does not stop it collecting
+ * credentials from anyone who reaches it by URL.
  */
-export const NON_INDEXABLE = ['/login', '/404'];
+export const NON_INDEXABLE = ['/404'];
 
 /**
  * Fabricated content — docs/compliance-memo.md, Part C4. Now empty: both pages

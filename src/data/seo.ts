@@ -297,11 +297,6 @@ export const SEO: Record<string, SeoEntry> = {
   },
 
   /* ── excluded from search ─────────────────────────────────────────────── */
-  '/login': {
-    title: 'Sign In | Platizio Alternatives',
-    description: 'Sign in to the Platizio Alternatives platform.',
-    noindex: true,
-  },
   '/404': {
     title: 'Page Not Found | Platizio Alternatives',
     description:
