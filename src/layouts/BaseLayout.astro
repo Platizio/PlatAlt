@@ -102,6 +102,17 @@ const graph = [
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta name="theme-color" content="#0f1c2c" />
 
+  <!--
+    Form delivery, read by public/site-interactive.js. That file is copied
+    verbatim into dist/ and never sees Astro, so it cannot import
+    src/config/site.ts; these two tags are the bridge. The key is a Web3Forms
+    client-side form key and is public by design — see the note in site.ts.
+  -->
+  <meta name="w3f-endpoint" content={SITE.form.endpoint} />
+  <meta name="w3f-key" content={SITE.form.accessKey} />
+  <meta name="site-phone" content={SITE.telephone} />
+  <meta name="site-phone-href" content={SITE.telephoneHref} />
+
   <!-- Open Graph -->
   <meta property="og:type" content={ogType} />
   <meta property="og:site_name" content={SITE.name} />

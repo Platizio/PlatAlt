@@ -270,6 +270,48 @@ body.av-modal-open {
 .av-btn-submit:hover { background: #1e3a5a; }
 .av-btn-submit .material-symbols-outlined { font-size: 1rem; }
 
+/* ── In-flight and failure states ──
+   No form on this site had a disabled, loading or error state, because no form
+   ever sent anything. Submit buttons are disabled for the duration of the
+   request, which is also what stops a double-click sending twice. */
+.av-btn-submit:disabled,
+.av-consultation-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: #0f1c2c;
+}
+.av-btn-submit:disabled:hover,
+.av-consultation-submit:disabled:hover { background: #0f1c2c; }
+
+.av-failure-icon { color: #a32b22; }
+
+.av-failure-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 1.5rem 0 0.25rem;
+}
+.av-failure-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #0f1c2c;
+  color: #0f1c2c;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.av-failure-btn:hover { background: #0f1c2c; color: #f9faf5; }
+.av-failure-btn .material-symbols-outlined { font-size: 1rem; }
+.av-failure-btn--wa { border-color: #1d7a45; color: #1d7a45; }
+.av-failure-btn--wa:hover { background: #1d7a45; color: #f9faf5; }
+
 /* ═══════════════════════════════════════════════════════════════════════════
    CONSULTATION POPUP MODAL
    ═══════════════════════════════════════════════════════════════════════════ */

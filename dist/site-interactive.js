@@ -17,6 +17,8 @@
   var CONSULTATION_HIDDEN_KEY  = 'av_consultation_hidden';
   var CONSULTATION_DELAY_MS    = 90000; // 90 seconds
 
+  var KEY_SENTINEL = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY';
+
   var toastTimer;
   var popupTimer;
 
@@ -24,6 +26,26 @@
   function qs(sel, scope) { return (scope || document).querySelector(sel); }
   function qsa(sel, scope) { return Array.from((scope || document).querySelectorAll(sel)); }
   function escAttr(s) { return String(s).replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
+
+  /** Config injected by BaseLayout. public/ never sees Astro, so <meta> is the bridge. */
+  function meta(name) {
+    var el = qs('meta[name="' + name + '"]');
+    return el ? el.content : '';
+  }
+
+  /**
+   * Storage access throws outright in some contexts — Safari with cross-site
+   * tracking restrictions, Chrome with site data blocked, some embedded
+   * webviews. Every call in this file used to be unguarded, so one throw during
+   * init took the consultation modal down with it, form included. Same pattern
+   * as compare.astro.
+   */
+  function storeGet(store, key) {
+    try { return window[store].getItem(key); } catch (e) { return null; }
+  }
+  function storeSet(store, key, value) {
+    try { window[store].setItem(key, value); } catch (e) { /* non-fatal */ }
+  }
 
   /* ── Bootstrap ──────────────────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
@@ -33,8 +55,150 @@
     initRevealAnimations();
     initConsultationPopup();
     initPartnerForm();
+    initNewsletterForm();
     prefillFromQuery();
   });
+
+  /* ─────────────────────────────────────────────────────────────────────────
+   * FORM SUBMISSION
+   *
+   * Every form on this site used to preventDefault(), reset, and show a
+   * success message without sending anything anywhere. This is the one path
+   * they all now go through.
+   *
+   * Three rules it exists to enforce:
+   *   1. Nothing is called a success unless the relay returned 2xx.
+   *   2. Nothing is sent that has not passed validation. Every form here
+   *      carries `novalidate` and none of them used to validate in JS either,
+   *      so an entirely empty submission was accepted.
+   *   3. On failure the form is NOT reset. The user's typing is the only copy
+   *      of that lead; clearing it loses what the relay just failed to take.
+   * ──────────────────────────────────────────────────────────────────────── */
+
+  /**
+   * @param form     the <form> element
+   * @param opts     { formName, subject, extra, successMessage, onSuccess }
+   *                 `extra` is merged over the form's own named fields — used
+   *                 for state the markup does not hold, e.g. the consultation
+   *                 date/time/mode.
+   */
+  function submitForm(form, opts) {
+    opts = opts || {};
+
+    /* Re-entrancy guard on the form, not the button.
+       Disabling the submit button stops a second *click*, but not Enter pressed
+       in a text field and not requestSubmit() — both submit a form whose button
+       is disabled. Without this flag a fast double-submit fires two requests,
+       and the second call captures "Sending…" as the button's original label,
+       so the first call's restore() puts "Sending…" back permanently. */
+    if (form.dataset.sending === 'true') return;
+
+    /* Native constraint validation. The markup already declares required /
+       type=email / type=tel on every field that needs it; reportValidity gives
+       us those messages, localised and accessible, for one line. */
+    if (!form.reportValidity()) return;
+
+    var endpoint = meta('w3f-endpoint');
+    var key      = meta('w3f-key');
+
+    var btn = form.querySelector('[type="submit"]');
+    /* Stored once, on the element. A local variable would be re-captured on
+       every call; this cannot be overwritten by an in-flight label. */
+    if (btn && btn.dataset.label === undefined) btn.dataset.label = btn.innerHTML;
+
+    form.dataset.sending = 'true';
+
+    function restore() {
+      form.dataset.sending = 'false';
+      if (!btn) return;
+      btn.disabled = false;
+      btn.removeAttribute('aria-busy');
+      btn.innerHTML = btn.dataset.label;
+    }
+
+    if (btn) {
+      btn.disabled = true;
+      btn.setAttribute('aria-busy', 'true');
+      btn.textContent = 'Sending…';
+    }
+
+    var payload = {};
+    new FormData(form).forEach(function (value, name) { payload[name] = value; });
+    Object.keys(opts.extra || {}).forEach(function (k) { payload[k] = opts.extra[k]; });
+
+    payload.access_key  = key;
+    payload.subject     = opts.subject || 'Website enquiry — Platizio Alternatives';
+    payload.from_name   = 'Platizio Alternatives website';
+    payload.form_name   = opts.formName || 'unknown';
+    payload.source_page = window.location.pathname;
+    if (payload.email) payload.replyto = payload.email;
+    /* Honeypot. FormData only carries a checkbox when it is checked, so an
+       absent botcheck means a human; send it empty so the field is always
+       present for the relay to judge. */
+    if (!('botcheck' in payload)) payload.botcheck = '';
+
+    if (!endpoint || !key || key === KEY_SENTINEL) {
+      /* Refuse to pretend. Better a visible failure with a phone number than a
+         thank-you modal for a submission that went nowhere — that was the bug. */
+      console.warn('[forms] No Web3Forms access key configured; submission not sent.');
+      restore();
+      showFormFailure(form, payload);
+      return;
+    }
+
+    fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Relay returned ' + res.status);
+        form.reset();
+        if (typeof opts.onSuccess === 'function') opts.onSuccess();
+        showThankYouModal(opts.successMessage);
+      })
+      .catch(function (err) {
+        console.error('[forms] Submission failed:', err);
+        showFormFailure(form, payload);       // form deliberately left populated
+      })
+      .then(restore);                          // runs on both paths
+  }
+
+  /**
+   * Failure surface. Carries the two routes that do not depend on this site
+   * working: a phone call and WhatsApp, both prefilled with what they typed so
+   * the lead survives the outage.
+   */
+  function showFormFailure(form, payload) {
+    var phone     = meta('site-phone') || '';
+    var phoneHref = meta('site-phone-href') || '';
+    /* wa.me takes digits only — telephoneHref is +91…, so strip everything else. */
+    var waNumber  = phoneHref.replace(/\D/g, '');
+
+    var summary = ['Hello, my enquiry form on the website did not go through.'];
+    ['name', 'email', 'phone', 'city', 'fund_interest', 'interest_detail', 'arn_number', 'business_name', 'message']
+      .forEach(function (f) { if (payload[f]) summary.push(f.replace(/_/g, ' ') + ': ' + payload[f]); });
+
+    var waHref = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(summary.join('\n'));
+
+    qs('#formfail-phone') && (qs('#formfail-phone').href = 'tel:' + phoneHref);
+    qs('#formfail-phone-label') && (qs('#formfail-phone-label').textContent = phone);
+    qs('#formfail-whatsapp') && (qs('#formfail-whatsapp').href = waHref);
+
+    var modal = qs('#formfail-modal');
+    if (!modal) return;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('av-modal-open');
+  }
+
+  function closeFormFailure() {
+    var modal = qs('#formfail-modal');
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('av-modal-open');
+  }
 
   /* ─────────────────────────────────────────────────────────────────────────
    * MODAL HTML INJECTION
@@ -96,6 +260,15 @@
               '<label for="investor-amc">Specific Fund or AMC</label>',
               '<input id="investor-amc" name="interest_detail" type="text" placeholder="Optional — name a specific fund or AMC" />',
             '</div>',
+            /* Honeypot. Hidden from people, tempting to bots; the relay rejects
+               any submission that arrives with it filled. */
+            '<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />',
+            '<div class="av-field av-field--full">',
+              '<label class="av-consent">',
+                '<input id="investor-consent" name="consent" type="checkbox" required />',
+                '<span>I hereby give my consent to receive calls, WhatsApp messages, SMS and e-mails from Platizio Services LLP regarding my enquiry.</span>',
+              '</label>',
+            '</div>',
             '<div class="av-field av-field--full">',
               '<button class="av-btn-submit" type="submit">',
                 'Submit Enquiry',
@@ -143,6 +316,7 @@
               '<h3>Preferred Communication Mode</h3>',
               '<div class="av-mode-grid" id="consultation-mode-grid"></div>',
             '</div>',
+            '<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />',
             '<label class="av-consent">',
               '<input id="consultation-consent" name="consent" type="checkbox" required />',
               '<span>I hereby give my consent to receive calls, WhatsApp messages, SMS and e-mails from Platizio Services LLP regarding my investment consultation.</span>',
@@ -170,6 +344,33 @@
           '<h2 class="av-thankyou-title">Thank You</h2>',
           '<p class="av-thankyou-message" id="thankyou-message">We have received your details and will be in touch shortly.</p>',
           '<button class="av-thankyou-btn" id="thankyou-dismiss" type="button">Close</button>',
+        '</div>',
+      '</div>',
+
+      /* ── Submission Failure ──
+         A separate modal rather than a reworded thank-you: the tick and the
+         word "Thank You" are exactly wrong here, and conflating the two is how
+         a failure gets reported as a success. The form behind this stays
+         populated, so "Try again" costs the user nothing. */
+      '<div class="av-modal av-modal--failure" id="formfail-modal" aria-hidden="true" role="alertdialog" aria-modal="true" aria-labelledby="ff-title">',
+        '<div class="av-modal-card av-thankyou-card">',
+          '<button class="av-modal-close" id="formfail-close" type="button" aria-label="Close">&times;</button>',
+          '<div class="av-thankyou-icon av-failure-icon">',
+            '<span class="material-symbols-outlined">error</span>',
+          '</div>',
+          '<h2 class="av-thankyou-title" id="ff-title">We could not send that</h2>',
+          '<p class="av-thankyou-message">Your details are still in the form behind this message, so nothing is lost — close this and try again. If it keeps failing, reach us directly and we will pick it up from there.</p>',
+          '<div class="av-failure-actions">',
+            '<a class="av-failure-btn" id="formfail-phone" href="tel:">',
+              '<span class="material-symbols-outlined">call</span>',
+              '<span id="formfail-phone-label"></span>',
+            '</a>',
+            '<a class="av-failure-btn av-failure-btn--wa" id="formfail-whatsapp" href="#" target="_blank" rel="noopener">',
+              '<span class="material-symbols-outlined">chat</span>',
+              'Send on WhatsApp',
+            '</a>',
+          '</div>',
+          '<button class="av-thankyou-btn" id="formfail-dismiss" type="button">Try again</button>',
         '</div>',
       '</div>'
     ].join('');
@@ -222,7 +423,7 @@
     });
     qs('#consultation-form')?.addEventListener('submit', handleConsultationSubmit);
     qs('#consultation-suppress')?.addEventListener('click', function () {
-      localStorage.setItem(CONSULTATION_HIDDEN_KEY, 'true');
+      storeSet('localStorage', CONSULTATION_HIDDEN_KEY, 'true');
       closeConsultationModal();
     });
 
@@ -233,9 +434,18 @@
       if (e.target === qs('#thankyou-modal')) closeThankYouModal();
     });
 
+    /* Submission failure modal. "Try again" only dismisses — the form behind it
+       is still populated, which is the whole point. */
+    qs('#formfail-close')?.addEventListener('click', closeFormFailure);
+    qs('#formfail-dismiss')?.addEventListener('click', closeFormFailure);
+    qs('#formfail-modal')?.addEventListener('click', function (e) {
+      if (e.target === qs('#formfail-modal')) closeFormFailure();
+    });
+
     /* Escape key closes any open modal */
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
+      closeFormFailure();
       closeInvestorModal();
       closeConsultationModal();
       closeThankYouModal();
@@ -284,9 +494,15 @@
   function handleInvestorSubmit(e) {
     e.preventDefault();
     var form = e.currentTarget;
-    closeInvestorModal();
-    form.reset();
-    showThankYouModal('We have received your enquiry and our advisory team will reach out to you within 24 hours.');
+    var name = (qs('#investor-name') || {}).value || '';
+    submitForm(form, {
+      formName: 'investor-enquiry',
+      subject: 'New investor enquiry' + (name ? ' — ' + name : ''),
+      successMessage: 'We have received your enquiry and our advisory team will reach out to you within 24 hours.',
+      /* Closing on success only. Closing first, as this used to, hides the
+         failure state behind a modal the user can no longer see. */
+      onSuccess: closeInvestorModal
+    });
   }
 
   /* ─────────────────────────────────────────────────────────────────────────
@@ -347,14 +563,14 @@
     render();
 
     /* 90-second auto-trigger */
-    if (localStorage.getItem(CONSULTATION_HIDDEN_KEY) === 'true' ||
-        sessionStorage.getItem(CONSULTATION_SESSION_KEY) === 'true') return;
+    if (storeGet('localStorage', CONSULTATION_HIDDEN_KEY) === 'true' ||
+        storeGet('sessionStorage', CONSULTATION_SESSION_KEY) === 'true') return;
 
     function startTimer() {
       clearTimeout(popupTimer);
       if (document.hidden) return;
-      if (sessionStorage.getItem(CONSULTATION_SESSION_KEY) === 'true') return;
-      if (localStorage.getItem(CONSULTATION_HIDDEN_KEY) === 'true') return;
+      if (storeGet('sessionStorage', CONSULTATION_SESSION_KEY) === 'true') return;
+      if (storeGet('localStorage', CONSULTATION_HIDDEN_KEY) === 'true') return;
       popupTimer = setTimeout(function () {
         if (!document.hidden) openConsultationModal();
       }, CONSULTATION_DELAY_MS);
@@ -387,7 +603,7 @@
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('av-modal-open');
-    sessionStorage.setItem(CONSULTATION_SESSION_KEY, 'true');
+    storeSet('sessionStorage', CONSULTATION_SESSION_KEY, 'true');
   }
 
   function closeConsultationModal() {
@@ -414,11 +630,33 @@
     }
 
     var form = e.currentTarget;
-    state.date = ''; state.time = ''; state.mode = '';
-    form.reset();
-    if (modal._av_render) modal._av_render();
-    closeConsultationModal();
-    showToast('Consultation Confirmed', 'Your booking has been recorded. Our advisory team will contact you shortly.');
+
+    /* state.date holds d.toISOString() from buildDates(), so sending it raw
+       would put "2026-08-21T04:33:12.345Z" in the booking email. Format it. */
+    var pretty = state.date;
+    try {
+      pretty = new Intl.DateTimeFormat('en-IN', {
+        weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+      }).format(new Date(state.date));
+    } catch (err) { /* keep the raw value rather than lose the booking */ }
+
+    var name = (qs('#consultation-name') || {}).value || '';
+
+    submitForm(form, {
+      formName: 'consultation',
+      subject: 'Consultation booking' + (name ? ' — ' + name : '') + ' · ' + pretty + ' ' + state.time,
+      extra: {
+        preferred_date: pretty,
+        preferred_time: state.time + ' IST',
+        preferred_mode: state.mode
+      },
+      successMessage: 'Your consultation request has been sent. Our advisory team will confirm the slot with you shortly.',
+      onSuccess: function () {
+        state.date = ''; state.time = ''; state.mode = '';
+        if (modal._av_render) modal._av_render();
+        closeConsultationModal();
+      }
+    });
   }
 
   /* ─────────────────────────────────────────────────────────────────────────
@@ -429,8 +667,36 @@
     if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      form.reset();
-      showThankYouModal('Thank you for your application. Our executive partnership team will review your details and respond within 2 business days.');
+      var name = (qs('#partner-name') || {}).value || '';
+      var arn  = (qs('#partner-arn') || {}).value || '';
+      submitForm(form, {
+        formName: 'partner-registration',
+        subject: 'Distributor registration' + (name ? ' — ' + name : '') + (arn ? ' (' + arn + ')' : ''),
+        successMessage: 'Thank you for your application. Our executive partnership team will review your details and respond within 2 business days.'
+      });
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+   * NEWSLETTER
+   *
+   * The form on /media had no action, no method and no handler, so the browser
+   * default applied: a GET to the current URL. The subscriber's address ended
+   * up in /media?email=..., i.e. in their history, in the Referer header of
+   * every subsequent request and in the host's access logs — directly beneath
+   * the line "We do not share your address with third parties". And nothing
+   * was ever subscribed.
+   * ──────────────────────────────────────────────────────────────────────── */
+  function initNewsletterForm() {
+    var form = qs('#newsletter-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitForm(form, {
+        formName: 'newsletter',
+        subject: 'Newsletter signup',
+        successMessage: 'You are on the list. We will email you when we publish new research or video commentary.'
+      });
     });
   }
 

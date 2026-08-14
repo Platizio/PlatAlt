@@ -121,8 +121,15 @@ const knowledgeLinks = [
     <p class="text-secondary text-lg mb-12">
       Occasional updates when we publish new research or video commentary. No promotional mail.
     </p>
-    <form class="flex flex-col sm:flex-row gap-0 max-w-2xl mx-auto border-b border-primary-container">
+    {/*
+      id is load-bearing: initNewsletterForm() in public/site-interactive.js
+      binds to it. Without a handler the browser default applied — a GET to this
+      page — which put the subscriber's address in /media?email=... and
+      subscribed nobody.
+    */}
+    <form id="newsletter-form" class="flex flex-col sm:flex-row gap-0 max-w-2xl mx-auto border-b border-primary-container">
       <label class="sr-only" for="newsletter-email">Email address</label>
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
       <input
         id="newsletter-email"
         name="email"

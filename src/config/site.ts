@@ -35,6 +35,28 @@ export const SITE = {
   /** Companies Act identifier. Registrar of Companies, Delhi. */
   llpin: 'AAQ-9558',
   /**
+   * Where the four forms deliver.
+   *
+   * `accessKey` is a Web3Forms client-side form key, not a secret — it is meant
+   * to ship in the page, which is why it lives here rather than in an env var.
+   * Its only powers are "deliver to the mailbox this key was issued for" and
+   * nothing else, and the honeypot plus Web3Forms' own rate limiting cover the
+   * abuse case.
+   *
+   * public/site-interactive.js cannot import this file — public/ is copied
+   * verbatim and never sees Astro — so BaseLayout emits both values as <meta>
+   * tags and the script reads them from there. That keeps one config home
+   * instead of two.
+   *
+   * While accessKey is still the sentinel, submitForm() refuses to POST and
+   * takes the failure path. A form that silently posts to a dead key is worse
+   * than the bug this whole change exists to fix.
+   */
+  form: {
+    endpoint: 'https://api.web3forms.com/submit',
+    accessKey: 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY',
+  },
+  /**
    * Principal place of business, and the address carried in JSON-LD.
    *
    * Until 2026-08-13 this read "One BKC, Mumbai 400051", which is not an
