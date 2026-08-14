@@ -153,6 +153,21 @@
     })
       .then(function (res) {
         if (!res.ok) throw new Error('Relay returned ' + res.status);
+        /* Web3Forms carries its own verdict in the body, and their reference
+           snippet checks that rather than the status — so a 200 is necessary
+           but not sufficient. Parse failures are tolerated: a 200 we cannot
+           read is still a delivered submission, and calling it a failure would
+           push the user to re-send something that already arrived. */
+        return res.json().then(
+          function (json) {
+            if (json && json.success === false) {
+              throw new Error(json.message || 'Relay rejected the submission');
+            }
+          },
+          function () { /* body was not JSON; trust the 200 */ }
+        );
+      })
+      .then(function () {
         form.reset();
         if (typeof opts.onSuccess === 'function') opts.onSuccess();
         showThankYouModal(opts.successMessage);

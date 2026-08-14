@@ -48,13 +48,18 @@ export const SITE = {
    * tags and the script reads them from there. That keeps one config home
    * instead of two.
    *
-   * While accessKey is still the sentinel, submitForm() refuses to POST and
-   * takes the failure path. A form that silently posts to a dead key is worse
-   * than the bug this whole change exists to fix.
+   * submitForm() still refuses to POST if this is ever reset to the sentinel
+   * string, and takes the failure path instead. A form that silently posts to a
+   * dead key is worse than the bug this whole change exists to fix.
+   *
+   * Because the key ships in the page, anyone can read it and post to it.
+   * Mitigations: the honeypot on all four forms, Web3Forms' own rate limiting,
+   * and the domain allow-list in the Web3Forms dashboard — worth turning on and
+   * restricting to alternatives.platizio.com.
    */
   form: {
     endpoint: 'https://api.web3forms.com/submit',
-    accessKey: 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY',
+    accessKey: 'd93c98a8-9357-40e3-b5c7-ddfec64fd0df',
   },
   /**
    * Principal place of business, and the address carried in JSON-LD.
