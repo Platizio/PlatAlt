@@ -71,6 +71,11 @@ export const SEO: Record<string, SeoEntry> = {
     description:
       'Platizio Alternatives is the PMS and AIF arm of Platizio Services LLP, serving HNIs, family offices and distributors from Noida and Delhi.',
   },
+  '/contact': {
+    title: 'Contact Platizio Alternatives | Noida & Delhi',
+    description:
+      'Speak to the Platizio Alternatives team about PMS and AIF strategies. Call +91 92055 23100, message us on WhatsApp, or visit our Noida or Delhi office.',
+  },
   '/partner': {
     title: 'Distributor Partnerships: PMS & AIF | Platizio',
     description:

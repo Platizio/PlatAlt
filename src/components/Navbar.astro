@@ -137,6 +137,12 @@ const isSection = (section: string) => currentPage.startsWith(section);
          class={`px-4 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isActive('partner') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
         Partner
       </a>
+
+      <!-- Contact -->
+      <a href="/contact"
+         class={`px-4 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isActive('contact') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
+        Contact
+      </a>
     </nav>
 
     <!-- Right Actions -->
@@ -163,6 +169,7 @@ const isSection = (section: string) => currentPage.startsWith(section);
       <a href="/knowledge/pms" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-600 hover:text-brand-orange border-b border-slate-100">PMS Knowledge</a>
       <a href="/media" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-600 hover:text-brand-orange border-b border-slate-100">Insights</a>
       <a href="/about" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-600 hover:text-brand-orange border-b border-slate-100">About</a>
+      <a href="/contact" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-600 hover:text-brand-orange border-b border-slate-100">Contact</a>
       <a href="/partner" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-brand-orange">Partner With Us</a>
     </nav>
   </div>

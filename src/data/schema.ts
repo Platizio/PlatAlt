@@ -86,6 +86,41 @@ export const organizationNode = (): Node => ({
   sameAs: [SITE.youtube, SITE.parent.url],
 });
 
+/**
+ * ContactPage, with both offices as Place nodes.
+ *
+ * The Organization node carries one `address` — the head office — because two
+ * PostalAddress values on one node invites a crawler to pick either as "the"
+ * location. This page is where both belong, and where the registered office
+ * can be labelled as such rather than competing with the operating one.
+ *
+ * Same standing constraint as everywhere else in this file: no registration or
+ * credential claim about Platizio until compliance memo A1 is answered.
+ */
+export const contactPageNode = (): Node => ({
+  '@type': 'ContactPage',
+  '@id': `${SITE.url}/contact#contactpage`,
+  url: absUrl('/contact'),
+  name: 'Contact Platizio Alternatives',
+  isPartOf: { '@id': `${SITE.url}/#website` },
+  about: { '@id': `${SITE.url}/#organization` },
+  mainEntity: {
+    '@id': `${SITE.url}/#organization`,
+    location: [
+      {
+        '@type': 'Place',
+        name: 'Head office',
+        address: { '@type': 'PostalAddress', ...SITE.address },
+      },
+      {
+        '@type': 'Place',
+        name: 'Registered office',
+        address: { '@type': 'PostalAddress', ...SITE.registeredAddress },
+      },
+    ],
+  },
+});
+
 export const websiteNode = (): Node => ({
   '@type': 'WebSite',
   '@id': `${SITE.url}/#website`,
