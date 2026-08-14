@@ -49,7 +49,28 @@ export const organizationNode = (): Node => ({
     url: `${SITE.url}/logo.png`,
     contentUrl: `${SITE.url}/logo.png`,
   },
+  /**
+   * Head office. `registeredAddress` is deliberately not emitted as a second
+   * PostalAddress: two addresses on one node invites a crawler to pick either
+   * as "the" location. The registered office is where it legally belongs —
+   * the privacy policy and /contact.
+   */
   address: { '@type': 'PostalAddress', ...SITE.address },
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'LLPIN',
+    value: SITE.llpin,
+  },
+  /**
+   * This site is the PMS and AIF arm. SIF, mutual funds and international
+   * investing are separate Platizio properties, so without this the family of
+   * domains reads to a crawler as unrelated strangers.
+   */
+  parentOrganization: {
+    '@type': 'Organization',
+    name: SITE.parent.legalName,
+    url: SITE.parent.url,
+  },
   areaServed: [
     { '@type': 'Country', name: 'India' },
     { '@type': 'Place', name: 'GIFT City IFSC, Gandhinagar' },
@@ -58,10 +79,11 @@ export const organizationNode = (): Node => ({
     '@type': 'ContactPoint',
     contactType: 'customer support',
     email: SITE.email,
+    telephone: SITE.telephone,
     areaServed: 'IN',
     availableLanguage: ['en', 'hi'],
   },
-  sameAs: [SITE.youtube],
+  sameAs: [SITE.youtube, SITE.parent.url],
 });
 
 export const websiteNode = (): Node => ({

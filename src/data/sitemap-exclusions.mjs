@@ -6,27 +6,34 @@
  */
 
 /**
- * Gated or error surfaces. No search intent either way.
+ * Error surfaces. No search intent.
+ *
+ * /login used to sit here. It was deleted on 2026-08-13 rather than kept
+ * hidden: it rendered a password field and an "Entity Identifier" field inside
+ * a form with no action attribute, on a static host with no backend, and told
+ * the visitor "Encrypted session. Two-factor authentication will be required."
+ * There was no session, no authentication and no portal behind it. Excluding a
+ * credential-collecting page from search does not stop it collecting
+ * credentials from anyone who reaches it by URL.
  */
-export const NON_INDEXABLE = ['/login', '/404'];
+export const NON_INDEXABLE = ['/404'];
 
 /**
- * Fabricated content, pending deletion — docs/compliance-memo.md, Part C4.
+ * Fabricated content — docs/compliance-memo.md, Part C4. Now empty: both pages
+ * this group existed for have been deleted rather than merely hidden.
  *
- * /fund is gone: src/pages/fund.astro was deleted rather than noindexed, so its
- * entry is removed here per the instruction below. It invented a fund and
- * hardcoded a NAV of $4,281.92, a YTD return of +18.4% and $2.3B of AUM, beside
- * a fabricated Chief Investment Officer with an invented quote.
+ * /fund invented a fund, with a hardcoded NAV, YTD return and AUM figure beside
+ * a fabricated Chief Investment Officer and an invented quote.
  *
- * /knowledge/article remains. It carries invented statistics attributed to a
- * named industry body. Every real fund in funds.generated.json has
- * `returns: []` and the README forbids adding performance figures, so this is
- * now the only remaining unreal performance claim on the site.
+ * /knowledge/article carried invented allocation statistics attributed to a
+ * named industry body, and bylined them to a real named person under a job
+ * title that person does not hold. Deleted 2026-08-13, in the same change that
+ * corrected that title everywhere else on the site.
  *
- * Submitting it to Google is the one thing that would make that exposure worse.
- * Remove this entry when the page is deleted, not before.
+ * Keep the export. It is the documented home for anything of this kind, and an
+ * empty list is a clearer signal than a deleted concept.
  */
-export const FABRICATED = ['/knowledge/article'];
+export const FABRICATED = [];
 
 /**
  * /funds/<strategy> pages that canonicalise to a /knowledge sibling.

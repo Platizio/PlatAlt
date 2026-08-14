@@ -11,15 +11,24 @@ const body = `# ${SITE_URL}/robots.txt
 User-agent: *
 Allow: /
 
-# Gated portal. No search value.
+# Error surface. No search value.
 ${NON_INDEXABLE.map((p) => `Disallow: ${p}`).join('\n')}
 
-# Fabricated content pending deletion (docs/compliance-memo.md, Part C4).
-# Both carry invented performance figures. Remove these lines when the pages
-# are deleted, not before.
+${
+  /*
+   * Emitted only while the group is non-empty. Both pages it covered have been
+   * deleted, so the block now disappears rather than leaving a comment header
+   * over nothing — and a Disallow for a route that no longer exists is stale
+   * config that would outlive the reason for it.
+   */
+  FABRICATED.length
+    ? `# Fabricated content pending deletion (docs/compliance-memo.md, Part C4).
+# Remove these lines when the pages are deleted, not before.
 ${FABRICATED.map((p) => `Disallow: ${p}`).join('\n')}
 
-# Build artefacts.
+`
+    : ''
+}# Build artefacts.
 Disallow: /_astro/
 
 # Large-model crawlers, allowed deliberately: this is a discovery platform

@@ -69,7 +69,7 @@ export const SEO: Record<string, SeoEntry> = {
   '/about': {
     title: 'About Platizio Alternatives | Platizio Services LLP',
     description:
-      'Platizio Alternatives is the PMS and AIF discovery platform operated by Platizio Services LLP from One BKC, Mumbai, for HNIs, family offices and distributors.',
+      'Platizio Alternatives is the PMS and AIF arm of Platizio Services LLP, serving HNIs, family offices and distributors from Noida and Delhi.',
   },
   '/partner': {
     title: 'Distributor Partnerships: PMS & AIF | Platizio',
@@ -278,7 +278,7 @@ export const SEO: Record<string, SeoEntry> = {
   '/terms': {
     title: 'Terms of Use | Platizio Alternatives',
     description:
-      'Terms governing use of the Platizio Alternatives PMS and AIF discovery platform, operated by Platizio Services LLP. Jurisdiction: courts in Mumbai, Maharashtra.',
+      'Terms governing use of the Platizio Alternatives PMS and AIF discovery platform, operated by Platizio Services LLP. Jurisdiction: courts in Delhi.',
   },
   '/privacy': {
     title: 'Privacy Policy | Platizio Alternatives',
@@ -297,25 +297,16 @@ export const SEO: Record<string, SeoEntry> = {
   },
 
   /* ── excluded from search ─────────────────────────────────────────────── */
-  '/login': {
-    title: 'Sign In | Platizio Alternatives',
-    description: 'Sign in to the Platizio Alternatives platform.',
-    noindex: true,
-  },
   '/404': {
     title: 'Page Not Found | Platizio Alternatives',
     description:
       'That page does not exist. Browse AIF categories, PMS guides, the fund explorer or the AMC directory on Platizio Alternatives.',
     noindex: true,
   },
-  // Fabricated content — docs/compliance-memo.md Part C4. /fund used to sit here,
-  // noindexed rather than deleted so the exposure stopped without moving the build
-  // page count. The page has now been deleted outright, so its entry is gone too.
-  '/knowledge/article': {
-    title: 'Insight | Platizio Alternatives',
-    description: 'Editorial insight from Platizio Alternatives.',
-    noindex: true,
-  },
+  // Fabricated content — docs/compliance-memo.md Part C4. /fund and
+  // /knowledge/article both used to sit here, noindexed rather than deleted so
+  // the exposure stopped without moving the build page count. Both pages have
+  // now been deleted outright, so their entries are gone too.
 };
 
 /**
