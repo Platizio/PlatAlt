@@ -77,13 +77,29 @@ h1, h2, h3, h4 {
   display: block;
 }
 
-/* ─── Mobile Nav Padding ─── */
-.mobile-nav-pad {
-  padding-bottom: 5rem;
-}
-@media (min-width: 768px) {
+/* ─── Mobile Nav Padding ───
+   Clearance for the fixed bottom bar in MobileNav.astro.
+
+   This used to sit on <main> at 5rem, which was wrong twice over. <main> is
+   not the last element — the footer is — so the bar covered the footer's final
+   rows: at 375px it sat over all four legal links (Terms, Privacy, Disclosures,
+   Risk Disclaimer), making them untappable. And the padding on <main> only
+   opened a gap between the content and the footer, which is not what it was for.
+
+   5rem was also short. The bar is pt-3 + content + max(1.5rem, safe-area), which
+   measures 89px on a 375px viewport against 80px of clearance. 6rem plus the
+   inset clears it on notched and un-notched devices alike.
+
+   Applied to the footer, so the class name still describes what it does.
+
+   Scoped to a max-width query rather than zeroed at min-width. The footer
+   carries Tailwind's py-20, and `.mobile-nav-pad { padding-bottom: 0 }` matches
+   `.py-20` on specificity — so the desktop half of a min-width pair silently
+   won on source order and stripped the footer's bottom padding entirely. Below
+   768px this rule applies; at or above it, the class simply does nothing. */
+@media (max-width: 767px) {
   .mobile-nav-pad {
-    padding-bottom: 0;
+    padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
   }
 }
 
