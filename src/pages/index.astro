@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import heroFacade from '../assets/hero-facade.jpg';
 import { getAllFunds } from '../data/funds';
 import { termOf } from '../data/aif-taxonomy';
 
@@ -43,10 +45,31 @@ const insightLinks = [
     warm amber counterlight off the right edge, and the original scrim kept in
     front of both so the headline sits on solid navy exactly as before.
   -->
-  <div class="absolute inset-0 bg-gradient-to-br from-transparent via-secondary/15 to-secondary/30" aria-hidden="true"></div>
-  <div class="absolute top-0 right-0 w-[42rem] h-[42rem] bg-secondary/25 rounded-full blur-3xl -translate-y-1/4 translate-x-1/4" aria-hidden="true"></div>
-  <div class="absolute bottom-0 right-1/4 w-[28rem] h-[28rem] bg-tertiary-fixed/10 rounded-full blur-3xl translate-y-1/3" aria-hidden="true"></div>
-  <div class="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
+  <!--
+    Hero photograph. Self-hosted and served through astro:assets, so it ships as
+    AVIF/WebP with intrinsic dimensions. At 2880x1620 it is 2x the ~1440x819 box,
+    which is what the previous hero image could never be — that one was a 512px
+    source stretched 2.81x.
+
+    It is the LCP element, so it loads eagerly at high priority rather than lazily.
+    Decorative, hence alt="".
+
+    The scrim in front of it is the original left-to-right navy wash: the headline
+    still sits on solid navy, and the picture carries the right-hand third.
+  -->
+  <div class="absolute inset-0">
+    <Picture src={heroFacade} alt="" widths={[768, 1280, 1920, 2880]} sizes="100vw"
+             formats={['avif', 'webp']} loading="eager" fetchpriority="high" decoding="async"
+             class="w-full h-full object-cover" />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/85 to-primary-container/25"></div>
+  <!--
+    The scrim above is horizontal, which is enough on desktop where the copy
+    occupies the left seven columns. At mobile the copy spans the full width and
+    runs over the brighter facade panels, so small screens get an additional flat
+    veil rather than relying on the gradient alone.
+  -->
+  <div class="absolute inset-0 bg-primary-container/55 md:hidden" aria-hidden="true"></div>
   <div class="container mx-auto px-6 lg:px-10 relative z-10 grid md:grid-cols-12 gap-8 py-20">
     <div class="md:col-span-8 lg:col-span-7">
       <p class="text-amber-200/70 text-[11px] font-bold uppercase tracking-[0.3em] mb-6">Institutional Alternative Investments</p>

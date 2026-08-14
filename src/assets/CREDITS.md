@@ -1,7 +1,11 @@
 # Image provenance
 
-Every file in this directory is self-hosted and licensed. Nothing here is hot-linked,
-and nothing is AI Studio / Stitch scratch output.
+Every file in this directory is self-hosted. Nothing here is hot-linked, and nothing is
+AI Studio / Stitch scratch output.
+
+> ⚠️ **`hero-facade.jpg` has no licence recorded.** It is the one file in this directory
+> whose rights are unverified — see its entry below. Everything else is Pexels-licensed or
+> owned by the firm.
 
 The seven images this replaced were hot-linked `lh3.googleusercontent.com` scratch URLs left
 behind by the original design export — unlicensed, third-party-hosted, and every one hard
@@ -45,6 +49,29 @@ verification grep for it across `src/` and `dist/` keeps returning clean.)
 - 640 px is the ceiling, so 2× sharpness in the 416 × 520 box is unreachable. Rather than
   upscale, the plate frames the black seamless as deliberate. The subject is **not** keyed
   or cut out — that would destroy hairline detail.
+
+## hero-facade.jpg — 2880 × 1620
+
+- **Source:** supplied by the site owner. The file arrived as
+  `rijn-tower-arnhem-netherlands-gelderland-glass-building-3840x2160-2875.jpg`, which
+  depicts the Rijn Tower in Arnhem, Netherlands. Original 3840 × 2160.
+- **Licence: NOT VERIFIED.** No licence, photographer or source URL was supplied, and the
+  filename pattern (`…-3840x2160-2875.jpg`) is characteristic of a wallpaper aggregator
+  rather than a stock library with a commercial licence. **This needs confirming before
+  the site is treated as cleared**, because it is the most prominent image on a commercial
+  financial-services site. If it cannot be cleared, the Pexels route used for
+  `partner-hero.jpg` will find an equivalent facade in minutes.
+- **Processing:** resized to 2880 × 1620 — 2× the ~1440 × 819 hero box. 16:9 matches the
+  source aspect exactly, so `object-cover` discards nothing at export. No duotone; see
+  below.
+- **On the palette.** The audit's objection to the *previous* hero photograph was twofold:
+  it was a 512 px source stretched 2.81×, and its cool high-chroma blue fought the warm
+  amber accent. The first objection is fully answered — this source is 3840 px and is
+  sharp at 2×. The second is not, on the file itself: sampled at 80 × 45, it is 96 %
+  cool-dominant and 0 % warm-dominant. It is reconciled in the composition instead, by the
+  navy scrim in front of it, which is why the rendered hero reads navy rather than cyan. A
+  duotone onto `#0f1c2c` / `#ffdea5` — the treatment used on `partner-hero.jpg` — remains
+  available if the raw blue is ever judged too loud.
 
 ## Rule
 
