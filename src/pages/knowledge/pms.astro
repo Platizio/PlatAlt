@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import EditorialVisual from '../../components/EditorialVisual.astro';
 import { PMS_FAQS } from '../../data/faqs';
 import { faqPageNode, articleNode } from '../../data/schema';
 import { SEO } from '../../data/seo';
@@ -44,19 +43,14 @@ import { SEO } from '../../data/seo';
 
   <!-- Hero -->
   <section class="py-16 md:py-24 border-b border-outline-variant/20 mb-16">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-      <div class="md:col-span-7">
-        <span class="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-4 block">Knowledge Centre</span>
-        <h1 class="text-5xl md:text-7xl font-headline text-primary-container leading-tight">
-          Portfolio Management <span class="italic font-light">Services</span>
-        </h1>
-        <p class="mt-6 text-on-surface-variant text-lg leading-relaxed max-w-xl">
-          A comprehensive guide to Portfolio Management Services — the institutional-grade investment vehicle for sophisticated individual capital allocators.
-        </p>
-      </div>
-      <div class="md:col-span-5 hidden md:block">
-        <EditorialVisual icon="analytics" ratio="aspect-square" tone="light" />
-      </div>
+    <div class="max-w-3xl">
+      <span class="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-4 block">Knowledge Centre</span>
+      <h1 class="text-5xl md:text-7xl font-headline text-primary-container leading-tight">
+        Portfolio Management <span class="italic font-light">Services</span>
+      </h1>
+      <p class="mt-6 text-on-surface-variant text-lg leading-relaxed max-w-xl">
+        A comprehensive guide to Portfolio Management Services — the institutional-grade investment vehicle for sophisticated individual capital allocators.
+      </p>
     </div>
   </section>
 
