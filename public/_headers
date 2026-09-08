@@ -1,0 +1,88 @@
+# Response headers, in the Netlify / Cloudflare Pages `_headers` format.
+#
+# Header support is entirely the host's. Netlify and Cloudflare Pages read this
+# file; plain S3, nginx and GitHub Pages do not, and simply serve it as one more
+# static asset. public/ is copied verbatim into dist/, so it ships on every
+# build either way — which means its presence in the repo proves nothing about
+# whether the live site sends these. Check the response headers in DevTools
+# after a deploy rather than assuming this took.
+#
+# Why each of the four, and why each is safe to ship without testing:
+#
+#   X-Content-Type-Options: nosniff
+#     Stops a browser second-guessing a declared Content-Type. Everything here
+#     is a static asset served with the type the host derived from its
+#     extension, so nothing on the site depends on sniffing.
+#
+#   Referrer-Policy: strict-origin-when-cross-origin
+#     Every page pulls Google Fonts, and / and /media embed youtube-nocookie.
+#     Under the browser default those third parties are handed the full URL,
+#     which on this site names the exact fund, AMC or SEBI category page a
+#     visitor was reading. They get the bare origin instead; same-origin
+#     requests still carry the full URL, so nothing internal changes.
+#
+#   X-Frame-Options: DENY
+#     Nobody may put this site in a frame. The four forms collect name, phone,
+#     city and ARN — exactly what a clickjacking overlay exists to harvest.
+#     This governs who may frame us, not whom we may frame: the
+#     youtube-nocookie iframes on / and /media are unaffected.
+#
+#   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+#     No page asks for a camera, a microphone or a location. Denying them now
+#     means a third-party script added later cannot quietly start asking.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+
+# ---------------------------------------------------------------------------
+# Content-Security-Policy — deliberately NOT enabled, and NOT verified.
+#
+# The draft below is a starting point, not a working policy. It has never been
+# served and has never been tested against a real page load. Do not uncomment it
+# until someone has loaded every route with it in report-only mode
+# (Content-Security-Policy-Report-Only) and read the console. A CSP that breaks
+# this site is worse than no CSP: it fails closed and silently, and the first
+# symptom is a dead lead form.
+#
+# What a working policy has to allow. Verified against the source on 2026-09-08;
+# file names rather than line numbers, because these files move.
+#
+#   'unsafe-inline' for scripts — src/layouts/BaseLayout.astro and five pages
+#     (pages/index, pages/explore, pages/compare, pages/amc/index,
+#     pages/funds/venture-capital) use <script is:inline>, and BaseLayout emits
+#     the JSON-LD graph as <script type="application/ld+json">. None of them
+#     carry a nonce or a hash, so a policy without 'unsafe-inline' kills the
+#     nav, the explore filters, the comparison table and the structured data at
+#     once. Moving to nonces means changing how those blocks are emitted — real
+#     work, not a header edit.
+#
+#   'unsafe-inline' for styles — nine source files use style="..." attributes
+#     (the material-symbols font-variation-settings overrides among them), and
+#     BaseLayout.astro ships a <noscript><style> block for the icon font.
+#
+#   https://fonts.googleapis.com in style-src — the two stylesheet <link>s in
+#     BaseLayout.astro: Cormorant Garamond / Manrope / Newsreader, and Material
+#     Symbols Outlined.
+#
+#   https://fonts.gstatic.com in font-src — the font files those two
+#     stylesheets then request.
+#
+#   https://api.web3forms.com in connect-src — where all four forms deliver;
+#     see SITE.form.endpoint in src/config/site.ts. Every form posts by fetch()
+#     from public/site-interactive.js and no <form> in src/ carries an action
+#     attribute, so this belongs in connect-src and form-action stays 'self'.
+#
+#   https://www.youtube-nocookie.com in frame-src — the playlist embeds on
+#     src/pages/index.astro and src/pages/media.astro.
+#
+# Draft, untested:
+#
+# /*
+#   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://api.web3forms.com; frame-src https://www.youtube-nocookie.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+#
+# img-src omits data: because the build emits no data: URIs today — Astro writes
+# every processed image to /_astro/. Re-check that before enabling; an inlined
+# image would fail closed with nothing but a console line to show for it.
