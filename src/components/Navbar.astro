@@ -30,9 +30,9 @@ const isSection = (section: string) => currentPage.startsWith(section);
 
       <!-- Products Dropdown -->
       <div class="nav-item relative group px-1">
-        <button class={`flex items-center gap-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isSection('products') || isSection('funds') || isActive('explore') || isActive('compare') || isActive('amc') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
+        <button type="button" aria-haspopup="true" aria-expanded="false" class={`flex items-center gap-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isSection('products') || isSection('funds') || isActive('explore') || isActive('compare') || isActive('amc') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
           Products
-          <span class="material-symbols-outlined text-sm">expand_more</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-sm">expand_more</span>
         </button>
         <div class="nav-dropdown hidden group-hover:block pt-2">
           <div class="bg-white border border-slate-200 shadow-2xl min-w-[820px] grid grid-cols-4 gap-0">
@@ -40,9 +40,9 @@ const isSection = (section: string) => currentPage.startsWith(section);
             <div class="p-6 border-r border-slate-200">
               <p class="text-brand-orange/70 text-[9px] font-bold uppercase tracking-widest mb-4">Tools</p>
               <ul class="space-y-2">
-                <li><a href="/explore" class="flex items-center gap-2 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors"><span class="material-symbols-outlined text-sm">search</span>Fund Explorer</a></li>
-                <li><a href="/compare" class="flex items-center gap-2 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors"><span class="material-symbols-outlined text-sm">compare_arrows</span>Compare Funds</a></li>
-                <li><a href="/amc" class="flex items-center gap-2 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors"><span class="material-symbols-outlined text-sm">corporate_fare</span>AMC Directory</a></li>
+                <li><a href="/explore" class="flex items-center gap-2 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors"><span aria-hidden="true" class="material-symbols-outlined text-sm">search</span>Fund Explorer</a></li>
+                <li><a href="/compare" class="flex items-center gap-2 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors"><span aria-hidden="true" class="material-symbols-outlined text-sm">compare_arrows</span>Compare Funds</a></li>
+                <li><a href="/amc" class="flex items-center gap-2 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors"><span aria-hidden="true" class="material-symbols-outlined text-sm">corporate_fare</span>AMC Directory</a></li>
               </ul>
             </div>
             <!-- Cat I AIF -->
@@ -85,18 +85,18 @@ const isSection = (section: string) => currentPage.startsWith(section);
 
       <!-- Knowledge Dropdown -->
       <div class="nav-item relative group px-1">
-        <button class={`flex items-center gap-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isSection('knowledge') || isActive('media') || isActive('gift-city') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
+        <button type="button" aria-haspopup="true" aria-expanded="false" class={`flex items-center gap-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isSection('knowledge') || isActive('media') || isActive('gift-city') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
           Knowledge
-          <span class="material-symbols-outlined text-sm">expand_more</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-sm">expand_more</span>
         </button>
         <div class="nav-dropdown hidden group-hover:block pt-2">
           <div class="bg-white border border-slate-200 shadow-2xl min-w-[280px]">
             <div class="p-6 space-y-2">
               <a href="/knowledge/aif" class="flex items-center gap-3 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-100">
-                <span class="material-symbols-outlined text-sm">school</span> AIF Knowledge Center
+                <span aria-hidden="true" class="material-symbols-outlined text-sm">school</span> AIF Knowledge Center
               </a>
               <a href="/knowledge/pms" class="flex items-center gap-3 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-100">
-                <span class="material-symbols-outlined text-sm">analytics</span> PMS Knowledge Centre
+                <span aria-hidden="true" class="material-symbols-outlined text-sm">analytics</span> PMS Knowledge Centre
               </a>
               <!-- PMS mandate spokes. The AIF children have been reachable from
                    this menu on every page for a while; the PMS side had no
@@ -107,19 +107,19 @@ const isSection = (section: string) => currentPage.startsWith(section);
                 </a>
               ))}
               <a href="/knowledge/aif-comparison" class="flex items-center gap-3 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-100">
-                <span class="material-symbols-outlined text-sm">compare</span> AIF Comparison
+                <span aria-hidden="true" class="material-symbols-outlined text-sm">compare</span> AIF Comparison
               </a>
               <a href="/knowledge/pms-vs-aif-vs-mutual-fund" class="flex items-center gap-3 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-100">
-                <span class="material-symbols-outlined text-sm">balance</span> PMS vs AIF vs Mutual Fund
+                <span aria-hidden="true" class="material-symbols-outlined text-sm">balance</span> PMS vs AIF vs Mutual Fund
               </a>
               <a href="/knowledge/aif-taxation" class="flex items-center gap-3 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-100">
-                <span class="material-symbols-outlined text-sm">receipt_long</span> AIF Taxation
+                <span aria-hidden="true" class="material-symbols-outlined text-sm">receipt_long</span> AIF Taxation
               </a>
               <a href="/media" class="flex items-center gap-3 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-100">
-                <span class="material-symbols-outlined text-sm">article</span> Market Insights
+                <span aria-hidden="true" class="material-symbols-outlined text-sm">article</span> Market Insights
               </a>
               <a href="/gift-city" class="flex items-center gap-3 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors py-1.5">
-                <span class="material-symbols-outlined text-sm">location_city</span> GIFT City IFSC
+                <span aria-hidden="true" class="material-symbols-outlined text-sm">location_city</span> GIFT City IFSC
               </a>
             </div>
           </div>
@@ -152,8 +152,8 @@ const isSection = (section: string) => currentPage.startsWith(section);
         Consult
       </button>
       <!-- Mobile Hamburger -->
-      <button id="mobile-menu-btn" class="lg:hidden text-brand-navy p-1" aria-label="Menu">
-        <span class="material-symbols-outlined">menu</span>
+      <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden text-brand-navy p-1" aria-label="Menu">
+        <span aria-hidden="true" class="material-symbols-outlined">menu</span>
       </button>
     </div>
   </div>
@@ -179,6 +179,26 @@ const isSection = (section: string) => currentPage.startsWith(section);
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   btn?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
+    const open = menu?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  /*
+   * The Products and Knowledge menus are opened by CSS — :hover on .nav-item
+   * and, for keyboard users, :focus-within (see global.css). Because nothing
+   * in JS opened them, the trigger's aria-expanded would have been a static
+   * lie. This mirrors the CSS state onto the attribute so it stays true.
+   */
+  document.querySelectorAll('.nav-item').forEach((item) => {
+    const trigger = item.querySelector('button');
+    if (!trigger) return;
+    const sync = (open) => trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    item.addEventListener('mouseenter', () => sync(true));
+    item.addEventListener('mouseleave', () => sync(item.contains(document.activeElement)));
+    item.addEventListener('focusin', () => sync(true));
+    item.addEventListener('focusout', () => {
+      /* focusout fires before focus lands, so check on the next tick. */
+      setTimeout(() => sync(item.contains(document.activeElement)), 0);
+    });
   });
 </script>

@@ -34,7 +34,7 @@ const funds = getAllFunds().filter((f) => f.sub_strategy === sub);
           <span class="text-[10px] uppercase tracking-widest font-bold text-secondary block mb-2">{f.amc}</span>
           <h3 class="font-headline text-xl text-primary-container mb-2">{f.name}</h3>
           {f.reg_no && (
-            <span class="text-[11px] text-outline block mb-1">Reg. no. {f.reg_no}</span>
+            <span class="text-[11px] text-muted block mb-1">Reg. no. {f.reg_no}</span>
           )}
           {f.min_investment && (
             <span class="text-xs text-on-surface-variant">Minimum {f.min_investment}</span>
