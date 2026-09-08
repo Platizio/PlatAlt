@@ -47,6 +47,82 @@
     try { window[store].setItem(key, value); } catch (e) { /* non-fatal */ }
   }
 
+
+  /* -------------------------------------------------------------------------
+   * MODAL FOCUS MANAGEMENT
+   *
+   * Every dialog here declares role="dialog" aria-modal="true", which is a
+   * promise to assistive technology that the rest of the page is unavailable
+   * while it is open. Nothing enforced that promise: Tab from the last field
+   * walked straight out into the page behind the overlay, the background
+   * stayed reachable, and closing left focus on a display:none input, which
+   * browsers reset to <body> - so a keyboard user lost their place entirely.
+   *
+   * Three things close that gap, in one place rather than in each of the four
+   * open/close pairs:
+   *   1. the background is made inert while any dialog is open,
+   *   2. Tab and Shift+Tab cycle within the topmost dialog,
+   *   3. focus returns to whatever opened it.
+   * ---------------------------------------------------------------------- */
+
+  var openModals   = [];
+  var focusOnClose = null;
+
+  var FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),' +
+                  'select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+
+  /** Visible, focusable descendants - hidden honeypots and closed panels excluded. */
+  function focusables(root) {
+    return qsa(FOCUSABLE, root).filter(function (el) {
+      if (el.type === 'hidden') return false;
+      return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    });
+  }
+
+  /* #site-modals holds every dialog, so everything else under <body> is
+     background. `inert` covers pointer, focus and assistive tech in one
+     attribute; aria-hidden is set alongside it for older engines.
+
+     #site-toast is excluded deliberately. It is the aria-live region that
+     carries the consultation form's own validation messages ("Please select a
+     preferred date…"), which fire while that dialog is open — inerting it
+     would silence exactly the announcements the open dialog depends on. */
+  function setBackgroundInert(on) {
+    Array.prototype.forEach.call(document.body.children, function (el) {
+      if (el.id === 'site-modals' || el.id === 'site-toast') return;
+      if (on) { el.setAttribute('inert', ''); el.setAttribute('aria-hidden', 'true'); }
+      else    { el.removeAttribute('inert'); el.removeAttribute('aria-hidden'); }
+    });
+  }
+
+  function openModal(modal, firstFocus) {
+    if (!modal || openModals.indexOf(modal) !== -1) return;
+    /* Only the first dialog records the return target: a failure modal opening
+       over a form modal must still send focus back to the original trigger. */
+    if (!openModals.length) focusOnClose = document.activeElement;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('av-modal-open');
+    setBackgroundInert(true);
+    openModals.push(modal);
+    var target = firstFocus || focusables(modal)[0];
+    if (target) setTimeout(function () { target.focus(); }, 50);
+  }
+
+  function closeModal(modal) {
+    if (!modal || openModals.indexOf(modal) === -1) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    openModals = openModals.filter(function (m) { return m !== modal; });
+    if (openModals.length) return;
+    document.body.classList.remove('av-modal-open');
+    setBackgroundInert(false);
+    if (focusOnClose && document.contains(focusOnClose)) {
+      try { focusOnClose.focus(); } catch (e) { /* element went away */ }
+    }
+    focusOnClose = null;
+  }
+
   /* ── Bootstrap ──────────────────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
     injectModals();
@@ -200,19 +276,11 @@
     qs('#formfail-phone-label') && (qs('#formfail-phone-label').textContent = phone);
     qs('#formfail-whatsapp') && (qs('#formfail-whatsapp').href = waHref);
 
-    var modal = qs('#formfail-modal');
-    if (!modal) return;
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('av-modal-open');
+    openModal(qs('#formfail-modal'));
   }
 
   function closeFormFailure() {
-    var modal = qs('#formfail-modal');
-    if (!modal) return;
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('av-modal-open');
+    closeModal(qs('#formfail-modal'));
   }
 
   /* ─────────────────────────────────────────────────────────────────────────
@@ -287,7 +355,7 @@
             '<div class="av-field av-field--full">',
               '<button class="av-btn-submit" type="submit">',
                 'Submit Enquiry',
-                '<span class="material-symbols-outlined">arrow_forward</span>',
+                '<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>',
               '</button>',
             '</div>',
           '</form>',
@@ -300,7 +368,7 @@
         '<div class="av-modal-card av-consultation-card">',
           '<button class="av-modal-close" id="consultation-modal-close" type="button" aria-label="Close">&times;</button>',
           '<div class="av-consultation-header">',
-            '<span class="material-symbols-outlined av-consultation-icon">calendar_month</span>',
+            '<span aria-hidden="true" class="material-symbols-outlined av-consultation-icon">calendar_month</span>',
             '<h2 id="cm-title">Book A Call &amp; Get Expert Investment Guidance</h2>',
             '<p>Choose a time that works for you and our advisors will connect with you personally.</p>',
           '</div>',
@@ -338,7 +406,7 @@
             '</label>',
             '<div class="av-consultation-actions">',
               '<button class="av-consultation-submit" type="submit">',
-                '<span class="material-symbols-outlined">event_available</span>',
+                '<span aria-hidden="true" class="material-symbols-outlined">event_available</span>',
                 'Confirm Booking',
               '</button>',
             '</div>',
@@ -354,7 +422,7 @@
         '<div class="av-modal-card av-thankyou-card">',
           '<button class="av-modal-close" id="thankyou-close" type="button" aria-label="Close">&times;</button>',
           '<div class="av-thankyou-icon">',
-            '<span class="material-symbols-outlined">check_circle</span>',
+            '<span aria-hidden="true" class="material-symbols-outlined">check_circle</span>',
           '</div>',
           '<h2 class="av-thankyou-title">Thank You</h2>',
           '<p class="av-thankyou-message" id="thankyou-message">We have received your details and will be in touch shortly.</p>',
@@ -371,17 +439,17 @@
         '<div class="av-modal-card av-thankyou-card">',
           '<button class="av-modal-close" id="formfail-close" type="button" aria-label="Close">&times;</button>',
           '<div class="av-thankyou-icon av-failure-icon">',
-            '<span class="material-symbols-outlined">error</span>',
+            '<span aria-hidden="true" class="material-symbols-outlined">error</span>',
           '</div>',
           '<h2 class="av-thankyou-title" id="ff-title">We could not send that</h2>',
           '<p class="av-thankyou-message">Your details are still in the form behind this message, so nothing is lost — close this and try again. If it keeps failing, reach us directly and we will pick it up from there.</p>',
           '<div class="av-failure-actions">',
             '<a class="av-failure-btn" id="formfail-phone" href="tel:">',
-              '<span class="material-symbols-outlined">call</span>',
+              '<span aria-hidden="true" class="material-symbols-outlined">call</span>',
               '<span id="formfail-phone-label"></span>',
             '</a>',
             '<a class="av-failure-btn av-failure-btn--wa" id="formfail-whatsapp" href="#" target="_blank" rel="noopener">',
-              '<span class="material-symbols-outlined">chat</span>',
+              '<span aria-hidden="true" class="material-symbols-outlined">chat</span>',
               'Send on WhatsApp',
             '</a>',
           '</div>',
@@ -403,7 +471,7 @@
     if (!qs('#scroll-to-top')) {
       document.body.insertAdjacentHTML('beforeend',
         '<button id="scroll-to-top" class="av-scroll-top" type="button" aria-label="Back to top" title="Back to top">' +
-          '<span class="material-symbols-outlined">keyboard_arrow_up</span>' +
+          '<span aria-hidden="true" class="material-symbols-outlined">keyboard_arrow_up</span>' +
         '</button>'
       );
     }
@@ -457,13 +525,28 @@
       if (e.target === qs('#formfail-modal')) closeFormFailure();
     });
 
-    /* Escape key closes any open modal */
+    /* Escape closes the topmost dialog; Tab cycles within it. */
     document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape') return;
-      closeFormFailure();
-      closeInvestorModal();
-      closeConsultationModal();
-      closeThankYouModal();
+      if (e.key === 'Escape') {
+        closeFormFailure();
+        closeInvestorModal();
+        closeConsultationModal();
+        closeThankYouModal();
+        return;
+      }
+      if (e.key !== 'Tab' || !openModals.length) return;
+      var modal = openModals[openModals.length - 1];
+      var items = focusables(modal);
+      if (!items.length) return;
+      var first = items[0];
+      var last  = items[items.length - 1];
+      if (!modal.contains(document.activeElement)) {
+        e.preventDefault(); first.focus();
+      } else if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
     });
 
     /* Scroll to top */
@@ -491,19 +574,11 @@
       var inp = qs('#investor-amc');
       if (inp) inp.value = prefill.interestDetail;
     }
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('av-modal-open');
-    var firstInput = qs('input', modal);
-    if (firstInput) setTimeout(function () { firstInput.focus(); }, 100);
+    openModal(modal, qs('input', modal));
   }
 
   function closeInvestorModal() {
-    var modal = qs('#investor-modal');
-    if (!modal) return;
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('av-modal-open');
+    closeModal(qs('#investor-modal'));
   }
 
   function handleInvestorSubmit(e) {
@@ -553,7 +628,7 @@
       if (!host) return;
       host.innerHTML = options.map(function (opt) {
         var active = (activeVal === opt.value) ? ' is-active' : '';
-        var iconHtml = opt.icon ? '<span class="material-symbols-outlined">' + opt.icon + '</span>' : '';
+        var iconHtml = opt.icon ? '<span aria-hidden="true" class="material-symbols-outlined">' + opt.icon + '</span>' : '';
         var bodyHtml = opt.day
           ? '<span class="av-day">' + opt.day + '</span><strong>' + opt.date + '</strong><span class="av-month">' + opt.month + '</span>'
           : '<span>' + escAttr(opt.label || opt.value) + '</span>';
@@ -581,23 +656,50 @@
     if (storeGet('localStorage', CONSULTATION_HIDDEN_KEY) === 'true' ||
         storeGet('sessionStorage', CONSULTATION_SESSION_KEY) === 'true') return;
 
-    function startTimer() {
-      clearTimeout(popupTimer);
-      if (document.hidden) return;
-      if (storeGet('sessionStorage', CONSULTATION_SESSION_KEY) === 'true') return;
-      if (storeGet('localStorage', CONSULTATION_HIDDEN_KEY) === 'true') return;
-      popupTimer = setTimeout(function () {
-        if (!document.hidden) openConsultationModal();
-      }, CONSULTATION_DELAY_MS);
+    /* 90 seconds of *visible* time on the page, which is what this file has
+       always claimed at the top.
+
+       It did not do that. startTimer() was bound to mousemove, mousedown,
+       keydown, touchstart and scroll, and every one of those cleared the
+       pending timeout and started a fresh 90 seconds — so it was an idle
+       timer. A reader who kept scrolling never saw the popup at all, and it
+       only fired once someone had stopped interacting, which is close to the
+       opposite of the intent. Those five listeners also ran the whole body of
+       startTimer on every mousemove: two guarded Storage reads plus a
+       clearTimeout and a setTimeout, 60-120 times a second while the mouse
+       moved.
+
+       Elapsed time is tracked across visibility changes instead, so a tab left
+       in the background does not age toward the trigger. */
+    var elapsedMs = 0;
+    var runningSince = null;
+
+    function suppressed() {
+      return storeGet('sessionStorage', CONSULTATION_SESSION_KEY) === 'true' ||
+             storeGet('localStorage', CONSULTATION_HIDDEN_KEY) === 'true';
     }
 
-    ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll'].forEach(function (evt) {
-      window.addEventListener(evt, startTimer, { passive: true, once: false });
-    });
+    function resumeCountdown() {
+      if (document.hidden || suppressed()) return;
+      clearTimeout(popupTimer);
+      runningSince = Date.now();
+      popupTimer = setTimeout(function () {
+        if (!document.hidden && !suppressed()) openConsultationModal();
+      }, Math.max(0, CONSULTATION_DELAY_MS - elapsedMs));
+    }
+
+    function pauseCountdown() {
+      clearTimeout(popupTimer);
+      if (runningSince !== null) {
+        elapsedMs += Date.now() - runningSince;
+        runningSince = null;
+      }
+    }
+
     document.addEventListener('visibilitychange', function () {
-      document.hidden ? clearTimeout(popupTimer) : startTimer();
+      document.hidden ? pauseCountdown() : resumeCountdown();
     });
-    startTimer();
+    resumeCountdown();
   }
 
   function buildDates() {
@@ -615,18 +717,12 @@
     var modal = qs('#consultation-modal');
     if (!modal) return;
     if (modal._av_render) modal._av_render();
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('av-modal-open');
+    openModal(modal);
     storeSet('sessionStorage', CONSULTATION_SESSION_KEY, 'true');
   }
 
   function closeConsultationModal() {
-    var modal = qs('#consultation-modal');
-    if (!modal) return;
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('av-modal-open');
+    closeModal(qs('#consultation-modal'));
   }
 
   function handleConsultationSubmit(e) {
@@ -723,17 +819,11 @@
     var msgEl = qs('#thankyou-message');
     if (!modal) return;
     if (msgEl && message) msgEl.textContent = message;
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('av-modal-open');
+    openModal(modal, qs('#thankyou-dismiss'));
   }
 
   function closeThankYouModal() {
-    var modal = qs('#thankyou-modal');
-    if (!modal) return;
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('av-modal-open');
+    closeModal(qs('#thankyou-modal'));
   }
 
   /* ─────────────────────────────────────────────────────────────────────────
