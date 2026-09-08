@@ -32,18 +32,18 @@ const fundDataJson = JSON.stringify(compareData);
         </p>
       </div>
       <div class="flex items-center gap-3 shrink-0">
-        <button id="clear-compare-btn" class="hidden items-center gap-2 border border-outline-variant px-5 py-3 text-[11px] uppercase font-bold tracking-widest text-on-surface-variant hover:border-secondary hover:text-secondary transition-all">
-          <span class="material-symbols-outlined text-base">delete_sweep</span>
+        <button type="button" id="clear-compare-btn" class="hidden items-center gap-2 border border-outline-variant px-5 py-3 text-[11px] uppercase font-bold tracking-widest text-on-surface-variant hover:border-secondary hover:text-secondary transition-all">
+          <span aria-hidden="true" class="material-symbols-outlined text-base">delete_sweep</span>
           Clear Selection
         </button>
         <a href="/explore" class="inline-flex items-center gap-2 border border-outline px-6 py-3 text-[11px] uppercase font-bold tracking-widest text-primary-container hover:bg-primary-container hover:text-white transition-all">
-          <span class="material-symbols-outlined text-base">add</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-base">add</span>
           Add Funds from Explorer
         </a>
       </div>
     </div>
-    <p class="mt-6 text-xs text-outline bg-surface-container-low border border-outline-variant/30 px-4 py-3 inline-flex items-center gap-2">
-      <span class="material-symbols-outlined text-sm">info</span>
+    <p class="mt-6 text-xs text-muted bg-surface-container-low border border-outline-variant/30 px-4 py-3 inline-flex items-center gap-2">
+      <span aria-hidden="true" class="material-symbols-outlined text-sm">info</span>
       Visit <a href="/explore" class="underline underline-offset-2 hover:text-secondary transition-colors">/explore</a>, click Compare on up to 3 funds, then click "Compare Now".
     </p>
   </section>
@@ -53,11 +53,11 @@ const fundDataJson = JSON.stringify(compareData);
 
     <!-- Empty State -->
     <div id="compare-empty" class="hidden text-center py-28 border border-outline-variant/20">
-      <span class="material-symbols-outlined text-6xl text-outline block mb-5">compare_arrows</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-6xl text-muted block mb-5">compare_arrows</span>
       <h2 class="font-headline text-3xl text-primary-container mb-3">No funds selected yet</h2>
       <p class="text-sm text-on-surface-variant mb-8 max-w-md mx-auto leading-relaxed">Browse the Fund Explorer, click <strong class="text-primary-container">Compare</strong> on up to 3 funds, then hit <strong class="text-primary-container">Compare Now</strong> to see them here side-by-side.</p>
       <a href="/explore" class="inline-flex items-center gap-2 bg-primary-container text-white px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:bg-secondary transition-colors">
-        <span class="material-symbols-outlined text-base">search</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-base">search</span>
         Browse All Funds
       </a>
     </div>
@@ -74,7 +74,7 @@ const fundDataJson = JSON.stringify(compareData);
     <p class="text-sm text-on-surface-variant">Looking for more funds? Explore the full product universe.</p>
     <div class="flex gap-4">
       <a href="/explore" class="inline-flex items-center gap-2 border border-outline px-6 py-3 text-[11px] uppercase font-bold tracking-widest hover:bg-surface-container transition-colors">
-        <span class="material-symbols-outlined text-sm">explore</span> Browse All Funds
+        <span aria-hidden="true" class="material-symbols-outlined text-sm">explore</span> Browse All Funds
       </a>
       <a href="/partner" class="inline-flex items-center gap-2 bg-primary-container text-white px-6 py-3 text-[11px] uppercase font-bold tracking-widest hover:bg-secondary transition-colors">
         Speak to an Advisor
@@ -148,7 +148,7 @@ const fundDataJson = JSON.stringify(compareData);
   /* ── Build thead ─────────────────────────────────────────────── */
   var thead = document.createElement('thead');
   var headerRow = '<tr>';
-  headerRow += '<th class="text-left py-6 px-6 text-[10px] uppercase tracking-widest font-bold text-outline bg-surface-container-low w-44 align-bottom">Attribute</th>';
+  headerRow += '<th class="text-left py-6 px-6 text-[10px] uppercase tracking-widest font-bold text-muted bg-surface-container-low w-44 align-bottom">Attribute</th>';
 
   funds.forEach(function (fund) {
     var clr = COLORS[fund.type] || COLORS['PMS'];
@@ -174,7 +174,7 @@ const fundDataJson = JSON.stringify(compareData);
     var tr = document.createElement('tr');
     tr.className = 'border-b border-outline-variant/10 ' + (i % 2 === 0 ? 'bg-surface-container-lowest' : 'bg-surface');
 
-    var html = '<td class="py-5 px-6 text-[11px] uppercase tracking-widest font-bold text-outline bg-surface-container-low align-top pt-6">' + row.label + '</td>';
+    var html = '<td class="py-5 px-6 text-[11px] uppercase tracking-widest font-bold text-muted bg-surface-container-low align-top pt-6">' + row.label + '</td>';
 
     funds.forEach(function (fund, fi) {
       var val;

@@ -7,9 +7,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <!-- Breadcrumb -->
   <div class="flex items-center gap-2 text-secondary mb-8 pt-4 flex-wrap">
     <a href="/knowledge/aif" class="text-xs uppercase tracking-[0.2em] font-label hover:text-primary-container transition-colors">AIF Knowledge</a>
-    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-[12px]">chevron_right</span>
     <span class="text-xs uppercase tracking-[0.2em] font-label text-secondary">Cat II AIF</span>
-    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-[12px]">chevron_right</span>
     <span class="text-xs uppercase tracking-[0.2em] font-label text-on-surface">Real Estate</span>
   </div>
 
@@ -35,23 +35,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">apartment</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Focus</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">apartment</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Focus</h3>
           <p class="text-sm font-semibold">Income + Growth</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h3>
           <p class="text-sm font-semibold">Medium–High</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">payments</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">payments</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h3>
           <p class="text-sm font-semibold">&#8377;1 Crore</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">schedule</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Tenure</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">schedule</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Tenure</h3>
           <p class="text-sm font-semibold">5&ndash;8 Years</p>
         </div>
       </div>
@@ -70,7 +70,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         { icon: 'home_work', title: 'Residential Development', desc: 'Mid to premium residential projects in high-demand micro-markets with strong absorption rates.' },
       ].map(s => (
         <div class="bg-surface-container-lowest p-6 border-b-2 border-transparent hover:border-tertiary-fixed transition-all">
-          <span class="material-symbols-outlined text-secondary text-3xl mb-4 block">{s.icon}</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary text-3xl mb-4 block">{s.icon}</span>
           <h3 class="font-headline text-xl mb-3">{s.title}</h3>
           <p class="text-on-surface-variant text-sm leading-relaxed">{s.desc}</p>
         </div>
@@ -90,7 +90,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         { title: 'Leverage Benefits', desc: 'Prudent use of debt financing (LTV 50–60%) amplifies equity returns while asset collateral provides downside protection.' },
       ].map(b => (
         <div class="border-l-2 border-secondary pl-6">
-          <h4 class="font-headline text-lg mb-2">{b.title}</h4>
+          <h3 class="font-headline text-lg mb-2">{b.title}</h3>
           <p class="text-sm opacity-80 leading-relaxed">{b.desc}</p>
         </div>
       ))}

@@ -18,10 +18,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
         <div class="flex flex-wrap gap-4 mt-8">
           <span class="inline-flex items-center gap-2 px-4 py-2 bg-surface-container text-[11px] uppercase font-bold tracking-widest text-on-surface-variant">
-            <span class="material-symbols-outlined text-sm text-tertiary-fixed-dim">location_on</span> GIFT SEZ, Gandhinagar
+            <span aria-hidden="true" class="material-symbols-outlined text-sm text-tertiary-fixed-dim">location_on</span> GIFT SEZ, Gandhinagar
           </span>
           <span class="inline-flex items-center gap-2 px-4 py-2 bg-surface-container text-[11px] uppercase font-bold tracking-widest text-on-surface-variant">
-            <span class="material-symbols-outlined text-sm text-tertiary-fixed-dim">gavel</span> IFSCA Regulated
+            <span aria-hidden="true" class="material-symbols-outlined text-sm text-tertiary-fixed-dim">gavel</span> IFSCA Regulated
           </span>
         </div>
       </div>
@@ -66,7 +66,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           { icon: 'domain', title: 'World-Class Infrastructure', desc: 'State-of-the-art physical and digital infrastructure with 24×7 operations, data centers, and global connectivity.' },
         ].map(item => (
           <div class="bg-surface-container-low p-6 border-l-2 border-secondary/40">
-            <span class="material-symbols-outlined text-secondary text-2xl mb-4 block">{item.icon}</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-secondary text-2xl mb-4 block">{item.icon}</span>
             <h3 class="font-semibold text-primary-container text-base mb-2">{item.title}</h3>
             <p class="text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>
           </div>
@@ -90,7 +90,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       ].map(item => (
         <div class="bg-surface-container-lowest p-6 flex flex-col">
           <div class="w-12 h-12 bg-primary-container/5 flex items-center justify-center mb-4">
-            <span class="material-symbols-outlined text-primary-container text-2xl">{item.icon}</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-primary-container text-2xl">{item.icon}</span>
           </div>
           <span class="text-[10px] px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed uppercase font-bold tracking-widest inline-block w-fit mb-3">{item.badge}</span>
           <h3 class="font-semibold text-primary-container text-base mb-2">{item.title}</h3>
@@ -126,7 +126,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <ul class="space-y-3">
             {group.items.map(item => (
               <li class="flex items-center gap-3 text-sm text-on-surface-variant">
-                <span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">check_circle</span>
+                <span aria-hidden="true" class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">check_circle</span>
                 {item}
               </li>
             ))}
@@ -187,13 +187,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         },
       ].map(item => (
         <div class="bg-surface-container-lowest p-8 flex flex-col border border-outline-variant/10">
-          <span class="text-4xl font-headline text-outline-variant/30 mb-6">{item.num}</span>
+          <span class="text-4xl font-headline text-muted-subtle/30 mb-6">{item.num}</span>
           <h3 class="font-headline text-2xl text-primary-container mb-4">{item.title}</h3>
           <p class="text-sm text-on-surface-variant leading-relaxed mb-6 flex-grow">{item.desc}</p>
           <ul class="space-y-2">
             {item.features.map(f => (
               <li class="text-xs text-on-surface-variant flex items-center gap-2">
-                <span class="material-symbols-outlined text-[12px] text-tertiary-fixed-dim">check_circle</span>{f}
+                <span aria-hidden="true" class="material-symbols-outlined text-[12px] text-tertiary-fixed-dim">check_circle</span>{f}
               </li>
             ))}
           </ul>
@@ -207,7 +207,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       of an externally regulated third-party manager. These are fund management activities rather than
       schemes, and are governed by Chapter VI of the regulations.
     </p>
-    <p class="text-[11px] text-outline mt-6 uppercase tracking-widest">
+    <p class="text-[11px] text-muted mt-6 uppercase tracking-widest">
       Figures reflect the IFSCA (Fund Management) Regulations, 2025 as amended to 30 January 2026
     </p>
   </section>
@@ -224,7 +224,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
       <a href="/partner" class="inline-flex items-center gap-3 bg-tertiary-fixed text-on-tertiary-fixed px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:opacity-90 transition-opacity shrink-0">
-        Speak to an Advisor <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        Speak to an Advisor <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
     </div>
   </section>

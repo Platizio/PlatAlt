@@ -82,7 +82,7 @@ const insightLinks = [
       </p>
       <div class="flex flex-wrap gap-4">
         <a href="/explore" class="bg-tertiary-fixed text-on-tertiary-fixed px-10 py-4 font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all flex items-center gap-2">
-          Explore Products <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          Explore Products <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span>
         </a>
         <button type="button" class="js-open-consult border border-slate-500 text-white px-10 py-4 font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-all">
           Book a Consultation
@@ -92,8 +92,22 @@ const insightLinks = [
   </div>
 </section>
 
-<!-- Ticker Strip -->
-<section class="bg-surface-container-low border-y border-outline-variant/10 py-5 overflow-hidden">
+<!--
+  Ticker Strip.
+
+  The rows scroll indefinitely and carry links, so this is moving content
+  presented alongside other content with no natural end — WCAG 2.2.2 wants a
+  way to stop it, and a moving link is awkward to click besides. The control
+  below is that mechanism; the strip also pauses on hover and on focus-within,
+  so tabbing into a link stops the row it is on. prefers-reduced-motion stops
+  it outright — see global.css.
+-->
+<section class="ticker-strip relative bg-surface-container-low border-y border-outline-variant/10 py-5 overflow-hidden">
+  <button type="button" id="ticker-toggle" aria-pressed="false"
+          class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-surface-container-low/95 border border-outline-variant text-muted hover:text-primary-container transition-colors">
+    <span aria-hidden="true" class="material-symbols-outlined text-base" id="ticker-toggle-icon">pause</span>
+    <span class="sr-only" id="ticker-toggle-label">Pause the scrolling fund ticker</span>
+  </button>
   <div class="flex whitespace-nowrap ticker-scroll items-center">
     {[0, 1].map((track) => (
       <div class="flex items-center px-6" aria-hidden={track === 1 ? 'true' : undefined}>
@@ -111,6 +125,24 @@ const insightLinks = [
   </div>
 </section>
 
+<script is:inline>
+  (function () {
+    var strip  = document.querySelector('.ticker-strip');
+    var toggle = document.getElementById('ticker-toggle');
+    var icon   = document.getElementById('ticker-toggle-icon');
+    var label  = document.getElementById('ticker-toggle-label');
+    if (!strip || !toggle) return;
+    toggle.addEventListener('click', function () {
+      var paused = strip.classList.toggle('is-paused');
+      toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      icon.textContent  = paused ? 'play_arrow' : 'pause';
+      label.textContent = paused
+        ? 'Resume the scrolling fund ticker'
+        : 'Pause the scrolling fund ticker';
+    });
+  })();
+</script>
+
 <!-- AIF Category Quick Links -->
 <section class="py-16 px-6 lg:px-10 bg-surface-container-low">
   <div class="max-w-7xl mx-auto">
@@ -120,7 +152,7 @@ const insightLinks = [
         <h2 class="text-3xl md:text-4xl">AIF <span class="italic">Categories</span></h2>
       </div>
       <a href="/knowledge/aif" class="text-[11px] font-bold uppercase tracking-widest text-secondary hover:text-primary flex items-center gap-1 transition-colors">
-        View Knowledge Center <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        View Knowledge Center <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
@@ -144,7 +176,7 @@ const insightLinks = [
         { sub: 'distressed-assets', label: 'Distressed Assets', icon: 'credit_card' },
       ].map(c => ({ ...c, href: termOf(c.sub)?.path ?? '/knowledge/aif' })).map(cat => (
         <a href={cat.href} class="bg-surface-container-lowest p-5 flex flex-col items-center text-center gap-3 hover:bg-white hover:shadow-md transition-all group border border-transparent hover:border-outline-variant/20">
-          <span class="material-symbols-outlined text-secondary group-hover:text-primary-container transition-colors">{cat.icon}</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary group-hover:text-primary-container transition-colors">{cat.icon}</span>
           <span class="text-sm font-bold uppercase tracking-wide text-on-surface">{cat.label}</span>
         </a>
       ))}
@@ -170,7 +202,7 @@ const insightLinks = [
       ].map(step => (
         <div class="flex gap-8 group">
           <div class="flex-shrink-0 w-16 h-16 bg-surface-container-high flex items-center justify-center transition-colors group-hover:bg-primary-container group-hover:text-tertiary-fixed">
-            <span class="material-symbols-outlined text-3xl">{step.icon}</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-3xl">{step.icon}</span>
           </div>
           <div>
             <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">{step.num}. {step.title}</h3>
@@ -211,12 +243,12 @@ const insightLinks = [
                 <span class="block text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">{item.tag}</span>
                 <span class="block text-sm font-bold leading-snug text-on-surface">{item.title}</span>
               </span>
-              <span class="material-symbols-outlined text-base text-secondary group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-base text-secondary group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
             </a>
           ))}
         </div>
         <a href="/media" class="mt-6 inline-flex items-center gap-2 border border-outline text-[11px] font-bold uppercase tracking-widest px-6 py-3 hover:bg-primary-container hover:text-white hover:border-primary-container transition-all w-max">
-          All market insights <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          All market insights <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span>
         </a>
       </div>
     </div>

@@ -14,12 +14,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="bg-surface-container-low p-8 mb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
     <div>
       <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary mb-3">Regulatory Authority</p>
-      <h3 class="font-headline text-2xl text-primary-container mb-1">SEBI</h3>
+      <h2 class="font-headline text-2xl text-primary-container mb-1">SEBI</h2>
       <p class="text-sm text-on-surface-variant">Securities and Exchange Board of India</p>
     </div>
     <div>
       <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary mb-3">Platform Operator</p>
-      <h3 class="font-headline text-2xl text-primary-container mb-1">Platizio Alternatives</h3>
+      <h2 class="font-headline text-2xl text-primary-container mb-1">Platizio Alternatives</h2>
       <p class="text-sm text-on-surface-variant">Platizio Services LLP</p>
     </div>
   </div>
@@ -52,7 +52,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           'Foreign Exchange Management Act, 1999 (FEMA) — For NRI and foreign investor participation',
         ].map(r => (
           <div class="flex items-start gap-3 p-4 bg-surface-container-lowest">
-            <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0">gavel</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0">gavel</span>
             <p class="text-sm">{r}</p>
           </div>
         ))}

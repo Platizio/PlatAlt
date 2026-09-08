@@ -8,11 +8,11 @@ import { STAT } from '../../../../data/aif-facts';
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
   <!-- Breadcrumb -->
-  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20 flex-wrap">
+  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-muted border-b border-outline-variant/20 flex-wrap">
     <a href="/knowledge/aif" class="hover:text-secondary transition-colors">AIF Knowledge</a>
-    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-sm text-muted-subtle">chevron_right</span>
     <a href="/knowledge/aif/category-i" class="hover:text-secondary transition-colors">Category I AIF</a>
-    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-sm text-muted-subtle">chevron_right</span>
     <span class="text-on-surface-variant">SME Funds</span>
   </nav>
 
@@ -44,7 +44,7 @@ import { STAT } from '../../../../data/aif-facts';
               'Manufacturing, services, or export-oriented',
             ].map(item => (
               <li class="text-sm text-on-tertiary-fixed font-medium flex items-start gap-2">
-                <span class="material-symbols-outlined text-[14px] mt-0.5 shrink-0">check_circle</span>{item}
+                <span aria-hidden="true" class="material-symbols-outlined text-[14px] mt-0.5 shrink-0">check_circle</span>{item}
               </li>
             ))}
           </ul>
@@ -61,7 +61,7 @@ import { STAT } from '../../../../data/aif-facts';
         Under Regulation 3(4)(a) of the SEBI (AIF) Regulations, 2012, SME Funds are a Category I AIF sub-category that invests in small and medium enterprises — entities the Government of India classifies as SMEs under the MSMED Act. SEBI recognises these funds as socially and economically desirable, given MSMEs' role in employment and export generation.
       </p>
       <div class="mt-8 pt-8 border-t border-outline-variant/30">
-        <span class="text-[10px] font-bold tracking-widest uppercase text-outline">Governing Regulation</span>
+        <span class="text-[10px] font-bold tracking-widest uppercase text-muted">Governing Regulation</span>
         <p class="font-headline text-lg text-primary-container mt-1">SEBI AIF Regs, 2012 – Reg 3(4)(a)</p>
       </div>
     </div>
@@ -90,7 +90,7 @@ import { STAT } from '../../../../data/aif-facts';
         { icon: 'workspace_premium', title: 'Sector Focus', desc: 'Leading SME AIF managers focus on specific sectors: specialty chemicals, auto ancillaries, pharma API, food processing, technical textiles, and B2B SaaS — where local competitive advantages are strong.' },
       ].map(step => (
         <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
-          <span class="material-symbols-outlined text-tertiary-fixed-dim text-3xl mb-4 block">{step.icon}</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-tertiary-fixed-dim text-3xl mb-4 block">{step.icon}</span>
           <h3 class="font-headline text-xl text-primary-container mb-3">{step.title}</h3>
           <p class="text-sm text-on-surface-variant leading-relaxed">{step.desc}</p>
         </div>
@@ -133,7 +133,7 @@ import { STAT } from '../../../../data/aif-facts';
         { icon: 'trending_down', title: 'Economic Cycle Sensitivity', desc: 'SMEs are more vulnerable to macro shocks — GST changes, raw material price inflation, export demand disruptions — than large-caps. Portfolio companies may face cash flow stress in downturns.' },
       ].map(r => (
         <div class="bg-surface-container-lowest p-8 border border-outline-variant/10 flex gap-4">
-          <span class="material-symbols-outlined text-secondary text-2xl shrink-0 mt-0.5">{r.icon}</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary text-2xl shrink-0 mt-0.5">{r.icon}</span>
           <div>
             <h3 class="font-semibold text-primary-container mb-2">{r.title}</h3>
             <p class="text-sm text-on-surface-variant leading-relaxed">{r.desc}</p>
@@ -152,7 +152,7 @@ import { STAT } from '../../../../data/aif-facts';
     </div>
     <div class="flex flex-col sm:flex-row gap-4 relative z-10">
       <a href="/explore" class="inline-flex items-center gap-2 bg-tertiary-fixed text-on-tertiary-fixed px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:opacity-90 transition-opacity">
-        Browse Funds <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        Browse Funds <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
       <button type="button" class="js-open-consult inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:bg-white/10 transition-colors cursor-pointer">
         Speak to Advisor
@@ -163,11 +163,11 @@ import { STAT } from '../../../../data/aif-facts';
   <!-- Prev / Next -->
   <div class="flex flex-col sm:flex-row gap-4">
     <a href="/knowledge/aif/category-i/social-venture" class="flex-1 border border-outline p-5 hover:border-secondary transition-colors group text-center">
-      <span class="text-[10px] uppercase tracking-widest text-outline block mb-1">Previous</span>
+      <span class="text-[10px] uppercase tracking-widest text-muted block mb-1">Previous</span>
       <span class="font-headline text-lg text-primary-container group-hover:text-secondary transition-colors">Social Venture Funds</span>
     </a>
     <a href="/knowledge/aif/category-ii" class="flex-1 border border-outline p-5 hover:border-secondary transition-colors group text-center">
-      <span class="text-[10px] uppercase tracking-widest text-outline block mb-1">Next</span>
+      <span class="text-[10px] uppercase tracking-widest text-muted block mb-1">Next</span>
       <span class="font-headline text-lg text-primary-container group-hover:text-secondary transition-colors">Category II AIF</span>
     </a>
   </div>

@@ -79,7 +79,7 @@ import { SEO } from '../../data/seo';
             { icon: 'manage_accounts', title: 'Dedicated Manager', desc: 'A named portfolio manager is responsible for your account.' },
           ].map(item => (
             <div class="flex items-start gap-4 bg-surface-container-low p-5">
-              <span class="material-symbols-outlined text-secondary text-xl mt-0.5 shrink-0">{item.icon}</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-secondary text-xl mt-0.5 shrink-0">{item.icon}</span>
               <div>
                 <h4 class="font-semibold text-sm text-primary-container mb-1">{item.title}</h4>
                 <p class="text-xs text-on-surface-variant leading-relaxed">{item.desc}</p>
@@ -107,7 +107,7 @@ import { SEO } from '../../data/seo';
       <div class="border-r border-outline-variant/20 p-8 md:p-10 flex flex-col group hover:bg-surface-container-low transition-colors">
         <div class="flex items-center justify-between mb-6">
           <div class="w-10 h-10 bg-primary-container flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-tertiary-fixed text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">shield_person</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-tertiary-fixed text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">shield_person</span>
           </div>
           <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary border border-outline-variant/30 px-2 py-1">Type 01</span>
         </div>
@@ -124,7 +124,7 @@ import { SEO } from '../../data/seo';
             'Most common form of PMS in India',
           ].map(pt => (
             <li class="flex items-start gap-3 text-xs text-on-surface-variant leading-relaxed">
-              <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
               {pt}
             </li>
           ))}
@@ -139,7 +139,7 @@ import { SEO } from '../../data/seo';
       <div class="border-r border-outline-variant/20 p-8 md:p-10 flex flex-col group hover:bg-surface-container-low transition-colors">
         <div class="flex items-center justify-between mb-6">
           <div class="w-10 h-10 bg-secondary flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-white text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">sync_alt</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-white text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">sync_alt</span>
           </div>
           <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary border border-outline-variant/30 px-2 py-1">Type 02</span>
         </div>
@@ -156,7 +156,7 @@ import { SEO } from '../../data/seo';
             'Slower execution — suitable for low-turnover strategies',
           ].map(pt => (
             <li class="flex items-start gap-3 text-xs text-on-surface-variant leading-relaxed">
-              <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
               {pt}
             </li>
           ))}
@@ -171,7 +171,7 @@ import { SEO } from '../../data/seo';
       <div class="p-8 md:p-10 flex flex-col group hover:bg-surface-container-low transition-colors">
         <div class="flex items-center justify-between mb-6">
           <div class="w-10 h-10 bg-surface-container border border-outline-variant flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">lightbulb</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">lightbulb</span>
           </div>
           <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary border border-outline-variant/30 px-2 py-1">Type 03</span>
         </div>
@@ -188,7 +188,7 @@ import { SEO } from '../../data/seo';
             'Maximum client control and self-directed execution',
           ].map(pt => (
             <li class="flex items-start gap-3 text-xs text-on-surface-variant leading-relaxed">
-              <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
               {pt}
             </li>
           ))}
@@ -248,8 +248,8 @@ import { SEO } from '../../data/seo';
         { icon: 'support_agent', num: '04', title: 'Dedicated Access', desc: 'Relationship with a named portfolio manager who provides regular performance reviews and strategic updates.' },
       ].map(item => (
         <div class="bg-surface-container-lowest p-8 border-t-2 border-secondary/50">
-          <span class="text-3xl font-headline text-outline-variant/40 mb-4 block">{item.num}</span>
-          <span class="material-symbols-outlined text-secondary text-2xl mb-3 block">{item.icon}</span>
+          <span class="text-3xl font-headline text-muted-subtle/40 mb-4 block">{item.num}</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary text-2xl mb-3 block">{item.icon}</span>
           <h3 class="font-semibold text-primary-container text-base mb-2">{item.title}</h3>
           <p class="text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>
         </div>
@@ -274,7 +274,7 @@ import { SEO } from '../../data/seo';
         ].map((step, i) => (
           <div class="p-8 border-l border-slate-700 relative">
             <div class={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold mb-6 ${i === 0 ? 'bg-tertiary-fixed text-on-tertiary-fixed' : 'bg-slate-800 text-amber-200 border border-amber-200/30'}`}>{step.n}</div>
-            <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-3">{step.title}</h4>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-white mb-3">{step.title}</h3>
             <p class="text-xs text-slate-400 leading-relaxed">{step.text}</p>
           </div>
         ))}
@@ -331,7 +331,7 @@ import { SEO } from '../../data/seo';
       ].map(item => (
         <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
           <div class="flex items-center gap-3 mb-4">
-            <span class="material-symbols-outlined text-secondary text-2xl">{item.icon}</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-secondary text-2xl">{item.icon}</span>
             <h3 class="font-headline text-2xl text-primary-container">{item.title}</h3>
           </div>
           <p class="text-sm text-on-surface-variant leading-relaxed">{item.content}</p>
@@ -347,8 +347,8 @@ import { SEO } from '../../data/seo';
       {PMS_FAQS.map((faq, i) => (
         <details class="group bg-surface-container-lowest" open={i === 0}>
           <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-            <h4 class="font-headline text-xl text-primary-container">{faq.q}</h4>
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
+            <h3 class="font-headline text-xl text-primary-container">{faq.q}</h3>
+            <span aria-hidden="true" class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
           </summary>
           <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">{faq.a}</div>
         </details>

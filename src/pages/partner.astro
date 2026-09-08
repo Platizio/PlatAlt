@@ -19,12 +19,12 @@ import partnerHero from '../assets/partner-hero.jpg';
       <a href="#partner-form-section"
          class="inline-flex items-center gap-3 bg-primary-container text-on-primary px-8 py-4 font-label text-xs uppercase tracking-widest hover:bg-slate-800 transition-colors">
         Register as Distributor
-        <span class="material-symbols-outlined text-sm">arrow_downward</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_downward</span>
       </a>
       <button type="button"
               class="js-open-consult inline-flex items-center gap-3 border border-outline text-primary-container px-8 py-4 font-label text-xs uppercase tracking-widest hover:bg-surface-container-low transition-colors">
         Investor Enquiry
-        <span class="material-symbols-outlined text-sm">open_in_new</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-sm">open_in_new</span>
       </button>
     </div>
   </div>
@@ -55,7 +55,7 @@ import partnerHero from '../assets/partner-hero.jpg';
       { icon: 'hub',           title: 'Bespoke Infrastructure',     text: 'Dedicated partner portal, co-branded materials, and a relationship manager to support your client acquisition and retention goals.' },
     ].map(b => (
       <div class="flex flex-col gap-6" data-reveal>
-        <span class="material-symbols-outlined text-4xl text-on-tertiary-container">{b.icon}</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-4xl text-on-tertiary-container">{b.icon}</span>
         <h3 class="text-2xl font-headline italic">{b.title}</h3>
         <p class="text-on-surface-variant leading-relaxed">{b.text}</p>
       </div>
@@ -80,7 +80,7 @@ import partnerHero from '../assets/partner-hero.jpg';
           'Early access to new fund launches and market intelligence',
         ].map(item => (
           <li class="flex items-start gap-3 text-sm text-on-surface-variant">
-            <span class="material-symbols-outlined text-tertiary-fixed-dim text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-tertiary-fixed-dim text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
             {item}
           </li>
         ))}
@@ -93,7 +93,7 @@ import partnerHero from '../assets/partner-hero.jpg';
       </div>
 
       <div class="p-6 bg-primary-container text-amber-200 flex items-center gap-6">
-        <span class="material-symbols-outlined text-4xl" style="font-variation-settings:'FILL' 1,'wght' 300,'GRAD' 0,'opsz' 24">lock</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-4xl" style="font-variation-settings:'FILL' 1,'wght' 300,'GRAD' 0,'opsz' 24">lock</span>
         <div>
           <p class="font-label text-xs uppercase tracking-widest font-bold">Secure Submission</p>
           <p class="text-sm text-slate-400">Your data is encrypted and used only for partner onboarding.</p>
@@ -110,7 +110,7 @@ import partnerHero from '../assets/partner-hero.jpg';
             Full Name <span class="text-error">*</span>
           </label>
           <input id="partner-name" name="name" type="text" required
-                 placeholder="Rajesh Mehta"
+                 placeholder="Rajesh Mehta" autocomplete="name"
                  class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
         </div>
         <!-- Email -->
@@ -119,7 +119,7 @@ import partnerHero from '../assets/partner-hero.jpg';
             Email Address <span class="text-error">*</span>
           </label>
           <input id="partner-email" name="email" type="email" required
-                 placeholder="r.mehta@wealth.com"
+                 placeholder="r.mehta@wealth.com" autocomplete="email"
                  class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
         </div>
         <!-- Phone -->
@@ -128,7 +128,7 @@ import partnerHero from '../assets/partner-hero.jpg';
             Contact Number <span class="text-error">*</span>
           </label>
           <input id="partner-phone" name="phone" type="tel" required
-                 placeholder="+91 XXXXX XXXXX"
+                 placeholder="+91 XXXXX XXXXX" autocomplete="tel"
                  class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
         </div>
         <!-- City -->
@@ -137,7 +137,7 @@ import partnerHero from '../assets/partner-hero.jpg';
             City <span class="text-error">*</span>
           </label>
           <input id="partner-city" name="city" type="text" required
-                 placeholder="Noida"
+                 placeholder="Noida" autocomplete="address-level2"
                  class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
         </div>
       </div>
@@ -146,8 +146,14 @@ import partnerHero from '../assets/partner-hero.jpg';
       <div class="flex flex-col gap-2">
         <label class="font-label text-[10px] uppercase tracking-widest text-secondary font-bold" for="partner-arn">
           ARN Number <span class="text-error">*</span>
-          <span class="font-normal text-outline ml-2 normal-case tracking-normal">AMFI Registration Number</span>
+          <span class="font-normal text-muted ml-2 normal-case tracking-normal">AMFI Registration Number</span>
         </label>
+        {/* No autocomplete token here, deliberately. Every other field on this
+            form gained one for WCAG 1.3.5, so the gap reads as an oversight —
+            it is not. The HTML autofill spec has no token for an AMFI
+            registration number. An invented one ("arn") is ignored by every
+            browser, and a real-but-wrong one — organization-id is the tempting
+            miss — would hand this box a firm's tax identifier instead. */}
         <input id="partner-arn" name="arn_number" type="text" required
                placeholder="ARN-XXXXXX"
                class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
@@ -159,7 +165,7 @@ import partnerHero from '../assets/partner-hero.jpg';
           Firm / Business Name
         </label>
         <input id="partner-business" name="business_name" type="text"
-               placeholder="Your firm's name"
+               placeholder="Your firm's name" autocomplete="organization"
                class="bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:ring-0 form-underline text-primary-container" />
       </div>
 
@@ -189,7 +195,7 @@ import partnerHero from '../assets/partner-hero.jpg';
         <button type="submit"
                 class="group flex items-center gap-4 bg-primary-container text-on-primary px-10 py-5 hover:bg-slate-800 transition-all duration-300 w-full md:w-auto justify-center md:justify-start">
           <span class="font-label text-sm uppercase tracking-[0.2em] font-bold">Submit Application</span>
-          <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+          <span aria-hidden="true" class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
         </button>
       </div>
     </form>
@@ -203,7 +209,7 @@ import partnerHero from '../assets/partner-hero.jpg';
   <h2 class="font-headline text-3xl md:text-4xl text-white mb-6">Looking to invest instead?</h2>
   <p class="text-slate-400 max-w-lg mx-auto mb-8 text-sm leading-relaxed">If you're an individual investor looking to explore PMS or AIF products, our advisory team is here to guide you.</p>
   <button type="button" class="js-open-consult inline-flex items-center gap-3 bg-tertiary-fixed text-on-primary-container px-8 py-4 font-label text-xs uppercase tracking-widest hover:bg-amber-300 transition-colors font-bold">
-    <span class="material-symbols-outlined text-sm">support_agent</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-sm">support_agent</span>
     Book an Investor Consultation
   </button>
 </section>

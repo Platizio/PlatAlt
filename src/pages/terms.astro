@@ -44,7 +44,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           'Engage in conduct that disrupts platform availability or security',
         ].map(item => (
           <li class="flex items-start gap-2">
-            <span class="material-symbols-outlined text-error text-sm mt-0.5 shrink-0">block</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-error text-sm mt-0.5 shrink-0">block</span>
             <span class="text-sm">{item}</span>
           </li>
         ))}

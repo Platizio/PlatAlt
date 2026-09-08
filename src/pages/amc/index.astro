@@ -51,10 +51,11 @@ const iconClass: Record<string, string> = {
       <!-- Search -->
       <div class="w-full md:w-80 shrink-0">
         <div class="relative group">
-          <span class="material-symbols-outlined absolute left-0 bottom-2 text-outline group-focus-within:text-tertiary-fixed transition-colors">search</span>
+          <span aria-hidden="true" class="material-symbols-outlined absolute left-0 bottom-2 text-muted group-focus-within:text-tertiary-fixed transition-colors">search</span>
           <input
             id="amc-search"
-            class="w-full bg-transparent border-b border-outline py-2 pl-8 text-sm focus:border-tertiary-fixed transition-all placeholder:text-outline-variant outline-none"
+            aria-label="Search asset managers"
+            class="w-full bg-transparent border-b border-outline py-2 pl-8 text-sm focus:border-tertiary-fixed transition-all placeholder:text-muted-subtle outline-none"
             placeholder="Search asset managers…"
             type="text"
             autocomplete="off"
@@ -67,7 +68,7 @@ const iconClass: Record<string, string> = {
   <!-- Filter Tabs ────────────────────────────────────────────── -->
   <div class="flex flex-wrap gap-2 mb-4" id="filter-tabs">
     {filterTabs.map((tab, i) => (
-      <button
+      <button type="button"
         data-filter={tab.value}
         class={`filter-tab px-5 py-2 text-[11px] uppercase font-bold tracking-widest transition-all border ${
           i === 0
@@ -80,9 +81,14 @@ const iconClass: Record<string, string> = {
   </div>
 
   <!-- Count label -->
-  <p class="text-xs text-outline mb-8 tracking-wide" id="amc-count">Showing <span id="count-num">{amcs.length}</span> of {amcs.length} managers</p>
+  <p class="text-xs text-muted mb-8 tracking-wide" id="amc-count">Showing <span id="count-num">{amcs.length}</span> of {amcs.length} managers</p>
 
   <!-- AMC Grid ───────────────────────────────────────────────── -->
+  {/*
+    Card titles here and in the CTA below are h2: they are the page's only
+    headings under the h1, so h3 would skip a level (WCAG 1.3.1). Their size
+    comes from the utility classes, not the tag.
+  */}
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="amc-grid">
     {amcs.map((amc) => (
       <a
@@ -94,7 +100,7 @@ const iconClass: Record<string, string> = {
         <!-- Top row: icon + badge -->
         <div class="flex items-start justify-between mb-6">
           <div class="w-12 h-12 bg-surface-container flex items-center justify-center shrink-0">
-            <span class={`material-symbols-outlined text-2xl ${iconClass[amc.categoryType]}`}>{amc.icon}</span>
+            <span aria-hidden="true" class={`material-symbols-outlined text-2xl ${iconClass[amc.categoryType]}`}>{amc.icon}</span>
           </div>
           <span class={`text-[10px] px-2 py-1 uppercase font-bold tracking-widest ${badgeClass[amc.categoryType]}`}>
             {amc.categoryLabel}
@@ -102,9 +108,9 @@ const iconClass: Record<string, string> = {
         </div>
 
         <!-- Name + tagline -->
-        <h3 class="font-headline text-xl text-primary-container mb-2 group-hover:translate-x-0.5 transition-transform leading-tight">
+        <h2 class="font-headline text-xl text-primary-container mb-2 group-hover:translate-x-0.5 transition-transform leading-tight">
           {amc.name}
-        </h3>
+        </h2>
         <p class="text-sm text-on-surface-variant leading-relaxed flex-grow mb-6">
           {amc.tagline}
         </p>
@@ -112,11 +118,11 @@ const iconClass: Record<string, string> = {
         <!-- Stats -->
         <div class="grid grid-cols-2 gap-4 pt-5 border-t border-surface-container">
           <div>
-            <span class="block text-[10px] uppercase text-outline font-bold tracking-tighter mb-1">AUM</span>
+            <span class="block text-[10px] uppercase text-muted font-bold tracking-tighter mb-1">AUM</span>
             <span class="text-base font-bold text-on-surface">{amc.aum}</span>
           </div>
           <div>
-            <span class="block text-[10px] uppercase text-outline font-bold tracking-tighter mb-1">Strategies</span>
+            <span class="block text-[10px] uppercase text-muted font-bold tracking-tighter mb-1">Strategies</span>
             <span class="text-base font-bold text-on-surface">{amc.strategies}</span>
           </div>
         </div>
@@ -124,7 +130,7 @@ const iconClass: Record<string, string> = {
         <!-- View profile arrow -->
         <div class="mt-4 flex items-center gap-1 text-secondary text-[11px] font-semibold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
           View Profile
-          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span>
         </div>
       </a>
     ))}
@@ -132,19 +138,19 @@ const iconClass: Record<string, string> = {
 
   <!-- No results message (hidden by default) -->
   <div id="no-results" class="hidden text-center py-20">
-    <span class="material-symbols-outlined text-4xl text-outline mb-4 block">manage_search</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-4xl text-muted mb-4 block">manage_search</span>
     <p class="text-on-surface-variant text-sm">No asset managers found matching your search.</p>
-    <button id="reset-search" class="mt-4 text-secondary text-[11px] font-bold uppercase tracking-widest hover:underline">Clear Filters</button>
+    <button type="button" id="reset-search" class="mt-4 text-secondary text-[11px] font-bold uppercase tracking-widest hover:underline">Clear Filters</button>
   </div>
 
   <!-- CTA ────────────────────────────────────────────────────── -->
   <div class="bg-surface-container-low border border-outline-variant/20 px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
     <div>
-      <h3 class="font-headline text-2xl text-primary-container mb-1">Are you an asset manager?</h3>
+      <h2 class="font-headline text-2xl text-primary-container mb-1">Are you an asset manager?</h2>
       <p class="text-sm text-on-surface-variant">Apply for institutional listing on Platizio Alternatives platform.</p>
     </div>
     <a href="/partner" class="inline-flex items-center gap-2 bg-primary-container text-white px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:bg-secondary transition-colors shrink-0">
-      Partnership Enquiry <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      Partnership Enquiry <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span>
     </a>
   </div>
 

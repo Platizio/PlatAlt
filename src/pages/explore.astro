@@ -20,8 +20,8 @@ const uniqueAMCs = getUniqueAMCs();
     </div>
     <div class="w-full md:w-96">
       <div class="relative group">
-        <span class="material-symbols-outlined absolute left-0 bottom-2 text-outline group-focus-within:text-tertiary-fixed-dim transition-colors">search</span>
-        <input id="search-input" class="w-full bg-transparent border-b border-outline py-2 pl-8 text-sm focus:border-tertiary-fixed transition-all placeholder:text-outline-variant" placeholder="Search funds or managers..." type="text" />
+        <span aria-hidden="true" class="material-symbols-outlined absolute left-0 bottom-2 text-muted group-focus-within:text-tertiary-fixed-dim transition-colors">search</span>
+        <input id="search-input" aria-label="Search funds or managers" class="w-full bg-transparent border-b border-outline py-2 pl-8 text-sm focus:border-tertiary-fixed transition-all placeholder:text-muted-subtle" placeholder="Search funds or managers..." type="text" />
       </div>
     </div>
   </section>
@@ -30,12 +30,18 @@ const uniqueAMCs = getUniqueAMCs();
 
     <!-- ── Sidebar Filters ── -->
     <aside class="lg:col-span-3 space-y-10">
+      {/*
+        The four filter-group labels below and the fund-card titles in the
+        results column are all h2. Nothing on this page sits between them and
+        the h1, so any deeper level would be a skipped heading (WCAG 1.3.1).
+        Their small uppercase look comes from the utility classes, not the tag.
+      */}
 
       <!-- Product Type (hierarchical) -->
       <div>
         <div class="flex items-center justify-between mb-5">
-          <h4 class="text-[10px] uppercase tracking-widest text-outline font-bold">Product Type</h4>
-          <button id="clear-types" class="text-[9px] uppercase tracking-widest text-secondary font-bold hover:opacity-70 transition-opacity hidden">Clear</button>
+          <h2 class="text-[10px] uppercase tracking-widest text-muted font-bold">Product Type</h2>
+          <button type="button" id="clear-types" class="text-[9px] uppercase tracking-widest text-secondary font-bold hover:opacity-70 transition-opacity hidden">Clear</button>
         </div>
 
         {/* PMS */}
@@ -124,13 +130,13 @@ const uniqueAMCs = getUniqueAMCs();
 
       <!-- Asset Management -->
       <div>
-        <h4 class="text-[10px] uppercase tracking-widest text-outline font-bold mb-5">Asset Management</h4>
+        <h2 class="text-[10px] uppercase tracking-widest text-muted font-bold mb-5">Asset Management</h2>
         <div class="relative">
-          <select id="amc-filter" class="w-full bg-transparent border border-outline-variant/30 px-3 py-2.5 text-xs focus:ring-0 focus:border-secondary appearance-none cursor-pointer pr-8">
+          <select id="amc-filter" aria-label="Filter by asset manager" class="w-full bg-transparent border border-outline-variant/30 px-3 py-2.5 text-xs focus:ring-0 focus:border-secondary appearance-none cursor-pointer pr-8">
             <option value="">All Managers</option>
             {uniqueAMCs.map(amc => <option value={amc}>{amc}</option>)}
           </select>
-          <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-base pointer-events-none">expand_more</span>
+          <span aria-hidden="true" class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-muted text-base pointer-events-none">expand_more</span>
         </div>
       </div>
 
@@ -140,13 +146,13 @@ const uniqueAMCs = getUniqueAMCs();
       <!-- AUM Range -->
       <div>
         <div class="flex items-center justify-between mb-2">
-          <h4 class="text-[10px] uppercase tracking-widest text-outline font-bold">AUM Range</h4>
+          <h2 class="text-[10px] uppercase tracking-widest text-muted font-bold">AUM Range</h2>
           <span id="aum-display" class="text-[11px] font-bold text-secondary">Up to ₹20,000 Cr</span>
         </div>
-        <p class="text-[10px] text-outline-variant mb-4">Max AUM threshold</p>
+        <p id="aum-slider-label" class="text-[10px] text-muted-subtle mb-4">Max AUM threshold</p>
         <div class="px-1">
-          <input id="aum-slider" class="w-full h-1.5 bg-surface-container-highest appearance-none cursor-pointer accent-secondary rounded-full" type="range" min="0" max="20000" value="20000" step="500" />
-          <div class="flex justify-between mt-3 text-[9px] font-bold text-outline uppercase tracking-tighter">
+          <input id="aum-slider" aria-labelledby="aum-slider-label" class="w-full h-1.5 bg-surface-container-highest appearance-none cursor-pointer accent-secondary rounded-full" type="range" min="0" max="20000" value="20000" step="500" />
+          <div class="flex justify-between mt-3 text-[9px] font-bold text-muted uppercase tracking-tighter">
             <span>₹0</span><span>₹20,000 Cr</span>
           </div>
         </div>
@@ -157,7 +163,7 @@ const uniqueAMCs = getUniqueAMCs();
 
       <!-- Inception Age -->
       <div>
-        <h4 class="text-[10px] uppercase tracking-widest text-outline font-bold mb-5">Inception Age</h4>
+        <h2 class="text-[10px] uppercase tracking-widest text-muted font-bold mb-5">Inception Age</h2>
         <div class="grid grid-cols-2 gap-2">
           {[
             { label: 'All', val: 'all' },
@@ -165,7 +171,7 @@ const uniqueAMCs = getUniqueAMCs();
             { label: '5Y+', val: '5' },
             { label: '10Y+', val: '10' },
           ].map(opt => (
-            <button class="inception-btn text-[11px] py-2 px-3 border transition-colors uppercase tracking-widest font-bold border-outline-variant hover:border-secondary text-on-surface-variant" data-age={opt.val}>
+            <button type="button" class="inception-btn text-[11px] py-2 px-3 border transition-colors uppercase tracking-widest font-bold border-outline-variant hover:border-secondary text-on-surface-variant" data-age={opt.val}>
               {opt.label}
             </button>
           ))}
@@ -176,7 +182,7 @@ const uniqueAMCs = getUniqueAMCs();
       <div class="border-t border-outline-variant/20"></div>
 
       <!-- Reset All -->
-      <button id="reset-all" class="w-full text-[10px] uppercase tracking-widest font-bold text-outline border border-outline-variant/30 py-2.5 hover:border-secondary hover:text-secondary transition-colors">
+      <button type="button" id="reset-all" class="w-full text-[10px] uppercase tracking-widest font-bold text-muted border border-outline-variant/30 py-2.5 hover:border-secondary hover:text-secondary transition-colors">
         Reset All Filters
       </button>
     </aside>
@@ -184,10 +190,10 @@ const uniqueAMCs = getUniqueAMCs();
     <!-- ── Results Grid ── -->
     <div class="lg:col-span-9">
       <div class="flex justify-between items-center mb-8">
-        <p id="result-count" class="text-xs text-outline font-medium tracking-wide">Showing <span id="count-num">8</span> of <span id="count-total">{funds.length}</span> funds</p>
+        <p id="result-count" class="text-xs text-muted font-medium tracking-wide">Showing <span id="count-num">8</span> of <span id="count-total">{funds.length}</span> funds</p>
         <div class="flex items-center gap-4">
-          <span class="text-[10px] uppercase font-bold tracking-widest text-outline">Sort:</span>
-          <select id="sort-select" class="bg-transparent text-[10px] font-bold uppercase tracking-widest border-none focus:ring-0 p-0 cursor-pointer text-primary-container">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-muted">Sort:</span>
+          <select id="sort-select" aria-label="Sort results" class="bg-transparent text-[10px] font-bold uppercase tracking-widest border-none focus:ring-0 p-0 cursor-pointer text-primary-container">
             <option value="default">Default</option>
             <option value="aum-desc">AUM High → Low</option>
             <option value="aum-asc">AUM Low → High</option>
@@ -218,22 +224,22 @@ const uniqueAMCs = getUniqueAMCs();
                    fund.type === 'AIF_CAT2' ? 'border-blue-300/50 text-blue-700 bg-blue-50' :
                    fund.type === 'AIF_CAT3' ? 'border-violet-300/50 text-violet-700 bg-violet-50' :
                    'border-indigo-300/50 text-indigo-700 bg-indigo-50'}">{fund.tag}</span>
-                <button class="compare-btn text-[9px] uppercase tracking-widest font-bold px-2 py-1 border border-outline-variant/40 text-outline hover:border-secondary hover:text-secondary transition-colors flex items-center gap-1" data-id={fund.id} data-name={fund.name} aria-label="Add to compare">
-                  <span class="material-symbols-outlined text-sm">add</span>Compare
+                <button type="button" class="compare-btn text-[9px] uppercase tracking-widest font-bold px-2 py-1 border border-outline-variant/40 text-muted hover:border-secondary hover:text-secondary transition-colors flex items-center gap-1" data-id={fund.id} data-name={fund.name} aria-label="Add to compare">
+                  <span aria-hidden="true" class="material-symbols-outlined text-sm">add</span>Compare
                 </button>
               </div>
-              <h3 class="text-xl font-headline text-primary-container mb-1 group-hover:translate-x-0.5 transition-transform">{fund.name}</h3>
+              <h2 class="text-xl font-headline text-primary-container mb-1 group-hover:translate-x-0.5 transition-transform">{fund.name}</h2>
               <p class="text-[10px] uppercase tracking-widest text-secondary font-bold mb-3">{fund.amc}</p>
               <p class="text-sm text-on-surface-variant leading-relaxed line-clamp-3">{fund.desc}</p>
             </div>
             <div class="px-8 pb-8">
               <div class="flex items-center justify-between pt-5 border-t border-surface-container">
                 <div>
-                  <span class="block text-[9px] uppercase text-outline font-bold tracking-tighter mb-1">AUM</span>
+                  <span class="block text-[9px] uppercase text-muted font-bold tracking-tighter mb-1">AUM</span>
                   <span class="text-base font-bold text-primary-container">{fund.aumDisplay}</span>
                 </div>
                 <a href={fund.href} class="text-[9px] uppercase font-bold tracking-widest text-secondary flex items-center gap-1 hover:gap-2 transition-all">
-                  Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                  Details <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span>
                 </a>
               </div>
             </div>
@@ -243,18 +249,18 @@ const uniqueAMCs = getUniqueAMCs();
 
       <!-- No results -->
       <div id="no-results" class="hidden py-24 text-center border border-outline-variant/20 mt-1">
-        <span class="material-symbols-outlined text-5xl text-outline-variant mb-4 block">search_off</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-5xl text-muted-subtle mb-4 block">search_off</span>
         <p class="font-headline text-2xl text-primary-container mb-2">No funds match your filters</p>
         <p class="text-sm text-on-surface-variant mb-6">Try adjusting your filter criteria or reset all filters</p>
-        <button id="no-results-reset" class="px-6 py-2.5 bg-secondary text-surface text-[10px] uppercase font-bold tracking-widest hover:opacity-90 transition-opacity">Reset Filters</button>
+        <button type="button" id="no-results-reset" class="px-6 py-2.5 bg-secondary text-surface text-[10px] uppercase font-bold tracking-widest hover:opacity-90 transition-opacity">Reset Filters</button>
       </div>
 
       <!-- Load More -->
       <div id="load-more-wrap" class="mt-10 flex flex-col items-center gap-3">
-        <button id="load-more-btn" class="px-8 py-3 border border-outline text-[10px] uppercase font-bold tracking-[0.2em] hover:bg-primary-container hover:text-white hover:border-primary-container transition-all">
+        <button type="button" id="load-more-btn" class="px-8 py-3 border border-outline text-[10px] uppercase font-bold tracking-[0.2em] hover:bg-primary-container hover:text-white hover:border-primary-container transition-all">
           Load More Funds
         </button>
-        <p id="load-more-hint" class="text-[10px] text-outline-variant uppercase tracking-widest"></p>
+        <p id="load-more-hint" class="text-[10px] text-muted-subtle uppercase tracking-widest"></p>
       </div>
     </div>
   </div>
@@ -269,8 +275,8 @@ const uniqueAMCs = getUniqueAMCs();
         {[0,1,2].map(i => (
           <div class="compare-slot flex items-center gap-2 border border-secondary/40 px-3 py-2 min-w-[160px] bg-secondary/10" data-slot={i}>
             <span class="compare-slot-name text-[11px] text-surface/70 italic">Empty slot</span>
-            <button class="compare-remove ml-auto text-tertiary-fixed/60 hover:text-tertiary-fixed transition-colors hidden" data-slot={i}>
-              <span class="material-symbols-outlined text-base">close</span>
+            <button type="button" aria-label="Remove this fund from the comparison" class="compare-remove ml-auto text-tertiary-fixed/60 hover:text-tertiary-fixed transition-colors hidden" data-slot={i}>
+              <span aria-hidden="true" class="material-symbols-outlined text-base">close</span>
             </button>
           </div>
         ))}
@@ -279,8 +285,8 @@ const uniqueAMCs = getUniqueAMCs();
         <a id="compare-now-btn" href="/compare" class="bg-tertiary-fixed text-on-tertiary-fixed px-5 py-2.5 text-[10px] uppercase font-bold tracking-widest hover:opacity-90 transition-opacity">
           Compare Now
         </a>
-        <button id="compare-clear-all" class="text-surface/50 hover:text-surface transition-colors">
-          <span class="material-symbols-outlined text-xl">close</span>
+        <button id="compare-clear-all" type="button" aria-label="Clear all funds from the comparison" class="text-surface/50 hover:text-surface transition-colors">
+          <span aria-hidden="true" class="material-symbols-outlined text-xl">close</span>
         </button>
       </div>
     </div>
@@ -448,10 +454,10 @@ const uniqueAMCs = getUniqueAMCs();
       const added = compareList.some(e => e.id === id);
       if (added) {
         btn.classList.add('border-secondary', 'text-secondary', 'bg-secondary/5');
-        btn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>Added';
+        btn.innerHTML = '<span aria-hidden="true" class="material-symbols-outlined text-sm">check</span>Added';
       } else {
         btn.classList.remove('border-secondary', 'text-secondary', 'bg-secondary/5');
-        btn.innerHTML = '<span class="material-symbols-outlined text-sm">add</span>Compare';
+        btn.innerHTML = '<span aria-hidden="true" class="material-symbols-outlined text-sm">add</span>Compare';
       }
     });
   }
@@ -553,7 +559,12 @@ const uniqueAMCs = getUniqueAMCs();
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      toggleCompare(card.dataset.id, card.querySelector('h3').textContent.trim());
+      /* Read the name off the button's own data-name, not off a heading tag.
+         This used to be card.querySelector('h3'), which silently became null
+         the moment the card title's heading level changed for the document
+         outline — and then every compare click threw. The button already
+         carries the fund name, so nothing here depends on markup shape. */
+      toggleCompare(btn.dataset.id, btn.dataset.name);
     });
   });
 

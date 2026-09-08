@@ -143,13 +143,13 @@ const CATEGORY_ROWS = [
         }
       ].map(cat => (
         <div class="group bg-surface-container-lowest p-8 flex flex-col h-full border-b-2 border-transparent hover:border-tertiary-fixed-dim transition-all duration-500">
-          <span class="text-4xl font-headline text-outline-variant/30 mb-6">{cat.num}</span>
+          <span class="text-4xl font-headline text-muted-subtle/30 mb-6">{cat.num}</span>
           <h3 class="text-2xl font-headline mb-4">{cat.title}</h3>
           <p class="text-on-surface-variant text-sm mb-8 flex-grow leading-relaxed">{cat.desc}</p>
           <ul class="space-y-3 mb-10 text-xs font-medium tracking-wide">
             {cat.items.map(item => (
               <li class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">check_circle</span> {item}
+                <span aria-hidden="true" class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">check_circle</span> {item}
               </li>
             ))}
           </ul>
@@ -177,7 +177,7 @@ const CATEGORY_ROWS = [
         ].map((step, i) => (
           <div class="p-6 border-l border-slate-700 relative">
             <div class={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold mb-6 ${i === 0 ? 'bg-amber-200 text-slate-900' : 'bg-slate-800 text-amber-200 border border-amber-200/30'}`}>{step.n}</div>
-            <h4 class="text-sm font-bold uppercase tracking-wider mb-3">{step.title}</h4>
+            <h3 class="text-sm font-bold uppercase tracking-wider mb-3">{step.title}</h3>
             <p class="text-xs text-slate-400 leading-relaxed">{step.text}</p>
           </div>
         ))}
@@ -193,7 +193,7 @@ const CATEGORY_ROWS = [
         <p class="text-on-surface-variant text-sm">Contrast AIF features against traditional investment avenues to determine the optimal structure for your objective.</p>
       </div>
       <a href="/knowledge/aif-comparison" class="text-[11px] font-bold uppercase tracking-widest text-secondary hover:text-primary flex items-center gap-1 transition-colors mt-4 md:mt-0">
-        Full Comparison <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        Full Comparison <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
     </div>
     <div class="overflow-x-auto">
@@ -242,8 +242,8 @@ const CATEGORY_ROWS = [
         {AIF_FAQS.map((faq, i) => (
           <details class="group bg-surface-container-lowest transition-all" open={i === 0}>
             <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-              <h4 class="font-headline text-xl">{faq.q}</h4>
-              <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4">expand_more</span>
+              <h3 class="font-headline text-xl">{faq.q}</h3>
+              <span aria-hidden="true" class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4">expand_more</span>
             </summary>
             <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">{faq.a}</div>
           </details>

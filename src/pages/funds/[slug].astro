@@ -87,11 +87,11 @@ const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-28">
 
   <!-- ── Breadcrumb ── -->
-  <nav class="py-5 flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20 flex-wrap">
+  <nav class="py-5 flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-muted border-b border-outline-variant/20 flex-wrap">
     <a href="/explore" class="hover:text-secondary transition-colors">Fund Explorer</a>
-    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-sm text-muted-subtle">chevron_right</span>
     <a href={`/amc/${fund.amc_slug}`} class="hover:text-secondary transition-colors">{fund.amc}</a>
-    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-sm text-muted-subtle">chevron_right</span>
     <span class="text-on-surface-variant">{fund.name}</span>
   </nav>
 
@@ -118,7 +118,7 @@ const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
         <div class="flex flex-wrap items-center gap-3 mb-4">
           <span class={`text-[10px] px-3 py-1.5 uppercase font-bold tracking-widest ${clr.badge}`}>{tagFor(fund)}</span>
           <a href={`/amc/${fund.amc_slug}`} class="text-[10px] px-3 py-1.5 font-bold uppercase tracking-widest border border-outline-variant/40 text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors">
-            {fund.amc} <span class="material-symbols-outlined text-xs align-middle ml-0.5">open_in_new</span>
+            {fund.amc} <span aria-hidden="true" class="material-symbols-outlined text-xs align-middle ml-0.5">open_in_new</span>
           </a>
         </div>
         <h1 class="text-4xl md:text-6xl font-headline text-primary-container leading-tight mb-3">{fund.name}</h1>
@@ -126,7 +126,7 @@ const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
       </div>
       <!-- Key metric pill -->
       <div class={`shrink-0 ${clr.bg} ${clr.border} border px-8 py-6 text-center min-w-[180px]`}>
-        <p class="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">{metric.label}</p>
+        <p class="text-[10px] uppercase tracking-widest text-muted font-bold mb-2">{metric.label}</p>
         <p class={`text-3xl font-bold font-headline ${clr.accent}`}>{metric.value}</p>
       </div>
     </div>
@@ -136,9 +136,9 @@ const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 border border-outline-variant/20 mb-12">
     {statCells.map((cell, i) => (
       <div class={`px-6 py-5 ${i < statCells.length - 1 ? 'border-b sm:border-b-0 sm:border-r border-outline-variant/20' : ''}`}>
-        <p class="text-[9px] uppercase tracking-widest font-bold text-outline mb-1.5">{cell.label}</p>
+        <p class="text-[9px] uppercase tracking-widest font-bold text-muted mb-1.5">{cell.label}</p>
         <p class="text-sm font-bold text-primary-container leading-tight break-words">{cell.value}</p>
-        {cell.note && <p class="text-[9px] text-outline-variant mt-1 lowercase tracking-wide">{cell.note}</p>}
+        {cell.note && <p class="text-[9px] text-muted-subtle mt-1 lowercase tracking-wide">{cell.note}</p>}
       </div>
     ))}
   </div>
@@ -146,7 +146,7 @@ const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
   <!-- ── Performance ── -->
   <section class="mb-12">
     <div class="flex items-center gap-3 mb-6">
-      <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">trending_up</span>
+      <span aria-hidden="true" class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">trending_up</span>
       <h2 class="font-headline text-2xl text-primary-container">Standardized Performance</h2>
     </div>
     {hasReturns ? (
@@ -154,19 +154,19 @@ const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
         <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-px bg-outline-variant/10 border border-outline-variant/10">
           {returnRows.map((row) => (
             <div class="bg-surface-container-lowest px-4 py-5 text-center">
-              <p class="text-[9px] uppercase tracking-widest font-bold text-outline mb-2">{row.label}</p>
+              <p class="text-[9px] uppercase tracking-widest font-bold text-muted mb-2">{row.label}</p>
               <p class={`text-lg font-bold font-headline ${row.value.startsWith('-') ? 'text-red-400' : clr.accent}`}>{row.value}</p>
             </div>
           ))}
         </div>
-        <p class="text-[10px] text-outline-variant mt-4 tracking-wide">
+        <p class="text-[10px] text-muted-subtle mt-4 tracking-wide">
           TWRR returns as on {fmtDate(returnsAsOf)} · Source: {returnsSource}
           {fund.benchmark && <> · Benchmark: {fund.benchmark}</>}
         </p>
       </div>
     ) : (
       <div class="bg-surface-container-lowest border border-outline-variant/10 p-8 text-center">
-        <span class="material-symbols-outlined text-4xl text-outline-variant mb-3 block">visibility_off</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-4xl text-muted-subtle mb-3 block">visibility_off</span>
         <p class="font-headline text-xl text-primary-container mb-1">Performance not officially disclosed</p>
         <p class="text-sm text-on-surface-variant max-w-md mx-auto">
           Fund-level performance for this {fund.site_type.startsWith('AIF') ? 'AIF' : 'fund'} is not
@@ -181,13 +181,13 @@ const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
   {fund.fund_details.length > 0 && (
     <section class="mb-12">
       <div class="flex items-center gap-3 mb-6">
-        <span class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">description</span>
+        <span aria-hidden="true" class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">description</span>
         <h2 class="font-headline text-2xl text-primary-container">Fund Details</h2>
       </div>
       <div class="bg-surface-container-lowest border border-outline-variant/10 divide-y divide-outline-variant/10">
         {fund.fund_details.map((d) => (
           <div class="flex justify-between gap-6 px-8 py-4">
-            <span class="text-xs uppercase tracking-widest font-bold text-outline">{d.label}</span>
+            <span class="text-xs uppercase tracking-widest font-bold text-muted">{d.label}</span>
             <span class="text-sm font-semibold text-primary-container text-right">{d.value}</span>
           </div>
         ))}
@@ -197,7 +197,7 @@ const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
 
   <!-- ── Provenance & disclaimer ── -->
   <section class="border-t border-outline-variant/20 pt-6">
-    <p class="text-[10px] text-outline-variant leading-relaxed max-w-3xl">
+    <p class="text-[10px] text-muted-subtle leading-relaxed max-w-3xl">
       {PERFORMANCE_DISCLAIMER}
       {fund.last_synced_at && <> Last refreshed {fmtDate(fund.last_synced_at.slice(0, 10))}.</>}
     </p>

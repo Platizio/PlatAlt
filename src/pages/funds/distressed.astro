@@ -7,9 +7,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <!-- Breadcrumb -->
   <div class="flex items-center gap-2 text-secondary mb-8 pt-4 flex-wrap">
     <a href="/knowledge/aif" class="text-xs uppercase tracking-[0.2em] font-label hover:text-primary-container transition-colors">AIF Knowledge</a>
-    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-[12px]">chevron_right</span>
     <span class="text-xs uppercase tracking-[0.2em] font-label text-secondary">Cat II AIF</span>
-    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-[12px]">chevron_right</span>
     <span class="text-xs uppercase tracking-[0.2em] font-label text-on-surface">Distressed Asset Funds</span>
   </div>
 
@@ -35,23 +35,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">construction</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Focus</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">construction</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Focus</h3>
           <p class="text-sm font-semibold">Turnaround/Restructuring</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h3>
           <p class="text-sm font-semibold">High</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">payments</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">payments</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h3>
           <p class="text-sm font-semibold">&#8377;1 Crore</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">schedule</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Tenure</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">schedule</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Tenure</h3>
           <p class="text-sm font-semibold">5&ndash;7 Years</p>
         </div>
       </div>
@@ -66,7 +66,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="space-y-8">
       <div class="flex gap-6 items-start">
         <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-primary-container text-tertiary-fixed">
-          <span class="material-symbols-outlined">sell</span>
+          <span aria-hidden="true" class="material-symbols-outlined">sell</span>
         </div>
         <div>
           <h3 class="font-headline text-xl mb-2">Discounted Acquisition</h3>
@@ -75,7 +75,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="flex gap-6 items-start ml-4">
         <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-secondary text-surface">
-          <span class="material-symbols-outlined">autorenew</span>
+          <span aria-hidden="true" class="material-symbols-outlined">autorenew</span>
         </div>
         <div>
           <h3 class="font-headline text-xl mb-2">NCLT/IBC Processes</h3>
@@ -84,7 +84,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="flex gap-6 items-start">
         <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-primary-container text-tertiary-fixed">
-          <span class="material-symbols-outlined">gavel</span>
+          <span aria-hidden="true" class="material-symbols-outlined">gavel</span>
         </div>
         <div>
           <h3 class="font-headline text-xl mb-2">Value Recovery</h3>
@@ -102,19 +102,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="absolute left-3 top-0 bottom-0 w-[1px] bg-secondary"></div>
       <div class="mb-10 pl-10 relative">
         <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-tertiary-fixed border-4 border-primary-container"></div>
-        <h4 class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-1">Phase 01</h4>
+        <p class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-1">Phase 01</p>
         <h3 class="font-headline text-xl mb-2">Acquisition at Discount</h3>
         <p class="text-sm text-surface-variant opacity-80 leading-relaxed">Opportunities identified through NPA databases, NCLT filings, bank auction notices, and proprietary credit surveillance systems. Legal diligence maps encumbrances, pending litigation, and priority of claim before acquisition is structured.</p>
       </div>
       <div class="mb-10 pl-10 relative">
         <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-secondary border-4 border-primary-container"></div>
-        <h4 class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-1">Phase 02</h4>
+        <p class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-1">Phase 02</p>
         <h3 class="font-headline text-xl mb-2">Restructuring</h3>
         <p class="text-sm text-surface-variant opacity-80 leading-relaxed">The fund's operating team implements the resolution plan &mdash; refinancing senior obligations, divesting non-core assets, replacing management where necessary, and renegotiating commercial contracts. Progress is measured against recovery milestones.</p>
       </div>
       <div class="pl-10 relative">
         <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-secondary border-4 border-primary-container"></div>
-        <h4 class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-1">Phase 03</h4>
+        <p class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-1">Phase 03</p>
         <h3 class="font-headline text-xl mb-2">Resolution & Exit</h3>
         <p class="text-sm text-surface-variant opacity-80 leading-relaxed">Exits pursued through strategic sale of the restructured entity, refinancing into conventional lending markets, or listing via IPO. Partial monetizations through asset sales provide interim distributions. Total return measured as MOIC net of restructuring costs and legal fees.</p>
       </div>

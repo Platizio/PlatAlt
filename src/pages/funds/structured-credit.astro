@@ -6,9 +6,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <div class="max-w-5xl mx-auto px-6 md:px-10 py-8">
   <div class="flex items-center gap-2 text-secondary mb-8 pt-4 flex-wrap">
     <a href="/knowledge/aif" class="text-xs uppercase tracking-[0.2em] font-label hover:text-primary-container transition-colors">AIF Knowledge</a>
-    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-[12px]">chevron_right</span>
     <span class="text-xs uppercase tracking-[0.2em] font-label text-secondary">Cat II AIF</span>
-    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-[12px]">chevron_right</span>
     <span class="text-xs uppercase tracking-[0.2em] font-label text-on-surface">Structured Credit</span>
   </div>
 
@@ -32,23 +32,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">account_balance</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Instruments</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">account_balance</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Instruments</h3>
           <p class="text-sm font-semibold">NCD, Mezz, Notes</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h3>
           <p class="text-sm font-semibold">Medium</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">payments</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">payments</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h3>
           <p class="text-sm font-semibold">&#8377;1 Crore</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">percent</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Target Yield</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">percent</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Target Yield</h3>
           <p class="text-sm font-semibold">12–18% p.a.</p>
         </div>
       </div>
@@ -66,7 +66,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         { icon: 'receipt_long', title: 'Structured Notes', desc: 'Bespoke instruments with embedded derivatives providing principal protection or enhanced yield through structured payoff profiles.' },
       ].map(s => (
         <div class="bg-surface-container-lowest p-6 border-b-2 border-transparent hover:border-tertiary-fixed transition-all">
-          <span class="material-symbols-outlined text-secondary text-3xl mb-4 block">{s.icon}</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary text-3xl mb-4 block">{s.icon}</span>
           <h3 class="font-headline text-xl mb-3">{s.title}</h3>
           <p class="text-on-surface-variant text-sm leading-relaxed">{s.desc}</p>
         </div>
@@ -85,7 +85,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         { title: 'Legal Documentation', desc: 'Robust term sheets and debenture trust deeds drafted to SEBI and RBI regulatory standards.' },
       ].map(b => (
         <div class="border-l-2 border-secondary pl-6">
-          <h4 class="font-headline text-lg mb-2">{b.title}</h4>
+          <h3 class="font-headline text-lg mb-2">{b.title}</h3>
           <p class="text-sm opacity-80 leading-relaxed">{b.desc}</p>
         </div>
       ))}
