@@ -38,8 +38,12 @@ verification grep for it across `src/` and `dist/` keeps returning clean.)
 
 ## founder-portrait.jpg — 512 × 640
 
-- **Source:** `public/sir.png`, owned by the firm. Despite the extension the file is
-  actually a JPEG (640 × 640, 74 KB).
+- **Source:** `src/assets/originals/sir.png`, owned by the firm. Despite the extension
+  the file is actually a JPEG (640 × 640, 74 KB).
+- **Why it is not in `public/`:** it used to be, which meant a 75 KB master nothing
+  links to was published on every deploy. It moved here on 2026-09-09 rather than being
+  deleted — it is the only copy of the original this crop came from, and this entry is
+  the record that points at it. Nothing imports it, so Astro does not emit it.
 - **Processing:** cropped to 4:5 at `left=128, width=512`, **not** a centre crop. The
   remediation plan assumed the discarded side strips were both pure black; measurement
   shows that is true of the left strip (mean luminance 11.4, max 17) but false of the
