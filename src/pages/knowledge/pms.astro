@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { PMS_FAQS } from '../../data/faqs';
 import { faqPageNode, articleNode } from '../../data/schema';
 import { SEO } from '../../data/seo';
+import { RATE } from '../../data/aif-facts';
 ---
 <BaseLayout
   currentPage="knowledge/pms"
@@ -324,7 +325,7 @@ import { SEO } from '../../data/seo';
     <div class="w-12 h-1 bg-tertiary-fixed-dim mb-10"></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {[
-        { icon: 'show_chart', title: 'Capital Gains', content: 'Long-term capital gains (LTCG) on listed equities held for more than 12 months: 12.5% above the ₹1.25 Lakh exemption. Short-term capital gains (STCG) on listed equities: 20%. Debt instruments: As per income tax slab.' },
+        { icon: 'show_chart', title: 'Capital Gains', content: `Long-term capital gains (LTCG) on listed equities held for more than 12 months: ${RATE.ltcgListed} above the ${RATE.ltcgExemption} exemption. Short-term capital gains (STCG) on listed equities: ${RATE.stcgListed}. Debt instruments: As per income tax slab.` },
         { icon: 'payments', title: 'Dividend Income', content: 'Dividends received from underlying holdings are credited directly to the investor\'s bank account and taxed at the investor\'s applicable income tax slab rate. No TDS if held in a demat account with PAN.' },
         { icon: 'receipt_long', title: 'TDS Provisions', content: 'Portfolio Managers may deduct TDS on dividend distributions at 10% for resident investors (when applicable). No TDS on capital gains. Form 16A issued for TDS deducted. Annual statement provided by Custodian.' },
         { icon: 'folder_open', title: 'Audit & Reporting', content: 'PMS investors with portfolio value above ₹50 Lakhs may be required to disclose in Schedule AL of ITR. Tax audit under Section 44AB applies if business income from trading exceeds thresholds. Portfolio Managers provide detailed capital gains statement for ITR filing.' },
