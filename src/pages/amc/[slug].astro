@@ -76,6 +76,17 @@ const stats = [
     ))}
   </div>
 
+  {/*
+    amcAum() in amcs.ts sums aum_cr across only the funds this site features,
+    so this is a subtotal over the strategies below it, not the manager's AUM.
+    schema.ts already refuses to emit it as `assets` for that reason; saying so
+    here is the same honesty applied to the figure a reader actually sees.
+  */}
+  <p class="text-xs text-muted mb-12 -mt-8">
+    Combined AUM covers only the strategies featured on Platizio Alternatives, not
+    the manager's total assets under management.
+  </p>
+
   <!-- Funds -->
   <section class="mb-12">
     <div class="flex items-center gap-3 mb-6">

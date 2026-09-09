@@ -82,7 +82,7 @@ export const SEO: Record<string, SeoEntry> = {
       'Partner with Platizio Alternatives to bring SEBI-registered PMS and AIF strategies to your HNI and family-office clients. Register as a distributor today.',
   },
   '/media': {
-    title: 'Market Insights on AIF & PMS Investing | Platizio',
+    title: 'AIF & PMS Video Explainers and Guides | Platizio',
     description:
       'Video explainers and knowledge guides on Indian alternative investments — AIF categories, PMS mandates, GIFT City IFSC routes and how allocators evaluate them.',
   },
