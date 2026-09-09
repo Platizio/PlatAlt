@@ -146,6 +146,12 @@ export function run(pages) {
     }
     for (const frame of findAll(p.doc, 'iframe')) if (!attr(frame, 'title')) note('iframe-no-title', p.route);
     for (const table of findAll(p.doc, 'table')) {
+      /* A table with no rows in the static output is populated at runtime —
+         /compare builds its header and body from JS once funds are chosen.
+         Reporting it as header-less is a false positive, and a standing false
+         positive is worse than a missing check: it teaches people to skim
+         past the warnings that do matter. */
+      if (!findAll(table, 'tr').length) continue;
       if (!findAll(table, 'th').length) note('table-no-th', p.route);
       if (!findAll(table, 'caption').length) note('table-no-caption', p.route);
     }
