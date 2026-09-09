@@ -69,7 +69,7 @@ export const SEO: Record<string, SeoEntry> = {
   '/about': {
     title: 'About Platizio Alternatives | Platizio Services LLP',
     description:
-      'Platizio Alternatives is the PMS and AIF arm of Platizio Services LLP, serving HNIs, family offices and distributors from Noida and Delhi.',
+      'Platizio Alternatives is the PMS and AIF arm of Platizio Services LLP, serving HNIs, family offices and distributors from its Noida and Delhi offices.',
   },
   '/contact': {
     title: 'Contact Platizio Alternatives | Noida & Delhi',
@@ -305,7 +305,7 @@ export const SEO: Record<string, SeoEntry> = {
   '/404': {
     title: 'Page Not Found | Platizio Alternatives',
     description:
-      'That page does not exist. Browse AIF categories, PMS guides, the fund explorer or the AMC directory on Platizio Alternatives.',
+      'That page does not exist. Browse AIF categories, PMS guides, the fund explorer or the AMC directory on Platizio Alternatives, or return to the homepage.',
     noindex: true,
   },
   // Fabricated content — docs/compliance-memo.md Part C4. /fund and
