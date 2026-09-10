@@ -90,30 +90,30 @@ const graph = [
     ? <meta name="robots" content="noindex,follow" />
     : <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />}
 
-  <!--
+  {/*
     Icons. The mark is the wordmark's own 'P', cropped from public/logo.png at its
     real 36x51 extent, so it is the firm's artwork rather than a substitute
     letterform. /logo.png itself is 467x54 — a wide wordmark squeezed into a square
     tab icon is unreadable, and browsers still requested /favicon.ico and 404'd.
-  -->
+  */}
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta name="theme-color" content="#0f1c2c" />
 
-  <!--
+  {/*
     Form delivery, read by public/site-interactive.js. That file is copied
     verbatim into dist/ and never sees Astro, so it cannot import
     src/config/site.ts; these two tags are the bridge. The key is a Web3Forms
     client-side form key and is public by design — see the note in site.ts.
-  -->
+  */}
   <meta name="w3f-endpoint" content={SITE.form.endpoint} />
   <meta name="w3f-key" content={SITE.form.accessKey} />
   <meta name="site-phone" content={SITE.telephone} />
   <meta name="site-phone-href" content={SITE.telephoneHref} />
 
-  <!-- Open Graph -->
+  {/* Open Graph */}
   <meta property="og:type" content={ogType} />
   <meta property="og:site_name" content={SITE.name} />
   <meta property="og:locale" content={SITE.locale} />
@@ -129,18 +129,18 @@ const graph = [
     </>
   )}
 
-  <!-- Twitter. There is always an image now, so always the large card. -->
+  {/* Twitter. There is always an image now, so always the large card. */}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
 
-  <!-- Google Fonts -->
+  {/* Google Fonts */}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Manrope:wght@200;300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet" />
 
-  <!--
+  {/*
     Material Symbols.
 
     `display=block`, not `swap`. Icons here are ligature text — the element
@@ -151,10 +151,10 @@ const graph = [
 
     That covers the block period. It does not cover the font never arriving,
     which is what the guard below is for.
-  -->
+  */}
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" rel="stylesheet" />
 
-  <!--
+  {/*
     Icon-font guard. Until the face is confirmed loaded, .material-symbols-outlined
     is held at a 1em box with its text hidden (see global.css), so a blocked or
     failed request costs the icons but never the layout. On success this class
@@ -163,7 +163,7 @@ const graph = [
     If the font genuinely never loads the icons stay blank rather than
     reverting to words: every icon is aria-hidden and every icon-only control
     carries an aria-label, so nothing here is the sole carrier of meaning.
-  -->
+  */}
   <script is:inline>
     (function () {
       var d = document;
@@ -179,12 +179,12 @@ const graph = [
   <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })} />
 </head>
 <body class="bg-surface text-on-surface selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
-  <!--
+  {/*
     Bypass block (WCAG 2.4.1). The header carries up to 29 links once the
     Products and Knowledge menus open on focus, and every one of them sat
     between a keyboard user and the page content on all 76 pages.
     Off-screen until focused — see .skip-link in global.css.
-  -->
+  */}
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <Navbar currentPage={currentPage} />
@@ -197,10 +197,10 @@ const graph = [
 
   <MobileNav currentPage={currentPage} />
 
-  <!-- Modal host — populated by site-interactive.js -->
+  {/* Modal host — populated by site-interactive.js */}
   <div id="site-modals"></div>
 
-  <!-- Site-wide interactive features -->
+  {/* Site-wide interactive features */}
   <script is:inline src="/site-interactive.js"></script>
 </body>
 </html>
