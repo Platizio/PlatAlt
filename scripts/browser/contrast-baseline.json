@@ -3,139 +3,11 @@
   "generated": "2026-09-10",
   "known": [
     {
-      "key": "rgb(147, 197, 253) on rgb(183,192,213) @ 10px/700",
-      "ratio": 1.01,
-      "required": 4.5,
-      "sample": "AIF Cat II · Private Equity",
-      "selector": "span.text-[10px].px-3.py-1.5",
-      "pages": 1
-    },
-    {
-      "key": "rgb(196, 181, 253) on rgb(197,184,216) @ 10px/700",
-      "ratio": 1.02,
-      "required": 4.5,
-      "sample": "AIF Category III",
-      "selector": "span.text-[10px].px-3.py-1.5",
-      "pages": 2
-    },
-    {
-      "key": "rgb(110, 231, 183) on rgb(188,207,199) @ 30px/700",
-      "ratio": 1.07,
-      "required": 3,
-      "sample": "Not disclosed",
-      "selector": "p.text-3xl.font-bold.font-headline",
-      "pages": 1
-    },
-    {
-      "key": "rgb(165, 180, 252) on rgb(189,189,210) @ 10px/700",
-      "ratio": 1.08,
-      "required": 4.5,
-      "sample": "GIFT City IFSC",
-      "selector": "span.text-[10px].px-3.py-1.5",
-      "pages": 3
-    },
-    {
-      "key": "rgb(196, 181, 253) on rgb(206,195,221) @ 30px/700",
-      "ratio": 1.09,
-      "required": 3,
-      "sample": "Not disclosed",
-      "selector": "p.text-3xl.font-bold.font-headline",
-      "pages": 1
-    },
-    {
-      "key": "rgb(147, 197, 253) on rgb(194,202,218) @ 30px/700",
-      "ratio": 1.1,
-      "required": 3,
-      "sample": "Not disclosed",
-      "selector": "p.text-3xl.font-bold.font-headline",
-      "pages": 1
-    },
-    {
-      "key": "rgb(165, 180, 252) on rgb(173,171,205) @ 10px/700",
-      "ratio": 1.11,
-      "required": 4.5,
-      "sample": "GIFT City IFSC",
-      "selector": "span.text-[10px].px-2.py-1",
-      "pages": 1
-    },
-    {
-      "key": "rgb(252, 211, 77) on rgb(217,201,188) @ 30px/700",
-      "ratio": 1.12,
-      "required": 3,
-      "sample": "9.1% p.a.",
-      "selector": "p.text-3xl.font-bold.font-headline",
-      "pages": 9
-    },
-    {
-      "key": "rgb(110, 231, 183) on rgb(176,198,189) @ 10px/700",
-      "ratio": 1.18,
-      "required": 4.5,
-      "sample": "AIF Category I · GIFT City IFSC · AIF Catego",
-      "selector": "span.text-[10px].px-3.py-1.5",
-      "pages": 2
-    },
-    {
-      "key": "rgb(165, 180, 252) on rgb(199,199,216) @ 30px/700",
-      "ratio": 1.2,
-      "required": 3,
-      "sample": "Not disclosed",
-      "selector": "p.text-3xl.font-bold.font-headline",
-      "pages": 2
-    },
-    {
-      "key": "rgb(196, 181, 253) on rgb(183,165,213) @ 10px/700",
-      "ratio": 1.22,
-      "required": 4.5,
-      "sample": "AIF Category III",
-      "selector": "span.text-[10px].px-2.py-1",
-      "pages": 1
-    },
-    {
-      "key": "rgb(110, 231, 183) on rgb(155,184,177) @ 10px/700",
-      "ratio": 1.39,
-      "required": 4.5,
-      "sample": "AIF Category I · GIFT City IFSC · AIF Catego",
-      "selector": "span.text-[10px].px-2.py-1",
-      "pages": 1
-    },
-    {
       "key": "rgba(71, 96, 126, 0.4) on rgb(15,28,44) @ 30px/400",
       "ratio": 1.42,
       "required": 3,
       "sample": "01",
       "selector": "span.text-3xl.font-headline.text-secondary/40",
-      "pages": 3
-    },
-    {
-      "key": "rgb(253, 230, 138) on rgb(210,191,176) @ 10px/700",
-      "ratio": 1.43,
-      "required": 4.5,
-      "sample": "PMS",
-      "selector": "span.text-[10px].px-3.py-1.5",
-      "pages": 16
-    },
-    {
-      "key": "rgb(252, 211, 77) on rgb(255,255,255) @ 10px/700",
-      "ratio": 1.44,
-      "required": 4.5,
-      "sample": "PMS · Discretionary",
-      "selector": "span.text-[10px].uppercase.tracking-widest",
-      "pages": 9
-    },
-    {
-      "key": "rgb(252, 211, 77) on rgb(255,255,255) @ 18px/700",
-      "ratio": 1.44,
-      "required": 4.5,
-      "sample": "2.21%",
-      "selector": "p.text-lg.font-bold.font-headline",
-      "pages": 57
-    },
-    {
-      "key": "rgb(110, 231, 183) on rgb(255,255,255) @ 10px/700",
-      "ratio": 1.52,
-      "required": 4.5,
-      "sample": "AIF Cat I · Angel",
-      "selector": "span.text-[10px].uppercase.tracking-widest",
       "pages": 3
     },
     {
@@ -171,14 +43,6 @@
       "pages": 4
     },
     {
-      "key": "rgb(253, 230, 138) on rgb(201,174,159) @ 10px/700",
-      "ratio": 1.68,
-      "required": 4.5,
-      "sample": "PMS",
-      "selector": "span.text-[10px].px-2.py-1",
-      "pages": 7
-    },
-    {
       "key": "rgb(233, 193, 118) on rgb(255,255,255) @ 30px/400",
       "ratio": 1.7,
       "required": 3,
@@ -203,22 +67,6 @@
       "pages": 18
     },
     {
-      "key": "rgb(196, 181, 253) on rgb(255,255,255) @ 10px/700",
-      "ratio": 1.85,
-      "required": 4.5,
-      "sample": "AIF Cat III · Long Only",
-      "selector": "span.text-[10px].uppercase.tracking-widest",
-      "pages": 1
-    },
-    {
-      "key": "rgb(165, 180, 252) on rgb(255,255,255) @ 10px/700",
-      "ratio": 1.99,
-      "required": 4.5,
-      "sample": "GIFT City · Retail",
-      "selector": "span.text-[10px].uppercase.tracking-widest",
-      "pages": 1
-    },
-    {
       "key": "rgb(148, 163, 184) on rgb(249,250,245) @ 10px/400",
       "ratio": 2.44,
       "required": 4.5,
@@ -233,14 +81,6 @@
       "sample": "Phase 01",
       "selector": "p.font-label.text-xs.uppercase",
       "pages": 15
-    },
-    {
-      "key": "rgb(248, 113, 113) on rgb(255,255,255) @ 18px/700",
-      "ratio": 2.77,
-      "required": 4.5,
-      "sample": "-1.44%",
-      "selector": "p.text-lg.font-bold.font-headline",
-      "pages": 6
     },
     {
       "key": "rgb(119, 133, 152) on rgb(255,222,165) @ 12px/700",
@@ -281,46 +121,6 @@
       "sample": "Key Criteria",
       "selector": "span.text-[10px].uppercase.font-bold",
       "pages": 1
-    },
-    {
-      "key": "rgb(85, 87, 92) on rgb(206,195,221) @ 10px/700",
-      "ratio": 4.29,
-      "required": 4.5,
-      "sample": "Return",
-      "selector": "p.text-[10px].uppercase.tracking-widest",
-      "pages": 1
-    },
-    {
-      "key": "rgb(85, 87, 92) on rgb(199,199,216) @ 10px/700",
-      "ratio": 4.34,
-      "required": 4.5,
-      "sample": "Return",
-      "selector": "p.text-[10px].uppercase.tracking-widest",
-      "pages": 2
-    },
-    {
-      "key": "rgb(85, 87, 92) on rgb(194,202,218) @ 10px/700",
-      "ratio": 4.4,
-      "required": 4.5,
-      "sample": "Return",
-      "selector": "p.text-[10px].uppercase.tracking-widest",
-      "pages": 1
-    },
-    {
-      "key": "rgb(85, 87, 92) on rgb(188,207,199) @ 10px/700",
-      "ratio": 4.44,
-      "required": 4.5,
-      "sample": "Return",
-      "selector": "p.text-[10px].uppercase.tracking-widest",
-      "pages": 1
-    },
-    {
-      "key": "rgb(85, 87, 92) on rgb(217,201,188) @ 10px/700",
-      "ratio": 4.48,
-      "required": 4.5,
-      "sample": "Return (3Y)",
-      "selector": "p.text-[10px].uppercase.tracking-widest",
-      "pages": 9
     }
   ]
 }

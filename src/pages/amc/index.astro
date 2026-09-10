@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAmcCards } from '../../data/amcs';
+import { categoryTheme } from '../../config/category-theme';
 
 const amcs = getAmcCards();
 
@@ -13,23 +14,8 @@ const filterTabs = [
   { label: 'GIFT City IFSC', value: 'GIFT_CITY' },
 ];
 
-// Maps categoryType → Tailwind badge classes (dark-theme)
-const badgeClass: Record<string, string> = {
-  PMS:       'bg-amber-900/40 text-amber-200 border border-amber-600/40',
-  AIF_CAT1:  'bg-emerald-900/40 text-emerald-300 border border-emerald-600/40',
-  AIF_CAT2:  'bg-blue-900/40 text-blue-300 border border-blue-600/40',
-  AIF_CAT3:  'bg-violet-900/40 text-violet-300 border border-violet-600/40',
-  GIFT_CITY: 'bg-indigo-900/40 text-indigo-300 border border-indigo-600/40',
-};
-
-// Maps categoryType → icon accent colour
-const iconClass: Record<string, string> = {
-  PMS:       'text-amber-300',
-  AIF_CAT1:  'text-emerald-400',
-  AIF_CAT2:  'text-blue-400',
-  AIF_CAT3:  'text-violet-400',
-  GIFT_CITY: 'text-indigo-400',
-};
+// Category colour comes from one place now — see src/config/category-theme.ts
+// for why, and for the measurements behind the values.
 ---
 
 <BaseLayout currentPage="amc">
@@ -100,9 +86,9 @@ const iconClass: Record<string, string> = {
         {/* Top row: icon + badge */}
         <div class="flex items-start justify-between mb-6">
           <div class="w-12 h-12 bg-surface-container flex items-center justify-center shrink-0">
-            <span aria-hidden="true" class={`material-symbols-outlined text-2xl ${iconClass[amc.categoryType]}`}>{amc.icon}</span>
+            <span aria-hidden="true" class={`material-symbols-outlined text-2xl ${categoryTheme(amc.categoryType).accent}`}>{amc.icon}</span>
           </div>
-          <span class={`text-[10px] px-2 py-1 uppercase font-bold tracking-widest ${badgeClass[amc.categoryType]}`}>
+          <span class={`text-[10px] px-2 py-1 uppercase font-bold tracking-widest ${categoryTheme(amc.categoryType).badge}`}>
             {amc.categoryLabel}
           </span>
         </div>

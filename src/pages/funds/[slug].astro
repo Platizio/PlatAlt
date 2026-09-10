@@ -7,6 +7,7 @@ import {
 import { seoForFund } from '../../data/seo';
 import { fundNode } from '../../data/schema';
 import { KNOWLEDGE_FOR, termOf } from '../../data/aif-taxonomy';
+import { categoryTheme, NEGATIVE_ACCENT } from '../../config/category-theme';
 
 const CAT_NAME_INLINE: Record<string, string> = {
   AIF_CAT1: 'Category I AIF',
@@ -27,14 +28,9 @@ const seo = seoForFund(fund);
 // GIFT City schemes resolve to their own hubs via KNOWLEDGE_FOR instead.
 const subTerm = termOf(fund.sub_strategy);
 
-/* ── Colour tokens per type ── */
-const clr = {
-  PMS:       { accent: 'text-amber-300',  border: 'border-amber-700/40',  bg: 'bg-amber-900/25',   badge: 'bg-amber-900/30 text-amber-200 border border-amber-700/40'  },
-  AIF_CAT1:  { accent: 'text-emerald-300',border: 'border-emerald-700/40',bg: 'bg-emerald-900/25', badge: 'bg-emerald-900/30 text-emerald-300 border border-emerald-700/40'},
-  AIF_CAT2:  { accent: 'text-blue-300',   border: 'border-blue-700/40',   bg: 'bg-blue-900/25',    badge: 'bg-blue-900/30 text-blue-300 border border-blue-700/40'      },
-  AIF_CAT3:  { accent: 'text-violet-300', border: 'border-violet-700/40', bg: 'bg-violet-900/25',  badge: 'bg-violet-900/30 text-violet-300 border border-violet-700/40' },
-  GIFT_CITY: { accent: 'text-indigo-300', border: 'border-indigo-700/40', bg: 'bg-indigo-900/25',  badge: 'bg-indigo-900/30 text-indigo-300 border border-indigo-700/40' },
-}[fund.site_type];
+/* Colour per category, from one place. The map that used to sit here also had
+   no fallback, so an unrecognised site_type crashed on clr.accent. */
+const clr = categoryTheme(fund.site_type);
 
 const fmtDate = (d: string | null) =>
   d ? new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : NOT_DISCLOSED;
@@ -125,7 +121,7 @@ const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
         <p class="text-sm text-on-surface-variant max-w-2xl leading-relaxed">{fund.description}</p>
       </div>
       {/* Key metric pill */}
-      <div class={`shrink-0 ${clr.bg} ${clr.border} border px-8 py-6 text-center min-w-[180px]`}>
+      <div class={`shrink-0 ${clr.panel} ${clr.border} border px-8 py-6 text-center min-w-[180px]`}>
         <p class="text-[10px] uppercase tracking-widest text-muted font-bold mb-2">{metric.label}</p>
         <p class={`text-3xl font-bold font-headline ${clr.accent}`}>{metric.value}</p>
       </div>
@@ -155,7 +151,7 @@ const returnsSource = sourceLabel(fund.returns[0]?.source ?? null);
           {returnRows.map((row) => (
             <div class="bg-surface-container-lowest px-4 py-5 text-center">
               <p class="text-[9px] uppercase tracking-widest font-bold text-muted mb-2">{row.label}</p>
-              <p class={`text-lg font-bold font-headline ${row.value.startsWith('-') ? 'text-red-400' : clr.accent}`}>{row.value}</p>
+              <p class={`text-lg font-bold font-headline ${row.value.startsWith('-') ? NEGATIVE_ACCENT : clr.accent}`}>{row.value}</p>
             </div>
           ))}
         </div>
