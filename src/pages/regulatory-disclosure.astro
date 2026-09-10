@@ -63,15 +63,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2 class="font-headline text-2xl text-primary-container mb-4">5. Investor Grievance Redressal</h2>
       <p class="mb-4">For complaints against any fund manager or AIF registered with SEBI, investors may use:</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Three of these four are contact routes, and all three used to be plain
+             text — on the one page where a visitor has arrived wanting to act.
+             `href` is omitted for the postal office, which is not actionable. */}
         {[
-          { label: 'SEBI SCORES Portal', value: 'scores.gov.in', desc: 'Online complaint filing system' },
-          { label: 'SEBI Helpline', value: '1800 22 7575', desc: 'Toll-free investor helpline' },
+          { label: 'SEBI SCORES Portal', value: 'scores.gov.in', href: 'https://scores.gov.in', external: true, desc: 'Online complaint filing system' },
+          { label: 'SEBI Helpline', value: '1800 22 7575', href: 'tel:+911800227575', desc: 'Toll-free investor helpline' },
           { label: 'SEBI Head Office', value: 'Mumbai, Maharashtra', desc: 'SEBI Bhavan, BKC' },
-          { label: 'Email', value: 'sebi@sebi.gov.in', desc: 'Official SEBI email' },
+          { label: 'Email', value: 'sebi@sebi.gov.in', href: 'mailto:sebi@sebi.gov.in', desc: 'Official SEBI email' },
         ].map(c => (
           <div class="bg-surface-container-lowest p-4">
             <p class="text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">{c.label}</p>
-            <p class="font-headline text-lg text-primary-container">{c.value}</p>
+            {c.href
+              ? <a href={c.href}
+                   target={c.external ? '_blank' : undefined}
+                   rel={c.external ? 'noopener' : undefined}
+                   class="font-headline text-lg text-primary-container underline underline-offset-4 decoration-outline-variant hover:decoration-primary-container transition-colors">{c.value}</a>
+              : <p class="font-headline text-lg text-primary-container">{c.value}</p>}
             <p class="text-xs text-on-surface-variant">{c.desc}</p>
           </div>
         ))}
