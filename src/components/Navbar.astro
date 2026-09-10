@@ -13,22 +13,22 @@ const isSection = (section: string) => currentPage.startsWith(section);
 <header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-xl shadow-sm border-b border-slate-100">
   <div class="flex justify-between items-center px-6 lg:px-10 py-4 max-w-screen-2xl mx-auto w-full">
 
-    <!-- Logo -->
+    {/* Logo */}
     <a href="/" class="flex items-center shrink-0">
       <img src="/logo.png" alt="Platizio Alternatives" width="467" height="54"
            fetchpriority="high" decoding="async" class="h-8 w-auto" />
     </a>
 
-    <!-- Desktop Nav -->
+    {/* Desktop Nav */}
     <nav class="hidden lg:flex items-center gap-1">
 
-      <!-- Home -->
+      {/* Home */}
       <a href="/"
          class={`px-4 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isActive('home') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
         Home
       </a>
 
-      <!-- Products Dropdown -->
+      {/* Products Dropdown */}
       <div class="nav-item relative group px-1">
         <button type="button" aria-haspopup="true" aria-expanded="false" class={`flex items-center gap-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isSection('products') || isSection('funds') || isActive('explore') || isActive('compare') || isActive('amc') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
           Products
@@ -36,7 +36,7 @@ const isSection = (section: string) => currentPage.startsWith(section);
         </button>
         <div class="nav-dropdown hidden group-hover:block pt-2">
           <div class="bg-white border border-slate-200 shadow-2xl min-w-[820px] grid grid-cols-4 gap-0">
-            <!-- Tools -->
+            {/* Tools */}
             <div class="p-6 border-r border-slate-200">
               <p class="text-brand-orange/70 text-[9px] font-bold uppercase tracking-widest mb-4">Tools</p>
               <ul class="space-y-2">
@@ -45,7 +45,7 @@ const isSection = (section: string) => currentPage.startsWith(section);
                 <li><a href="/amc" class="flex items-center gap-2 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors"><span aria-hidden="true" class="material-symbols-outlined text-sm">corporate_fare</span>AMC Directory</a></li>
               </ul>
             </div>
-            <!-- Cat I AIF -->
+            {/* Cat I AIF */}
             <div class="p-6 border-r border-slate-200">
               <p class="text-brand-orange/70 text-[9px] font-bold uppercase tracking-widest mb-1">Category I AIF</p>
               <a href="/knowledge/aif/category-i" class="text-brand-orange/50 text-[9px] tracking-wide hover:text-brand-orange/80 transition-colors block mb-3">View all →</a>
@@ -57,7 +57,7 @@ const isSection = (section: string) => currentPage.startsWith(section);
                 <li><a href="/knowledge/aif/category-i/sme" class="text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors block">SME Funds</a></li>
               </ul>
             </div>
-            <!-- Cat II AIF -->
+            {/* Cat II AIF */}
             <div class="p-6 border-r border-slate-200">
               <p class="text-brand-orange/70 text-[9px] font-bold uppercase tracking-widest mb-1">Category II AIF</p>
               <a href="/knowledge/aif/category-ii" class="text-brand-orange/50 text-[9px] tracking-wide hover:text-brand-orange/80 transition-colors block mb-3">View all →</a>
@@ -68,7 +68,7 @@ const isSection = (section: string) => currentPage.startsWith(section);
                 <li><a href="/knowledge/aif/category-ii/distressed-assets" class="text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors block">Distressed Assets</a></li>
               </ul>
             </div>
-            <!-- Cat III AIF -->
+            {/* Cat III AIF */}
             <div class="p-6">
               <p class="text-brand-orange/70 text-[9px] font-bold uppercase tracking-widest mb-1">Category III AIF</p>
               <a href="/knowledge/aif/category-iii" class="text-brand-orange/50 text-[9px] tracking-wide hover:text-brand-orange/80 transition-colors block mb-3">View all →</a>
@@ -83,7 +83,7 @@ const isSection = (section: string) => currentPage.startsWith(section);
         </div>
       </div>
 
-      <!-- Knowledge Dropdown -->
+      {/* Knowledge Dropdown */}
       <div class="nav-item relative group px-1">
         <button type="button" aria-haspopup="true" aria-expanded="false" class={`flex items-center gap-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isSection('knowledge') || isActive('media') || isActive('gift-city') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
           Knowledge
@@ -98,9 +98,9 @@ const isSection = (section: string) => currentPage.startsWith(section);
               <a href="/knowledge/pms" class="flex items-center gap-3 text-slate-600 hover:text-brand-orange text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-100">
                 <span aria-hidden="true" class="material-symbols-outlined text-sm">analytics</span> PMS Knowledge Centre
               </a>
-              <!-- PMS mandate spokes. The AIF children have been reachable from
+              {/* PMS mandate spokes. The AIF children have been reachable from
                    this menu on every page for a while; the PMS side had no
-                   children at all until they were split out of the hub. -->
+                   children at all until they were split out of the hub. */}
               {PMS_MANDATES.map((m) => (
                 <a href={`/knowledge/pms/${m.key}`} class="flex items-center gap-3 pl-7 text-slate-500 hover:text-brand-orange text-[11px] tracking-wide transition-colors py-1.5 border-b border-slate-100">
                   {m.name}
@@ -126,39 +126,39 @@ const isSection = (section: string) => currentPage.startsWith(section);
         </div>
       </div>
 
-      <!-- About -->
+      {/* About */}
       <a href="/about"
          class={`px-4 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isActive('about') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
         About
       </a>
 
-      <!-- Partner -->
+      {/* Partner */}
       <a href="/partner"
          class={`px-4 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isActive('partner') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
         Partner
       </a>
 
-      <!-- Contact -->
+      {/* Contact */}
       <a href="/contact"
          class={`px-4 py-2 text-[11px] font-semibold uppercase tracking-widest transition-colors duration-200 ${isActive('contact') ? 'text-brand-orange' : 'text-slate-500 hover:text-brand-orange'}`}>
         Contact
       </a>
     </nav>
 
-    <!-- Right Actions -->
+    {/* Right Actions */}
     <div class="flex items-center gap-3">
       <button type="button"
               class="js-open-consult bg-brand-orange text-white px-5 py-2 text-[11px] font-bold uppercase tracking-widest hover:bg-brand-orange-dark transition-all active:scale-95 hidden md:inline-flex items-center cursor-pointer">
         Consult
       </button>
-      <!-- Mobile Hamburger -->
+      {/* Mobile Hamburger */}
       <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden text-brand-navy p-1" aria-label="Menu">
         <span aria-hidden="true" class="material-symbols-outlined">menu</span>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Slide-down Menu -->
+  {/* Mobile Slide-down Menu */}
   <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 px-6 pb-6 pt-4">
     <nav class="space-y-1">
       <a href="/" class="block py-3 text-[11px] font-semibold uppercase tracking-widest text-slate-600 hover:text-brand-orange border-b border-slate-100">Home</a>

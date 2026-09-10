@@ -19,7 +19,7 @@ const fundDataJson = JSON.stringify(compareData);
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
-  <!-- Hero Header ──────────────────────────────────────────────── -->
+  {/* Hero Header ──────────────────────────────────────────────── */}
   <section class="py-16 md:py-20 border-b border-outline-variant/20 mb-12">
     <span class="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-4 block">Side-by-Side Analysis</span>
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -48,10 +48,10 @@ const fundDataJson = JSON.stringify(compareData);
     </p>
   </section>
 
-  <!-- Compare Section ─────────────────────────────────────────── -->
+  {/* Compare Section ─────────────────────────────────────────── */}
   <section class="mb-16">
 
-    <!-- Empty State -->
+    {/* Empty State */}
     <div id="compare-empty" class="hidden text-center py-28 border border-outline-variant/20">
       <span aria-hidden="true" class="material-symbols-outlined text-6xl text-muted block mb-5">compare_arrows</span>
       <h2 class="font-headline text-3xl text-primary-container mb-3">No funds selected yet</h2>
@@ -62,14 +62,14 @@ const fundDataJson = JSON.stringify(compareData);
       </a>
     </div>
 
-    <!-- Dynamic Table (hidden until JS builds it) -->
+    {/* Dynamic Table (hidden until JS builds it) */}
     <div id="compare-table-wrap" class="hidden overflow-x-auto">
       <table id="compare-table" class="w-full border-collapse min-w-[680px]"></table>
     </div>
 
   </section>
 
-  <!-- CTA Footer ──────────────────────────────────────────────── -->
+  {/* CTA Footer ──────────────────────────────────────────────── */}
   <div class="flex flex-col md:flex-row items-center justify-between gap-6 py-8 border-t border-outline-variant/20">
     <p class="text-sm text-on-surface-variant">Looking for more funds? Explore the full product universe.</p>
     <div class="flex gap-4">
@@ -85,7 +85,7 @@ const fundDataJson = JSON.stringify(compareData);
 </div>
 
 <script type="application/json" id="fund-data" set:html={fundDataJson}></script>
-<!-- ─── Client-side compare renderer ──────────────────────────── -->
+{/* ─── Client-side compare renderer ──────────────────────────── */}
 <script is:inline>
 (function () {
 

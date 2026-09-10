@@ -34,9 +34,9 @@ const insightLinks = [
 ---
 <BaseLayout currentPage="home">
 
-<!-- Hero Section -->
+{/* Hero Section */}
 <section class="relative min-h-[91vh] flex items-center overflow-hidden bg-primary-container">
-  <!--
+  {/*
     Retuned for the removal of the hero photograph. The old stack was
     navy field -> photo at opacity-40 -> left-to-right navy-to-transparent scrim,
     so the right-hand third of the hero was carried entirely by the picture.
@@ -44,8 +44,8 @@ const insightLinks = [
     from brand tokens: a slate bloom where the building used to catch light, a
     warm amber counterlight off the right edge, and the original scrim kept in
     front of both so the headline sits on solid navy exactly as before.
-  -->
-  <!--
+  */}
+  {/*
     Hero photograph. Self-hosted and served through astro:assets, so it ships as
     AVIF/WebP with intrinsic dimensions. At 2880x1620 it is 2x the ~1440x819 box,
     which is what the previous hero image could never be — that one was a 512px
@@ -56,19 +56,19 @@ const insightLinks = [
 
     The scrim in front of it is the original left-to-right navy wash: the headline
     still sits on solid navy, and the picture carries the right-hand third.
-  -->
+  */}
   <div class="absolute inset-0">
     <Picture src={heroFacade} alt="" widths={[768, 1280, 1920, 2880]} sizes="100vw"
              formats={['avif', 'webp']} loading="eager" fetchpriority="high" decoding="async"
              class="w-full h-full object-cover" />
   </div>
   <div class="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/85 to-primary-container/25"></div>
-  <!--
+  {/*
     The scrim above is horizontal, which is enough on desktop where the copy
     occupies the left seven columns. At mobile the copy spans the full width and
     runs over the brighter facade panels, so small screens get an additional flat
     veil rather than relying on the gradient alone.
-  -->
+  */}
   <div class="absolute inset-0 bg-primary-container/55 md:hidden" aria-hidden="true"></div>
   <div class="container mx-auto px-6 lg:px-10 relative z-10 grid md:grid-cols-12 gap-8 py-20">
     <div class="md:col-span-8 lg:col-span-7">
@@ -92,7 +92,7 @@ const insightLinks = [
   </div>
 </section>
 
-<!--
+{/*
   Ticker Strip.
 
   The rows scroll indefinitely and carry links, so this is moving content
@@ -101,7 +101,7 @@ const insightLinks = [
   below is that mechanism; the strip also pauses on hover and on focus-within,
   so tabbing into a link stops the row it is on. prefers-reduced-motion stops
   it outright — see global.css.
--->
+*/}
 <section class="ticker-strip relative bg-surface-container-low border-y border-outline-variant/10 py-5 overflow-hidden">
   <button type="button" id="ticker-toggle" aria-pressed="false"
           class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-surface-container-low/95 border border-outline-variant text-muted hover:text-primary-container transition-colors">
@@ -143,7 +143,7 @@ const insightLinks = [
   })();
 </script>
 
-<!-- AIF Category Quick Links -->
+{/* AIF Category Quick Links */}
 <section class="py-16 px-6 lg:px-10 bg-surface-container-low">
   <div class="max-w-7xl mx-auto">
     <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
@@ -184,7 +184,7 @@ const insightLinks = [
   </div>
 </section>
 
-<!-- Investment Journey (Asymmetric Layout) -->
+{/* Investment Journey (Asymmetric Layout) */}
 <section class="py-24 px-6 lg:px-10">
   <div class="container mx-auto max-w-7xl grid md:grid-cols-12 gap-16 items-start">
     <div class="md:col-span-5 md:sticky top-28">
@@ -214,7 +214,7 @@ const insightLinks = [
   </div>
 </section>
 
-<!-- Media Outlook -->
+{/* Media Outlook */}
 <section class="py-24 bg-surface-container-low">
   <div class="container mx-auto px-6 lg:px-10 max-w-7xl">
     <div class="text-center mb-14">
@@ -255,7 +255,7 @@ const insightLinks = [
   </div>
 </section>
 
-<!-- Final CTA Band -->
+{/* Final CTA Band */}
 <section class="py-24 relative overflow-hidden bg-slate-950">
   <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
     <h2 class="text-4xl md:text-6xl text-white mb-8 font-serif italic">Invest with <span class="not-italic text-tertiary-fixed">Greater Clarity</span></h2>

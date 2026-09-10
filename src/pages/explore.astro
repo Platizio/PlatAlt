@@ -10,7 +10,7 @@ const uniqueAMCs = getUniqueAMCs();
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
 
-  <!-- Hero -->
+  {/* Hero */}
   <section class="mb-12 py-16 md:py-20 flex flex-col md:flex-row gap-12 items-end border-b border-outline-variant/20">
     <div class="flex-1">
       <span class="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-4 block">Institutional Fund Discovery</span>
@@ -28,7 +28,7 @@ const uniqueAMCs = getUniqueAMCs();
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-32">
 
-    <!-- ── Sidebar Filters ── -->
+    {/* ── Sidebar Filters ── */}
     <aside class="lg:col-span-3 space-y-10">
       {/*
         The four filter-group labels below and the fund-card titles in the
@@ -37,7 +37,7 @@ const uniqueAMCs = getUniqueAMCs();
         Their small uppercase look comes from the utility classes, not the tag.
       */}
 
-      <!-- Product Type (hierarchical) -->
+      {/* Product Type (hierarchical) */}
       <div>
         <div class="flex items-center justify-between mb-5">
           <h2 class="text-[10px] uppercase tracking-widest text-muted font-bold">Product Type</h2>
@@ -125,10 +125,10 @@ const uniqueAMCs = getUniqueAMCs();
         </div>
       </div>
 
-      <!-- Divider -->
+      {/* Divider */}
       <div class="border-t border-outline-variant/20"></div>
 
-      <!-- Asset Management -->
+      {/* Asset Management */}
       <div>
         <h2 class="text-[10px] uppercase tracking-widest text-muted font-bold mb-5">Asset Management</h2>
         <div class="relative">
@@ -140,10 +140,10 @@ const uniqueAMCs = getUniqueAMCs();
         </div>
       </div>
 
-      <!-- Divider -->
+      {/* Divider */}
       <div class="border-t border-outline-variant/20"></div>
 
-      <!-- AUM Range -->
+      {/* AUM Range */}
       <div>
         <div class="flex items-center justify-between mb-2">
           <h2 class="text-[10px] uppercase tracking-widest text-muted font-bold">AUM Range</h2>
@@ -158,10 +158,10 @@ const uniqueAMCs = getUniqueAMCs();
         </div>
       </div>
 
-      <!-- Divider -->
+      {/* Divider */}
       <div class="border-t border-outline-variant/20"></div>
 
-      <!-- Inception Age -->
+      {/* Inception Age */}
       <div>
         <h2 class="text-[10px] uppercase tracking-widest text-muted font-bold mb-5">Inception Age</h2>
         <div class="grid grid-cols-2 gap-2">
@@ -178,16 +178,16 @@ const uniqueAMCs = getUniqueAMCs();
         </div>
       </div>
 
-      <!-- Divider -->
+      {/* Divider */}
       <div class="border-t border-outline-variant/20"></div>
 
-      <!-- Reset All -->
+      {/* Reset All */}
       <button type="button" id="reset-all" class="w-full text-[10px] uppercase tracking-widest font-bold text-muted border border-outline-variant/30 py-2.5 hover:border-secondary hover:text-secondary transition-colors">
         Reset All Filters
       </button>
     </aside>
 
-    <!-- ── Results Grid ── -->
+    {/* ── Results Grid ── */}
     <div class="lg:col-span-9">
       <div class="flex justify-between items-center mb-8">
         <p id="result-count" class="text-xs text-muted font-medium tracking-wide">Showing <span id="count-num">8</span> of <span id="count-total">{funds.length}</span> funds</p>
@@ -203,7 +203,7 @@ const uniqueAMCs = getUniqueAMCs();
         </div>
       </div>
 
-      <!-- Fund Cards Grid -->
+      {/* Fund Cards Grid */}
       <div id="funds-grid" class="grid grid-cols-1 md:grid-cols-2 gap-1 bg-surface-container-low border border-outline-variant/10">
         {funds.map((fund, i) => (
           <div
@@ -247,7 +247,7 @@ const uniqueAMCs = getUniqueAMCs();
         ))}
       </div>
 
-      <!-- No results -->
+      {/* No results */}
       <div id="no-results" class="hidden py-24 text-center border border-outline-variant/20 mt-1">
         <span aria-hidden="true" class="material-symbols-outlined text-5xl text-muted-subtle mb-4 block">search_off</span>
         <p class="font-headline text-2xl text-primary-container mb-2">No funds match your filters</p>
@@ -255,7 +255,7 @@ const uniqueAMCs = getUniqueAMCs();
         <button type="button" id="no-results-reset" class="px-6 py-2.5 bg-secondary text-surface text-[10px] uppercase font-bold tracking-widest hover:opacity-90 transition-opacity">Reset Filters</button>
       </div>
 
-      <!-- Load More -->
+      {/* Load More */}
       <div id="load-more-wrap" class="mt-10 flex flex-col items-center gap-3">
         <button type="button" id="load-more-btn" class="px-8 py-3 border border-outline text-[10px] uppercase font-bold tracking-[0.2em] hover:bg-primary-container hover:text-white hover:border-primary-container transition-all">
           Load More Funds
@@ -266,7 +266,7 @@ const uniqueAMCs = getUniqueAMCs();
   </div>
 </div>
 
-<!-- ── Compare Floating Bar ── -->
+{/* ── Compare Floating Bar ── */}
 <div id="compare-bar" class="fixed bottom-0 left-0 right-0 z-40 translate-y-full transition-transform duration-300 ease-out">
   <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
     <div class="bg-primary-container border-t-2 border-tertiary-fixed shadow-2xl px-6 py-4 flex items-center gap-4 flex-wrap">

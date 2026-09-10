@@ -45,14 +45,14 @@ const stats = [
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-28">
 
-  <!-- Breadcrumb -->
+  {/* Breadcrumb */}
   <nav class="py-5 flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-muted border-b border-outline-variant/20 flex-wrap">
     <a href="/amc" class="hover:text-secondary transition-colors">AMC Directory</a>
     <span aria-hidden="true" class="material-symbols-outlined text-sm text-muted-subtle">chevron_right</span>
     <span class="text-on-surface-variant">{amc.name}</span>
   </nav>
 
-  <!-- Hero -->
+  {/* Hero */}
   <section class="pt-10 pb-8 border-b border-outline-variant/20">
     <div class="flex items-start gap-6">
       <div class={`w-16 h-16 ${clr.bg} ${clr.border} border flex items-center justify-center shrink-0`}>
@@ -66,7 +66,7 @@ const stats = [
     </div>
   </section>
 
-  <!-- Stats -->
+  {/* Stats */}
   <div class="grid grid-cols-1 sm:grid-cols-3 border border-outline-variant/20 mb-12">
     {stats.map((s, i) => (
       <div class={`px-6 py-5 ${i < stats.length - 1 ? 'border-b sm:border-b-0 sm:border-r border-outline-variant/20' : ''}`}>
@@ -87,7 +87,7 @@ const stats = [
     the manager's total assets under management.
   </p>
 
-  <!-- Funds -->
+  {/* Funds */}
   <section class="mb-12">
     <div class="flex items-center gap-3 mb-6">
       <span aria-hidden="true" class={`material-symbols-outlined ${clr.accent}`} style="font-variation-settings:'FILL' 1">inventory_2</span>
