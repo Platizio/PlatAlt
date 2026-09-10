@@ -7,7 +7,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="mb-12">
     <p class="text-on-tertiary-container text-sm font-bold uppercase tracking-[0.3em] mb-4">Legal</p>
     <h1 class="font-headline text-5xl md:text-6xl font-light text-primary-container mb-6">Privacy <span class="italic">Policy</span></h1>
-    <p class="text-on-surface-variant">Last updated: January 1, 2025</p>
+    {/* Deliberately a literal, and deliberately not `new Date()` or a git
+         timestamp: this date asserts when the POLICY changed, and stamping it
+         from the build would claim a revision every time someone edits a
+         colour on this page. Update it by hand when the wording changes.
+
+         It read "January 1, 2025" until 2026-09-10, by which point the text
+         had named three different controlling entities and two different
+         Data Protection Office addresses. 14 August 2026 is when the current
+         entity, address and contact email were set (commit beabd3a); every
+         change since has been presentational. */}
+    <p class="text-on-surface-variant">Last updated: 14 August 2026</p>
   </div>
 
   <div class="prose prose-sm max-w-none space-y-10 text-on-surface-variant leading-relaxed">
