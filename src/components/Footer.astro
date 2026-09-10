@@ -1,5 +1,9 @@
 ---
 import { SITE } from '../config/site';
+
+/* Stamped at build time. A literal year does not fail on 1 January — it just
+   starts being wrong, silently, on every page. */
+const year = new Date().getFullYear();
 ---
 <footer class="bg-slate-50 text-brand-navy py-20 px-6 border-t border-slate-200 mobile-nav-pad">
   <div class="container mx-auto max-w-7xl">
@@ -7,8 +11,10 @@ import { SITE } from '../config/site';
       {/* Brand */}
       <div class="col-span-2">
         <div class="mb-6">
-          <img src="/logo.png" alt="Platizio Alternatives" width="467" height="54"
-               loading="lazy" decoding="async" class="h-7 w-auto" />
+          <a href="/" class="inline-flex" aria-label="Platizio Alternatives — home">
+            <img src="/logo.png" alt="Platizio Alternatives" width="467" height="54"
+                 loading="lazy" decoding="async" class="h-7 w-auto" />
+          </a>
         </div>
         {/*
           Rewritten 2026-08-13. The previous sentence named the brand as a
@@ -88,7 +94,7 @@ import { SITE } from '../config/site';
     </div>
 
     <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-slate-500 text-[10px] uppercase tracking-widest">© 2026 Platizio Alternatives. All rights reserved.</p>
+      <p class="text-slate-500 text-[10px] uppercase tracking-widest">© {year} Platizio Alternatives. All rights reserved.</p>
       <div class="flex flex-wrap gap-6 text-slate-500 text-[10px] uppercase tracking-widest">
         <a class="hover:text-brand-navy transition-colors" href="/terms">Terms</a>
         <a class="hover:text-brand-navy transition-colors" href="/privacy">Privacy</a>
