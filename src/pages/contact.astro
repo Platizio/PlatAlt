@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EditorialVisual from '../components/EditorialVisual.astro';
+import { contactPageNode } from '../data/schema';
+import { SITE } from '../config/site';
+
+/**
+ * Until this page existed the site had no contact route at all: no phone
+ * number, no address in the footer, and two footer icons that looked like
+ * social links but pointed at /partner and /media. The only contact surface
+ * was a modal that, until the Web3Forms wiring landed, sent nothing anywhere.
+ *
+ * Everything factual here comes from src/config/site.ts, which in turn tracks
+ * platizio.com/contact and the MCA record for LLPIN AAQ-9558. Nothing is
+ * hardcoded on this page, so an address change is still a one-file edit.
+ */
+
+const offices = [
+  {
+    label: 'Head Office',
+    icon: 'apartment',
+    address: SITE.address,
+    note: 'Where the advisory team sits. Visits by appointment.',
+  },
+  {
+    label: 'Registered Office',
+    icon: 'gavel',
+    address: SITE.registeredAddress,
+    note: 'The registered office of Platizio Services LLP. Legal and data-protection correspondence.',
+  },
+];
+
+/**
+ * Display line. The region is dropped when it repeats the locality — Delhi is
+ * both the city and the union territory, so the naive join reads "Delhi, Delhi
+ * 110092". Both fields stay populated in the JSON-LD, where they are correct.
+ */
+const line = (a: typeof SITE.address) =>
+  [a.streetAddress, a.addressLocality, a.addressRegion === a.addressLocality ? '' : a.addressRegion]
+    .filter(Boolean)
+    .join(', ') + ` ${a.postalCode}`;
+
+/* wa.me takes digits only — telephoneHref carries the leading +. */
+const waNumber = SITE.telephoneHref.replace(/\D/g, '');
+const waText = encodeURIComponent(
+  'Hello Platizio Alternatives, I would like to know more about your PMS and AIF offerings.',
+);
+
+const channels = [
+  {
+    icon: 'call',
+    label: 'Call us',
+    value: SITE.telephone,
+    href: `tel:${SITE.telephoneHref}`,
+    note: 'Monday to Friday, 9:30am – 6:30pm IST',
+  },
+  {
+    icon: 'chat',
+    label: 'WhatsApp',
+    value: SITE.telephone,
+    href: `https://wa.me/${waNumber}?text=${waText}`,
+    note: 'Usually the fastest way to reach us',
+    external: true,
+  },
+  {
+    icon: 'mail',
+    label: 'Email',
+    value: SITE.email,
+    href: `mailto:${SITE.email}`,
+    note: 'For documents, mandates and detailed queries',
+  },
+];
+---
+<BaseLayout
+  currentPage="contact"
+  breadcrumbs={[{ name: 'Home', item: '/' }, { name: 'Contact' }]}
+  schema={[contactPageNode()]}
+>
+
+{/* Hero */}
+<section class="px-6 md:px-16 lg:px-24 pt-16 md:pt-24 pb-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-end max-w-screen-xl mx-auto">
+  <div class="md:col-span-8">
+    <span class="font-label text-[11px] uppercase tracking-[0.3em] text-secondary mb-4 block">Get in touch</span>
+    <h1 class="text-6xl md:text-8xl font-headline text-primary-container leading-[0.9] mb-8">Talk to<br/>our team.</h1>
+    <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed">
+      Whether you are evaluating your first alternative allocation or comparing specific PMS and AIF mandates, a short conversation is usually faster than a brochure.
+    </p>
+  </div>
+  <div class="md:col-span-4 hidden md:block">
+    <EditorialVisual icon="alternate_email" label="Direct Lines" tone="navy" rule ratio="h-64 w-full" />
+  </div>
+</section>
+
+{/* Direct channels */}
+<section class="bg-surface-container-low py-20 px-6 md:px-16 lg:px-24">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant/20 border border-outline-variant/20">
+      {channels.map(c => (
+        <a href={c.href}
+           target={c.external ? '_blank' : undefined}
+           rel={c.external ? 'noopener noreferrer' : undefined}
+           class="group bg-surface-container-lowest p-8 flex flex-col gap-3 hover:bg-white transition-colors">
+          <span class="material-symbols-outlined text-3xl text-secondary group-hover:text-primary-container transition-colors" aria-hidden="true">{c.icon}</span>
+          <span class="font-label text-[10px] uppercase tracking-[0.25em] text-secondary">{c.label}</span>
+          <span class="font-body font-bold text-lg text-primary-container break-words">{c.value}</span>
+          <span class="text-sm text-on-surface-variant leading-relaxed mt-auto pt-2">{c.note}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* Enquiry + offices */}
+<section class="py-24 px-6 md:px-16 lg:px-24 max-w-screen-xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+    {/* Enquiry */}
+    <div class="lg:col-span-6">
+      <h2 class="text-4xl font-headline text-primary-container mb-6">Send us an enquiry</h2>
+      <p class="text-on-surface-variant leading-relaxed mb-8">
+        Share a few details and an advisor will come back to you within one business day. If you already have a fund or manager in mind, name it — it saves a round trip.
+      </p>
+      {/*
+        Deliberately the same modal the rest of the site uses, rather than a
+        second form on this page. One form means one code path, one validated
+        payload and one place where a delivery bug can hide. `.js-open-consult`
+        is bound in public/site-interactive.js.
+      */}
+      <button type="button"
+              class="js-open-consult inline-flex items-center gap-3 bg-primary-container text-on-primary px-10 py-5 font-label text-xs uppercase tracking-widest hover:bg-secondary transition-colors">
+        <span class="material-symbols-outlined text-sm" aria-hidden="true">edit_note</span>
+        Open the enquiry form
+      </button>
+
+      <div class="mt-10 p-6 bg-surface-container-low border-l-2 border-secondary">
+        <p class="text-xs font-label uppercase tracking-widest text-secondary mb-2 font-bold">Are you a distributor?</p>
+        <p class="text-sm text-on-surface-variant leading-relaxed">
+          If you are an AMFI-registered distributor or wealth firm looking to offer AIF and PMS products to your clients, use the <a href="/partner" class="text-secondary underline underline-offset-2 hover:no-underline">distributor registration form</a> instead.
+        </p>
+      </div>
+    </div>
+
+    {/* Offices */}
+    <div class="lg:col-span-6">
+      <h2 class="text-4xl font-headline text-primary-container mb-6">Our offices</h2>
+      <div class="space-y-6">
+        {offices.map(o => (
+          <div class="bg-surface-container-lowest border border-outline-variant/20 p-8">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="material-symbols-outlined text-secondary text-xl" aria-hidden="true">{o.icon}</span>
+              <span class="font-label text-[10px] uppercase tracking-[0.25em] text-secondary">{o.label}</span>
+            </div>
+            <address class="not-italic text-on-surface leading-relaxed mb-3">{line(o.address)}</address>
+            <p class="text-sm text-on-surface-variant leading-relaxed">{o.note}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-outline-variant/30 space-y-1">
+        <p class="font-label text-[10px] uppercase tracking-[0.25em] text-secondary mb-3">Entity</p>
+        <p class="text-sm text-on-surface-variant">{SITE.legalName} &middot; LLPIN {SITE.llpin}</p>
+        <p class="text-sm text-on-surface-variant">
+          The PMS and AIF arm of
+          <a href={SITE.parent.url} rel="noopener" class="text-secondary underline underline-offset-2 hover:no-underline">{SITE.parent.name}</a>.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{/* Grievances */}
+<section class="bg-primary-container text-white py-20 px-6 md:px-16 lg:px-24">
+  <div class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+    <div class="md:col-span-5">
+      <span class="font-label text-[11px] uppercase tracking-[0.3em] text-tertiary-fixed mb-4 block">Complaints</span>
+      <h2 class="text-3xl md:text-4xl font-headline text-white">Raising a grievance</h2>
+    </div>
+    <div class="md:col-span-7 space-y-4">
+      <p class="text-slate-300 leading-relaxed">
+        If something we have done falls short, write to <a href={`mailto:${SITE.email}`} class="text-tertiary-fixed underline underline-offset-2 hover:no-underline">{SITE.email}</a> or call <a href={`tel:${SITE.telephoneHref}`} class="text-tertiary-fixed underline underline-offset-2 hover:no-underline">{SITE.telephone}</a>, marking it as a grievance. We will acknowledge it and tell you who is handling it.
+      </p>
+      <p class="text-slate-400 text-sm leading-relaxed">
+        Complaints about a fund, its manager or an AIF registered with SEBI follow a separate route — those are set out on our <a href="/regulatory-disclosure" class="text-tertiary-fixed underline underline-offset-2 hover:no-underline">regulatory disclosure</a> page, along with the SEBI SCORES details.
+      </p>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

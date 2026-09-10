@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { RATE } from '../../data/aif-facts';
 ---
 <BaseLayout currentPage="knowledge/aif-comparison">
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
-  <!-- Hero -->
+  {/* Hero */}
   <section class="py-16 md:py-20 border-b border-outline-variant/20 mb-16">
     <span class="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-4 block">Regulatory Framework</span>
     <h1 class="text-5xl md:text-7xl font-headline text-primary-container leading-tight mb-6">
@@ -16,7 +17,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </p>
   </section>
 
-  <!-- 3-Column Framework Cards -->
+  {/* 3-Column Framework Cards */}
   <section class="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
     {[
       {
@@ -52,23 +53,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <span class={`text-[10px] px-3 py-1 uppercase font-bold tracking-widest ${cat.badgeBg}`}>Category {cat.num}</span>
         </div>
         <h2 class="font-headline text-2xl text-primary-container mb-2">{cat.title}</h2>
-        <p class="text-[11px] uppercase font-bold tracking-widest text-outline mb-4">{cat.subtitle}</p>
+        <p class="text-[11px] uppercase font-bold tracking-widest text-muted mb-4">{cat.subtitle}</p>
         <p class="text-sm text-on-surface-variant leading-relaxed mb-6 flex-grow">{cat.desc}</p>
         <ul class="space-y-2 mb-8">
           {cat.chars.map(c => (
             <li class="flex items-center gap-2 text-xs text-on-surface-variant">
-              <span class="material-symbols-outlined text-[12px] text-tertiary-fixed-dim">check_circle</span>{c}
+              <span aria-hidden="true" class="material-symbols-outlined text-[12px] text-tertiary-fixed-dim">check_circle</span>{c}
             </li>
           ))}
         </ul>
         <a href={cat.href} class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-primary-container border-b border-primary-container/30 pb-1 w-fit hover:border-tertiary-fixed-dim hover:text-tertiary-fixed-dim transition-all">
-          Explore Category {cat.num} <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          Explore Category {cat.num} <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span>
         </a>
       </div>
     ))}
   </section>
 
-  <!-- Large Comparison Table -->
+  {/* Large Comparison Table */}
   <section class="mb-16">
     <h2 class="font-headline text-4xl text-primary-container mb-2">Detailed Comparison</h2>
     <div class="w-12 h-1 bg-tertiary-fixed-dim mb-10"></div>
@@ -154,24 +155,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Key Differences Callout -->
+  {/* Key Differences Callout */}
   <section class="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
     <div class="bg-amber-50 border border-amber-200 p-8">
-      <span class="material-symbols-outlined text-amber-600 text-2xl mb-4 block">bolt</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-2xl mb-4 block">bolt</span>
       <h3 class="font-headline text-xl text-primary-container mb-3">Taxation is the Critical Differentiator</h3>
       <p class="text-sm text-on-surface-variant leading-relaxed">
-        Category I & II enjoy pass-through taxation — investors are taxed at their applicable rate. Category III funds are taxed at the Maximum Marginal Rate (~42.744% at the highest slab, including surcharge and cess) at the fund level, which may erode net returns significantly for lower-bracket investors.
+        Category I & II enjoy pass-through taxation — investors are taxed at their applicable rate. Category III funds are taxed at the Maximum Marginal Rate ({RATE.maximumMarginal} at the highest slab, including surcharge and cess) at the fund level, which may erode net returns significantly for lower-bracket investors.
       </p>
     </div>
     <div class="bg-blue-50 border border-blue-200 p-8">
-      <span class="material-symbols-outlined text-blue-600 text-2xl mb-4 block">balance</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-blue-600 text-2xl mb-4 block">balance</span>
       <h3 class="font-headline text-xl text-primary-container mb-3">Leverage Is Only for Category III</h3>
       <p class="text-sm text-on-surface-variant leading-relaxed">
         Only Category III AIFs may employ leverage through derivatives, borrowing, or margin. This enables sophisticated long-short and market-neutral strategies but also introduces counterparty risk, margin call risk, and regulatory oversight of leverage limits.
       </p>
     </div>
     <div class="bg-green-50 border border-green-200 p-8">
-      <span class="material-symbols-outlined text-green-600 text-2xl mb-4 block">schedule</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-green-600 text-2xl mb-4 block">schedule</span>
       <h3 class="font-headline text-xl text-primary-container mb-3">Structure and Liquidity</h3>
       <p class="text-sm text-on-surface-variant leading-relaxed">
         Category I and II are mandatorily close-ended with a minimum 3-year tenure, preserving long-duration capital for illiquid strategies. Category III can be open or close-ended, accommodating liquid trading strategies that require daily or weekly investor liquidity windows.
@@ -179,7 +180,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Links to Category Pages -->
+  {/* Links to Category Pages */}
   <section class="border-t border-outline-variant/20 pt-12">
     <h2 class="font-headline text-3xl text-primary-container mb-8">Explore Each Category</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -193,7 +194,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <h3 class="font-headline text-xl text-primary-container mb-1 group-hover:translate-x-1 transition-transform">{link.title}</h3>
             <p class="text-[11px] text-on-surface-variant uppercase tracking-widest font-medium">{link.sub}</p>
           </div>
-          <span class="material-symbols-outlined text-secondary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary group-hover:translate-x-1 transition-transform">arrow_forward</span>
         </a>
       ))}
     </div>

@@ -1,9 +1,17 @@
 # Image & Banner Remediation Plan — Platizio Alternatives
 
-> **Status:** approved, not yet implemented.
+> **Status:** implemented. All six phases shipped in PR #2 (`c9eb655`), with the founder
+> portrait self-hosted through `astro:assets` in `c1e92ac`.
 > **Audit date:** 11 August 2026. All measurements below were taken directly from the repo and
-> from live HTTP probes — they are measured, not estimated. Re-verify before acting if
-> significant time has passed.
+> from live HTTP probes — they are measured, not estimated.
+>
+> **Read this as a record, not as current state.** The table in §1 describes the site as it
+> stood on the audit date, and several rows no longer resolve: the `remote 512²` sources are
+> gone, `src/pages/fund.astro` (row 7) was deleted as fabricated content, and the founder
+> portrait original moved from `/sir.png` to `src/assets/originals/sir.png` on 9 September 2026
+> so it stops being served. Those rows are left as measured rather than rewritten — editing a
+> dated measurement to match today would destroy the only record of what was actually wrong.
+> `src/assets/CREDITS.md` is the live source for where each image comes from.
 
 ---
 

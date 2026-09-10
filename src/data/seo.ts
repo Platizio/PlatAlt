@@ -69,7 +69,12 @@ export const SEO: Record<string, SeoEntry> = {
   '/about': {
     title: 'About Platizio Alternatives | Platizio Services LLP',
     description:
-      'Platizio Alternatives is the PMS and AIF arm of Platizio Services LLP, serving HNIs, family offices and distributors from Noida and Delhi.',
+      'Platizio Alternatives is the PMS and AIF arm of Platizio Services LLP, serving HNIs, family offices and distributors from its Noida and Delhi offices.',
+  },
+  '/contact': {
+    title: 'Contact Platizio Alternatives | Noida & Delhi',
+    description:
+      'Speak to the Platizio Alternatives team about PMS and AIF strategies. Call +91 92055 23100, message us on WhatsApp, or visit our Noida or Delhi office.',
   },
   '/partner': {
     title: 'Distributor Partnerships: PMS & AIF | Platizio',
@@ -77,7 +82,7 @@ export const SEO: Record<string, SeoEntry> = {
       'Partner with Platizio Alternatives to bring SEBI-registered PMS and AIF strategies to your HNI and family-office clients. Register as a distributor today.',
   },
   '/media': {
-    title: 'Market Insights on AIF & PMS Investing | Platizio',
+    title: 'AIF & PMS Video Explainers and Guides | Platizio',
     description:
       'Video explainers and knowledge guides on Indian alternative investments — AIF categories, PMS mandates, GIFT City IFSC routes and how allocators evaluate them.',
   },
@@ -300,7 +305,7 @@ export const SEO: Record<string, SeoEntry> = {
   '/404': {
     title: 'Page Not Found | Platizio Alternatives',
     description:
-      'That page does not exist. Browse AIF categories, PMS guides, the fund explorer or the AMC directory on Platizio Alternatives.',
+      'That page does not exist. Browse AIF categories, PMS guides, the fund explorer or the AMC directory on Platizio Alternatives, or return to the homepage.',
     noindex: true,
   },
   // Fabricated content — docs/compliance-memo.md Part C4. /fund and

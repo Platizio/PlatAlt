@@ -1,0 +1,126 @@
+{
+  "note": "Pre-existing contrast failures. A burn-down list — fix and remove, do not add to.",
+  "generated": "2026-09-10",
+  "known": [
+    {
+      "key": "rgba(71, 96, 126, 0.4) on rgb(15,28,44) @ 30px/400",
+      "ratio": 1.42,
+      "required": 3,
+      "sample": "01",
+      "selector": "span.text-3xl.font-headline.text-secondary/40",
+      "pages": 3
+    },
+    {
+      "key": "rgb(233, 193, 118) on rgb(243,244,240) @ 10px/700",
+      "ratio": 1.54,
+      "required": 4.5,
+      "sample": "Regulatory Authority",
+      "selector": "span.text-[10px].font-bold.tracking-[.2em]",
+      "pages": 1
+    },
+    {
+      "key": "rgba(95, 97, 102, 0.3) on rgb(255,255,255) @ 36px/400",
+      "ratio": 1.55,
+      "required": 3,
+      "sample": "01",
+      "selector": "span.text-4xl.font-headline.text-muted-subtle/30",
+      "pages": 9
+    },
+    {
+      "key": "rgb(233, 193, 118) on rgb(249,250,245) @ 10px/700",
+      "ratio": 1.62,
+      "required": 4.5,
+      "sample": "Institutional Intelligence",
+      "selector": "span.text-tertiary-fixed-dim.uppercase.tracking-[0.3em]",
+      "pages": 1
+    },
+    {
+      "key": "rgb(233, 193, 118) on rgb(249,250,245) @ 14px/700",
+      "ratio": 1.62,
+      "required": 4.5,
+      "sample": "Legal",
+      "selector": "p.text-tertiary-fixed-dim.text-sm.font-bold",
+      "pages": 4
+    },
+    {
+      "key": "rgb(233, 193, 118) on rgb(255,255,255) @ 30px/400",
+      "ratio": 1.7,
+      "required": 3,
+      "sample": "01.",
+      "selector": "span.text-tertiary-fixed-dim.font-headline.text-3xl",
+      "pages": 3
+    },
+    {
+      "key": "rgba(95, 97, 102, 0.4) on rgb(255,255,255) @ 30px/400",
+      "ratio": 1.82,
+      "required": 3,
+      "sample": "01",
+      "selector": "span.text-3xl.font-headline.text-muted-subtle/40",
+      "pages": 4
+    },
+    {
+      "key": "rgb(68, 71, 76) on rgb(15,28,44) @ 14px/400",
+      "ratio": 1.84,
+      "required": 4.5,
+      "sample": "Deal flow is curated through syndicate netwo",
+      "selector": "p.text-on-surface-variant.text-sm.leading-relaxed",
+      "pages": 18
+    },
+    {
+      "key": "rgb(148, 163, 184) on rgb(249,250,245) @ 10px/400",
+      "ratio": 2.44,
+      "required": 4.5,
+      "sample": "We do not share your address with third part",
+      "selector": "p.text-[10px].text-slate-400.mt-6",
+      "pages": 1
+    },
+    {
+      "key": "rgb(71, 96, 126) on rgb(15,28,44) @ 12px/400",
+      "ratio": 2.65,
+      "required": 4.5,
+      "sample": "Phase 01",
+      "selector": "p.font-label.text-xs.uppercase",
+      "pages": 15
+    },
+    {
+      "key": "rgb(119, 133, 152) on rgb(255,222,165) @ 12px/700",
+      "ratio": 2.9,
+      "required": 4.5,
+      "sample": "Book an Investor Consultation",
+      "selector": "button.js-open-consult.inline-flex.items-center",
+      "pages": 1
+    },
+    {
+      "key": "rgb(161, 127, 59) on rgb(250,244,229) @ 10px/700",
+      "ratio": 3.42,
+      "required": 4.5,
+      "sample": "Category I AIF",
+      "selector": "span.bg-tertiary-fixed/20.text-on-tertiary-container.text-[10px]",
+      "pages": 3
+    },
+    {
+      "key": "rgb(100, 116, 139) on rgb(15,28,44) @ 10px/400",
+      "ratio": 3.61,
+      "required": 4.5,
+      "sample": "SEBI (Alternative Investment Funds) Regulati",
+      "selector": "p.text-[10px].text-slate-500.mt-6",
+      "pages": 129
+    },
+    {
+      "key": "rgba(249, 250, 245, 0.7) on rgb(71,96,126) @ 10px/700",
+      "ratio": 3.97,
+      "required": 4.5,
+      "sample": "Key Criteria",
+      "selector": "span.text-[10px].uppercase.font-bold",
+      "pages": 4
+    },
+    {
+      "key": "rgba(255, 255, 255, 0.7) on rgb(71,96,126) @ 10px/700",
+      "ratio": 4.13,
+      "required": 4.5,
+      "sample": "Key Criteria",
+      "selector": "span.text-[10px].uppercase.font-bold",
+      "pages": 1
+    }
+  ]
+}

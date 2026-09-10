@@ -10,11 +10,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p class="text-on-surface-variant">Effective: January 1, 2025 | Read carefully before proceeding</p>
   </div>
 
-  <!-- Warning Banner -->
+  {/* Warning Banner */}
   <div class="bg-error/5 border border-error/20 p-6 mb-12 flex gap-4 items-start">
-    <span class="material-symbols-outlined text-error text-2xl shrink-0">warning</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-error text-2xl shrink-0">warning</span>
     <div>
-      <h3 class="font-headline text-lg text-error mb-2">Important Risk Warning</h3>
+      <h2 class="font-headline text-lg text-error mb-2">Important Risk Warning</h2>
       <p class="text-sm text-on-surface-variant leading-relaxed">Alternative Investment Funds carry significant risks including potential total loss of capital. They are suitable only for sophisticated investors who can withstand illiquidity and accept high investment risk. Do not invest money you cannot afford to lose entirely.</p>
     </div>
   </div>

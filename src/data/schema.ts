@@ -14,8 +14,14 @@
  *     contradiction into JSON-LD hands it to Google as a machine-readable
  *     assertion. Identity, location and contact only, until A1 is answered.
  *
- *  2. No performance figures anywhere. Every `returns` in funds.generated.json
- *     is empty and every `aum_cr` is null; the README forbids adding them.
+ *  2. No performance figures in the graph. The pages themselves do show them:
+ *     funds.generated.json carries APMI returns and AUM for 9 of the 14 funds,
+ *     and funds/[slug].astro renders them alongside PERFORMANCE_DISCLAIMER, a
+ *     source label and an as-of date. None of that survives the trip into
+ *     JSON-LD. A disclaimer is prose sitting next to the number; a rich result
+ *     is the number on its own, restated by Google as the site's assertion. So
+ *     no aggregateRating, no yield, no assets from this file, however well
+ *     sourced the underlying figure is. Identity, location and contact only.
  *
  * A fund's own reg_no is different in kind and is safe: it is a fact about a
  * third party published by the regulator, not a claim about Platizio.
@@ -84,6 +90,41 @@ export const organizationNode = (): Node => ({
     availableLanguage: ['en', 'hi'],
   },
   sameAs: [SITE.youtube, SITE.parent.url],
+});
+
+/**
+ * ContactPage, with both offices as Place nodes.
+ *
+ * The Organization node carries one `address` — the head office — because two
+ * PostalAddress values on one node invites a crawler to pick either as "the"
+ * location. This page is where both belong, and where the registered office
+ * can be labelled as such rather than competing with the operating one.
+ *
+ * Same standing constraint as everywhere else in this file: no registration or
+ * credential claim about Platizio until compliance memo A1 is answered.
+ */
+export const contactPageNode = (): Node => ({
+  '@type': 'ContactPage',
+  '@id': `${SITE.url}/contact#contactpage`,
+  url: absUrl('/contact'),
+  name: 'Contact Platizio Alternatives',
+  isPartOf: { '@id': `${SITE.url}/#website` },
+  about: { '@id': `${SITE.url}/#organization` },
+  mainEntity: {
+    '@id': `${SITE.url}/#organization`,
+    location: [
+      {
+        '@type': 'Place',
+        name: 'Head office',
+        address: { '@type': 'PostalAddress', ...SITE.address },
+      },
+      {
+        '@type': 'Place',
+        name: 'Registered office',
+        address: { '@type': 'PostalAddress', ...SITE.registeredAddress },
+      },
+    ],
+  },
 });
 
 export const websiteNode = (): Node => ({
@@ -167,8 +208,10 @@ export const articleNode = (o: {
  * the correct semantic type for a fund.
  *
  * Deliberately absent: interestRate, annualPercentageRate, yield, assets,
- * aggregateRating, review, feesAndCommissionsSpecification. The dataset holds
- * no returns, no AUM and no fee data, and inventing them is forbidden.
+ * aggregateRating, review, feesAndCommissionsSpecification. `f.returns` and
+ * `f.aum_cr` are populated for most funds and the detail page does render them,
+ * so the omission here is a choice, not an absence of data — see constraint 2.
+ * There is no fee data at all, and inventing any of it is forbidden.
  */
 export const fundNode = (f: Fund): Node => {
   const path = `/funds/${f.slug}`;
@@ -215,7 +258,10 @@ export const fundNode = (f: Fund): Node => {
 /**
  * No "SEBI-registered" descriptor, even though amcs.ts:36 builds that string
  * for its visible tagline: two managers in the dataset are IFSCA-registered,
- * not SEBI. No `assets` — every aum_cr is null.
+ * not SEBI. No `assets`, even though AmcCard now carries an `aum` string:
+ * amcs.ts:21 builds it by summing aum_cr across only the funds this site
+ * happens to feature, so it is a partial total no regulator ever published.
+ * Fine as a visible card figure, not something to assert as the manager's AUM.
  */
 export const amcNode = (a: AmcCard, funds: { name: string; href: string }[]): Node => ({
   '@type': 'Organization',

@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { PMS_FAQS } from '../../data/faqs';
 import { faqPageNode, articleNode } from '../../data/schema';
 import { SEO } from '../../data/seo';
+import { RATE } from '../../data/aif-facts';
 ---
 <BaseLayout
   currentPage="knowledge/pms"
@@ -21,7 +22,7 @@ import { SEO } from '../../data/seo';
   ]}
 >
 
-<!-- Sticky Sub-Nav -->
+{/* Sticky Sub-Nav */}
 <nav class="sticky top-[72px] z-40 bg-surface-container-lowest border-b border-outline-variant/20 shadow-sm">
   <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center gap-1 overflow-x-auto">
     {[
@@ -41,7 +42,7 @@ import { SEO } from '../../data/seo';
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
-  <!-- Hero -->
+  {/* Hero */}
   <section class="py-16 md:py-24 border-b border-outline-variant/20 mb-16">
     <div class="max-w-3xl">
       <span class="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-4 block">Knowledge Centre</span>
@@ -54,7 +55,7 @@ import { SEO } from '../../data/seo';
     </div>
   </section>
 
-  <!-- What is PMS -->
+  {/* What is PMS */}
   <section id="what-is-pms" class="mb-20 scroll-mt-32">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
       <div class="md:col-span-5">
@@ -79,7 +80,7 @@ import { SEO } from '../../data/seo';
             { icon: 'manage_accounts', title: 'Dedicated Manager', desc: 'A named portfolio manager is responsible for your account.' },
           ].map(item => (
             <div class="flex items-start gap-4 bg-surface-container-low p-5">
-              <span class="material-symbols-outlined text-secondary text-xl mt-0.5 shrink-0">{item.icon}</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-secondary text-xl mt-0.5 shrink-0">{item.icon}</span>
               <div>
                 <h4 class="font-semibold text-sm text-primary-container mb-1">{item.title}</h4>
                 <p class="text-xs text-on-surface-variant leading-relaxed">{item.desc}</p>
@@ -91,7 +92,7 @@ import { SEO } from '../../data/seo';
     </div>
   </section>
 
-  <!-- Types of PMS -->
+  {/* Types of PMS */}
   <section id="types-of-pms" class="mb-20 scroll-mt-32">
 
     <div class="mb-10">
@@ -100,14 +101,14 @@ import { SEO } from '../../data/seo';
       <div class="w-12 h-1 bg-tertiary-fixed-dim"></div>
     </div>
 
-    <!-- 3-column type cards -->
+    {/* 3-column type cards */}
     <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-outline-variant/20 mb-12">
 
-      <!-- Discretionary -->
+      {/* Discretionary */}
       <div class="border-r border-outline-variant/20 p-8 md:p-10 flex flex-col group hover:bg-surface-container-low transition-colors">
         <div class="flex items-center justify-between mb-6">
           <div class="w-10 h-10 bg-primary-container flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-tertiary-fixed text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">shield_person</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-tertiary-fixed text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">shield_person</span>
           </div>
           <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary border border-outline-variant/30 px-2 py-1">Type 01</span>
         </div>
@@ -124,7 +125,7 @@ import { SEO } from '../../data/seo';
             'Most common form of PMS in India',
           ].map(pt => (
             <li class="flex items-start gap-3 text-xs text-on-surface-variant leading-relaxed">
-              <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
               {pt}
             </li>
           ))}
@@ -135,11 +136,11 @@ import { SEO } from '../../data/seo';
         </div>
       </div>
 
-      <!-- Non-Discretionary -->
+      {/* Non-Discretionary */}
       <div class="border-r border-outline-variant/20 p-8 md:p-10 flex flex-col group hover:bg-surface-container-low transition-colors">
         <div class="flex items-center justify-between mb-6">
           <div class="w-10 h-10 bg-secondary flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-white text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">sync_alt</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-white text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">sync_alt</span>
           </div>
           <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary border border-outline-variant/30 px-2 py-1">Type 02</span>
         </div>
@@ -156,7 +157,7 @@ import { SEO } from '../../data/seo';
             'Slower execution — suitable for low-turnover strategies',
           ].map(pt => (
             <li class="flex items-start gap-3 text-xs text-on-surface-variant leading-relaxed">
-              <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
               {pt}
             </li>
           ))}
@@ -167,11 +168,11 @@ import { SEO } from '../../data/seo';
         </div>
       </div>
 
-      <!-- Advisory -->
+      {/* Advisory */}
       <div class="p-8 md:p-10 flex flex-col group hover:bg-surface-container-low transition-colors">
         <div class="flex items-center justify-between mb-6">
           <div class="w-10 h-10 bg-surface-container border border-outline-variant flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">lightbulb</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">lightbulb</span>
           </div>
           <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary border border-outline-variant/30 px-2 py-1">Type 03</span>
         </div>
@@ -188,7 +189,7 @@ import { SEO } from '../../data/seo';
             'Maximum client control and self-directed execution',
           ].map(pt => (
             <li class="flex items-start gap-3 text-xs text-on-surface-variant leading-relaxed">
-              <span class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-secondary text-sm mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20">check_circle</span>
               {pt}
             </li>
           ))}
@@ -201,7 +202,7 @@ import { SEO } from '../../data/seo';
 
     </div>
 
-    <!-- At-a-glance comparison table -->
+    {/* At-a-glance comparison table */}
     <div class="bg-primary-container px-8 md:px-10 py-8">
       <h3 class="font-headline text-xl text-tertiary-fixed mb-6">At a Glance — Key Differences</h3>
       <div class="overflow-x-auto">
@@ -237,7 +238,7 @@ import { SEO } from '../../data/seo';
 
   </section>
 
-  <!-- Why PMS -->
+  {/* Why PMS */}
   <section id="why-pms" class="mb-20 scroll-mt-32 bg-surface-container-low border border-outline-variant/20 px-8 md:px-12 py-12">
     <h2 class="font-headline text-4xl text-primary-container mb-10">Why Choose PMS?</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -248,8 +249,8 @@ import { SEO } from '../../data/seo';
         { icon: 'support_agent', num: '04', title: 'Dedicated Access', desc: 'Relationship with a named portfolio manager who provides regular performance reviews and strategic updates.' },
       ].map(item => (
         <div class="bg-surface-container-lowest p-8 border-t-2 border-secondary/50">
-          <span class="text-3xl font-headline text-outline-variant/40 mb-4 block">{item.num}</span>
-          <span class="material-symbols-outlined text-secondary text-2xl mb-3 block">{item.icon}</span>
+          <span class="text-3xl font-headline text-muted-subtle/40 mb-4 block">{item.num}</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary text-2xl mb-3 block">{item.icon}</span>
           <h3 class="font-semibold text-primary-container text-base mb-2">{item.title}</h3>
           <p class="text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>
         </div>
@@ -257,7 +258,7 @@ import { SEO } from '../../data/seo';
     </div>
   </section>
 
-  <!-- How it Works – Process Flow -->
+  {/* How it Works – Process Flow */}
   <section id="how-it-works" class="mb-20 scroll-mt-32 bg-primary-container text-white px-8 md:px-12 py-14 relative overflow-hidden">
     <div class="absolute top-0 right-0 w-80 h-80 bg-secondary/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="relative z-10">
@@ -274,7 +275,7 @@ import { SEO } from '../../data/seo';
         ].map((step, i) => (
           <div class="p-8 border-l border-slate-700 relative">
             <div class={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold mb-6 ${i === 0 ? 'bg-tertiary-fixed text-on-tertiary-fixed' : 'bg-slate-800 text-amber-200 border border-amber-200/30'}`}>{step.n}</div>
-            <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-3">{step.title}</h4>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-white mb-3">{step.title}</h3>
             <p class="text-xs text-slate-400 leading-relaxed">{step.text}</p>
           </div>
         ))}
@@ -282,7 +283,7 @@ import { SEO } from '../../data/seo';
     </div>
   </section>
 
-  <!-- Comparison Table -->
+  {/* Comparison Table */}
   <section id="comparison" class="mb-20 scroll-mt-32">
     <h2 class="font-headline text-4xl text-primary-container mb-2">PMS vs Alternatives</h2>
     <div class="w-12 h-1 bg-tertiary-fixed-dim mb-10"></div>
@@ -318,20 +319,20 @@ import { SEO } from '../../data/seo';
     </div>
   </section>
 
-  <!-- Taxation – Bento Grid -->
+  {/* Taxation – Bento Grid */}
   <section id="taxation" class="mb-20 scroll-mt-32">
     <h2 class="font-headline text-4xl text-primary-container mb-2">Taxation Framework</h2>
     <div class="w-12 h-1 bg-tertiary-fixed-dim mb-10"></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {[
-        { icon: 'show_chart', title: 'Capital Gains', content: 'Long-term capital gains (LTCG) on listed equities held for more than 12 months: 12.5% above the ₹1.25 Lakh exemption. Short-term capital gains (STCG) on listed equities: 20%. Debt instruments: As per income tax slab.' },
+        { icon: 'show_chart', title: 'Capital Gains', content: `Long-term capital gains (LTCG) on listed equities held for more than 12 months: ${RATE.ltcgListed} above the ${RATE.ltcgExemption} exemption. Short-term capital gains (STCG) on listed equities: ${RATE.stcgListed}. Debt instruments: As per income tax slab.` },
         { icon: 'payments', title: 'Dividend Income', content: 'Dividends received from underlying holdings are credited directly to the investor\'s bank account and taxed at the investor\'s applicable income tax slab rate. No TDS if held in a demat account with PAN.' },
         { icon: 'receipt_long', title: 'TDS Provisions', content: 'Portfolio Managers may deduct TDS on dividend distributions at 10% for resident investors (when applicable). No TDS on capital gains. Form 16A issued for TDS deducted. Annual statement provided by Custodian.' },
         { icon: 'folder_open', title: 'Audit & Reporting', content: 'PMS investors with portfolio value above ₹50 Lakhs may be required to disclose in Schedule AL of ITR. Tax audit under Section 44AB applies if business income from trading exceeds thresholds. Portfolio Managers provide detailed capital gains statement for ITR filing.' },
       ].map(item => (
         <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
           <div class="flex items-center gap-3 mb-4">
-            <span class="material-symbols-outlined text-secondary text-2xl">{item.icon}</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-secondary text-2xl">{item.icon}</span>
             <h3 class="font-headline text-2xl text-primary-container">{item.title}</h3>
           </div>
           <p class="text-sm text-on-surface-variant leading-relaxed">{item.content}</p>
@@ -340,15 +341,15 @@ import { SEO } from '../../data/seo';
     </div>
   </section>
 
-  <!-- FAQ Accordion -->
+  {/* FAQ Accordion */}
   <section class="mb-8">
     <h2 class="font-headline text-4xl text-primary-container mb-10">Frequently Asked Questions</h2>
     <div class="space-y-2">
       {PMS_FAQS.map((faq, i) => (
         <details class="group bg-surface-container-lowest" open={i === 0}>
           <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-            <h4 class="font-headline text-xl text-primary-container">{faq.q}</h4>
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
+            <h3 class="font-headline text-xl text-primary-container">{faq.q}</h3>
+            <span aria-hidden="true" class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
           </summary>
           <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">{faq.a}</div>
         </details>

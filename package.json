@@ -1,1 +1,22 @@
-{"name":"platizio-alternatives-site","version":"0.0.1","private":true,"scripts":{"dev":"astro dev","build":"astro build","preview":"astro preview"},"dependencies":{"@astrojs/sitemap":"^3.2.1","@astrojs/tailwind":"^5.1.4","astro":"^4.16.18","tailwindcss":"^3.4.17"}}
+{
+  "name": "platizio-alternatives-site",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "audit": "node scripts/audit/index.mjs",
+    "audit:browser": "node scripts/browser/index.mjs",
+    "verify": "npm run build && npm run audit && npm run audit:browser"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^5.1.4",
+    "astro": "^4.16.18",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.63.0"
+  }
+}

@@ -82,14 +82,14 @@ const faqs = [
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
-  <!-- Breadcrumb -->
-  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20 flex-wrap">
+  {/* Breadcrumb */}
+  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-muted border-b border-outline-variant/20 flex-wrap">
     <a href="/knowledge/aif" class="hover:text-secondary transition-colors">AIF Knowledge</a>
-    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-sm text-muted-subtle">chevron_right</span>
     <span class="text-on-surface-variant">Taxation</span>
   </nav>
 
-  <!-- Hero -->
+  {/* Hero */}
   <section class="py-14 md:py-20 border-b border-outline-variant/20 mb-16">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
       <div class="md:col-span-8">
@@ -113,7 +113,7 @@ const faqs = [
               `TDS ${RATE.tdsResident} on resident distributions`,
             ].map((item) => (
               <li class="text-sm text-on-tertiary-fixed font-medium flex items-start gap-2">
-                <span class="material-symbols-outlined text-[14px] mt-0.5 shrink-0">check_circle</span>{item}
+                <span aria-hidden="true" class="material-symbols-outlined text-[14px] mt-0.5 shrink-0">check_circle</span>{item}
               </li>
             ))}
           </ul>
@@ -122,7 +122,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- By category -->
+  {/* By category */}
   <section class="mb-16">
     <h2 class="font-headline text-4xl text-primary-container mb-8">Taxation by Category</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -140,7 +140,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Rates -->
+  {/* Rates */}
   <section class="mb-16">
     <h2 class="font-headline text-4xl text-primary-container mb-8">Rates That Apply</h2>
     <div class="overflow-x-auto border border-outline-variant/20">
@@ -163,7 +163,7 @@ const faqs = [
         </tbody>
       </table>
     </div>
-    <p class="text-xs text-outline mt-4 leading-relaxed max-w-3xl">
+    <p class="text-xs text-muted mt-4 leading-relaxed max-w-3xl">
       Rates apply to transfers on or after 23 July 2024. Section numbers are those of the
       Income-tax Act, 2025; the 1961 Act equivalents were 115UB, 111A, 112A, 112 and 194LBB.
       This page is general information, not tax advice — your treatment depends on your
@@ -171,7 +171,7 @@ const faqs = [
     </p>
   </section>
 
-  <!-- FAQ -->
+  {/* FAQ */}
   <section class="mb-16">
     <h2 class="font-headline text-4xl text-primary-container mb-8">Frequently Asked Questions</h2>
     <div class="space-y-2">
@@ -179,7 +179,7 @@ const faqs = [
         <details class="group bg-surface-container-lowest" open={i === 0}>
           <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
             <h3 class="font-headline text-xl text-primary-container">{faq.q}</h3>
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
+            <span aria-hidden="true" class="material-symbols-outlined group-open:rotate-180 transition-transform shrink-0 ml-4 text-secondary">expand_more</span>
           </summary>
           <div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed">{faq.a}</div>
         </details>
@@ -187,7 +187,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Onward -->
+  {/* Onward */}
   <section>
     <h2 class="font-headline text-4xl text-primary-container mb-8">Related</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

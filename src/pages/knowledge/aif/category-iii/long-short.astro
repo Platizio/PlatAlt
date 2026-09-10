@@ -7,16 +7,16 @@ import { STAT } from '../../../../data/aif-facts';
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
-  <!-- Breadcrumb -->
-  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20 flex-wrap">
+  {/* Breadcrumb */}
+  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-muted border-b border-outline-variant/20 flex-wrap">
     <a href="/knowledge/aif" class="hover:text-secondary transition-colors">AIF Knowledge</a>
-    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-sm text-muted-subtle">chevron_right</span>
     <a href="/knowledge/aif/category-iii" class="hover:text-secondary transition-colors">Category III AIF</a>
-    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-sm text-muted-subtle">chevron_right</span>
     <span class="text-on-surface-variant">Long Short Funds</span>
   </nav>
 
-  <!-- Hero -->
+  {/* Hero */}
   <section class="py-14 md:py-20 border-b border-outline-variant/20 mb-16">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
       <div class="md:col-span-8">
@@ -44,7 +44,7 @@ import { STAT } from '../../../../data/aif-facts';
               'Fund-level taxation at MMR ~42.744%',
             ].map(item => (
               <li class="text-sm text-surface font-medium flex items-start gap-2">
-                <span class="material-symbols-outlined text-[14px] mt-0.5 shrink-0 text-tertiary-fixed">check_circle</span>{item}
+                <span aria-hidden="true" class="material-symbols-outlined text-[14px] mt-0.5 shrink-0 text-tertiary-fixed">check_circle</span>{item}
               </li>
             ))}
           </ul>
@@ -53,7 +53,7 @@ import { STAT } from '../../../../data/aif-facts';
     </div>
   </section>
 
-  <!-- How it works -->
+  {/* How it works */}
   <section class="mb-16 grid grid-cols-1 md:grid-cols-12 gap-10">
     <div class="md:col-span-5 bg-surface-container-low p-10">
       <h2 class="font-headline text-3xl text-primary-container mb-6">How Long Short Works</h2>
@@ -64,7 +64,7 @@ import { STAT } from '../../../../data/aif-facts';
         In India, short positions are typically implemented via single-stock futures or options from the F&O segment of NSE/BSE, rather than through actual stock borrowing (which is limited in India's Securities Lending and Borrowing mechanism). This has important implications for basis risk and roll costs.
       </p>
       <div class="mt-8 pt-8 border-t border-outline-variant/30">
-        <span class="text-[10px] font-bold tracking-widest uppercase text-outline">Governing Regulation</span>
+        <span class="text-[10px] font-bold tracking-widest uppercase text-muted">Governing Regulation</span>
         <p class="font-headline text-lg text-primary-container mt-1">SEBI AIF Regs, 2012 – Reg 3(4)(c)</p>
       </div>
     </div>
@@ -87,7 +87,7 @@ import { STAT } from '../../../../data/aif-facts';
     </div>
   </section>
 
-  <!-- Approach -->
+  {/* Approach */}
   <section class="mb-16">
     <h2 class="font-headline text-4xl text-primary-container mb-2">Portfolio Construction</h2>
     <div class="w-12 h-1 bg-primary-container mb-10"></div>
@@ -101,7 +101,7 @@ import { STAT } from '../../../../data/aif-facts';
         { icon: 'event', title: 'Event-Driven Positions', desc: 'Catalytic events — results surprises, management changes, regulatory decisions, mergers — drive concentrated positions with defined timelines and exit triggers.' },
       ].map(step => (
         <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
-          <span class="material-symbols-outlined text-primary-container text-3xl mb-4 block">{step.icon}</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-primary-container text-3xl mb-4 block">{step.icon}</span>
           <h3 class="font-headline text-xl text-primary-container mb-3">{step.title}</h3>
           <p class="text-sm text-on-surface-variant leading-relaxed">{step.desc}</p>
         </div>
@@ -109,7 +109,7 @@ import { STAT } from '../../../../data/aif-facts';
     </div>
   </section>
 
-  <!-- Key Characteristics -->
+  {/* Key Characteristics */}
   <section class="mb-16 bg-primary-container text-surface px-8 md:px-12 py-12 relative overflow-hidden">
     <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
     <h2 class="font-headline text-3xl text-tertiary-fixed mb-10 relative z-10">Key <span class="italic">Characteristics at a Glance</span></h2>
@@ -133,7 +133,7 @@ import { STAT } from '../../../../data/aif-facts';
     </div>
   </section>
 
-  <!-- Risk Factors -->
+  {/* Risk Factors */}
   <section class="mb-16">
     <h2 class="font-headline text-4xl text-primary-container mb-6">Risk Considerations</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -144,7 +144,7 @@ import { STAT } from '../../../../data/aif-facts';
         { icon: 'bar_chart', title: 'Correlation in Stress', desc: 'In severe market sell-offs, all stocks tend to fall together. Shorts may not generate sufficient offsetting profits if correlations spike to 1.0. Net exposure management is critical.' },
       ].map(r => (
         <div class="bg-surface-container-lowest p-8 border border-outline-variant/10 flex gap-4">
-          <span class="material-symbols-outlined text-primary-container text-2xl shrink-0 mt-0.5">{r.icon}</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-primary-container text-2xl shrink-0 mt-0.5">{r.icon}</span>
           <div>
             <h3 class="font-semibold text-primary-container mb-2">{r.title}</h3>
             <p class="text-sm text-on-surface-variant leading-relaxed">{r.desc}</p>
@@ -154,7 +154,7 @@ import { STAT } from '../../../../data/aif-facts';
     </div>
   </section>
 
-  <!-- CTA -->
+  {/* CTA */}
   <section class="bg-primary-container text-white px-10 md:px-16 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 relative overflow-hidden mb-12">
     <div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-lg relative z-10">
@@ -163,7 +163,7 @@ import { STAT } from '../../../../data/aif-facts';
     </div>
     <div class="flex flex-col sm:flex-row gap-4 relative z-10">
       <a href="/explore" class="inline-flex items-center gap-2 bg-tertiary-fixed text-on-tertiary-fixed px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:opacity-90 transition-opacity">
-        Browse Funds <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        Browse Funds <span aria-hidden="true" class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
       <button type="button" class="js-open-consult inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 text-[11px] uppercase font-bold tracking-widest hover:bg-white/10 transition-colors cursor-pointer">
         Speak to Advisor
@@ -171,14 +171,14 @@ import { STAT } from '../../../../data/aif-facts';
     </div>
   </section>
 
-  <!-- Prev / Next -->
+  {/* Prev / Next */}
   <div class="flex flex-col sm:flex-row gap-4">
     <a href="/knowledge/aif/category-iii/long-only" class="flex-1 border border-outline p-5 hover:border-secondary transition-colors group text-center">
-      <span class="text-[10px] uppercase tracking-widest text-outline block mb-1">Previous</span>
+      <span class="text-[10px] uppercase tracking-widest text-muted block mb-1">Previous</span>
       <span class="font-headline text-lg text-primary-container group-hover:text-secondary transition-colors">Long Only Funds</span>
     </a>
     <a href="/knowledge/aif/category-iii/multi-strategy" class="flex-1 border border-outline p-5 hover:border-secondary transition-colors group text-center">
-      <span class="text-[10px] uppercase tracking-widest text-outline block mb-1">Next</span>
+      <span class="text-[10px] uppercase tracking-widest text-muted block mb-1">Next</span>
       <span class="font-headline text-lg text-primary-container group-hover:text-secondary transition-colors">Multi-Strategy Funds</span>
     </a>
   </div>

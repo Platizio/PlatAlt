@@ -5,16 +5,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 <div class="max-w-3xl mx-auto px-6 md:px-10 py-8 lg:max-w-5xl">
 
-  <!-- Breadcrumb -->
+  {/* Breadcrumb */}
   <div class="flex items-center gap-2 text-secondary mb-8 pt-4">
     <a href="/knowledge/aif" class="text-xs uppercase tracking-[0.2em] font-label hover:text-primary-container transition-colors">AIF Knowledge</a>
-    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-[12px]">chevron_right</span>
     <span class="text-xs uppercase tracking-[0.2em] font-label text-secondary">Cat I AIF</span>
-    <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-[12px]">chevron_right</span>
     <span class="text-xs uppercase tracking-[0.2em] font-label text-on-surface">Angel Funds</span>
   </div>
 
-  <!-- Hero -->
+  {/* Hero */}
   <section class="mb-16">
     <div class="flex items-center gap-3 mb-4">
       <span class="bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-widest px-3 py-1">Category I AIF</span>
@@ -27,7 +27,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </p>
   </section>
 
-  <!-- Definition & Purpose -->
+  {/* Definition & Purpose */}
   <section class="mb-16">
     <div class="bg-surface-container-low p-8 md:p-10 relative overflow-hidden">
       <h2 class="font-headline text-2xl mb-6 text-primary-container">Definition & Purpose</h2>
@@ -36,30 +36,30 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">bolt</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Focus</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">bolt</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Focus</h3>
           <p class="text-sm font-semibold">Seed / Angel Stage</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">monitoring</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Risk Profile</h3>
           <p class="text-sm font-semibold">Very High</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">payments</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">payments</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Min. Investment</h3>
           <p class="text-sm font-semibold">&#8377;1 Crore</p>
         </div>
         <div class="bg-surface-container-lowest p-4">
-          <span class="material-symbols-outlined text-secondary mb-2 block">schedule</span>
-          <h4 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Tenure</h4>
+          <span aria-hidden="true" class="material-symbols-outlined text-secondary mb-2 block">schedule</span>
+          <h3 class="text-xs font-label uppercase tracking-wider text-secondary mb-1">Tenure</h3>
           <p class="text-sm font-semibold">5–7 Years</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Key Characteristics -->
+  {/* Key Characteristics */}
   <section class="mb-16">
     <h2 class="font-headline text-3xl mb-10 text-primary-container pl-4 border-l-2 border-tertiary-fixed">
       Key <span class="italic">Characteristics</span>
@@ -67,7 +67,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="space-y-8">
       <div class="flex gap-6 items-start">
         <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-primary-container text-tertiary-fixed">
-          <span class="material-symbols-outlined">hub</span>
+          <span aria-hidden="true" class="material-symbols-outlined">hub</span>
         </div>
         <div>
           <h3 class="font-headline text-xl mb-2 text-on-surface">Networks & Syndicates</h3>
@@ -76,7 +76,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="flex gap-6 items-start">
         <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-primary-container text-tertiary-fixed">
-          <span class="material-symbols-outlined">pie_chart</span>
+          <span aria-hidden="true" class="material-symbols-outlined">pie_chart</span>
         </div>
         <div>
           <h3 class="font-headline text-xl mb-2 text-on-surface">Equity Stake Acquisition</h3>
@@ -85,7 +85,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="flex gap-6 items-start">
         <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-primary-container text-tertiary-fixed">
-          <span class="material-symbols-outlined">school</span>
+          <span aria-hidden="true" class="material-symbols-outlined">school</span>
         </div>
         <div>
           <h3 class="font-headline text-xl mb-2 text-on-surface">Mentorship & Active Value Creation</h3>
@@ -95,7 +95,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Lifecycle -->
+  {/* Lifecycle */}
   <section class="mb-16 bg-primary-container p-8 md:p-12 overflow-hidden relative">
     <h2 class="font-headline text-3xl mb-12 text-tertiary-fixed">The Angel Fund <span class="italic">Lifecycle</span></h2>
     <div class="grid md:grid-cols-3 gap-8 relative">
@@ -117,7 +117,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Notable Benchmarks -->
+  {/* Notable Benchmarks */}
   <section class="mb-16">
     <h2 class="font-headline text-3xl mb-8 text-primary-container">Institutional <span class="italic">Benchmarks</span></h2>
     <div class="grid md:grid-cols-2 gap-6">
@@ -134,7 +134,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- CTA -->
+  {/* CTA */}
   <div class="bg-surface-container p-8 text-center border border-outline-variant/10">
     <h3 class="font-headline text-2xl mb-4 text-on-surface">Explore This Strategy</h3>
     <p class="text-on-surface-variant text-sm mb-8">Access detailed regulatory filings and performance metrics through our private concierge.</p>

@@ -2,9 +2,98 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Material Symbols ─── */
+/* ─── Material Symbols ───
+   The font-family itself is declared only by the remote Google stylesheet, so
+   if that request fails these spans fall back to Manrope and paint their
+   ligature text — "home", "account_balance", "arrow_forward". Measured: 22px
+   wide becomes 56.6px, and the fixed bottom nav overflows the viewport.
+
+   BaseLayout adds .icons-ready once the face is confirmed loaded. Until then
+   the box is pinned to 1em with the text unpainted, so the failure costs the
+   icon and never the layout. Once ready this override is gone entirely and
+   icons lay out exactly as they always did — no baseline or alignment change
+   on the path that actually happens. */
+html:not(.icons-ready) .material-symbols-outlined {
+  display: inline-block;
+  width: 1em;
+  overflow: hidden;
+  visibility: hidden;
+}
+
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ─── Skip Link ───
+   Off-screen rather than display:none, so it stays in the tab order and is
+   announced; it lands on screen only once focused. Sits above the fixed
+   header's z-50. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: #0f1c2c;
+  color: #ffdea5;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: top 0.15s ease-in-out;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+/* The target is focused programmatically via tabindex="-1"; it must not then
+   draw a focus ring around the whole page. */
+#main-content:focus {
+  outline: none;
+}
+
+/* ─── Focus Visibility ───
+   Tailwind's preflight leaves the UA outline in place, but .av-field inputs
+   and .form-underline both cleared it and substituted a #ffdea5 underline,
+   which measures ~1.4:1 against white and so is not a focus indicator at all
+   (WCAG 1.4.11 wants 3:1). This restores a real one everywhere, and keyboard
+   users get it without mouse users seeing a ring on click. */
+:focus-visible {
+  outline: 2px solid #47607e;
+  outline-offset: 2px;
+}
+/* These two carry `outline: none` in their own rules further down, at a higher
+   specificity than the bare :focus-visible above, so they need saying twice. */
+.av-field input:focus-visible,
+.av-field select:focus-visible,
+.av-field textarea:focus-visible,
+.form-underline:focus-visible {
+  outline: 2px solid #47607e;
+  outline-offset: 2px;
+}
+
+/* ─── Reduced Motion ───
+   Honours the OS setting for the ticker, the per-page fade-in, the modal
+   entrance and the scroll-reveal transitions. The ticker is the one that
+   matters most: it is the only thing on the site that moves indefinitely. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .ticker-scroll {
+    animation: none !important;
+    transform: none !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* ─── Base Typography ─── */
@@ -23,6 +112,13 @@ h1, h2, h3, h4 {
 /* ─── Ticker Animation ─── */
 .ticker-scroll {
   animation: ticker 40s linear infinite;
+}
+/* Stop conditions: the explicit control, pointer hover, and keyboard focus
+   landing on one of the links inside. See the note in index.astro. */
+.ticker-strip.is-paused .ticker-scroll,
+.ticker-strip:hover .ticker-scroll,
+.ticker-strip:focus-within .ticker-scroll {
+  animation-play-state: paused;
 }
 @keyframes ticker {
   0%   { transform: translateX(0); }
@@ -77,13 +173,29 @@ h1, h2, h3, h4 {
   display: block;
 }
 
-/* ─── Mobile Nav Padding ─── */
-.mobile-nav-pad {
-  padding-bottom: 5rem;
-}
-@media (min-width: 768px) {
+/* ─── Mobile Nav Padding ───
+   Clearance for the fixed bottom bar in MobileNav.astro.
+
+   This used to sit on <main> at 5rem, which was wrong twice over. <main> is
+   not the last element — the footer is — so the bar covered the footer's final
+   rows: at 375px it sat over all four legal links (Terms, Privacy, Disclosures,
+   Risk Disclaimer), making them untappable. And the padding on <main> only
+   opened a gap between the content and the footer, which is not what it was for.
+
+   5rem was also short. The bar is pt-3 + content + max(1.5rem, safe-area), which
+   measures 89px on a 375px viewport against 80px of clearance. 6rem plus the
+   inset clears it on notched and un-notched devices alike.
+
+   Applied to the footer, so the class name still describes what it does.
+
+   Scoped to a max-width query rather than zeroed at min-width. The footer
+   carries Tailwind's py-20, and `.mobile-nav-pad { padding-bottom: 0 }` matches
+   `.py-20` on specificity — so the desktop half of a min-width pair silently
+   won on source order and stripped the footer's bottom padding entirely. Below
+   768px this rule applies; at or above it, the class simply does nothing. */
+@media (max-width: 767px) {
   .mobile-nav-pad {
-    padding-bottom: 0;
+    padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
   }
 }
 

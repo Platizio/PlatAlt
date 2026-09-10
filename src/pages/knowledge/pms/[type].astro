@@ -42,14 +42,14 @@ const funds = getAllFunds().filter((f) => f.pms_type === m.key);
 
 <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 pb-24">
 
-  <!-- Breadcrumb -->
-  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-outline border-b border-outline-variant/20 flex-wrap">
+  {/* Breadcrumb */}
+  <nav class="py-6 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold text-muted border-b border-outline-variant/20 flex-wrap">
     <a href="/knowledge/pms" class="hover:text-secondary transition-colors">PMS Knowledge</a>
-    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+    <span aria-hidden="true" class="material-symbols-outlined text-sm text-muted-subtle">chevron_right</span>
     <span class="text-on-surface-variant">{m.name}</span>
   </nav>
 
-  <!-- Hero -->
+  {/* Hero */}
   <section class="py-14 md:py-20 border-b border-outline-variant/20 mb-16">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
       <div class="md:col-span-8">
@@ -69,7 +69,7 @@ const funds = getAllFunds().filter((f) => f.pms_type === m.key);
           <ul class="space-y-3">
             {m.points.map((pt) => (
               <li class="text-sm text-on-tertiary-fixed font-medium flex items-start gap-2">
-                <span class="material-symbols-outlined text-[14px] mt-0.5 shrink-0">check_circle</span>{pt}
+                <span aria-hidden="true" class="material-symbols-outlined text-[14px] mt-0.5 shrink-0">check_circle</span>{pt}
               </li>
             ))}
           </ul>
@@ -78,7 +78,7 @@ const funds = getAllFunds().filter((f) => f.pms_type === m.key);
     </div>
   </section>
 
-  <!-- Who it suits + the shared PMS floor -->
+  {/* Who it suits + the shared PMS floor */}
   <section class="mb-16 grid grid-cols-1 md:grid-cols-12 gap-10">
     <div class="md:col-span-5 bg-surface-container-low p-10">
       <h2 class="font-headline text-3xl text-primary-container mb-6">Who It Suits</h2>
@@ -96,7 +96,7 @@ const funds = getAllFunds().filter((f) => f.pms_type === m.key);
     </div>
   </section>
 
-  <!-- Funds running this mandate -->
+  {/* Funds running this mandate */}
   <section class="mb-16">
     <h2 class="font-headline text-4xl text-primary-container mb-8">{m.name} Strategies</h2>
     {funds.length > 0 ? (
@@ -120,7 +120,7 @@ const funds = getAllFunds().filter((f) => f.pms_type === m.key);
     )}
   </section>
 
-  <!-- Sibling mandates -->
+  {/* Sibling mandates */}
   <section>
     <h2 class="font-headline text-4xl text-primary-container mb-8">Other PMS Mandate Types</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

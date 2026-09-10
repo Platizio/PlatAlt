@@ -25,10 +25,21 @@ The dev server runs on `http://localhost:4321`.
 | `npm run dev` | Dev server with hot reload |
 | `npm run build` | Static build into `dist/` |
 | `npm run preview` | Serve the built output |
+| `npm run audit` | Static link, SEO and a11y checks over `dist/` |
 
-There is no test, lint or typecheck script — **the build is the only automated
-gate**. Run `npm run build` before committing and check it reports 77 pages
-with zero errors.
+There is no test, lint or typecheck script, but there are **two automated
+gates**: the build, and `npm run audit`, which parses the built `dist/` and
+exits non-zero on any failure. See `scripts/audit/README.md` for what each pass
+covers. Run both before committing:
+
+```bash
+npm run build && npm run audit
+```
+
+The build currently reports 76 pages with zero errors. Treat that figure as a
+hint, not a gate — it is hand-maintained here and has said 72, 78 and 77 at
+various points without the routes being wrong. `npm run audit` is the check
+that does not depend on anyone remembering a number.
 
 The build also fails if a route has no entry in `src/data/seo.ts` and passes no
 `description` to `BaseLayout`. That is deliberate: it is what stops a new or
@@ -61,5 +72,15 @@ the same commit, or the published site drifts from the source.
 - Regulatory figures cite the **Income-tax Act, 2025** (in force 1 April 2026)
   and the **IFSCA (Fund Management) Regulations, 2025**. Do not reintroduce
   1961 Act section numbers.
-- Do not add performance figures that are not in `src/data/`. Every `returns`
-  value in the dataset is currently `null`.
+- Performance figures come from `src/data/funds.generated.json` or they do not
+  appear at all. That file carries returns and AUM lifted from regulator and
+  industry disclosures — `source` is `apmi`, `sebi_pmr` or `sebi_aif` (`seed`
+  means editorial, and is not a disclosure). Never invent, estimate, or hand-type
+  a percentage into a page template. Funds with nothing disclosed render
+  `Not disclosed`, and that is the correct output, not a gap to fill.
+- Wherever a figure is shown it must carry `PERFORMANCE_DISCLAIMER`, the
+  `sourceLabel()` for its source, and the `as_of` date — see
+  `src/pages/funds/[slug].astro`. A bare percentage with no provenance and no
+  past-performance caveat is the thing SEBI's advertisement norms exist to stop,
+  so the disclaimer is not decoration around the number; it is the condition on
+  which the number is allowed to be there at all.
