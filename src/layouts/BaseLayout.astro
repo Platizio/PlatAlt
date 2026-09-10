@@ -167,11 +167,49 @@ const graph = [
   <script is:inline>
     (function () {
       var d = document;
+      var FAMILY = '"Material Symbols Outlined"';
       var reveal = function () { d.documentElement.classList.add('icons-ready'); };
+
+      /*
+        Measure, do not ask. document.fonts.check() answers "is every face I
+        know of for this family loaded?", and when the Google stylesheet is
+        blocked the document knows of none — so it answers yes for a family
+        that will paint as the default serif. Verified by aborting
+        fonts.googleapis.com in a headless run: check() returned true,
+        .icons-ready went on, and every span rendered its ligature text at the
+        size the guard exists to prevent.
+
+        A Material Symbols glyph advances exactly 1em; the literal word never
+        does. One measurement settles it with no reliance on the API's answer.
+      */
+      function ligatureFormed() {
+        if (!d.body) return false;
+        var probe = d.createElement('span');
+        probe.textContent = 'home';
+        probe.setAttribute(
+          'style',
+          'position:absolute;left:-9999px;top:0;visibility:hidden;white-space:pre;font:100px ' + FAMILY,
+        );
+        d.body.appendChild(probe);
+        var w = probe.getBoundingClientRect().width;
+        probe.parentNode.removeChild(probe);
+        /* 100px once the glyph resolves; 200px+ as four letters in any fallback. */
+        return w > 0 && w < 150;
+      }
+
+      function settle() {
+        if (d.body) { if (ligatureFormed()) reveal(); return; }
+        d.addEventListener('DOMContentLoaded', function () {
+          if (ligatureFormed()) reveal();
+        }, { once: true });
+      }
+
+      /* No Font Loading API: reveal rather than hide icons behind a guard we
+         cannot verify. The guard is an enhancement, not a correctness rule. */
       if (!d.fonts || !d.fonts.load) { reveal(); return; }
-      d.fonts.load('24px "Material Symbols Outlined"').then(function () {
-        if (d.fonts.check('24px "Material Symbols Outlined"')) reveal();
-      }).catch(function () { /* keep the layout guard in place */ });
+
+      d.fonts.load('24px ' + FAMILY).catch(function () { /* measured below either way */ }).then(settle);
+      d.fonts.ready && d.fonts.ready.then(settle).catch(function () {});
     })();
   </script>
   <noscript><style>.material-symbols-outlined{visibility:visible!important;width:auto!important;overflow:visible!important}</style></noscript>
