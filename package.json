@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/audit/prune.mjs",
     "preview": "astro preview",
     "audit": "node scripts/audit/index.mjs",
     "audit:browser": "node scripts/browser/index.mjs",

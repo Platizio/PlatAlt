@@ -2,10 +2,11 @@
  * `npm run audit:browser` — the checks that need a rendered page.
  *
  * `npm run audit` parses dist/ and catches everything a parser can see. These
- * three cannot be seen that way: contrast depends on computed style, and the
- * form state machine and the dialog focus trap are runtime behaviour. All
- * three were verified by hand during the site audit, which is exactly the kind
- * of verification that does not survive the next refactor.
+ * four cannot be seen that way: contrast depends on computed style, horizontal
+ * overflow depends on rendered text metrics and on which responsive variant
+ * won, and the form state machine and the dialog focus trap are runtime
+ * behaviour. Each was verified by hand during the site audit, which is exactly
+ * the kind of verification that does not survive the next refactor.
  *
  *   npm run audit:browser
  *   npm run audit:browser -- --only=forms,modal-focus
@@ -18,6 +19,7 @@ import { serveDist, launchBrowser, routes, red, green, dim, bold } from './lib.m
 import { run as contrast } from './suites/contrast.mjs';
 import { run as forms } from './suites/forms.mjs';
 import { run as modal } from './suites/modal.mjs';
+import { run as viewport } from './suites/viewport.mjs';
 
 const arg = (name) => process.argv.find((a) => a.startsWith(`--${name}=`))?.split('=')[1];
 const only = arg('only')?.split(',').map((s) => s.trim());
@@ -27,6 +29,7 @@ const SUITES = [
   { name: 'contrast', run: contrast },
   { name: 'forms', run: forms },
   { name: 'modal-focus', run: modal },
+  { name: 'viewport', run: viewport },
 ];
 
 const server = await serveDist();

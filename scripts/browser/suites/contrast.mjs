@@ -3,8 +3,9 @@
  *
  * This cannot be done by parsing HTML: the ratio depends on the effective
  * background (which may be inherited through several transparent ancestors),
- * on opacity, and on the size and weight the text actually renders at, which
- * decides whether the 4.5:1 or the 3:1 threshold applies.
+ * on opacity — both the alpha inside `color` and the element's own `opacity`
+ * property — and on the size and weight the text actually renders at, which
+ * decides whether 4.5:1 or 3:1 applies.
  *
  * The tokens most likely to regress are the muted text pair in
  * tailwind.config.mjs. They were chosen to clear 4.5:1 against every ground
@@ -26,6 +27,22 @@ const COLLECT = () => {
     return { rgb: [parts[0], parts[1], parts[2]], a: parts.length > 3 ? parts[3] : 1 };
   };
   const over = (fg, bg) => fg.rgb.map((c, i) => c * fg.a + bg[i] * (1 - fg.a));
+
+  /* The `opacity` property is not part of `color`, so a colour read straight
+     from computed style overstates the contrast of anything faded that way.
+     `opacity-80` on a paragraph is a real reduction and has to be counted, or
+     the check passes text that is genuinely too faint.
+
+     The element's OWN opacity only — deliberately not accumulated up the
+     tree. Two things on this site put a 0 on an ancestor without meaning the
+     text is invisible: .page-transition runs a 0.3s fade from opacity 0 on
+     every <main>, and [data-reveal] sits at opacity 0 until the scroll
+     observer adds .is-visible, which for below-the-fold content is never.
+     Multiplying those in reported every page as 1.01:1, black text on white
+     included. Authored fades are on the text itself; an ancestor's zero here
+     is animation state, and the `opacity < 0.1` skip below already drops
+     anything genuinely hidden that way. */
+  const ownFade = (el) => parseFloat(getComputedStyle(el).opacity) || 1;
 
   /* Walk up until something paints an opaque background; blend the
      translucent layers passed on the way. */
@@ -68,6 +85,7 @@ const COLLECT = () => {
 
     const fg = parse(style.color);
     if (!fg) continue;
+    fg.a *= ownFade(el);
     const bg = backgroundOf(el);
     const value = ratio(over(fg, bg), bg);
 

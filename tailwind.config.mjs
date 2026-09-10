@@ -55,7 +55,7 @@ export default {
         'surface-container': '#edeeea',
         'surface-container-highest': '#e2e3df',
         'outline-variant': '#c4c6cc',
-        'on-tertiary-container': '#a17f3b',
+        'on-tertiary-container': '#8a6a28',
         'error': '#ba1a1a',
         'on-primary': '#ffffff',
         'on-secondary-container': '#48617e',

@@ -17,6 +17,7 @@ import { loadPages, walk, ROOT, FAIL, WARN, INFO, red, yellow, green, dim, bold 
 import { run as links } from './checks/links.mjs';
 import { run as seo } from './checks/seo.mjs';
 import { run as a11y } from './checks/a11y.mjs';
+import { run as assets } from './checks/assets.mjs';
 
 const quiet = process.argv.includes('--quiet');
 
@@ -40,7 +41,7 @@ const pages = loadPages();
 warnIfStale();
 console.log(bold(`Auditing ${pages.length} built pages in dist/`));
 
-const reports = [links(pages), seo(pages), a11y(pages)];
+const reports = [links(pages), seo(pages), a11y(pages), assets()];
 const totals = { [FAIL]: 0, [WARN]: 0, [INFO]: 0 };
 
 for (const report of reports) {
